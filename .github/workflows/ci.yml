@@ -1,0 +1,53 @@
+name: CI
+
+# Las tres comprobaciones que importan en este proyecto:
+#
+#   - Las pruebas del motor, que son las que impiden que una campaña salga con
+#     {{.URL}} ya resuelto o sin el píxel de métrica.
+#   - El linter del catálogo, que recorre cada plantilla en tres idiomas y tres
+#     presets buscando huecos sin rellenar y bloques descuadrados.
+#   - La generación de la demo pública, que falla si una plantilla marcada para
+#     publicar menciona una marca real. Es el cinturón que impide que un
+#     descuido acabe alojado en internet, así que conviene que corra siempre y
+#     no solo cuando alguien se acuerde de ejecutarlo a mano.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobaciones:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # No hay `npm ci` porque no hay dependencias: la aplicación son módulos
+      # ES que el navegador carga tal cual y las herramientas usan solo la
+      # librería estándar de Node.
+
+      - name: Pruebas
+        run: npm test
+
+      - name: Linter del catálogo
+        run: npm run lint
+
+      - name: Generar la demo pública
+        run: npm run build:demo
+
+      - name: Comprobar que la demo no lleva exportación
+        run: |
+          if grep -rq "Descargar campaña" demo/index.html; then
+            echo "La demo publicable no debería ofrecer la descarga del ZIP."
+            exit 1
+          fi
+          echo "Demo generada sin exportación."
