@@ -1,148 +1,182 @@
-# Añadir una plantilla
+# Cómo se escribe una plantilla
 
-Todo lo que hay bajo `templates/` son datos. El dashboard construye el
-formulario, el catálogo y la vista previa leyendo los manifiestos, así que
-añadir una plantilla nueva no toca ni una línea de código.
-
-## Los tres pasos
-
-1. Crea la carpeta `templates/emails/<id>/` (o `templates/landings/<id>/`).
-2. Escribe dentro `meta.json`, `es.html`, `ca.html` y `en.html`.
-3. Añade el `<id>` a la lista correspondiente de `templates/index.json`.
-
-El navegador no puede listar directorios: por eso hace falta el índice. Si te
-olvidas de ese tercer paso, la plantilla simplemente no aparece.
-
-Después, `npm run lint`.
+Todo lo que hay en `templates/` son datos. Añadir una plantilla no toca ni una
+línea de la aplicación.
 
 ---
 
-## meta.json
+## Anatomía
+
+```
+templates/emails/banca-cargo-no-reconocido/
+  meta.json            metadatos, campos y bloques declarados
+  copy/es.json         el copy, en variantes por señal
+  copy/ca.json
+  copy/en.json
+```
+
+Y el layout, que puede ser propio o compartido:
+
+```
+templates/layouts/aviso.html    compartido por casi todos los correos
+templates/emails/<id>/layout.html   solo si esa plantilla necesita el suyo
+```
+
+Una plantilla que declara `"layout": "aviso"` reutiliza el compartido. Veinte
+avisos corporativos son la misma maqueta con otro texto: compartirla hace que
+arreglar un `<td>` los arregle todos en lugar de uno.
+
+---
+
+## La vía rápida
+
+Escribe un fichero en `catalogo/` y ejecuta el generador. Es lo que se usó para
+las once últimas plantillas del catálogo.
 
 ```jsonc
-{
-  "nombre": "Tarjeta regalo por antigüedad",       // lo que se ve en la tarjeta
-  "descripcion": "Reconocimiento por los años…",   // dos líneas, para elegir de un vistazo
-  "familia": "recompensa",                          // recompensa | microsoft | rrhh | externos
-  "idiomas": ["es", "ca", "en"],
-  "remitente": { "nombre": "Recursos Humanos", "buzon": "beneficios" },
-
-  // Solo en landings con formulario:
-  //   "credenciales" -> tiene campo de contraseña (el linter exige name="password")
-  //   "datos"        -> formulario sin contraseña
-  //   null / ausente -> sin formulario
-  "captura": "credenciales",
-
-  // Solo en la página formativa, para que no salga en la rejilla de landings:
-  "formativa": true,
-
-  // Los campos del paso 3 del dashboard. El formulario se construye solo.
+// catalogo/mi-familia.json
+[{
+  "id": "soporte-ticket-cerrado",
+  "tipo": "emails",
+  "layout": "aviso",
+  "nombre": "Soporte · Ticket cerrado",
+  "descripcion": "Aviso de cierre de una incidencia que el usuario no recuerda haber abierto.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "tags": ["soporte", "ticket", "credenciales"],
+  "remitente": { "nombre": "Soporte TI", "buzon": "soporte" },
   "campos": [
-    { "clave": "importe", "etiqueta": "Importe", "tipo": "texto", "defecto": "100 €",
-      "ayuda": "Aparece bajo el campo. Explica el porqué, no lo obvio." }
+    { "clave": "ticket", "etiqueta": "Número de ticket", "tipo": "texto", "defecto": "INC-44718" }
   ],
+  "copy": {
+    "es": { "asunto": { "base": "Tu ticket {{ticket}} se ha cerrado" }, "...": "..." },
+    "ca": { "...": "..." },
+    "en": { "...": "..." }
+  }
+}]
+```
 
-  "asunto": {                                        // solo emails
-    "es": { "facil": "…", "medio": "…", "dificil": "…" }
-  },
+```bash
+node tools/nueva-plantilla.js catalogo/mi-familia.json
+npm run lint
+```
 
-  "fragmentos": {
-    "es": {
-      "facil":   { "saludo": "…", "entradilla": "…", "urgencia": "…", "cta": "…", "cierre": "…" },
-      "medio":   { },
-      "dificil": { }
-    }
+El generador escribe `meta.json` y los `copy/*.json`, **lee los bloques del
+propio layout** (así el meta y el layout no pueden desincronizarse) y regenera
+`templates/index.json`. Los textos de relleno que todo correo lleva
+(«si el botón no funciona…», el pie automático) se añaden solos.
+
+---
+
+## El copy va por señales
+
+Cada fragmento se escribe con las variantes que necesite:
+
+```json
+{
+  "entradilla": {
+    "base": "Como parte de la política de credenciales de {{empresa}}...",
+    "urgencia": "Tu contraseña caduca en {{dias}} días.",
+    "urgencia+erratas": "Su contraseña EXPIRA HOY. Si no la actualiza..."
   }
 }
 ```
 
-`tipo` acepta `texto`, `numero` y `opciones` (con un array `opciones`).
+Reglas:
 
-Los tres niveles deben existir para cada idioma declarado. Si falta uno, el
-dashboard cae a otro en silencio y la campaña sale mal calibrada — por eso el
-linter lo trata como error, no como aviso.
+- **`base`** es el suelo: el texto sin ninguna señal encendida.
+- Una clave con `+` exige que **todas** sus señales estén activas.
+- Entre las que encajan gana la **más específica** (la que cubre más señales).
+- Un fragmento que no cambia entre señales se escribe como cadena suelta:
+  `"etiquetaCuenta": "Cuenta"`.
+
+No hace falta escribir una variante por combinación posible. `urgencia` sirve
+para cualquier combinación que incluya urgencia, y solo se añade
+`urgencia+erratas` cuando ese caso concreto merece un texto distinto.
+
+Las señales válidas son las de `templates/senales.json`. El linter falla si una
+variante menciona una que no existe.
 
 ---
 
-## Los fragmentos son plantillas a su vez
+## Los bloques
 
-Un fragmento puede contener variables, y se resuelven:
+Se anotan en el layout con comentarios HTML:
 
-```json
-"entradilla": "Por tus {{anios}} años en {{empresa}}, una tarjeta de {{importe}}."
+```html
+<!--@bloque:urgencia @senal:urgencia-->
+<tr><td class="aviso">{{urgencia}}</td></tr>
+<!--@/bloque-->
 ```
 
-Aquí es donde se teje el nombre del cliente dentro del texto, que es lo que
-hace creíble el correo. El motor hace pasadas sucesivas hasta que no queda nada
-por sustituir (tope de 6, para cortar cualquier ciclo).
-
----
-
-## Variables disponibles en el HTML
-
-**De la marca**, siempre presentes:
-
-| Variable | Qué es |
+| Atributo | Qué hace |
 |---|---|
-| `{{empresa}}` | Nombre del cliente |
-| `{{sector}}` | Sector, para el copy |
-| `{{dominio}}` | Dominio corporativo |
-| `{{firma}}` | Firma o departamento emisor |
-| `{{color}}` | Color corporativo en hex |
-| `{{colorOscuro}}` | El mismo, oscurecido, para hover y bordes |
-| `{{colorTexto}}` | Negro o blanco, el que contraste con `{{color}}` |
-| `{{logoHtml}}` | Bloque de logo ya resuelto: `<img>` si lo hay, si no el nombre en texto |
-| `{{anio}}` | Año actual |
+| `@opcional` | Aparece en el panel con un interruptor, encendido por defecto |
+| `@senal:urgencia` | Lo gobierna esa señal |
+| `@senal:!incoherencia-marca` | Lo gobierna esa señal **al revés**: aparece cuando está apagada |
 
-Usa `{{logoHtml}}` en lugar de montar el `<img>` a mano: así la plantilla
-funciona igual cuando el cliente no ha dado logo.
+Sin ninguno de los tres, el bloque está siempre y marcarlo no aporta nada (el
+linter lo avisa).
 
-**De GoPhish**, que se dejan literales: `{{.FirstName}}`, `{{.LastName}}`,
-`{{.Email}}`, `{{.Position}}`, `{{.From}}`, `{{.URL}}`, `{{.BaseURL}}`,
-`{{.RId}}`, `{{.Tracker}}`.
+Prioridad al decidir si un bloque se queda: lo que el usuario haya tocado a mano
+manda sobre la señal, y la señal manda sobre el valor por defecto.
+
+Los marcadores se limpian al exportar. Nunca salen en el HTML que se pega en
+GoPhish.
 
 ---
 
-## Reglas que aplica el linter
+## Escribir un layout propio
 
-Cada una existe porque el fallo que evita ya se ha visto en plantillas reales.
+Solo si la maqueta no encaja con ninguna de `templates/layouts/`. Reglas que el
+linter comprueba:
 
-**En todas**
+- **Maquetación por tablas.** Outlook usa el motor de Word: `display:flex`,
+  `display:grid` y `position:absolute` los ignora y descoloca el correo.
+- **Nada remoto.** Ni `http://`, ni imágenes por `https://`. Todo incrustado en
+  base64. Un recurso remoto avisa al servidor de origen cada vez que alguien
+  abre el correo, y desaparece el día que ese servidor cambie.
+- **`{{.URL}}` y `{{.Tracker}}`** en los correos, literales, sin resolver.
+- En landings con `"captura": "credenciales"`, los campos se llaman **`email` y
+  `password` exactamente así**: es como GoPhish identifica la contraseña.
+- `<html lang="{{idioma}}">`, que el layout es el mismo para los tres idiomas.
 
-- Más de 200 KB — es un volcado de sitio real, no una plantilla escrita.
-- Cualquier `src` o `href` por `http://` — se rompe, o avisa al dominio real de
-  que alguien está abriendo el correo.
-- Imágenes remotas por `https` — aviso: mejor incrustadas en base64.
-
-**En correos**
-
-- Sin `{{.Tracker}}` — pierdes la métrica de apertura.
-- Sin `{{.URL}}` — el enlace no lleva a la landing.
-- `display:flex`, `display:grid`, `position:absolute` o `position:fixed` —
-  Outlook usa el motor de Word y los ignora, descolocando el correo.
-- Sin maquetación por tablas — no sobrevive a Outlook.
-
-**En landings con `"captura": "credenciales"`**
-
-- Sin `method="post"` — GoPhish no captura nada.
-- Sin `name="password"` exacto — *Capture Passwords* no lo reconoce y la
-  contraseña se guarda aunque tengas la casilla desmarcada.
-- Sin `name="email"` exacto — el resultado no se puede cruzar con el destinatario.
+Después hay que declarar los bloques en `meta.json`, o usar
+`tools/anotar-bloques.js` con su geometría en `tools/bloques.json`.
 
 ---
 
-## Cómo escribir un correo que aguante Outlook
+## Variables disponibles
 
-Copia el esqueleto de `templates/emails/tarjeta-regalo-antiguedad/es.html`. Lo
-que importa:
+Las aporta la aplicación, no hay que declararlas:
 
-- Tablas anidadas con `role="presentation"`, ancho fijo de 600 px.
-- Todos los estilos **inline**. El bloque `<style>` es solo mejora progresiva
-  para el móvil: si Outlook lo ignora, el correo sigue leyéndose.
-- Botones como `<td bgcolor>` con un `<a>` dentro con `padding`, nunca un
-  `<button>`.
-- Iconos y logotipos dibujados con tablas o CSS cuando se pueda, en lugar de
-  imágenes. La marca de cuatro cuadros de Microsoft en `m365-caducidad-password`
-  es un ejemplo: cero peticiones a servidores ajenos.
-- Preencabezado oculto al principio del `<body>`: es lo que se lee en la
-  bandeja junto al asunto, y casi nadie lo aprovecha.
+| Variable | Qué trae |
+|---|---|
+| `{{empresa}}` `{{sector}}` `{{dominio}}` `{{firma}}` | Del panel de marca |
+| `{{color}}` `{{colorOscuro}}` `{{colorTexto}}` | Color corporativo y derivados legibles |
+| `{{logoHtml}}` | El logo ya resuelto: `<img>` con data URI, o el nombre en texto |
+| `{{anio}}` `{{idioma}}` | Año actual e idioma del render |
+
+Más las claves de `campos` que declare la plantilla, y los fragmentos de su
+`copy`.
+
+**Los campos son de campaña, no de plantilla.** Si el correo y la landing usan
+la misma clave (`importe`, `referencia`), se escribe una vez y sale igual en los
+dos. Por eso la landing de canje declara los mismos campos que su correo.
+
+---
+
+## Antes de darla por buena
+
+```bash
+npm run lint
+```
+
+Comprueba, para cada plantilla y cada combinación de idioma y preset: que no
+queda ninguna variable sin valor, que los bloques del layout y del `meta.json`
+cuadran, que las señales existen, que el correo tiene enlace y tracker, que la
+landing de credenciales conserva los nombres de campo, y que ninguna plantilla
+marcada para la demo pública menciona una marca real.
+
+Después, ábrela en la biblioteca y míralas en los tres presets. El linter no
+detecta que un texto suene raro.

@@ -12,7 +12,7 @@ captura). Este documento es el recorrido general, una sola vez.
 
 | Campo | Qué poner |
 |---|---|
-| Name | `<plantilla> — <cliente> — <nivel>` |
+| Name | `<plantilla> — <cliente> — <calibración>` |
 | Subject | El asunto que trae `INSTRUCCIONES.md`, ya resuelto |
 | Envelope Sender | El remitente sugerido, o el que hayáis acordado |
 | HTML | Botón `<>` (Source) → pega `email.html` entero |
@@ -77,9 +77,9 @@ La lista de destinatarios vive aquí, no en PhishLab. Rellena `First Name`,
 `Last Name`, `Email` y `Position`: son las variables que resuelven
 `{{.FirstName}}`, `{{.LastName}}`, `{{.Email}}` y `{{.Position}}`.
 
-En nivel **difícil** las plantillas usan el nombre de pila. Si la lista viene
+Sin la señal **saludo genérico**, las plantillas usan el nombre de pila. Si la lista viene
 con el campo vacío, el correo saldrá con un hueco raro y perderás credibilidad
-justo en el nivel donde más importa.
+justo en la calibración donde más importa.
 
 ---
 
