@@ -8,7 +8,8 @@
  * cualquiera que mirase el código fuente.
  */
 
-const NIVELES = { facil: 'Fácil', medio: 'Medio', dificil: 'Difícil' };
+import { sugerirRemitente, describir } from './senales.js';
+
 const IDIOMAS = { es: 'Castellano', ca: 'Catalán', en: 'Inglés' };
 
 /**
@@ -18,7 +19,11 @@ const IDIOMAS = { es: 'Castellano', ca: 'Catalán', en: 'Inglés' };
  * @param {string} datos.asunto
  * @param {object} datos.marca
  * @param {string} datos.idioma
- * @param {string} datos.nivel
+ * @param {string} datos.preset          id del preset de dificultad
+ * @param {Record<string,boolean>} datos.senales
+ * @param {object[]} datos.catalogoSenales
+ * @param {object[]} datos.presets
+ * @param {string[]} datos.bloquesQuitados
  * @param {string} datos.cliente
  * @param {string} datos.expediente
  * @param {boolean} datos.incluirFormativa
@@ -31,14 +36,20 @@ export function instrucciones(datos) {
     asunto,
     marca,
     idioma,
-    nivel,
+    preset,
+    senales = {},
+    catalogoSenales = [],
+    presets = [],
+    bloquesQuitados = [],
     cliente,
     expediente,
     incluirFormativa,
   } = datos;
 
   const hoy = new Date().toISOString().slice(0, 10);
-  const remitente = sugerirRemitente(email, marca, nivel);
+  const activas = new Set(Object.entries(senales).filter(([, v]) => v).map(([id]) => id));
+  const remitente = sugerirRemitente(email, marca, activas);
+  const nombrePreset = presets.find((p) => p.id === preset)?.nombre ?? preset;
   const l = [];
 
   l.push('# Instrucciones de importación en GoPhish');
@@ -49,7 +60,7 @@ export function instrucciones(datos) {
   if (expediente) l.push(`| Expediente | ${expediente} |`);
   l.push(`| Generado | ${hoy} |`);
   l.push(`| Idioma | ${IDIOMAS[idioma] ?? idioma} |`);
-  l.push(`| Dificultad | ${NIVELES[nivel] ?? nivel} |`);
+  l.push(`| Calibración | ${nombrePreset} |`);
   if (email) l.push(`| Plantilla de correo | ${email.nombre} (\`${email.id}\`) |`);
   if (landing) l.push(`| Landing | ${landing.nombre} (\`${landing.id}\`) |`);
   l.push('');
@@ -59,12 +70,14 @@ export function instrucciones(datos) {
   l.push('> escalado están cerrados por escrito. Ver `AUTORIZACION.md`.');
   l.push('');
 
+  l.push(...seccionSenales(catalogoSenales, senales, bloquesQuitados));
+
   if (email) {
     l.push('## 1. Email Template');
     l.push('');
     l.push('En GoPhish: **Email Templates → New Template**.');
     l.push('');
-    l.push(`- **Name:** ${email.nombre} — ${cliente || marca.empresa || 'cliente'} — ${NIVELES[nivel]}`);
+    l.push(`- **Name:** ${email.nombre} — ${cliente || marca.empresa || 'cliente'} — ${nombrePreset}`);
     l.push(`- **Subject:** \`${asunto}\``);
     l.push('- **Envelope Sender:** `' + remitente + '`');
     l.push('- Pestaña **HTML** → botón `<>` (Source) → pega el contenido de `email.html`.');
@@ -135,23 +148,52 @@ export function instrucciones(datos) {
   return l.join('\n');
 }
 
-/** Propone un envelope sender coherente con el nivel de dificultad. */
-export function sugerirRemitente(email, marca, nivel) {
-  const dominio = (marca.dominio || 'ejemplo.com').replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-  const buzon = email?.remitente?.buzon || 'notificaciones';
-  const nombre = email?.remitente?.nombre || 'Notificaciones';
+/**
+ * Tabla de señales de la campaña.
+ *
+ * Es la sección que convierte el ZIP en algo que sirve para el informe. Sin
+ * ella el resultado de una campaña es un porcentaje suelto; con ella se puede
+ * decir "el 34% no miró el dominio del remitente", que es lo que el cliente
+ * puede convertir en formación.
+ */
+function seccionSenales(catalogo, senales, bloquesQuitados) {
+  if (!catalogo.length) return [];
 
-  if (nivel === 'facil') {
-    // Dominio evidentemente ajeno: la pista que debe detectar el empleado.
-    return `${nombre} <${buzon}@${buzon}-${dominio.split('.')[0]}.net>`;
+  const { encendidas, apagadas } = describir(catalogo, senales);
+  const l = [];
+
+  l.push('## Señales que lleva esta campaña');
+  l.push('');
+  l.push('| Señal | Estado | Qué mide |');
+  l.push('|---|---|---|');
+  for (const s of catalogo) {
+    const activa = Boolean(senales[s.id]);
+    l.push(`| ${s.nombre} | ${activa ? '**Presente**' : 'Ausente'} | ${s.queEnsena} |`);
   }
-  if (nivel === 'medio') {
-    // Lookalike plausible.
-    const partes = dominio.split('.');
-    return `${nombre} <${buzon}@${partes[0]}-${buzon}.${partes.slice(1).join('.')}>`;
+  l.push('');
+
+  if (encendidas.length) {
+    l.push('Al analizar los resultados, quien haya picado ha dejado pasar estas');
+    l.push(`${encendidas.length === 1 ? 'señal' : `${encendidas.length} señales`}: ` +
+      encendidas.map((s) => `**${s.nombre.toLowerCase()}**`).join(', ') + '.');
+  } else {
+    l.push('No hay ninguna señal evidente: este correo mide la exposición real de la');
+    l.push('organización, no la capacidad de detectar pistas. Avisa al SOC antes de lanzarlo.');
   }
-  // Difícil: indistinguible a simple vista.
-  return `${nombre} <${buzon}@${dominio}>`;
+  l.push('');
+
+  if (apagadas.length && encendidas.length) {
+    l.push('Las ausentes no se han medido en esta campaña. Para medir una en concreto,');
+    l.push('repite con el preset difícil y enciende solo esa.');
+    l.push('');
+  }
+
+  if (bloquesQuitados.length) {
+    l.push(`Bloques retirados de las plantillas: \`${[...new Set(bloquesQuitados)].join('`, `')}\`.`);
+    l.push('');
+  }
+
+  return l;
 }
 
 /** Checklist de autorización que viaja en el ZIP. */

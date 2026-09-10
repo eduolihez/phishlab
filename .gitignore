@@ -1,3 +1,11 @@
 .gstack/
 node_modules/
 *.zip
+
+# Material de cliente: plantillas importadas y variantes propias.
+# Llevan dentro marca y pretextos de un encargo concreto, y no tienen
+# por que acabar en un repositorio publico.
+templates/propias/
+
+# Salida del generador de la demo publica.
+demo/

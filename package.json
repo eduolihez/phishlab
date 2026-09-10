@@ -1,12 +1,15 @@
 {
   "name": "phishlab",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Generador de plantillas de email y landing para simulaciones de phishing autorizadas, con exportacion a GoPhish.",
+  "description": "Biblioteca de plantillas de email y landing para simulaciones de phishing autorizadas, con exportacion a GoPhish.",
   "scripts": {
+    "dev": "node tools/servidor.js 8080",
+    "start": "node tools/servidor.js 8080",
     "test": "node --test tests/*.test.js",
     "lint": "node tools/lint.js",
-    "start": "python -m http.server 8080"
+    "lint:propias": "node tools/lint.js --propias",
+    "build:demo": "node tools/build-demo.js"
   }
 }
