@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Solicitud de verificación pendiente en tu cuenta",
+    "urgencia": "¿Has intentado iniciar sesión? Hay una verificación esperando",
+    "urgencia+erratas": "VERIFICACION REQUERIDA - solicitud de acceso a su cuenta"
+  },
+  "preheader": {
+    "base": "{{aplicacion}} · código {{codigo}}",
+    "urgencia": "Solicitud desde {{ubicacion}} esperando aprobación"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado usuario"
+  },
+  "titular": {
+    "base": "{{saludo}}, hay una verificación pendiente",
+    "urgencia": "{{saludo}}, ¿eres tú quien intenta entrar?",
+    "urgencia+erratas": "{{saludo}}, SOLICITUD DE ACCESO pendiente"
+  },
+  "entradilla": {
+    "base": "Se ha solicitado la verificación en dos pasos para acceder a <strong>{{aplicacion}}</strong>. Si has sido tú, aprueba la solicitud con el código <strong>{{codigo}}</strong>.",
+    "urgencia": "Alguien está intentando entrar en tu cuenta desde {{ubicacion}} y la verificación está esperando. Si no eres tú, <strong>no la apruebes</strong>.",
+    "urgencia+erratas": "Se han detectado varios intentos de verificacion en su cuenta. Debe confirmar su identidad para detenerlos."
+  },
+  "detalle": {
+    "base": "Si no has iniciado sesión, no apruebes nada y revisa la cuenta desde el enlace. Nadie de soporte te va a pedir nunca que apruebes una solicitud por teléfono.",
+    "urgencia": "Si estas solicitudes se repiten sin que las hayas provocado, significa que alguien tiene tu contraseña. Cámbiala desde el enlace.",
+    "urgencia+erratas": "Acceda a su cuenta para revisar las solicitudes y bloquear los intentos no autorizados."
+  },
+  "urgencia": {
+    "base": "La solicitud caduca sola en 5 minutos si nadie la aprueba.",
+    "urgencia": "Cada solicitud que llega y no es tuya es un intento de entrar con una contraseña que ya conocen.",
+    "urgencia+erratas": "ATENCION: se han registrado 7 intentos en los ultimos minutos. Su cuenta esta en riesgo."
+  },
+  "cta": {
+    "base": "Revisar la solicitud",
+    "urgencia": "No he sido yo, revisar mi cuenta",
+    "urgencia+erratas": "DETENER LOS INTENTOS"
+  },
+  "cierre": {
+    "base": "Seguridad de la Cuenta · {{empresa}}",
+    "urgencia+erratas": "Centro de Seguridad"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Aplicación",
+  "fichaValor1": "{{aplicacion}}",
+  "fichaEtiqueta2": "Ubicación",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Código",
+  "fichaValor3": {
+    "base": "{{codigo}}",
+    "urgencia+erratas": "{{codigo}} · SIN APROBAR"
+  }
+}

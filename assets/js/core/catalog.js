@@ -87,10 +87,25 @@ async function cargarMeta(ruta, id, tipo, propia) {
   }
 }
 
+/**
+ * Ruta del layout de una plantilla.
+ *
+ * Una plantilla puede traer su propio `layout.html` o apuntar con
+ * `"layout": "aviso"` a uno compartido de `templates/layouts/`. La mayoría de
+ * los avisos corporativos son la misma maqueta con otro texto: cabecera,
+ * cuerpo, ficha, urgencia, botón y pie. Compartir el layout hace que añadir
+ * una plantilla sea escribir su copy, y que arreglar un `<td>` lo arregle en
+ * las veinte a la vez en lugar de en una.
+ */
+export function rutaLayout(meta) {
+  return meta.layout ? `${RAIZ}/layouts/${meta.layout}.html` : `${meta.ruta}/layout.html`;
+}
+
 /** HTML crudo del layout, con los marcadores de bloque todavía puestos. */
 export async function cargarLayout(meta) {
-  const res = await fetch(`${meta.ruta}/layout.html`);
-  if (!res.ok) throw new Error(`No se pudo cargar ${meta.ruta}/layout.html`);
+  const ruta = rutaLayout(meta);
+  const res = await fetch(ruta);
+  if (!res.ok) throw new Error(`No se pudo cargar ${ruta}`);
   return res.text();
 }
 

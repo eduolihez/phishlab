@@ -1,0 +1,66 @@
+{
+  "schema": 2,
+  "nombre": "Portal corporativo · Inicio de sesión",
+  "descripcion": "Login genérico con la marca del cliente. Pareja natural de cualquier correo de TI, RRHH o SaaS: no imita a ningún producto concreto, imita al portal del propio cliente.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "tags": [
+    "credenciales",
+    "login",
+    "portal",
+    "generico"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "layout": "login",
+  "captura": "credenciales",
+  "campos": [
+    {
+      "clave": "servicio",
+      "etiqueta": "Nombre del portal",
+      "tipo": "texto",
+      "defecto": "Portal Corporativo"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "aviso-sesion",
+      "etiqueta": "Aviso de sesión caducada",
+      "senal": "urgencia",
+      "ayuda": "El pretexto de por qué se pide iniciar sesión otra vez."
+    },
+    {
+      "id": "recordar",
+      "etiqueta": "recordar",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "enlaces-ayuda",
+      "etiqueta": "Enlaces de ayuda",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Crear cuenta y recuperar acceso. Un portal real los tiene."
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

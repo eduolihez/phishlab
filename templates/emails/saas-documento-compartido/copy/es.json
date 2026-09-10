@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "{{quienComparte}} ha compartido «{{nombreDocumento}}» contigo",
+    "urgencia": "{{quienComparte}} necesita que revises un documento hoy",
+    "urgencia+erratas": "Documento compartido - ACCION REQUERIDA - {{nombreDocumento}}"
+  },
+  "preheader": {
+    "base": "{{nombreDocumento}} · {{carpeta}}",
+    "urgencia": "{{quienComparte}} espera tus comentarios en el documento"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado usuario"
+  },
+  "titular": {
+    "base": "{{saludo}}, tienes un documento nuevo",
+    "urgencia": "{{saludo}}, {{quienComparte}} espera tu revisión",
+    "urgencia+erratas": "{{saludo}}, documento compartido PENDIENTE"
+  },
+  "entradilla": {
+    "base": "<strong>{{quienComparte}}</strong> ha compartido contigo el documento <strong>{{nombreDocumento}}</strong> desde la carpeta {{carpeta}}. Tienes permiso de edición.",
+    "urgencia": "<strong>{{quienComparte}}</strong> ha compartido <strong>{{nombreDocumento}}</strong> contigo y ha pedido que lo revises antes de la reunión.",
+    "urgencia+erratas": "El usuario {{quienComparte}} a compartido un documento con usted que requiere su revision INMEDIATA."
+  },
+  "detalle": {
+    "base": "Puedes abrirlo desde el enlace o encontrarlo en tu lista de documentos compartidos. Los comentarios que dejes se ven al momento.",
+    "urgencia": "Ábrelo y deja tus comentarios directamente en el documento. No hace falta descargarlo.",
+    "urgencia+erratas": "Para acceder al documento debe iniciar sesion con su cuenta corporativa."
+  },
+  "urgencia": {
+    "base": "El enlace de este correo es personal: no lo reenvíes, porque los permisos van asociados a tu cuenta.",
+    "urgencia": "El acceso compartido caduca en 7 días. Después habrá que volver a pedirlo.",
+    "urgencia+erratas": "ATENCION: el enlace caduca en 24 HORAS. Pasado ese tiempo perdera el acceso al documento."
+  },
+  "cta": {
+    "base": "Abrir el documento",
+    "urgencia": "Revisar el documento",
+    "urgencia+erratas": "ABRIR DOCUMENTO AHORA"
+  },
+  "cierre": {
+    "base": "{{servicio}} · {{empresa}}",
+    "urgencia+erratas": "Sistema de Documentos Compartidos"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Documento",
+  "fichaValor1": "{{nombreDocumento}}",
+  "fichaEtiqueta2": "Compartido por",
+  "fichaValor2": "{{quienComparte}}",
+  "fichaEtiqueta3": "Permiso",
+  "fichaValor3": {
+    "base": "Puede editar",
+    "urgencia+erratas": "REQUIERE INICIAR SESION"
+  }
+}

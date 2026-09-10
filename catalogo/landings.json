@@ -1,0 +1,149 @@
+[
+  {
+    "id": "portal-corporativo-login",
+    "tipo": "landings",
+    "layout": "login",
+    "captura": "credenciales",
+    "nombre": "Portal corporativo · Inicio de sesión",
+    "descripcion": "Login genérico con la marca del cliente. Pareja natural de cualquier correo de TI, RRHH o SaaS: no imita a ningún producto concreto, imita al portal del propio cliente.",
+    "familia": "saas",
+    "categoria": "saas-corporativo",
+    "tags": ["credenciales", "login", "portal", "generico"],
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del portal", "tipo": "texto", "defecto": "Portal Corporativo" }
+    ],
+    "copy": {
+      "es": {
+        "tituloPagina": "Iniciar sesión · {{empresa}}",
+        "nombreServicio": "{{servicio}}",
+        "tituloFormulario": "Iniciar sesión",
+        "subtitulo": "Usa tu cuenta corporativa para continuar.",
+        "aviso": {
+          "base": "",
+          "urgencia": "Tu sesión ha expirado. Vuelve a identificarte para continuar.",
+          "urgencia+erratas": "Su sesion a caducado. Debe volver a iniciar sesion inmediatamente."
+        },
+        "etiquetaUsuario": "Correo corporativo",
+        "etiquetaContrasena": "Contraseña",
+        "textoRecordar": "Mantener la sesión iniciada",
+        "btnEntrar": { "base": "Iniciar sesión", "urgencia+erratas": "ACCEDER" },
+        "enlaceOlvido": "He olvidado mi contraseña",
+        "enlaceSinAcceso": "No puedo acceder a mi cuenta",
+        "enlaceCondiciones": "Condiciones de uso",
+        "enlacePrivacidad": "Privacidad"
+      },
+      "ca": {
+        "tituloPagina": "Iniciar sessió · {{empresa}}",
+        "nombreServicio": "{{servicio}}",
+        "tituloFormulario": "Iniciar sessió",
+        "subtitulo": "Utilitza el teu compte corporatiu per continuar.",
+        "aviso": {
+          "base": "",
+          "urgencia": "La teva sessió ha expirat. Torna a identificar-te per continuar.",
+          "urgencia+erratas": "La seva sessio a caducat. Ha de tornar a iniciar sessio immediatament."
+        },
+        "etiquetaUsuario": "Correu corporatiu",
+        "etiquetaContrasena": "Contrasenya",
+        "textoRecordar": "Mantenir la sessió iniciada",
+        "btnEntrar": { "base": "Iniciar sessió", "urgencia+erratas": "ACCEDIR" },
+        "enlaceOlvido": "He oblidat la contrasenya",
+        "enlaceSinAcceso": "No puc accedir al meu compte",
+        "enlaceCondiciones": "Condicions d'ús",
+        "enlacePrivacidad": "Privacitat"
+      },
+      "en": {
+        "tituloPagina": "Sign in · {{empresa}}",
+        "nombreServicio": "{{servicio}}",
+        "tituloFormulario": "Sign in",
+        "subtitulo": "Use your corporate account to continue.",
+        "aviso": {
+          "base": "",
+          "urgencia": "Your session has expired. Sign in again to continue.",
+          "urgencia+erratas": "Your session has expired. You must sign in again immediatly."
+        },
+        "etiquetaUsuario": "Work email",
+        "etiquetaContrasena": "Password",
+        "textoRecordar": "Keep me signed in",
+        "btnEntrar": { "base": "Sign in", "urgencia+erratas": "ACCESS" },
+        "enlaceOlvido": "I forgot my password",
+        "enlaceSinAcceso": "I cannot access my account",
+        "enlaceCondiciones": "Terms of use",
+        "enlacePrivacidad": "Privacy"
+      }
+    }
+  },
+
+  {
+    "id": "banca-verificacion-login",
+    "tipo": "landings",
+    "layout": "login",
+    "captura": "credenciales",
+    "nombre": "Banca · Verificación de identidad",
+    "descripcion": "Acceso a banca electrónica para «confirmar una operación». Pareja de los correos de cargo no reconocido y de acceso desde dispositivo nuevo.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "tags": ["credenciales", "banca", "login", "verificacion"],
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del servicio de banca", "tipo": "texto", "defecto": "Banca Digital" }
+    ],
+    "copy": {
+      "es": {
+        "tituloPagina": "Verificación de identidad · {{empresa}}",
+        "nombreServicio": "{{servicio}}",
+        "tituloFormulario": "Verifica tu identidad",
+        "subtitulo": "Identifícate para revisar la operación pendiente.",
+        "aviso": {
+          "base": "",
+          "urgencia": "Hay una operación esperando tu confirmación. La sesión se cerrará en 10 minutos.",
+          "urgencia+erratas": "OPERACION PENDIENTE. Debe identificarse para evitar el bloqueo de su cuenta."
+        },
+        "etiquetaUsuario": "Usuario o documento de identidad",
+        "etiquetaContrasena": "Clave de acceso",
+        "textoRecordar": "Recordar mi usuario en este dispositivo",
+        "btnEntrar": { "base": "Continuar", "urgencia": "Verificar identidad", "urgencia+erratas": "VERIFICAR AHORA" },
+        "enlaceOlvido": "He olvidado mi clave",
+        "enlaceSinAcceso": "Necesito ayuda para entrar",
+        "enlaceCondiciones": "Aviso legal",
+        "enlacePrivacidad": "Protección de datos"
+      },
+      "ca": {
+        "tituloPagina": "Verificació d'identitat · {{empresa}}",
+        "nombreServicio": "{{servicio}}",
+        "tituloFormulario": "Verifica la teva identitat",
+        "subtitulo": "Identifica't per revisar l'operació pendent.",
+        "aviso": {
+          "base": "",
+          "urgencia": "Hi ha una operació esperant la teva confirmació. La sessió es tancarà en 10 minuts.",
+          "urgencia+erratas": "OPERACIO PENDENT. Ha d'identificar-se per evitar el bloqueig del seu compte."
+        },
+        "etiquetaUsuario": "Usuari o document d'identitat",
+        "etiquetaContrasena": "Clau d'accés",
+        "textoRecordar": "Recordar el meu usuari en aquest dispositiu",
+        "btnEntrar": { "base": "Continuar", "urgencia": "Verificar identitat", "urgencia+erratas": "VERIFICAR ARA" },
+        "enlaceOlvido": "He oblidat la clau",
+        "enlaceSinAcceso": "Necessito ajuda per entrar",
+        "enlaceCondiciones": "Avís legal",
+        "enlacePrivacidad": "Protecció de dades"
+      },
+      "en": {
+        "tituloPagina": "Identity verification · {{empresa}}",
+        "nombreServicio": "{{servicio}}",
+        "tituloFormulario": "Verify your identity",
+        "subtitulo": "Sign in to review the pending transaction.",
+        "aviso": {
+          "base": "",
+          "urgencia": "A transaction is waiting for your confirmation. This session closes in 10 minutes.",
+          "urgencia+erratas": "PENDING TRANSACTION. You must identify yourself to avoid your account being blocked."
+        },
+        "etiquetaUsuario": "Username or ID number",
+        "etiquetaContrasena": "Access code",
+        "textoRecordar": "Remember my username on this device",
+        "btnEntrar": { "base": "Continue", "urgencia": "Verify identity", "urgencia+erratas": "VERIFY NOW" },
+        "enlaceOlvido": "I forgot my access code",
+        "enlaceSinAcceso": "I need help signing in",
+        "enlaceCondiciones": "Legal notice",
+        "enlacePrivacidad": "Data protection"
+      }
+    }
+  }
+]

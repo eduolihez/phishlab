@@ -33,7 +33,7 @@ test('cada señal declarada por un preset existe en el catálogo de señales', (
 
 for (const plantilla of PLANTILLAS) {
   test(`${plantilla.id}: los bloques del layout y del meta.json cuadran`, () => {
-    const enLayout = bloquesDeclarados(leerLayout(plantilla.carpeta)).map((b) => b.id).sort();
+    const enLayout = bloquesDeclarados(leerLayout(plantilla.carpeta, plantilla.meta)).map((b) => b.id).sort();
     const enMeta = (plantilla.meta.bloques ?? []).map((b) => b.id).sort();
     assert.deepEqual(
       enLayout,

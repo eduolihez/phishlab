@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="{{idioma}}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{empresa}}</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+<style>
+  @media only screen and (max-width:620px) {
+    .contenedor { width:100% !important; }
+    .relleno { padding-left:20px !important; padding-right:20px !important; }
+    .titular { font-size:21px !important; line-height:28px !important; }
+    .boton a { display:block !important; }
+    .ficha-etiqueta { width:auto !important; display:block !important; padding-bottom:2px !important; }
+    .ficha-valor { display:block !important; padding-bottom:9px !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#f3f4f6;">
+
+<!--@bloque:preheader @opcional-->
+<div style="display:none;font-size:1px;color:#f3f4f6;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+  {{preheader}}
+  &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+<!--@/bloque-->
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f4f6;">
+<tr>
+<td align="center" style="padding:28px 12px;">
+
+  <table role="presentation" class="contenedor" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#ffffff;">
+
+    <!--@bloque:cabecera @opcional-->
+    <tr>
+      <td class="relleno" style="padding:22px 32px 18px;border-bottom:1px solid #e5e7eb;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="left" style="vertical-align:middle;">{{logoHtml}}</td>
+            <!--@bloque:marca-servicio @senal:!incoherencia-marca-->
+            <td align="right" style="vertical-align:middle;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:#6b7280;">
+              {{nombreServicio}}
+            </td>
+            <!--@/bloque-->
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <tr>
+      <td class="relleno" style="padding:30px 32px 6px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+        <h1 class="titular" style="margin:0 0 16px;font-size:23px;line-height:30px;font-weight:600;color:#111827;">
+          {{titular}}
+        </h1>
+        <p style="margin:0 0 16px;font-size:15px;line-height:24px;color:#374151;">
+          {{entradilla}}
+        </p>
+        <p style="margin:0 0 18px;font-size:15px;line-height:24px;color:#374151;">
+          {{detalle}}
+        </p>
+      </td>
+    </tr>
+
+    <!--@bloque:ficha @opcional-->
+    <!-- Ficha de datos: tres filas de etiqueta y valor. Es lo que hace que el
+         correo demuestre saber algo concreto de quien lo recibe, que es de
+         donde sale casi toda la credibilidad de un pretexto. -->
+    <tr>
+      <td class="relleno" style="padding:6px 32px 4px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9fafb;border-left:3px solid {{color}};">
+          <tr>
+            <td style="padding:16px 18px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="ficha-etiqueta" style="padding:0 0 7px;font-size:13px;line-height:19px;color:#6b7280;width:150px;">{{fichaEtiqueta1}}</td>
+                  <td class="ficha-valor" style="padding:0 0 7px;font-size:13px;line-height:19px;color:#111827;font-weight:600;">{{fichaValor1}}</td>
+                </tr>
+                <tr>
+                  <td class="ficha-etiqueta" style="padding:0 0 7px;font-size:13px;line-height:19px;color:#6b7280;">{{fichaEtiqueta2}}</td>
+                  <td class="ficha-valor" style="padding:0 0 7px;font-size:13px;line-height:19px;color:#111827;">{{fichaValor2}}</td>
+                </tr>
+                <tr>
+                  <td class="ficha-etiqueta" style="padding:0;font-size:13px;line-height:19px;color:#6b7280;">{{fichaEtiqueta3}}</td>
+                  <td class="ficha-valor" style="padding:0;font-size:13px;line-height:19px;color:#b91c1c;font-weight:600;">{{fichaValor3}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <!--@bloque:urgencia @senal:urgencia-->
+    <tr>
+      <td class="relleno" style="padding:18px 32px 4px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+        <p style="margin:0 0 22px;font-size:14px;line-height:22px;color:#92400e;background-color:#fffbeb;padding:11px 14px;">
+          {{urgencia}}
+        </p>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <tr>
+      <td class="relleno" style="padding:8px 32px 28px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="boton">
+          <tr>
+            <td align="center" bgcolor="{{color}}" style="border-radius:5px;">
+              <a href="{{.URL}}"
+                 style="display:inline-block;padding:13px 32px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;line-height:20px;color:{{colorTexto}};text-decoration:none;border-radius:5px;">
+                {{cta}}
+              </a>
+            </td>
+          </tr>
+        </table>
+        <!--@bloque:enlace-visible @senal:enlace-visible-->
+        <!-- La URL en crudo bajo el botón: el texto dice una cosa y la
+             dirección dice otra. Es la señal que se le pide detectar. -->
+        <p style="margin:14px 0 0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#9ca3af;">
+          {{textoEnlaceVisible}}<br>
+          <span style="color:{{color}};word-break:break-all;">{{.URL}}</span>
+        </p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+
+    <!--@bloque:pie @opcional-->
+    <tr>
+      <td class="relleno" style="padding:18px 32px 26px;border-top:1px solid #e5e7eb;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+        <p style="margin:0 0 4px;font-size:13px;line-height:20px;color:#374151;font-weight:600;">
+          {{cierre}}
+        </p>
+        <p style="margin:0 0 12px;font-size:12px;line-height:18px;color:#9ca3af;">
+          {{avisoAutomatico}}
+        </p>
+        <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+        <!-- El pie legal completo es justo lo que una campaña real no se
+             molesta en copiar. Con la señal de incoherencia activa desaparece. -->
+        <p style="margin:0;font-size:11px;line-height:17px;color:#b6bcc5;">
+          &copy; {{anio}} {{empresa}} &middot; {{dominio}}<br>
+          {{avisoReporte}}
+        </p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+  </table>
+
+</td>
+</tr>
+</table>
+
+<!--@bloque:tracker @opcional-->
+{{.Tracker}}
+<!--@/bloque-->
+</body>
+</html>

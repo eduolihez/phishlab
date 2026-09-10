@@ -48,7 +48,16 @@ export function listarPlantillas({ incluirPropias = false } = {}) {
   return salida;
 }
 
-export const leerLayout = (carpeta) => readFileSync(join(carpeta, 'layout.html'), 'utf8');
+/**
+ * Layout de una plantilla: el suyo propio, o el compartido que declare en
+ * `meta.layout`. Ver el comentario de rutaLayout() en core/catalog.js.
+ */
+export function leerLayout(carpeta, meta) {
+  const ruta = meta?.layout
+    ? join(TEMPLATES, 'layouts', `${meta.layout}.html`)
+    : join(carpeta, 'layout.html');
+  return readFileSync(ruta, 'utf8');
+}
 export const leerCopy = (carpeta, idioma) => leerJson(join(carpeta, 'copy', `${idioma}.json`));
 
 /** Marca de relleno para linter y tests: valores plausibles, nada real. */
@@ -84,7 +93,7 @@ export function componer(plantilla, { idioma = 'es', preset = 'medio', overrides
     (plantilla.meta.campos ?? []).map((c) => [c.clave, c.defecto ?? ''])
   );
 
-  const podado = podar(leerLayout(plantilla.carpeta), vivos);
+  const podado = podar(leerLayout(plantilla.carpeta, plantilla.meta), vivos);
   const ctx = construirContexto({
     marca: { ...marca, idioma },
     campos: valores,

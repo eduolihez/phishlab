@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Confirmació d'una operació a la teva targeta ••{{ultimosDigitos}}",
+    "urgencia": "Reconeixes aquesta operació de {{importe}}?",
+    "urgencia+erratas": "URGENT: carrec NO AUTORITZAT de {{importe}} a la seva targeta"
+  },
+  "preheader": {
+    "base": "Operació pendent de confirmar · {{comercio}}",
+    "urgencia": "Càrrec de {{importe}} pendent de la teva confirmació"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut client"
+  },
+  "titular": {
+    "base": "{{saludo}}, confirma aquesta operació",
+    "urgencia": "{{saludo}}, reconeixes aquest càrrec?",
+    "urgencia+erratas": "{{saludo}}, CARREC NO AUTORITZAT detectat"
+  },
+  "entradilla": {
+    "base": "Hem registrat una operació amb la teva targeta acabada en <strong>{{ultimosDigitos}}</strong> que no encaixa amb el teu patró habitual d'ús. No hem bloquejat res: només necessitem que la confirmis.",
+    "urgencia": "S'ha autoritzat un càrrec de <strong>{{importe}}</strong> a {{comercio}} amb la teva targeta acabada en {{ultimosDigitos}}. Si no has estat tu, pots anul·lar-lo des de l'enllaç de sota.",
+    "urgencia+erratas": "Hem detectat un carrec NO AUTORITZAT de <strong>{{importe}}</strong> a la seva targeta. Si no reconeix aquesta operacio ha de cancel·lar-la IMMEDIATAMENT."
+  },
+  "detalle": {
+    "base": "Si l'operació és teva no has de fer res més que confirmar-la; el càrrec seguirà el seu curs normal. Si no la reconeixes, en rebutjar-la s'obre una reclamació i s'emet una targeta nova.",
+    "urgencia": "Revisa les dades de l'operació i digues-nos si la reconeixes. El procés dura menys d'un minut.",
+    "urgencia+erratas": "La seva targeta quedara bloquejada de forma preventiva fins que verifiqui la seva identitat a l'enllaç."
+  },
+  "urgencia": {
+    "base": "Si no ens dius res en 72 hores, l'operació es donarà per bona i ja no es podrà reclamar per aquesta via.",
+    "urgencia": "Tens 24 hores per rebutjar el càrrec. Passat aquest termini l'operació es consolida i la reclamació passa a ser un tràmit molt més lent.",
+    "urgencia+erratas": "ATENCIO: si no verifica la seva identitat en les properes 2 HORES el seu compte sera SUSPES per seguretat."
+  },
+  "cta": {
+    "base": "Revisar l'operació",
+    "urgencia": "No reconec aquest càrrec",
+    "urgencia+erratas": "CANCEL·LAR EL CARREC ARA"
+  },
+  "cierre": {
+    "base": "Servei de Seguretat · {{empresa}}",
+    "urgencia+erratas": "Departament de Seguretat i Frau"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Import",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "Comerç",
+  "fichaValor2": "{{comercio}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": {
+    "base": "Pendent de confirmar",
+    "urgencia+erratas": "REQUEREIX ACCIO IMMEDIATA"
+  }
+}

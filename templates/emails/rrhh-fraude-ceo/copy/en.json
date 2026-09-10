@@ -1,0 +1,61 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Are you available?",
+    "urgencia": "I need your help with something, it is urgent",
+    "urgencia+erratas": "URGENT - I need your help NOW"
+  },
+  "preheader": {
+    "base": "A moment when you can",
+    "urgencia": "It is for today and I would rather handle it here"
+  },
+  "saludo": {
+    "base": "{{.FirstName}}",
+    "saludo-generico": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}},",
+    "urgencia": "{{saludo}}, do you have a moment?",
+    "urgencia+erratas": "{{saludo}}, I NEED YOUR HELP"
+  },
+  "entradilla": {
+    "base": "I am in meetings all morning and need to close something before I leave. Can you take care of it and confirm when it is done?",
+    "urgencia": "I am away and cannot call. I need you to process a payment today related to {{operacion}}. The details are in the link.",
+    "urgencia+erratas": "I need you to carry out an URGENT operation. I cannot speak on the phone right now. Everything is in the link."
+  },
+  "detalle": {
+    "base": "It is a simple matter, but I would rather you handle it directly and not put it through the usual circuit just yet.",
+    "urgencia": "Please do not discuss it with the rest of the team for now: {{operacion}} has not been announced and I would rather it came from management.",
+    "urgencia+erratas": "It is CONFIDENTIAL. Do not discuss it with anyone until I say so."
+  },
+  "urgencia": {
+    "base": "If you can look at it this morning, all the better. Anything you need, reply here.",
+    "urgencia": "I need confirmation before 14:00. If anything comes up, write to me here, not by phone.",
+    "urgencia+erratas": "It is for TODAY. Confirm as soon as you have done it."
+  },
+  "cta": {
+    "base": "See the details",
+    "urgencia": "See the transaction details",
+    "urgencia+erratas": "VIEW INSTRUCTIONS"
+  },
+  "cierre": {
+    "base": "{{directivo}}\n{{cargo}} · {{empresa}}",
+    "urgencia+erratas": "{{directivo}}, {{cargo}}"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "From",
+  "fichaValor1": "{{directivo}}",
+  "fichaEtiqueta2": "Role",
+  "fichaValor2": "{{cargo}}",
+  "fichaEtiqueta3": "Priority",
+  "fichaValor3": {
+    "base": "Normal",
+    "urgencia": "High",
+    "urgencia+erratas": "HIGHEST - CONFIDENTIAL"
+  }
+}

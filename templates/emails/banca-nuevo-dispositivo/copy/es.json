@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Nuevo inicio de sesión en tu cuenta de {{empresa}}",
+    "urgencia": "Acceso desde un dispositivo que no reconocemos",
+    "urgencia+erratas": "ALERTA DE SEGURIDAD: alguien ha entrado en su cuenta"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Inicio de sesión desde {{ubicacion}} a las {{fechaAcceso}}"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado cliente"
+  },
+  "titular": {
+    "base": "{{saludo}}, un dispositivo nuevo ha entrado en tu cuenta",
+    "urgencia": "{{saludo}}, ¿has sido tú?",
+    "urgencia+erratas": "{{saludo}}, ACCESO NO AUTORIZADO a su cuenta"
+  },
+  "entradilla": {
+    "base": "Se ha iniciado sesión en tu cuenta desde un dispositivo que no habíamos visto antes. Te avisamos siempre que ocurre, aunque la mayoría de las veces es el propio titular estrenando móvil o navegador.",
+    "urgencia": "Alguien ha entrado en tu cuenta <strong>{{fechaAcceso}}</strong> desde {{ubicacion}}, con un dispositivo que no reconocemos.",
+    "urgencia+erratas": "Se ha detectado un acceso a su cuenta desde {{ubicacion}}. Si no ha sido usted su cuenta esta COMPROMETIDA."
+  },
+  "detalle": {
+    "base": "Si fuiste tú, puedes marcar el dispositivo como de confianza y dejaremos de avisarte por él. Si no, conviene que revises la sesión y cambies la contraseña.",
+    "urgencia": "Si no has sido tú, cierra la sesión y cambia la contraseña desde el enlace. Mientras tanto hemos limitado las transferencias de la cuenta.",
+    "urgencia+erratas": "Debe verificar su identidad AHORA para recuperar el control de su cuenta."
+  },
+  "urgencia": {
+    "base": "Si no reconoces el acceso y no haces nada, la sesión seguirá abierta durante 30 días.",
+    "urgencia": "La sesión sigue abierta ahora mismo. Cuanto más tardes en cerrarla, más tiempo tiene quien haya entrado.",
+    "urgencia+erratas": "ATENCION: la sesion sigue ACTIVA. Cada minuto que pasa pueden estar operando con su dinero."
+  },
+  "cta": {
+    "base": "Revisar mis dispositivos",
+    "urgencia": "No he sido yo, cerrar la sesión",
+    "urgencia+erratas": "BLOQUEAR EL ACCESO AHORA"
+  },
+  "cierre": {
+    "base": "Alertas de Seguridad · {{empresa}}",
+    "urgencia+erratas": "Centro de Seguridad"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Dispositivo",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Ubicación",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Fecha",
+  "fichaValor3": {
+    "base": "{{fechaAcceso}}",
+    "urgencia+erratas": "{{fechaAcceso}} · SIN VERIFICAR"
+  }
+}

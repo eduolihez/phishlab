@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Self-assessment for the {{periodo}} is open",
+    "urgencia": "Your self-assessment closes {{plazo}}",
+    "urgencia+erratas": "FINAL NOTICE: performance review NOT COMPLETED"
+  },
+  "preheader": {
+    "base": "{{periodo}} · {{servicio}}",
+    "urgencia": "Your part of the review is still outstanding"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear employee"
+  },
+  "titular": {
+    "base": "{{saludo}}, your self-assessment is open",
+    "urgencia": "{{saludo}}, your review is still incomplete",
+    "urgencia+erratas": "{{saludo}}, REVIEW PENDING"
+  },
+  "entradilla": {
+    "base": "The performance review for the <strong>{{periodo}}</strong> has opened. Your part is the self-assessment, and {{responsable}} will add theirs before the follow-up meeting.",
+    "urgencia": "Your self-assessment for the <strong>{{periodo}}</strong> is still incomplete and the process closes <strong>{{plazo}}</strong>.",
+    "urgencia+erratas": "Your performance review for the {{periodo}} is PENDING. You must complete it before {{plazo}}."
+  },
+  "detalle": {
+    "base": "It is about fifteen questions and usually takes twenty minutes. You can save and pick it up later where you left off.",
+    "urgencia": "If you do not complete it, the follow-up meeting happens with only {{responsable}}'s assessment, without your side of it.",
+    "urgencia+erratas": "Access the portal with your corporate credentials to complete the form."
+  },
+  "urgencia": {
+    "base": "The process closes {{plazo}} and does not reopen: it is the same calendar for everyone.",
+    "urgencia": "Only a few days left. Reviews without a self-assessment are closed anyway, and that is recorded in your file.",
+    "urgencia+erratas": "WARNING: failure to complete on time may affect the annual salary review."
+  },
+  "cta": {
+    "base": "Complete my self-assessment",
+    "urgencia": "Complete it before it closes",
+    "urgencia+erratas": "COMPLETE REVIEW NOW"
+  },
+  "cierre": {
+    "base": "{{firma}} · {{empresa}}",
+    "urgencia+erratas": "Human Resources Department"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Period",
+  "fichaValor1": "{{periodo}}",
+  "fichaEtiqueta2": "Reviewer",
+  "fichaValor2": "{{responsable}}",
+  "fichaEtiqueta3": "Closes",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} - INCOMPLETE"
+  }
+}

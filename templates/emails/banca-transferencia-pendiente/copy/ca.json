@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Transferència {{referenciaPago}} pendent de validació",
+    "urgencia": "Pagament de {{importe}} retingut: falta la teva signatura",
+    "urgencia+erratas": "URGENT: transferencia BLOQUEJADA, es requereix validacio immediata"
+  },
+  "preheader": {
+    "base": "{{beneficiario}} · {{importe}}",
+    "urgencia": "El pagament a {{beneficiario}} no sortirà sense la teva validació"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut usuari"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens una transferència pendent de validar",
+    "urgencia": "{{saludo}}, el pagament a {{beneficiario}} està retingut",
+    "urgencia+erratas": "{{saludo}}, TRANSFERENCIA BLOQUEJADA"
+  },
+  "entradilla": {
+    "base": "La transferència amb referència <strong>{{referenciaPago}}</strong> està esperant la segona validació establerta a la política de signatures de {{empresa}}.",
+    "urgencia": "El pagament de <strong>{{importe}}</strong> a {{beneficiario}} està retingut perquè falta la teva validació. Mentre no la donis, els diners no surten.",
+    "urgencia+erratas": "La transferencia de <strong>{{importe}}</strong> ha estat BLOQUEJADA pel sistema de control. Es requereix la seva validacio per alliberar-la."
+  },
+  "detalle": {
+    "base": "Pots validar-la des del portal de banca d'empreses o des de l'enllaç de sota. Si no la reconeixes, rebutja-la i avisa tresoreria.",
+    "urgencia": "Valida o rebutja el pagament des de l'enllaç. Si no el reconeixes, rebutja'l: és el que s'ha de fer i no té cap cost.",
+    "urgencia+erratas": "Accedeixi al sistema i validi l'operacio per evitar penalitzacions per demora."
+  },
+  "urgencia": {
+    "base": "El termini de validació acaba {{plazo}}. Passat aquest punt, l'ordre decau i s'ha de tornar a emetre.",
+    "urgencia": "Si no es valida {{plazo}}, l'ordre decau i el proveïdor no cobra dins del venciment.",
+    "urgencia+erratas": "ATENCIO: si no valida {{plazo}} l'operacio es cancel·lara i podria generar recarrecs per impagament."
+  },
+  "cta": {
+    "base": "Revisar la transferència",
+    "urgencia": "Validar el pagament",
+    "urgencia+erratas": "ALLIBERAR LA TRANSFERENCIA"
+  },
+  "cierre": {
+    "base": "Gestió de Pagaments · {{empresa}}",
+    "urgencia+erratas": "Departament de Tresoreria"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Beneficiari",
+  "fichaValor1": "{{beneficiario}}",
+  "fichaEtiqueta2": "Import",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": {
+    "base": "Pendent de segona signatura",
+    "urgencia+erratas": "RETINGUDA PEL SISTEMA"
+  }
+}

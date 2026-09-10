@@ -1,0 +1,61 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tu envío {{seguimiento}} requiere una gestión",
+    "urgencia": "Tu paquete está retenido: falta una tasa de {{tasa}}",
+    "urgencia+erratas": "ULTIMO AVISO: su paquete sera devuelto al remitente"
+  },
+  "preheader": {
+    "base": "Envío {{seguimiento}} · gestión pendiente",
+    "urgencia": "Faltan {{tasa}} para poder entregar tu paquete"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado cliente"
+  },
+  "titular": {
+    "base": "{{saludo}}, tu envío necesita una gestión",
+    "urgencia": "{{saludo}}, tu paquete está retenido",
+    "urgencia+erratas": "{{saludo}}, su paquete NO se ha podido entregar"
+  },
+  "entradilla": {
+    "base": "El envío con seguimiento <strong>{{seguimiento}}</strong> ha quedado a la espera de una gestión aduanera. Es un trámite habitual en paquetes que vienen de fuera de la Unión Europea.",
+    "urgencia": "Tu paquete está retenido en el centro logístico porque queda pendiente una tasa de <strong>{{tasa}}</strong>. En cuanto se abone, sale a reparto.",
+    "urgencia+erratas": "Su paquete no se ha podido entregar por que falta el pago de la tasa aduanera de <strong>{{tasa}}</strong>."
+  },
+  "detalle": {
+    "base": "Puedes completar el trámite desde el área de cliente. Si el paquete no es tuyo o no esperas ningún envío, ignora este mensaje.",
+    "urgencia": "El importe corresponde a los derechos de aduana del envío. Una vez pagado, la entrega se reprograma para el siguiente día hábil.",
+    "urgencia+erratas": "Debe abonar la tasa pendiente para poder programar una nueva entrega de su paquete."
+  },
+  "urgencia": {
+    "base": "Los envíos sin gestionar se devuelven al remitente pasados 15 días naturales.",
+    "urgencia": "Si no se completa en {{plazo}}, el paquete se devuelve al remitente y se pierden los gastos de envío.",
+    "urgencia+erratas": "ATENCION: si no realiza el pago en {{plazo}} su paquete sera DEVUELTO y no se podra recuperar."
+  },
+  "cta": {
+    "base": "Ver el estado del envío",
+    "urgencia": "Pagar la tasa y recibir el paquete",
+    "urgencia+erratas": "PAGAR AHORA {{tasa}}"
+  },
+  "cierre": {
+    "base": "Atención al Cliente · {{empresa}}",
+    "urgencia+erratas": "Servicio de Atencion al Cliente"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Seguimiento",
+  "fichaValor1": "{{seguimiento}}",
+  "fichaEtiqueta2": "Importe pendiente",
+  "fichaValor2": "{{tasa}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": {
+    "base": "Gestión pendiente",
+    "urgencia": "Retenido en aduana",
+    "urgencia+erratas": "RETENIDO - ACCION REQUERIDA"
+  }
+}

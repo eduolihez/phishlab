@@ -1,0 +1,118 @@
+{
+  "schema": 2,
+  "nombre": "Banca · Transferencia pendiente de validar",
+  "descripcion": "Pago inmediato retenido a la espera de una segunda firma. Dirigido a administración y finanzas: ahí la urgencia de un pago es rutina, no sospecha.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "tags": [
+    "banca",
+    "transferencia",
+    "finanzas",
+    "bec",
+    "pago"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "layout": "aviso",
+  "remitente": {
+    "nombre": "Gestión de Pagos",
+    "buzon": "pagos"
+  },
+  "campos": [
+    {
+      "clave": "servicio",
+      "etiqueta": "Nombre del servicio",
+      "tipo": "texto",
+      "defecto": "Banca de Empresas"
+    },
+    {
+      "clave": "importe",
+      "etiqueta": "Importe de la transferencia",
+      "tipo": "texto",
+      "defecto": "14.780,00 €"
+    },
+    {
+      "clave": "beneficiario",
+      "etiqueta": "Beneficiario",
+      "tipo": "texto",
+      "defecto": "SUMINISTROS TECNICOS NORTE SL"
+    },
+    {
+      "clave": "referenciaPago",
+      "etiqueta": "Referencia del pago",
+      "tipo": "texto",
+      "defecto": "TRF-2026-08841"
+    },
+    {
+      "clave": "plazo",
+      "etiqueta": "Plazo para validar",
+      "tipo": "texto",
+      "defecto": "hoy antes de las 14:00"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Autoevaluación del {{periodo}} disponible",
+    "urgencia": "Tu autoevaluación cierra {{plazo}}",
+    "urgencia+erratas": "ULTIMO AVISO: evaluacion de desempeño SIN COMPLETAR"
+  },
+  "preheader": {
+    "base": "{{periodo}} · {{servicio}}",
+    "urgencia": "Queda tu parte de la evaluación por completar"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado empleado"
+  },
+  "titular": {
+    "base": "{{saludo}}, ya puedes completar tu autoevaluación",
+    "urgencia": "{{saludo}}, tu evaluación está sin completar",
+    "urgencia+erratas": "{{saludo}}, EVALUACION PENDIENTE"
+  },
+  "entradilla": {
+    "base": "Se ha abierto el proceso de evaluación del <strong>{{periodo}}</strong>. Tu parte es la autoevaluación, y después {{responsable}} añadirá la suya antes de la reunión de seguimiento.",
+    "urgencia": "Tu autoevaluación del <strong>{{periodo}}</strong> sigue sin completar y el proceso cierra <strong>{{plazo}}</strong>.",
+    "urgencia+erratas": "Su evaluacion de desempeño del {{periodo}} esta PENDIENTE. Debe completarla antes de {{plazo}}."
+  },
+  "detalle": {
+    "base": "Son unas quince preguntas y suele llevar veinte minutos. Puedes guardar y seguir más tarde desde donde lo dejaste.",
+    "urgencia": "Si no la completas, la reunión de seguimiento se hace solo con la valoración de {{responsable}}, sin tu punto de vista.",
+    "urgencia+erratas": "Acceda al portal con sus credenciales corporativas para completar el formulario."
+  },
+  "urgencia": {
+    "base": "El proceso se cierra {{plazo}} y no se reabre: es el mismo calendario para toda la plantilla.",
+    "urgencia": "Quedan pocos días. Las evaluaciones sin autoevaluación se cierran igualmente, y eso queda reflejado en el expediente.",
+    "urgencia+erratas": "ATENCION: la no cumplimentacion en plazo puede afectar a la revision salarial anual."
+  },
+  "cta": {
+    "base": "Completar mi autoevaluación",
+    "urgencia": "Completar antes de que cierre",
+    "urgencia+erratas": "COMPLETAR EVALUACION AHORA"
+  },
+  "cierre": {
+    "base": "{{firma}} · {{empresa}}",
+    "urgencia+erratas": "Departamento de Recursos Humanos"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Periodo",
+  "fichaValor1": "{{periodo}}",
+  "fichaEtiqueta2": "Evalúa",
+  "fichaValor2": "{{responsable}}",
+  "fichaEtiqueta3": "Cierre",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} - SIN COMPLETAR"
+  }
+}

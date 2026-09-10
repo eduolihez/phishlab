@@ -1,0 +1,498 @@
+[
+  {
+    "id": "banca-cargo-no-reconocido",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "Banca · Cargo no reconocido",
+    "descripcion": "Aviso de una operación con tarjeta que hay que confirmar o rechazar. El pretexto con más tasa de clic que existe: no pide nada, ofrece protección.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "tags": ["banca", "tarjeta", "fraude", "credenciales", "confirmacion"],
+    "remitente": { "nombre": "Servicio de Seguridad", "buzon": "seguridad" },
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del servicio de banca", "tipo": "texto", "defecto": "Banca Digital",
+        "ayuda": "Si el cliente opera con una entidad concreta, pon el nombre real de su banca electrónica." },
+      { "clave": "importe", "etiqueta": "Importe del cargo", "tipo": "texto", "defecto": "289,90 €",
+        "ayuda": "Ni muy alto ni muy bajo. Un importe que duela pero sea creíble es lo que empuja a pulsar sin pensar." },
+      { "clave": "comercio", "etiqueta": "Comercio", "tipo": "texto", "defecto": "ELECTRONICA GLOBAL SL" },
+      { "clave": "ultimosDigitos", "etiqueta": "Últimos dígitos de la tarjeta", "tipo": "texto", "defecto": "4417" },
+      { "clave": "fechaOperacion", "etiqueta": "Fecha y hora de la operación", "tipo": "texto", "defecto": "hoy a las 03:412" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Confirmación de una operación en tu tarjeta ••{{ultimosDigitos}}",
+          "urgencia": "¿Reconoces esta operación de {{importe}}?",
+          "urgencia+erratas": "URGENTE: cargo NO AUTORIZADO de {{importe}} en su tarjeta"
+        },
+        "preheader": {
+          "base": "Operación pendiente de confirmar · {{comercio}}",
+          "urgencia": "Cargo de {{importe}} pendiente de tu confirmación"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado cliente" },
+        "titular": {
+          "base": "{{saludo}}, confirma esta operación",
+          "urgencia": "{{saludo}}, ¿reconoces este cargo?",
+          "urgencia+erratas": "{{saludo}}, CARGO NO AUTORIZADO detectado"
+        },
+        "entradilla": {
+          "base": "Hemos registrado una operación con tu tarjeta terminada en <strong>{{ultimosDigitos}}</strong> que no encaja con tu patrón habitual de uso. No hemos bloqueado nada: solo necesitamos que la confirmes.",
+          "urgencia": "Se ha autorizado un cargo de <strong>{{importe}}</strong> en {{comercio}} con tu tarjeta terminada en {{ultimosDigitos}}. Si no has sido tú, puedes anularlo desde el enlace de abajo.",
+          "urgencia+erratas": "Hemos detectado un cargo NO AUTORIZADO de <strong>{{importe}}</strong> en su tarjeta. Si no reconoce esta operacion debe cancelarla INMEDIATAMENTE."
+        },
+        "detalle": {
+          "base": "Si la operación es tuya no tienes que hacer nada más que confirmarla; el cargo seguirá su curso normal. Si no la reconoces, al rechazarla se abre una reclamación y se emite una tarjeta nueva.",
+          "urgencia": "Revisa los datos de la operación y dinos si la reconoces. El proceso tarda menos de un minuto.",
+          "urgencia+erratas": "Su tarjeta quedara bloqueada de forma preventiva hasta que verifique su identidad en el enlace."
+        },
+        "urgencia": {
+          "base": "Si no nos dices nada en 72 horas, la operación se dará por buena y ya no se podrá reclamar por esta vía.",
+          "urgencia": "Tienes 24 horas para rechazar el cargo. Pasado ese plazo la operación se consolida y la reclamación pasa a ser un trámite mucho más lento.",
+          "urgencia+erratas": "ATENCION: si no verifica su identidad en las proximas 2 HORAS su cuenta sera SUSPENDIDA por seguridad."
+        },
+        "cta": {
+          "base": "Revisar la operación",
+          "urgencia": "No reconozco este cargo",
+          "urgencia+erratas": "CANCELAR EL CARGO AHORA"
+        },
+        "cierre": {
+          "base": "Servicio de Seguridad · {{empresa}}",
+          "urgencia+erratas": "Departamento de Seguridad y Fraude"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Importe",
+        "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "Comercio",
+        "fichaValor2": "{{comercio}}",
+        "fichaEtiqueta3": "Estado",
+        "fichaValor3": { "base": "Pendiente de confirmar", "urgencia+erratas": "REQUIERE ACCION INMEDIATA" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Confirmació d'una operació a la teva targeta ••{{ultimosDigitos}}",
+          "urgencia": "Reconeixes aquesta operació de {{importe}}?",
+          "urgencia+erratas": "URGENT: carrec NO AUTORITZAT de {{importe}} a la seva targeta"
+        },
+        "preheader": {
+          "base": "Operació pendent de confirmar · {{comercio}}",
+          "urgencia": "Càrrec de {{importe}} pendent de la teva confirmació"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut client" },
+        "titular": {
+          "base": "{{saludo}}, confirma aquesta operació",
+          "urgencia": "{{saludo}}, reconeixes aquest càrrec?",
+          "urgencia+erratas": "{{saludo}}, CARREC NO AUTORITZAT detectat"
+        },
+        "entradilla": {
+          "base": "Hem registrat una operació amb la teva targeta acabada en <strong>{{ultimosDigitos}}</strong> que no encaixa amb el teu patró habitual d'ús. No hem bloquejat res: només necessitem que la confirmis.",
+          "urgencia": "S'ha autoritzat un càrrec de <strong>{{importe}}</strong> a {{comercio}} amb la teva targeta acabada en {{ultimosDigitos}}. Si no has estat tu, pots anul·lar-lo des de l'enllaç de sota.",
+          "urgencia+erratas": "Hem detectat un carrec NO AUTORITZAT de <strong>{{importe}}</strong> a la seva targeta. Si no reconeix aquesta operacio ha de cancel·lar-la IMMEDIATAMENT."
+        },
+        "detalle": {
+          "base": "Si l'operació és teva no has de fer res més que confirmar-la; el càrrec seguirà el seu curs normal. Si no la reconeixes, en rebutjar-la s'obre una reclamació i s'emet una targeta nova.",
+          "urgencia": "Revisa les dades de l'operació i digues-nos si la reconeixes. El procés dura menys d'un minut.",
+          "urgencia+erratas": "La seva targeta quedara bloquejada de forma preventiva fins que verifiqui la seva identitat a l'enllaç."
+        },
+        "urgencia": {
+          "base": "Si no ens dius res en 72 hores, l'operació es donarà per bona i ja no es podrà reclamar per aquesta via.",
+          "urgencia": "Tens 24 hores per rebutjar el càrrec. Passat aquest termini l'operació es consolida i la reclamació passa a ser un tràmit molt més lent.",
+          "urgencia+erratas": "ATENCIO: si no verifica la seva identitat en les properes 2 HORES el seu compte sera SUSPES per seguretat."
+        },
+        "cta": {
+          "base": "Revisar l'operació",
+          "urgencia": "No reconec aquest càrrec",
+          "urgencia+erratas": "CANCEL·LAR EL CARREC ARA"
+        },
+        "cierre": {
+          "base": "Servei de Seguretat · {{empresa}}",
+          "urgencia+erratas": "Departament de Seguretat i Frau"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Import",
+        "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "Comerç",
+        "fichaValor2": "{{comercio}}",
+        "fichaEtiqueta3": "Estat",
+        "fichaValor3": { "base": "Pendent de confirmar", "urgencia+erratas": "REQUEREIX ACCIO IMMEDIATA" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Confirm a transaction on your card ••{{ultimosDigitos}}",
+          "urgencia": "Do you recognise this {{importe}} transaction?",
+          "urgencia+erratas": "URGENT: UNAUTHORISED charge of {{importe}} on your card"
+        },
+        "preheader": {
+          "base": "Transaction awaiting confirmation · {{comercio}}",
+          "urgencia": "A {{importe}} charge is waiting for your confirmation"
+        },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear customer" },
+        "titular": {
+          "base": "{{saludo}}, please confirm this transaction",
+          "urgencia": "{{saludo}}, do you recognise this charge?",
+          "urgencia+erratas": "{{saludo}}, UNAUTHORISED CHARGE detected"
+        },
+        "entradilla": {
+          "base": "We have recorded a transaction on your card ending <strong>{{ultimosDigitos}}</strong> that does not match your usual spending pattern. Nothing has been blocked: we just need you to confirm it.",
+          "urgencia": "A charge of <strong>{{importe}}</strong> at {{comercio}} has been authorised on your card ending {{ultimosDigitos}}. If this was not you, you can cancel it from the link below.",
+          "urgencia+erratas": "We have detected an UNAUTHORISED charge of <strong>{{importe}}</strong> on your card. If you do not recognise this operation you must cancel it IMMEDIATELY."
+        },
+        "detalle": {
+          "base": "If the transaction is yours, simply confirm it and the charge will go through as normal. If you do not recognise it, rejecting it opens a claim and a replacement card is issued.",
+          "urgencia": "Check the transaction details and tell us whether you recognise it. It takes less than a minute.",
+          "urgencia+erratas": "Your card will be blocked as a precaution until you verify your identity at the link."
+        },
+        "urgencia": {
+          "base": "If we do not hear from you within 72 hours the transaction will be treated as valid and can no longer be disputed through this channel.",
+          "urgencia": "You have 24 hours to reject the charge. After that the transaction settles and the claim becomes a far slower process.",
+          "urgencia+erratas": "WARNING: if you do not verify your identity within the next 2 HOURS your account will be SUSPENDED for security."
+        },
+        "cta": {
+          "base": "Review the transaction",
+          "urgencia": "I do not recognise this charge",
+          "urgencia+erratas": "CANCEL THE CHARGE NOW"
+        },
+        "cierre": {
+          "base": "Security Service · {{empresa}}",
+          "urgencia+erratas": "Security and Fraud Department"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Amount",
+        "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "Merchant",
+        "fichaValor2": "{{comercio}}",
+        "fichaEtiqueta3": "Status",
+        "fichaValor3": { "base": "Awaiting confirmation", "urgencia+erratas": "IMMEDIATE ACTION REQUIRED" }
+      }
+    }
+  },
+
+  {
+    "id": "banca-nuevo-dispositivo",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "Banca · Acceso desde un dispositivo nuevo",
+    "descripcion": "Alerta de inicio de sesión desde un equipo desconocido. Funciona porque el reflejo aprendido es «esto no he sido yo, tengo que entrar a mirarlo».",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "tags": ["banca", "acceso", "credenciales", "dispositivo", "mfa"],
+    "remitente": { "nombre": "Alertas de Seguridad", "buzon": "alertas" },
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del servicio", "tipo": "texto", "defecto": "Banca Digital" },
+      { "clave": "dispositivo", "etiqueta": "Dispositivo detectado", "tipo": "texto", "defecto": "Windows · Chrome 141" },
+      { "clave": "ubicacion", "etiqueta": "Ubicación aproximada", "tipo": "texto", "defecto": "Bucarest, Rumanía",
+        "ayuda": "Una ciudad extranjera dispara la alarma. Para nivel difícil, usa una ciudad del propio país: es mucho más difícil de descartar." },
+      { "clave": "fechaAcceso", "etiqueta": "Fecha y hora del acceso", "tipo": "texto", "defecto": "hoy a las 04:17" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Nuevo inicio de sesión en tu cuenta de {{empresa}}",
+          "urgencia": "Acceso desde un dispositivo que no reconocemos",
+          "urgencia+erratas": "ALERTA DE SEGURIDAD: alguien ha entrado en su cuenta"
+        },
+        "preheader": {
+          "base": "{{dispositivo}} · {{ubicacion}}",
+          "urgencia": "Inicio de sesión desde {{ubicacion}} a las {{fechaAcceso}}"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado cliente" },
+        "titular": {
+          "base": "{{saludo}}, un dispositivo nuevo ha entrado en tu cuenta",
+          "urgencia": "{{saludo}}, ¿has sido tú?",
+          "urgencia+erratas": "{{saludo}}, ACCESO NO AUTORIZADO a su cuenta"
+        },
+        "entradilla": {
+          "base": "Se ha iniciado sesión en tu cuenta desde un dispositivo que no habíamos visto antes. Te avisamos siempre que ocurre, aunque la mayoría de las veces es el propio titular estrenando móvil o navegador.",
+          "urgencia": "Alguien ha entrado en tu cuenta <strong>{{fechaAcceso}}</strong> desde {{ubicacion}}, con un dispositivo que no reconocemos.",
+          "urgencia+erratas": "Se ha detectado un acceso a su cuenta desde {{ubicacion}}. Si no ha sido usted su cuenta esta COMPROMETIDA."
+        },
+        "detalle": {
+          "base": "Si fuiste tú, puedes marcar el dispositivo como de confianza y dejaremos de avisarte por él. Si no, conviene que revises la sesión y cambies la contraseña.",
+          "urgencia": "Si no has sido tú, cierra la sesión y cambia la contraseña desde el enlace. Mientras tanto hemos limitado las transferencias de la cuenta.",
+          "urgencia+erratas": "Debe verificar su identidad AHORA para recuperar el control de su cuenta."
+        },
+        "urgencia": {
+          "base": "Si no reconoces el acceso y no haces nada, la sesión seguirá abierta durante 30 días.",
+          "urgencia": "La sesión sigue abierta ahora mismo. Cuanto más tardes en cerrarla, más tiempo tiene quien haya entrado.",
+          "urgencia+erratas": "ATENCION: la sesion sigue ACTIVA. Cada minuto que pasa pueden estar operando con su dinero."
+        },
+        "cta": {
+          "base": "Revisar mis dispositivos",
+          "urgencia": "No he sido yo, cerrar la sesión",
+          "urgencia+erratas": "BLOQUEAR EL ACCESO AHORA"
+        },
+        "cierre": {
+          "base": "Alertas de Seguridad · {{empresa}}",
+          "urgencia+erratas": "Centro de Seguridad"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Dispositivo",
+        "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Ubicación",
+        "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Fecha",
+        "fichaValor3": { "base": "{{fechaAcceso}}", "urgencia+erratas": "{{fechaAcceso}} · SIN VERIFICAR" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Nou inici de sessió al teu compte de {{empresa}}",
+          "urgencia": "Accés des d'un dispositiu que no reconeixem",
+          "urgencia+erratas": "ALERTA DE SEGURETAT: algu ha entrat al seu compte"
+        },
+        "preheader": {
+          "base": "{{dispositivo}} · {{ubicacion}}",
+          "urgencia": "Inici de sessió des de {{ubicacion}} a les {{fechaAcceso}}"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut client" },
+        "titular": {
+          "base": "{{saludo}}, un dispositiu nou ha entrat al teu compte",
+          "urgencia": "{{saludo}}, has estat tu?",
+          "urgencia+erratas": "{{saludo}}, ACCES NO AUTORITZAT al seu compte"
+        },
+        "entradilla": {
+          "base": "S'ha iniciat sessió al teu compte des d'un dispositiu que no havíem vist abans. T'avisem sempre que passa, encara que la majoria de vegades és el mateix titular estrenant mòbil o navegador.",
+          "urgencia": "Algú ha entrat al teu compte <strong>{{fechaAcceso}}</strong> des de {{ubicacion}}, amb un dispositiu que no reconeixem.",
+          "urgencia+erratas": "S'ha detectat un acces al seu compte des de {{ubicacion}}. Si no ha estat voste el seu compte esta COMPROMES."
+        },
+        "detalle": {
+          "base": "Si vas ser tu, pots marcar el dispositiu com de confiança i deixarem d'avisar-te per ell. Si no, convé que revisis la sessió i canviïs la contrasenya.",
+          "urgencia": "Si no has estat tu, tanca la sessió i canvia la contrasenya des de l'enllaç. Mentrestant hem limitat les transferències del compte.",
+          "urgencia+erratas": "Ha de verificar la seva identitat ARA per recuperar el control del seu compte."
+        },
+        "urgencia": {
+          "base": "Si no reconeixes l'accés i no fas res, la sessió seguirà oberta durant 30 dies.",
+          "urgencia": "La sessió segueix oberta ara mateix. Com més triguis a tancar-la, més temps té qui hi hagi entrat.",
+          "urgencia+erratas": "ATENCIO: la sessio segueix ACTIVA. Cada minut que passa poden estar operant amb els seus diners."
+        },
+        "cta": {
+          "base": "Revisar els meus dispositius",
+          "urgencia": "No he estat jo, tancar la sessió",
+          "urgencia+erratas": "BLOQUEJAR L'ACCES ARA"
+        },
+        "cierre": {
+          "base": "Alertes de Seguretat · {{empresa}}",
+          "urgencia+erratas": "Centre de Seguretat"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Dispositiu",
+        "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Ubicació",
+        "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Data",
+        "fichaValor3": { "base": "{{fechaAcceso}}", "urgencia+erratas": "{{fechaAcceso}} · SENSE VERIFICAR" }
+      },
+      "en": {
+        "asunto": {
+          "base": "New sign-in to your {{empresa}} account",
+          "urgencia": "Sign-in from a device we do not recognise",
+          "urgencia+erratas": "SECURITY ALERT: someone has accessed your account"
+        },
+        "preheader": {
+          "base": "{{dispositivo}} · {{ubicacion}}",
+          "urgencia": "Sign-in from {{ubicacion}} at {{fechaAcceso}}"
+        },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear customer" },
+        "titular": {
+          "base": "{{saludo}}, a new device signed in to your account",
+          "urgencia": "{{saludo}}, was this you?",
+          "urgencia+erratas": "{{saludo}}, UNAUTHORISED ACCESS to your account"
+        },
+        "entradilla": {
+          "base": "Someone signed in to your account from a device we had not seen before. We always let you know, although most of the time it is the account holder with a new phone or browser.",
+          "urgencia": "Someone signed in to your account <strong>{{fechaAcceso}}</strong> from {{ubicacion}}, using a device we do not recognise.",
+          "urgencia+erratas": "Access to your account has been detected from {{ubicacion}}. If this was not you your account is COMPROMISED."
+        },
+        "detalle": {
+          "base": "If it was you, you can mark the device as trusted and we will stop alerting you about it. If not, review the session and change your password.",
+          "urgencia": "If this was not you, sign the session out and change your password from the link. In the meantime we have limited transfers on the account.",
+          "urgencia+erratas": "You must verify your identity NOW to regain control of your account."
+        },
+        "urgencia": {
+          "base": "If you do not recognise the sign-in and take no action, the session will stay open for 30 days.",
+          "urgencia": "The session is still open right now. The longer you take to close it, the longer whoever signed in has.",
+          "urgencia+erratas": "WARNING: the session is still ACTIVE. Every minute that passes they could be moving your money."
+        },
+        "cta": {
+          "base": "Review my devices",
+          "urgencia": "That was not me, sign it out",
+          "urgencia+erratas": "BLOCK THE ACCESS NOW"
+        },
+        "cierre": {
+          "base": "Security Alerts · {{empresa}}",
+          "urgencia+erratas": "Security Centre"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Device",
+        "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Location",
+        "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Date",
+        "fichaValor3": { "base": "{{fechaAcceso}}", "urgencia+erratas": "{{fechaAcceso}} · UNVERIFIED" }
+      }
+    }
+  },
+
+  {
+    "id": "banca-transferencia-pendiente",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "Banca · Transferencia pendiente de validar",
+    "descripcion": "Pago inmediato retenido a la espera de una segunda firma. Dirigido a administración y finanzas: ahí la urgencia de un pago es rutina, no sospecha.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "tags": ["banca", "transferencia", "finanzas", "bec", "pago"],
+    "remitente": { "nombre": "Gestión de Pagos", "buzon": "pagos" },
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del servicio", "tipo": "texto", "defecto": "Banca de Empresas" },
+      { "clave": "importe", "etiqueta": "Importe de la transferencia", "tipo": "texto", "defecto": "14.780,00 €" },
+      { "clave": "beneficiario", "etiqueta": "Beneficiario", "tipo": "texto", "defecto": "SUMINISTROS TECNICOS NORTE SL" },
+      { "clave": "referenciaPago", "etiqueta": "Referencia del pago", "tipo": "texto", "defecto": "TRF-2026-08841" },
+      { "clave": "plazo", "etiqueta": "Plazo para validar", "tipo": "texto", "defecto": "hoy antes de las 14:00" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Transferencia {{referenciaPago}} pendiente de validación",
+          "urgencia": "Pago de {{importe}} retenido: falta tu firma",
+          "urgencia+erratas": "URGENTE: transferencia BLOQUEADA, se requiere validacion inmediata"
+        },
+        "preheader": {
+          "base": "{{beneficiario}} · {{importe}}",
+          "urgencia": "El pago a {{beneficiario}} no saldrá sin tu validación"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado usuario" },
+        "titular": {
+          "base": "{{saludo}}, tienes una transferencia pendiente de validar",
+          "urgencia": "{{saludo}}, el pago a {{beneficiario}} está retenido",
+          "urgencia+erratas": "{{saludo}}, TRANSFERENCIA BLOQUEADA"
+        },
+        "entradilla": {
+          "base": "La transferencia con referencia <strong>{{referenciaPago}}</strong> está a la espera de la segunda validación establecida en la política de firmas de {{empresa}}.",
+          "urgencia": "El pago de <strong>{{importe}}</strong> a {{beneficiario}} está retenido porque falta tu validación. Mientras no la des, el dinero no sale.",
+          "urgencia+erratas": "La transferencia de <strong>{{importe}}</strong> ha sido BLOQUEADA por el sistema de control. Se requiere su validacion para liberarla."
+        },
+        "detalle": {
+          "base": "Puedes validarla desde el portal de banca de empresas o desde el enlace de abajo. Si no la reconoces, recházala y avisa a tesorería.",
+          "urgencia": "Valida o rechaza el pago desde el enlace. Si no lo reconoces, recházalo: es lo que hay que hacer y no tiene coste.",
+          "urgencia+erratas": "Acceda al sistema y valide la operacion para evitar penalizaciones por demora."
+        },
+        "urgencia": {
+          "base": "El plazo de validación acaba {{plazo}}. Pasado ese punto, la orden decae y hay que volver a emitirla.",
+          "urgencia": "Si no se valida {{plazo}}, la orden decae y el proveedor no cobra dentro del vencimiento.",
+          "urgencia+erratas": "ATENCION: si no valida {{plazo}} la operacion se cancelara y podria generar recargos por impago."
+        },
+        "cta": {
+          "base": "Revisar la transferencia",
+          "urgencia": "Validar el pago",
+          "urgencia+erratas": "LIBERAR LA TRANSFERENCIA"
+        },
+        "cierre": {
+          "base": "Gestión de Pagos · {{empresa}}",
+          "urgencia+erratas": "Departamento de Tesoreria"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Beneficiario",
+        "fichaValor1": "{{beneficiario}}",
+        "fichaEtiqueta2": "Importe",
+        "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado",
+        "fichaValor3": { "base": "Pendiente de segunda firma", "urgencia+erratas": "RETENIDA POR EL SISTEMA" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Transferència {{referenciaPago}} pendent de validació",
+          "urgencia": "Pagament de {{importe}} retingut: falta la teva signatura",
+          "urgencia+erratas": "URGENT: transferencia BLOQUEJADA, es requereix validacio immediata"
+        },
+        "preheader": {
+          "base": "{{beneficiario}} · {{importe}}",
+          "urgencia": "El pagament a {{beneficiario}} no sortirà sense la teva validació"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut usuari" },
+        "titular": {
+          "base": "{{saludo}}, tens una transferència pendent de validar",
+          "urgencia": "{{saludo}}, el pagament a {{beneficiario}} està retingut",
+          "urgencia+erratas": "{{saludo}}, TRANSFERENCIA BLOQUEJADA"
+        },
+        "entradilla": {
+          "base": "La transferència amb referència <strong>{{referenciaPago}}</strong> està esperant la segona validació establerta a la política de signatures de {{empresa}}.",
+          "urgencia": "El pagament de <strong>{{importe}}</strong> a {{beneficiario}} està retingut perquè falta la teva validació. Mentre no la donis, els diners no surten.",
+          "urgencia+erratas": "La transferencia de <strong>{{importe}}</strong> ha estat BLOQUEJADA pel sistema de control. Es requereix la seva validacio per alliberar-la."
+        },
+        "detalle": {
+          "base": "Pots validar-la des del portal de banca d'empreses o des de l'enllaç de sota. Si no la reconeixes, rebutja-la i avisa tresoreria.",
+          "urgencia": "Valida o rebutja el pagament des de l'enllaç. Si no el reconeixes, rebutja'l: és el que s'ha de fer i no té cap cost.",
+          "urgencia+erratas": "Accedeixi al sistema i validi l'operacio per evitar penalitzacions per demora."
+        },
+        "urgencia": {
+          "base": "El termini de validació acaba {{plazo}}. Passat aquest punt, l'ordre decau i s'ha de tornar a emetre.",
+          "urgencia": "Si no es valida {{plazo}}, l'ordre decau i el proveïdor no cobra dins del venciment.",
+          "urgencia+erratas": "ATENCIO: si no valida {{plazo}} l'operacio es cancel·lara i podria generar recarrecs per impagament."
+        },
+        "cta": {
+          "base": "Revisar la transferència",
+          "urgencia": "Validar el pagament",
+          "urgencia+erratas": "ALLIBERAR LA TRANSFERENCIA"
+        },
+        "cierre": {
+          "base": "Gestió de Pagaments · {{empresa}}",
+          "urgencia+erratas": "Departament de Tresoreria"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Beneficiari",
+        "fichaValor1": "{{beneficiario}}",
+        "fichaEtiqueta2": "Import",
+        "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat",
+        "fichaValor3": { "base": "Pendent de segona signatura", "urgencia+erratas": "RETINGUDA PEL SISTEMA" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Transfer {{referenciaPago}} awaiting approval",
+          "urgencia": "{{importe}} payment on hold: your approval is missing",
+          "urgencia+erratas": "URGENT: transfer BLOCKED, immediate approval required"
+        },
+        "preheader": {
+          "base": "{{beneficiario}} · {{importe}}",
+          "urgencia": "The payment to {{beneficiario}} will not go out without your approval"
+        },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear user" },
+        "titular": {
+          "base": "{{saludo}}, you have a transfer awaiting approval",
+          "urgencia": "{{saludo}}, the payment to {{beneficiario}} is on hold",
+          "urgencia+erratas": "{{saludo}}, TRANSFER BLOCKED"
+        },
+        "entradilla": {
+          "base": "Transfer reference <strong>{{referenciaPago}}</strong> is waiting for the second approval required by the {{empresa}} signature policy.",
+          "urgencia": "The <strong>{{importe}}</strong> payment to {{beneficiario}} is on hold because your approval is missing. Until you give it, the money does not move.",
+          "urgencia+erratas": "The <strong>{{importe}}</strong> transfer has been BLOCKED by the control system. Your approval is required to release it."
+        },
+        "detalle": {
+          "base": "You can approve it from the business banking portal or from the link below. If you do not recognise it, reject it and let treasury know.",
+          "urgencia": "Approve or reject the payment from the link. If you do not recognise it, reject it: that is the correct action and it costs nothing.",
+          "urgencia+erratas": "Access the system and approve the operation to avoid late payment penalties."
+        },
+        "urgencia": {
+          "base": "The approval window closes {{plazo}}. After that the order lapses and has to be issued again.",
+          "urgencia": "If it is not approved {{plazo}}, the order lapses and the supplier is not paid within terms.",
+          "urgencia+erratas": "WARNING: if you do not approve {{plazo}} the operation will be cancelled and may generate late payment charges."
+        },
+        "cta": {
+          "base": "Review the transfer",
+          "urgencia": "Approve the payment",
+          "urgencia+erratas": "RELEASE THE TRANSFER"
+        },
+        "cierre": {
+          "base": "Payment Operations · {{empresa}}",
+          "urgencia+erratas": "Treasury Department"
+        },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Beneficiary",
+        "fichaValor1": "{{beneficiario}}",
+        "fichaEtiqueta2": "Amount",
+        "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status",
+        "fichaValor3": { "base": "Awaiting second signature", "urgencia+erratas": "HELD BY THE SYSTEM" }
+      }
+    }
+  }
+]

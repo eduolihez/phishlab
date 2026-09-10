@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Sol·licitud de verificació pendent al teu compte",
+    "urgencia": "Has intentat iniciar sessió? Hi ha una verificació esperant",
+    "urgencia+erratas": "VERIFICACIO REQUERIDA - sol·licitud d'acces al seu compte"
+  },
+  "preheader": {
+    "base": "{{aplicacion}} · codi {{codigo}}",
+    "urgencia": "Sol·licitud des de {{ubicacion}} esperant aprovació"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut usuari"
+  },
+  "titular": {
+    "base": "{{saludo}}, hi ha una verificació pendent",
+    "urgencia": "{{saludo}}, ets tu qui intenta entrar?",
+    "urgencia+erratas": "{{saludo}}, SOL·LICITUD D'ACCES pendent"
+  },
+  "entradilla": {
+    "base": "S'ha sol·licitat la verificació en dos passos per accedir a <strong>{{aplicacion}}</strong>. Si has estat tu, aprova la sol·licitud amb el codi <strong>{{codigo}}</strong>.",
+    "urgencia": "Algú està intentant entrar al teu compte des de {{ubicacion}} i la verificació està esperant. Si no ets tu, <strong>no l'aprovis</strong>.",
+    "urgencia+erratas": "S'han detectat diversos intents de verificacio al seu compte. Ha de confirmar la seva identitat per aturar-los."
+  },
+  "detalle": {
+    "base": "Si no has iniciat sessió, no aprovis res i revisa el compte des de l'enllaç. Ningú de suport et demanarà mai que aprovis una sol·licitud per telèfon.",
+    "urgencia": "Si aquestes sol·licituds es repeteixen sense que les hagis provocat, significa que algú té la teva contrasenya. Canvia-la des de l'enllaç.",
+    "urgencia+erratas": "Accedeixi al seu compte per revisar les sol·licituds i bloquejar els intents no autoritzats."
+  },
+  "urgencia": {
+    "base": "La sol·licitud caduca sola en 5 minuts si ningú l'aprova.",
+    "urgencia": "Cada sol·licitud que arriba i no és teva és un intent d'entrar amb una contrasenya que ja coneixen.",
+    "urgencia+erratas": "ATENCIO: s'han registrat 7 intents en els ultims minuts. El seu compte esta en risc."
+  },
+  "cta": {
+    "base": "Revisar la sol·licitud",
+    "urgencia": "No he estat jo, revisar el meu compte",
+    "urgencia+erratas": "ATURAR ELS INTENTS"
+  },
+  "cierre": {
+    "base": "Seguretat del Compte · {{empresa}}",
+    "urgencia+erratas": "Centre de Seguretat"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Aplicació",
+  "fichaValor1": "{{aplicacion}}",
+  "fichaEtiqueta2": "Ubicació",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Codi",
+  "fichaValor3": {
+    "base": "{{codigo}}",
+    "urgencia+erratas": "{{codigo}} · SENSE APROVAR"
+  }
+}

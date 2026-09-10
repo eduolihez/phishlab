@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Confirm a transaction on your card ••{{ultimosDigitos}}",
+    "urgencia": "Do you recognise this {{importe}} transaction?",
+    "urgencia+erratas": "URGENT: UNAUTHORISED charge of {{importe}} on your card"
+  },
+  "preheader": {
+    "base": "Transaction awaiting confirmation · {{comercio}}",
+    "urgencia": "A {{importe}} charge is waiting for your confirmation"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear customer"
+  },
+  "titular": {
+    "base": "{{saludo}}, please confirm this transaction",
+    "urgencia": "{{saludo}}, do you recognise this charge?",
+    "urgencia+erratas": "{{saludo}}, UNAUTHORISED CHARGE detected"
+  },
+  "entradilla": {
+    "base": "We have recorded a transaction on your card ending <strong>{{ultimosDigitos}}</strong> that does not match your usual spending pattern. Nothing has been blocked: we just need you to confirm it.",
+    "urgencia": "A charge of <strong>{{importe}}</strong> at {{comercio}} has been authorised on your card ending {{ultimosDigitos}}. If this was not you, you can cancel it from the link below.",
+    "urgencia+erratas": "We have detected an UNAUTHORISED charge of <strong>{{importe}}</strong> on your card. If you do not recognise this operation you must cancel it IMMEDIATELY."
+  },
+  "detalle": {
+    "base": "If the transaction is yours, simply confirm it and the charge will go through as normal. If you do not recognise it, rejecting it opens a claim and a replacement card is issued.",
+    "urgencia": "Check the transaction details and tell us whether you recognise it. It takes less than a minute.",
+    "urgencia+erratas": "Your card will be blocked as a precaution until you verify your identity at the link."
+  },
+  "urgencia": {
+    "base": "If we do not hear from you within 72 hours the transaction will be treated as valid and can no longer be disputed through this channel.",
+    "urgencia": "You have 24 hours to reject the charge. After that the transaction settles and the claim becomes a far slower process.",
+    "urgencia+erratas": "WARNING: if you do not verify your identity within the next 2 HOURS your account will be SUSPENDED for security."
+  },
+  "cta": {
+    "base": "Review the transaction",
+    "urgencia": "I do not recognise this charge",
+    "urgencia+erratas": "CANCEL THE CHARGE NOW"
+  },
+  "cierre": {
+    "base": "Security Service · {{empresa}}",
+    "urgencia+erratas": "Security and Fraud Department"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Amount",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "Merchant",
+  "fichaValor2": "{{comercio}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Awaiting confirmation",
+    "urgencia+erratas": "IMMEDIATE ACTION REQUIRED"
+  }
+}

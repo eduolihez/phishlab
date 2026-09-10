@@ -1,0 +1,28 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "tituloPagina": "Iniciar sesión · {{empresa}}",
+  "nombreServicio": "{{servicio}}",
+  "tituloFormulario": "Iniciar sesión",
+  "subtitulo": "Usa tu cuenta corporativa para continuar.",
+  "aviso": {
+    "base": "",
+    "urgencia": "Tu sesión ha expirado. Vuelve a identificarte para continuar.",
+    "urgencia+erratas": "Su sesion a caducado. Debe volver a iniciar sesion inmediatamente."
+  },
+  "etiquetaUsuario": "Correo corporativo",
+  "etiquetaContrasena": "Contraseña",
+  "textoRecordar": "Mantener la sesión iniciada",
+  "btnEntrar": {
+    "base": "Iniciar sesión",
+    "urgencia+erratas": "ACCEDER"
+  },
+  "enlaceOlvido": "He olvidado mi contraseña",
+  "enlaceSinAcceso": "No puedo acceder a mi cuenta",
+  "enlaceCondiciones": "Condiciones de uso",
+  "enlacePrivacidad": "Privacidad"
+}

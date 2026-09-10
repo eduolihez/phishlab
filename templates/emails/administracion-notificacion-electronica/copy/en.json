@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Notification available · case {{expedienteAdmin}}",
+    "urgencia": "You have an unread notification with a {{plazo}} deadline",
+    "urgencia+erratas": "URGENT NOTIFICATION - case {{expedienteAdmin}} - deadline about to expire"
+  },
+  "preheader": {
+    "base": "Case {{expedienteAdmin}} · {{organo}}",
+    "urgencia": "The {{plazo}} deadline runs from the moment it was made available"
+  },
+  "saludo": {
+    "base": "Dear {{.FirstName}} {{.LastName}}",
+    "saludo-generico": "Dear applicant"
+  },
+  "titular": {
+    "base": "{{saludo}}, a notification is available",
+    "urgencia": "{{saludo}}, notification awaiting your response",
+    "urgencia+erratas": "{{saludo}}, NOTIFICATION PENDING - deadline running"
+  },
+  "entradilla": {
+    "base": "An electronic notification concerning case <strong>{{expedienteAdmin}}</strong>, issued by {{organo}}, has been made available to you.",
+    "urgencia": "There is an unread notification for case <strong>{{expedienteAdmin}}</strong>. The {{plazo}} deadline runs from the moment it was made available, whether you open it or not.",
+    "urgencia+erratas": "You have a PENDING notification for case <strong>{{expedienteAdmin}}</strong>. The legal deadline is allready running."
+  },
+  "detalle": {
+    "base": "You can read it by identifying yourself on the electronic office. If you have already seen it through another channel, ignore this notice.",
+    "urgencia": "Open it to see the procedure and the remedies available. If you do not respond, the notification is deemed served anyway.",
+    "urgencia+erratas": "You must access the notification and identify yourself to stop the case proceeding without your submissions."
+  },
+  "urgencia": {
+    "base": "After 10 calendar days without access, the notification is deemed refused and the procedure continues.",
+    "urgencia": "Only a few days are left. If you do not open it, the notification is deemed served and you lose the chance to respond.",
+    "urgencia+erratas": "WARNING: the deadline is about to expire. Failure to respond may result in a penalty."
+  },
+  "cta": {
+    "base": "Open the notification",
+    "urgencia": "Respond now",
+    "urgencia+erratas": "ACCESS THE CASE FILE"
+  },
+  "cierre": {
+    "base": "{{organo}}",
+    "urgencia+erratas": "Notifications Service"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Case",
+  "fichaValor1": "{{expedienteAdmin}}",
+  "fichaEtiqueta2": "Issuing body",
+  "fichaValor2": "{{organo}}",
+  "fichaEtiqueta3": "Deadline",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} - RUNNING"
+  }
+}

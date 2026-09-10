@@ -1,13 +1,24 @@
 {
-  "_comentario": "Índice del catálogo. El navegador no puede listar directorios: para añadir una plantilla, crea su carpeta bajo emails/ o landings/ y añade su id aquí.",
+  "_comentario": "Índice del catálogo. El navegador no puede listar directorios: para añadir una plantilla, crea su carpeta bajo emails/ o landings/ y añade su id aquí. Lo regenera tools/nueva-plantilla.js.",
   "emails": [
-    "tarjeta-regalo-antiguedad",
+    "administracion-notificacion-electronica",
+    "banca-cargo-no-reconocido",
+    "banca-nuevo-dispositivo",
+    "banca-transferencia-pendiente",
+    "logistica-paquete-retenido",
     "m365-caducidad-password",
-    "rrhh-nomina"
+    "rrhh-evaluacion-desempeno",
+    "rrhh-fraude-ceo",
+    "rrhh-nomina",
+    "saas-documento-compartido",
+    "saas-mfa-solicitud",
+    "tarjeta-regalo-antiguedad"
   ],
   "landings": [
-    "microsoft-login",
+    "banca-verificacion-login",
     "canjeo-tarjeta-regalo",
-    "pagina-formativa"
+    "microsoft-login",
+    "pagina-formativa",
+    "portal-corporativo-login"
   ]
 }

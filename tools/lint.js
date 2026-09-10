@@ -13,7 +13,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { bloquesDeclarados, variablesGophish } from '../assets/js/core/engine.js';
-import { listarPlantillas, componer, senalesCatalogo, presetsCatalogo, leerLayout, leerCopy } from './render.js';
+import { listarPlantillas, componer, senalesCatalogo, presetsCatalogo, leerLayout, leerCopy, TEMPLATES } from './render.js';
 
 const TAMANO_MAXIMO = 400 * 1024;
 const IDIOMAS_ESPERADOS = ['es', 'ca', 'en'];
@@ -87,12 +87,20 @@ function revisar(plantilla) {
 
   // --- ficheros ---
 
-  if (!existsSync(join(carpeta, 'layout.html'))) return error(id, 'falta layout.html');
+  const rutaDelLayout = meta.layout
+    ? join(TEMPLATES, 'layouts', `${meta.layout}.html`)
+    : join(carpeta, 'layout.html');
+
+  if (!existsSync(rutaDelLayout)) {
+    return error(id, meta.layout
+      ? `declara el layout compartido "${meta.layout}" y no existe en templates/layouts/`
+      : 'falta layout.html');
+  }
   for (const lang of meta.idiomas) {
     if (!existsSync(join(carpeta, 'copy', `${lang}.json`))) return error(id, `falta copy/${lang}.json`);
   }
 
-  const layout = leerLayout(carpeta);
+  const layout = leerLayout(carpeta, meta);
 
   // --- bloques ---
 
@@ -240,7 +248,7 @@ function revisarHtml(plantilla, donde, html) {
 function revisarDemo(plantilla) {
   const { id, carpeta, meta } = plantilla;
   const textos = [
-    leerLayout(carpeta),
+    leerLayout(carpeta, meta),
     JSON.stringify(meta),
     ...meta.idiomas.map((l) => JSON.stringify(leerCopy(carpeta, l))),
   ].join(' ').toLowerCase();

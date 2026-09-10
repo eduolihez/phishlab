@@ -1,0 +1,61 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your shipment {{seguimiento}} needs attention",
+    "urgencia": "Your parcel is held: a {{tasa}} fee is outstanding",
+    "urgencia+erratas": "FINAL NOTICE: your parcel will be returned to sender"
+  },
+  "preheader": {
+    "base": "Shipment {{seguimiento}} · action pending",
+    "urgencia": "{{tasa}} is outstanding before we can deliver your parcel"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear customer"
+  },
+  "titular": {
+    "base": "{{saludo}}, your shipment needs attention",
+    "urgencia": "{{saludo}}, your parcel is on hold",
+    "urgencia+erratas": "{{saludo}}, your parcel COULD NOT be delivered"
+  },
+  "entradilla": {
+    "base": "Shipment <strong>{{seguimiento}}</strong> is waiting on a customs formality. It is a routine step for parcels arriving from outside the European Union.",
+    "urgencia": "Your parcel is held at the sorting centre because a <strong>{{tasa}}</strong> fee is outstanding. As soon as it is paid, it goes out for delivery.",
+    "urgencia+erratas": "Your parcel could not be delivered becouse the customs fee of <strong>{{tasa}}</strong> has not been payed."
+  },
+  "detalle": {
+    "base": "You can complete the formality from your customer area. If the parcel is not yours or you are not expecting a delivery, ignore this message.",
+    "urgencia": "The amount covers the customs duty on the shipment. Once paid, delivery is rescheduled for the next working day.",
+    "urgencia+erratas": "You must pay the outstanding fee so a new delivery of your parcel can be scheduled."
+  },
+  "urgencia": {
+    "base": "Shipments left unattended are returned to sender after 15 calendar days.",
+    "urgencia": "If it is not completed within {{plazo}}, the parcel goes back to the sender and the shipping costs are lost.",
+    "urgencia+erratas": "WARNING: if you do not pay within {{plazo}} your parcel will be RETURNED and cannot be recovered."
+  },
+  "cta": {
+    "base": "Check the shipment",
+    "urgencia": "Pay the fee and get my parcel",
+    "urgencia+erratas": "PAY {{tasa}} NOW"
+  },
+  "cierre": {
+    "base": "Customer Service · {{empresa}}",
+    "urgencia+erratas": "Customer Service Department"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Tracking",
+  "fichaValor1": "{{seguimiento}}",
+  "fichaEtiqueta2": "Amount due",
+  "fichaValor2": "{{tasa}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Action pending",
+    "urgencia": "Held at customs",
+    "urgencia+erratas": "HELD - ACTION REQUIRED"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schema": 2,
+  "nombre": "Banca · Cargo no reconocido",
+  "descripcion": "Aviso de una operación con tarjeta que hay que confirmar o rechazar. El pretexto con más tasa de clic que existe: no pide nada, ofrece protección.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "tags": [
+    "banca",
+    "tarjeta",
+    "fraude",
+    "credenciales",
+    "confirmacion"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "layout": "aviso",
+  "remitente": {
+    "nombre": "Servicio de Seguridad",
+    "buzon": "seguridad"
+  },
+  "campos": [
+    {
+      "clave": "servicio",
+      "etiqueta": "Nombre del servicio de banca",
+      "tipo": "texto",
+      "defecto": "Banca Digital",
+      "ayuda": "Si el cliente opera con una entidad concreta, pon el nombre real de su banca electrónica."
+    },
+    {
+      "clave": "importe",
+      "etiqueta": "Importe del cargo",
+      "tipo": "texto",
+      "defecto": "289,90 €",
+      "ayuda": "Ni muy alto ni muy bajo. Un importe que duela pero sea creíble es lo que empuja a pulsar sin pensar."
+    },
+    {
+      "clave": "comercio",
+      "etiqueta": "Comercio",
+      "tipo": "texto",
+      "defecto": "ELECTRONICA GLOBAL SL"
+    },
+    {
+      "clave": "ultimosDigitos",
+      "etiqueta": "Últimos dígitos de la tarjeta",
+      "tipo": "texto",
+      "defecto": "4417"
+    },
+    {
+      "clave": "fechaOperacion",
+      "etiqueta": "Fecha y hora de la operación",
+      "tipo": "texto",
+      "defecto": "hoy a las 03:412"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

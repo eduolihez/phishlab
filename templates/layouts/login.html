@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Sin fuentes externas ni CSS remoto: la landing tiene que verse igual en
+     una red corporativa que filtre CDNs, y no debe avisar a ningún tercero
+     de que alguien la ha abierto. */
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: #f3f4f6;
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+  }
+  .caja {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 34px 34px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .marca { margin-bottom: 26px; }
+  .servicio { margin-top: 9px; font-size: 13px; color: #6b7280; }
+  h1 { margin: 0 0 6px; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+  .subtitulo { margin: 0 0 22px; font-size: 14px; color: #6b7280; }
+  .aviso {
+    margin: 0 0 20px;
+    padding: 11px 13px;
+    background: #fffbeb;
+    border-left: 3px solid #f59e0b;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #92400e;
+  }
+  .campo { margin-bottom: 16px; }
+  label { display: block; margin-bottom: 6px; font-size: 13.5px; font-weight: 500; color: #374151; }
+  input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background: #fff;
+    color: #111827;
+  }
+  input:focus { outline: none; border-color: {{color}}; box-shadow: 0 0 0 3px rgba(0,0,0,.05); }
+  .error { margin: 6px 0 0; font-size: 12.5px; color: #b91c1c; }
+  .recordar { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 13.5px; color: #4b5563; }
+  .boton {
+    width: 100%;
+    padding: 11px 16px;
+    font: 600 15px inherit;
+    color: {{colorTexto}};
+    background: {{color}};
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .enlaces { margin-top: 20px; padding-top: 18px; border-top: 1px solid #f3f4f6; display: flex; flex-direction: column; gap: 9px; }
+  .enlaces a { font-size: 13.5px; color: {{color}}; text-decoration: none; }
+  .enlaces a:hover { text-decoration: underline; }
+  .pie { margin-top: 22px; text-align: center; font-size: 11.5px; color: #9ca3af; }
+  .pie span { margin: 0 7px; }
+  @media (max-width: 480px) { .caja { padding: 26px 20px 22px; } }
+</style>
+</head>
+<body>
+
+<div class="caja">
+
+  <div class="marca">
+    {{logoHtml}}
+    <!--@bloque:marca-servicio @senal:!incoherencia-marca-->
+    <div class="servicio">{{nombreServicio}}</div>
+    <!--@/bloque-->
+  </div>
+
+  <h1>{{tituloFormulario}}</h1>
+  <p class="subtitulo">{{subtitulo}}</p>
+
+  <!--@bloque:aviso-sesion @senal:urgencia-->
+  <p class="aviso">{{aviso}}</p>
+  <!--@/bloque-->
+
+  <!-- Formulario estándar, sin lógica en cliente. Quién decide qué se guarda
+       es GoPhish, con sus casillas Capture Submitted Data y Capture Passwords.
+
+       Los campos se llaman "email" y "password" exactamente así porque es como
+       GoPhish identifica la contraseña. Si se renombran, Capture Passwords deja
+       de reconocerla y la contraseña se guarda aunque la casilla esté
+       desmarcada. El linter lo comprueba en cada plantilla. -->
+  <form method="post" action="" autocomplete="off">
+
+    <div class="campo">
+      <label for="email">{{etiquetaUsuario}}</label>
+      <input type="text" id="email" name="email" value="{{.Email}}" required autofocus>
+    </div>
+
+    <div class="campo">
+      <label for="password">{{etiquetaContrasena}}</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <!--@bloque:recordar @opcional-->
+    <label class="recordar">
+      <input type="checkbox" name="recordar" value="1">
+      <span>{{textoRecordar}}</span>
+    </label>
+    <!--@/bloque-->
+
+    <button class="boton" type="submit">{{btnEntrar}}</button>
+  </form>
+
+  <!--@bloque:enlaces-ayuda @opcional-->
+  <div class="enlaces">
+    <a href="#">{{enlaceOlvido}}</a>
+    <a href="#">{{enlaceSinAcceso}}</a>
+  </div>
+  <!--@/bloque-->
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <span>{{enlaceCondiciones}}</span>
+    <span>{{enlacePrivacidad}}</span>
+    <div style="margin-top:6px;">&copy; {{anio}} {{empresa}}</div>
+  </div>
+  <!--@/bloque-->
+
+</div>
+
+</body>
+</html>

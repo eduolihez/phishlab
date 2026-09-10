@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Transferencia {{referenciaPago}} pendiente de validación",
+    "urgencia": "Pago de {{importe}} retenido: falta tu firma",
+    "urgencia+erratas": "URGENTE: transferencia BLOQUEADA, se requiere validacion inmediata"
+  },
+  "preheader": {
+    "base": "{{beneficiario}} · {{importe}}",
+    "urgencia": "El pago a {{beneficiario}} no saldrá sin tu validación"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado usuario"
+  },
+  "titular": {
+    "base": "{{saludo}}, tienes una transferencia pendiente de validar",
+    "urgencia": "{{saludo}}, el pago a {{beneficiario}} está retenido",
+    "urgencia+erratas": "{{saludo}}, TRANSFERENCIA BLOQUEADA"
+  },
+  "entradilla": {
+    "base": "La transferencia con referencia <strong>{{referenciaPago}}</strong> está a la espera de la segunda validación establecida en la política de firmas de {{empresa}}.",
+    "urgencia": "El pago de <strong>{{importe}}</strong> a {{beneficiario}} está retenido porque falta tu validación. Mientras no la des, el dinero no sale.",
+    "urgencia+erratas": "La transferencia de <strong>{{importe}}</strong> ha sido BLOQUEADA por el sistema de control. Se requiere su validacion para liberarla."
+  },
+  "detalle": {
+    "base": "Puedes validarla desde el portal de banca de empresas o desde el enlace de abajo. Si no la reconoces, recházala y avisa a tesorería.",
+    "urgencia": "Valida o rechaza el pago desde el enlace. Si no lo reconoces, recházalo: es lo que hay que hacer y no tiene coste.",
+    "urgencia+erratas": "Acceda al sistema y valide la operacion para evitar penalizaciones por demora."
+  },
+  "urgencia": {
+    "base": "El plazo de validación acaba {{plazo}}. Pasado ese punto, la orden decae y hay que volver a emitirla.",
+    "urgencia": "Si no se valida {{plazo}}, la orden decae y el proveedor no cobra dentro del vencimiento.",
+    "urgencia+erratas": "ATENCION: si no valida {{plazo}} la operacion se cancelara y podria generar recargos por impago."
+  },
+  "cta": {
+    "base": "Revisar la transferencia",
+    "urgencia": "Validar el pago",
+    "urgencia+erratas": "LIBERAR LA TRANSFERENCIA"
+  },
+  "cierre": {
+    "base": "Gestión de Pagos · {{empresa}}",
+    "urgencia+erratas": "Departamento de Tesoreria"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Beneficiario",
+  "fichaValor1": "{{beneficiario}}",
+  "fichaEtiqueta2": "Importe",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": {
+    "base": "Pendiente de segunda firma",
+    "urgencia+erratas": "RETENIDA POR EL SISTEMA"
+  }
+}

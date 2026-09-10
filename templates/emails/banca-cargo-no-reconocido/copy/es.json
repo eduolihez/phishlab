@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Confirmación de una operación en tu tarjeta ••{{ultimosDigitos}}",
+    "urgencia": "¿Reconoces esta operación de {{importe}}?",
+    "urgencia+erratas": "URGENTE: cargo NO AUTORIZADO de {{importe}} en su tarjeta"
+  },
+  "preheader": {
+    "base": "Operación pendiente de confirmar · {{comercio}}",
+    "urgencia": "Cargo de {{importe}} pendiente de tu confirmación"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado cliente"
+  },
+  "titular": {
+    "base": "{{saludo}}, confirma esta operación",
+    "urgencia": "{{saludo}}, ¿reconoces este cargo?",
+    "urgencia+erratas": "{{saludo}}, CARGO NO AUTORIZADO detectado"
+  },
+  "entradilla": {
+    "base": "Hemos registrado una operación con tu tarjeta terminada en <strong>{{ultimosDigitos}}</strong> que no encaja con tu patrón habitual de uso. No hemos bloqueado nada: solo necesitamos que la confirmes.",
+    "urgencia": "Se ha autorizado un cargo de <strong>{{importe}}</strong> en {{comercio}} con tu tarjeta terminada en {{ultimosDigitos}}. Si no has sido tú, puedes anularlo desde el enlace de abajo.",
+    "urgencia+erratas": "Hemos detectado un cargo NO AUTORIZADO de <strong>{{importe}}</strong> en su tarjeta. Si no reconoce esta operacion debe cancelarla INMEDIATAMENTE."
+  },
+  "detalle": {
+    "base": "Si la operación es tuya no tienes que hacer nada más que confirmarla; el cargo seguirá su curso normal. Si no la reconoces, al rechazarla se abre una reclamación y se emite una tarjeta nueva.",
+    "urgencia": "Revisa los datos de la operación y dinos si la reconoces. El proceso tarda menos de un minuto.",
+    "urgencia+erratas": "Su tarjeta quedara bloqueada de forma preventiva hasta que verifique su identidad en el enlace."
+  },
+  "urgencia": {
+    "base": "Si no nos dices nada en 72 horas, la operación se dará por buena y ya no se podrá reclamar por esta vía.",
+    "urgencia": "Tienes 24 horas para rechazar el cargo. Pasado ese plazo la operación se consolida y la reclamación pasa a ser un trámite mucho más lento.",
+    "urgencia+erratas": "ATENCION: si no verifica su identidad en las proximas 2 HORAS su cuenta sera SUSPENDIDA por seguridad."
+  },
+  "cta": {
+    "base": "Revisar la operación",
+    "urgencia": "No reconozco este cargo",
+    "urgencia+erratas": "CANCELAR EL CARGO AHORA"
+  },
+  "cierre": {
+    "base": "Servicio de Seguridad · {{empresa}}",
+    "urgencia+erratas": "Departamento de Seguridad y Fraude"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Importe",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "Comercio",
+  "fichaValor2": "{{comercio}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": {
+    "base": "Pendiente de confirmar",
+    "urgencia+erratas": "REQUIERE ACCION INMEDIATA"
+  }
+}
