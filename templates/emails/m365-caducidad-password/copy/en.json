@@ -1,0 +1,67 @@
+{
+  "asunto": {
+    "base": "Password renewal before {{fechaCaducidad}}",
+    "urgencia": "Your {{empresa}} password expires in {{dias}} days",
+    "urgencia+erratas": "WARNING: Your password expires TODAY - immediate action required"
+  },
+
+  "preheader": {
+    "base": "Password renewal scheduled for {{fechaCaducidad}}",
+    "urgencia": "Action required on your {{empresa}} account"
+  },
+
+  "titular": {
+    "base": "{{saludo}}, time to renew your password",
+    "urgencia": "{{saludo}}, your password needs renewing",
+    "urgencia+erratas": "{{saludo}}, your password expires TODAY"
+  },
+
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear user"
+  },
+
+  "entradilla": {
+    "base": "As part of the {{empresa}} credential policy, your password reaches the end of its 90-day cycle on <strong>{{fechaCaducidad}}</strong>.",
+    "urgencia": "Your {{empresa}} account password expires in <strong>{{dias}} days</strong>. To keep access to email, Teams and shared files, you need to renew it before then.",
+    "urgencia+erratas": "Your email password EXPIRES TODAY. If you do not update it immediately you will lose access to your account and all your files."
+  },
+
+  "detalle": {
+    "base": "You can renew it from the usual portal or from the link below. If you already changed it this week, ignore this message: the notice is generated two days in advance.",
+    "urgencia": "It takes less than a minute and you may reuse a password you already remember, as long as it meets the organisation's policy.",
+    "urgencia+erratas": "This is an automatic message from the mail server. Do not ignore this notice."
+  },
+
+  "urgencia": {
+    "base": "Remember that the new password must also be updated on your work phone so that email keeps syncing.",
+    "urgencia": "If the password expires, you will need to contact support to restore access manually.",
+    "urgencia+erratas": "Your account will be SUSPENDED within the next hours if you do not complete the verification."
+  },
+
+  "cta": {
+    "base": "Renew password",
+    "urgencia+erratas": "VERIFY MY ACCOUNT NOW"
+  },
+
+  "cierre": {
+    "base": "{{equipoTi}} · {{empresa}}",
+    "urgencia+erratas": "System Administrator"
+  },
+
+  "nombreServicio": "Microsoft 365",
+  "etiquetaCuenta": "Account",
+  "etiquetaOrganizacion": "Organisation",
+  "etiquetaEstado": "Status",
+  "valorEstado": {
+    "base": "Renewal pending",
+    "urgencia+erratas": "ACTION REQUIRED"
+  },
+
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Message generated automatically by the {{empresa}} identity management system.",
+    "erratas": "Message generated automatically by the mail server."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to {{equipoTi}}."
+}

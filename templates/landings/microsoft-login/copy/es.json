@@ -1,0 +1,21 @@
+{
+  "aviso": {
+    "base": "",
+    "urgencia": "Tu sesión ha expirado. Inicia sesión de nuevo para continuar.",
+    "urgencia+erratas": "Su sesion ha caducado. Vuelva a iniciar sesion para continuar."
+  },
+  "tituloPagina": "Iniciar sesión en la cuenta",
+  "tituloPaso1": "Iniciar sesión",
+  "phEmail": "Correo electrónico, teléfono o Skype",
+  "errorEmail": "Escribe una dirección de correo válida.",
+  "enlaceCrearCuenta": "¿No tiene una cuenta? Cree una.",
+  "enlaceSinAcceso": "¿No puede acceder a su cuenta?",
+  "btnSiguiente": "Siguiente",
+  "btnVolver": "Volver",
+  "tituloPaso2": "Escribir contraseña",
+  "phPassword": "Contraseña",
+  "enlaceOlvido": "He olvidado mi contraseña",
+  "btnEntrar": "Iniciar sesión",
+  "enlaceCondiciones": "Condiciones de uso",
+  "enlacePrivacidad": "Privacidad y cookies"
+}

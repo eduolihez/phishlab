@@ -1,0 +1,21 @@
+{
+  "pistas": {
+    "base": "<li><strong>It was almost indistinguishable from a real email</strong>, and that is exactly the point: spotting it by eye does not always work.</li><li><strong>It asked for credentials after clicking a link in an email.</strong> That is the signal that never fails, however well written the message is.</li><li><strong>The page address was not our portal's.</strong> Before typing your password, always check the address bar.</li><li><strong>When in doubt, the safe path is your own bookmark</strong>, not the link in the email.</li>",
+    "urgencia": "<li><strong>It rushed you with a short deadline.</strong> Urgency exists so you act before you check.</li><li><strong>The domain looked like ours but was not.</strong> Compare it character by character with {{dominio}}.</li><li><strong>It offered something for nothing.</strong> An unexpected prize always deserves a second look.</li><li><strong>The link asked for credentials.</strong> Hover over it before clicking and see where it really goes.</li>",
+    "urgencia+erratas": "<li><strong>The greeting was generic.</strong> \"Dear employee\" instead of your name: a real internal message knows who you are.</li><li><strong>The sender domain was not ours.</strong> It looked similar, but it did not match {{dominio}}.</li><li><strong>There were spelling mistakes and shouting capitals.</strong> No official communication is written like that.</li><li><strong>It rushed you.</strong> \"Within 24 hours or you lose it\" is the most used lever: urgency stops you thinking.</li>"
+  },
+  "tituloPagina": "Phishing simulation · {{empresa}}",
+  "titular": "This was a phishing simulation",
+  "subtitulo": "Nothing happened. None of your data has been compromised.",
+  "tranquilizador": "Relax: you are not in trouble.</strong> The email you just opened was part of an awareness exercise authorised by {{empresa}}. The point is not to single anyone out, but to measure how prepared we are as an organisation and to practise somewhere getting it wrong costs nothing.",
+  "tituloSenales": "What the warning signs were",
+  "tituloQueHacer": "What to do next time",
+  "consejoPrisa": "Stop before you click.</strong> Haste is the attacker's main tool. If a message is pressuring you, that alone is reason to be suspicious.",
+  "consejoRemitente": "Check the full sender address.</strong> Not the display name, the whole address. Domains that look like {{dominio}} are the most common trick.",
+  "consejoContrasena": "Never type your password into a page you reached from a",
+  "consejoContrasenaCont": "link.</strong> Use your own bookmark, or type the address yourself.",
+  "consejoReportar": "Report it.</strong> Reporting is the most valuable thing you can do: an early warning protects everyone.",
+  "siIntrodujiste": "What if you entered your password?</strong> It is fine, this was a simulation and those credentials were not used. Even so, take the chance to change it, and if you used it anywhere else, change it there too. That habit is what will save you the day the email is real.",
+  "explicacionEjercicio": "Awareness exercise carried out with the authorisation of {{empresa}}.",
+  "cierreDudas": "If you have any doubts, write to {{firma}}."
+}

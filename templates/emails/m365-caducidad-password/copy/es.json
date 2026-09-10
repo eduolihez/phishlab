@@ -1,0 +1,69 @@
+{
+  "_comentario": "Cada fragmento se resuelve por señales activas. 'base' es el texto sin ninguna señal (el nivel difícil de v1); las claves con '+' exigen que TODAS sus señales estén activas y ganan por ser más específicas. Un fragmento que no cambia entre señales se escribe como cadena suelta.",
+
+  "asunto": {
+    "base": "Renovación de contraseña antes del {{fechaCaducidad}}",
+    "urgencia": "Tu contraseña de {{empresa}} caduca en {{dias}} días",
+    "urgencia+erratas": "AVISO: Su contraseña expira HOY - accion requerida inmediata"
+  },
+
+  "preheader": {
+    "base": "Renovación de contraseña programada para el {{fechaCaducidad}}",
+    "urgencia": "Acción requerida en tu cuenta de {{empresa}}"
+  },
+
+  "titular": {
+    "base": "{{saludo}}, toca renovar la contraseña",
+    "urgencia": "{{saludo}}, hay que renovar tu contraseña",
+    "urgencia+erratas": "{{saludo}}, su contraseña expira HOY"
+  },
+
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado usuario"
+  },
+
+  "entradilla": {
+    "base": "Como parte de la política de credenciales de {{empresa}}, tu contraseña llega al final de su ciclo de 90 días el <strong>{{fechaCaducidad}}</strong>.",
+    "urgencia": "La contraseña de tu cuenta de {{empresa}} caduca en <strong>{{dias}} días</strong>. Para no perder el acceso al correo, Teams y los archivos compartidos, necesitas renovarla antes de esa fecha.",
+    "urgencia+erratas": "Su contraseña de correo electronico EXPIRA HOY. Si no la actualiza inmediatamente perdera el acceso a su cuenta y a todos sus archivos."
+  },
+
+  "detalle": {
+    "base": "Puedes renovarla desde el portal habitual o desde el enlace de abajo. Si ya la has cambiado esta semana, ignora este mensaje: el aviso se genera con dos días de antelación.",
+    "urgencia": "El proceso lleva menos de un minuto y puedes reutilizar una contraseña que ya recuerdes, siempre que cumpla la política de la organización.",
+    "urgencia+erratas": "Este es un mensaje automatico del servidor de correo. No ignore este aviso."
+  },
+
+  "urgencia": {
+    "base": "Recuerda que la nueva contraseña deberá actualizarse también en el móvil corporativo para que el correo siga sincronizando.",
+    "urgencia": "Si la contraseña caduca, tendrás que contactar con soporte para recuperar el acceso manualmente.",
+    "urgencia+erratas": "Su cuenta sera SUSPENDIDA en las proximas horas si no realiza la verificacion."
+  },
+
+  "cta": {
+    "base": "Renovar contraseña",
+    "urgencia+erratas": "VERIFICAR MI CUENTA AHORA"
+  },
+
+  "cierre": {
+    "base": "{{equipoTi}} · {{empresa}}",
+    "urgencia+erratas": "Administrador del Sistema"
+  },
+
+  "nombreServicio": "Microsoft 365",
+  "etiquetaCuenta": "Cuenta",
+  "etiquetaOrganizacion": "Organización",
+  "etiquetaEstado": "Estado",
+  "valorEstado": {
+    "base": "Renovación pendiente",
+    "urgencia+erratas": "ACCION REQUERIDA"
+  },
+
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente por el sistema de gestión de identidades de {{empresa}}.",
+    "erratas": "Mensaje generado automaticamente por el servidor de correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo a {{equipoTi}}."
+}

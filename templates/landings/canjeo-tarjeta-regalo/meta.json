@@ -1,27 +1,67 @@
 {
+  "schema": 2,
   "nombre": "Canje de tarjeta regalo",
   "descripcion": "Formulario de canje con datos del empleado. Sin contraseña: pareja natural del email de recompensa.",
   "familia": "recompensa",
+  "categoria": "interno-rrhh",
+  "tags": [
+    "datos",
+    "formulario",
+    "recompensa",
+    "sin-contrasena"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Formulario de canje sin campo de contraseña."
+  },
   "captura": "datos",
-  "idiomas": ["es", "ca", "en"],
-
-  "campos": [],
-
-  "fragmentos": {
-    "es": {
-      "facil": { "aviso": "Quedan pocas unidades disponibles. Complete sus datos ahora." },
-      "medio": { "aviso": "Completa tus datos para activar el vale asociado a tu cuenta." },
-      "dificil": { "aviso": "Verifica que los datos coinciden con los de tu ficha de empleado." }
+  "campos": [
+    {
+      "clave": "importe",
+      "etiqueta": "Importe de la tarjeta",
+      "tipo": "texto",
+      "defecto": "100 €"
     },
-    "ca": {
-      "facil": { "aviso": "Queden poques unitats disponibles. Completi les seves dades ara." },
-      "medio": { "aviso": "Completa les teves dades per activar el val associat al teu compte." },
-      "dificil": { "aviso": "Verifica que les dades coincideixen amb les de la teva fitxa d'empleat." }
+    {
+      "clave": "comercio",
+      "etiqueta": "Comercio del vale",
+      "tipo": "texto",
+      "defecto": "Amazon"
     },
-    "en": {
-      "facil": { "aviso": "Only a few units left. Complete your details now." },
-      "medio": { "aviso": "Complete your details to activate the voucher linked to your account." },
-      "dificil": { "aviso": "Check that the details match those on your employee record." }
+    {
+      "clave": "referencia",
+      "etiqueta": "Referencia del vale",
+      "tipo": "texto",
+      "defecto": "RC-2026-4471"
     }
-  }
+  ],
+  "bloques": [
+    {
+      "id": "campos-empleado",
+      "etiqueta": "Nº de empleado y centro",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Pedir datos internos sube la sensación de legitimidad y a la vez es la señal de que algo no encaja."
+    },
+    {
+      "id": "campo-entrega",
+      "etiqueta": "Selector de entrega",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Dónde recibir el código. El correo personal y el SMS son el gancho para sacar datos de fuera del dominio."
+    },
+    {
+      "id": "aviso-legal",
+      "etiqueta": "Aviso legal del programa",
+      "senal": "!incoherencia-marca"
+    }
+  ],
+  "_campos_comentario": "Los mismos que el correo de tarjeta regalo con el que hace pareja. Los campos son de campaña, no de plantilla: al cambiar de plantilla el valor escrito se conserva si la clave coincide, así que el importe se escribe una vez y sale igual en el correo y en la landing."
 }

@@ -1,27 +1,47 @@
 {
+  "schema": 2,
   "nombre": "Microsoft 365 · Inicio de sesión",
   "descripcion": "Login en dos pasos con branding del tenant. Escrito a mano, no es un volcado del sitio real.",
   "familia": "microsoft",
+  "categoria": "saas-corporativo",
+  "tags": [
+    "credenciales",
+    "login",
+    "microsoft-365",
+    "dos-pasos"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Login en dos pasos escrito a mano imitando el flujo de Microsoft. No es un volcado del sitio real."
+  },
   "captura": "credenciales",
-  "idiomas": ["es", "ca", "en"],
-
   "campos": [],
-
-  "fragmentos": {
-    "es": {
-      "facil": { "aviso": "Su sesion ha caducado. Vuelva a iniciar sesion para continuar." },
-      "medio": { "aviso": "Tu sesión ha expirado. Inicia sesión de nuevo para continuar." },
-      "dificil": { "aviso": "" }
+  "bloques": [
+    {
+      "id": "aviso-sesion",
+      "etiqueta": "Aviso de sesión caducada",
+      "senal": "urgencia",
+      "ayuda": "El pretexto de por qué se pide iniciar sesión otra vez."
     },
-    "ca": {
-      "facil": { "aviso": "La seva sessio ha caducat. Torni a iniciar sessio per continuar." },
-      "medio": { "aviso": "La teva sessió ha expirat. Inicia la sessió de nou per continuar." },
-      "dificil": { "aviso": "" }
+    {
+      "id": "enlaces-ayuda",
+      "etiqueta": "Enlaces de ayuda",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Crear cuenta y recuperar acceso. Un portal real los tiene; quitarlos deja la página más desnuda de lo normal."
     },
-    "en": {
-      "facil": { "aviso": "Your session has expired. Please sign in again to continue." },
-      "medio": { "aviso": "Your session has expired. Sign in again to continue." },
-      "dificil": { "aviso": "" }
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Condiciones y privacidad. Es lo que una campaña real no se molesta en copiar."
     }
-  }
+  ]
 }

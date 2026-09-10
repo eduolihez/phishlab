@@ -1,0 +1,21 @@
+{
+  "aviso": {
+    "base": "",
+    "urgencia": "Your session has expired. Sign in again to continue.",
+    "urgencia+erratas": "Your session has expired. Please sign in again to continue."
+  },
+  "tituloPagina": "Sign in to your account",
+  "tituloPaso1": "Sign in",
+  "phEmail": "Email, phone or Skype",
+  "errorEmail": "Enter a valid email address.",
+  "enlaceCrearCuenta": "No account? Create one.",
+  "enlaceSinAcceso": "Can't access your account?",
+  "btnSiguiente": "Next",
+  "btnVolver": "Back",
+  "tituloPaso2": "Enter password",
+  "phPassword": "Password",
+  "enlaceOlvido": "Forgot my password",
+  "btnEntrar": "Sign in",
+  "enlaceCondiciones": "Terms of use",
+  "enlacePrivacidad": "Privacy and cookies"
+}

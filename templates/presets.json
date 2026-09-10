@@ -1,0 +1,45 @@
+{
+  "_comentario": "Los niveles de dificultad son combinaciones de señales, no plantillas distintas. Puedes editarlos, y en la interfaz puedes apartarte de ellos encendiendo y apagando señales sueltas. Mantener estos tres estables entre campañas es lo que permite comparar el resultado de un año contra el siguiente.",
+
+  "presets": [
+    {
+      "id": "facil",
+      "nombre": "Fácil",
+      "descripcion": "Todas las señales encendidas. El correo es evidentemente falso para quien se pare a mirarlo. Es el nivel de la primera campaña: sirve para establecer la línea base y para que la formación posterior tenga algo que señalar.",
+      "senales": {
+        "urgencia": true,
+        "erratas": true,
+        "saludo-generico": true,
+        "dominio-ajeno": true,
+        "enlace-visible": true,
+        "incoherencia-marca": true
+      }
+    },
+    {
+      "id": "medio",
+      "nombre": "Medio",
+      "descripcion": "Urgencia moderada y dominio parecido al real, pero sin erratas y con el nombre del destinatario. Es el punto de comparación habitual entre campañas: si repites nivel, repites este.",
+      "senales": {
+        "urgencia": true,
+        "erratas": false,
+        "saludo-generico": false,
+        "dominio-ajeno": true,
+        "enlace-visible": false,
+        "incoherencia-marca": false
+      }
+    },
+    {
+      "id": "dificil",
+      "nombre": "Difícil",
+      "descripcion": "Ninguna señal encendida: personalización completa, sin errores, dominio indistinguible y pretexto coherente. Mide de verdad la exposición de la organización. Avisa al SOC antes de lanzarlo.",
+      "senales": {
+        "urgencia": false,
+        "erratas": false,
+        "saludo-generico": false,
+        "dominio-ajeno": false,
+        "enlace-visible": false,
+        "incoherencia-marca": false
+      }
+    }
+  ]
+}

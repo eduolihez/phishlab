@@ -1,0 +1,21 @@
+{
+  "pistas": {
+    "base": "<li><strong>Era gairebé indistingible d'un correu real</strong>, i aquest és justament el punt: la detecció a ull no sempre funciona.</li><li><strong>Demanava credencials després de prémer un enllaç del correu.</strong> Aquesta és la senyal que no falla mai, per ben escrit que estigui el missatge.</li><li><strong>L'adreça de la pàgina no era la del nostre portal.</strong> Abans d'escriure la contrasenya, mira sempre la barra d'adreces.</li><li><strong>En cas de dubte, el camí segur és entrar pel teu marcador de sempre</strong>, no per l'enllaç del correu.</li>",
+    "urgencia": "<li><strong>Ficava pressa amb un termini curt.</strong> La urgència serveix perquè actuïs abans de comprovar.</li><li><strong>El domini s'assemblava al nostre, però no ho era.</strong> Compara caràcter a caràcter amb {{dominio}}.</li><li><strong>Oferia alguna cosa a canvi de res.</strong> Un premi inesperat sempre mereix una segona mirada.</li><li><strong>L'enllaç demanava credencials.</strong> Passa el ratolí per sobre abans de prémer i mira on porta de debò.</li>",
+    "urgencia+erratas": "<li><strong>La salutació era genèrica.</strong> «Benvolgut empleat» en lloc del teu nom: una comunicació interna real sap com et dius.</li><li><strong>El domini del remitent no era el nostre.</strong> S'assemblava, però no coincidia amb {{dominio}}.</li><li><strong>Hi havia faltes d'ortografia i majúscules de més.</strong> Cap comunicació oficial s'escriu així.</li><li><strong>Ficava pressa.</strong> «Abans de 24 hores o ho perds» és la palanca més usada: la urgència impedeix pensar.</li>"
+  },
+  "tituloPagina": "Simulació de phishing · {{empresa}}",
+  "titular": "Això era una simulació de phishing",
+  "subtitulo": "No ha passat res. Cap dada teva s'ha vist compromesa.",
+  "tranquilizador": "Tranquil: no estàs en problemes.</strong> El correu que acabes d'obrir formava part d'un exercici de conscienciació autoritzat per {{empresa}}. L'objectiu no és assenyalar ningú, sinó mesurar com de preparats estem com a organització i practicar en un entorn on equivocar-se no costa res.",
+  "tituloSenales": "Quines senyals tenia aquell correu",
+  "tituloQueHacer": "Què fer la propera vegada",
+  "consejoPrisa": "Atura't abans de prémer.</strong> La pressa és l'eina principal de l'atacant. Si un missatge et pressiona, això ja és un motiu per desconfiar.",
+  "consejoRemitente": "Comprova el remitent complet.</strong> No el nom que es mostra, sinó l'adreça sencera. Els dominis semblants a {{dominio}} són el truc més habitual.",
+  "consejoContrasena": "No escriguis la contrasenya en una pàgina a la qual has",
+  "consejoContrasenaCont": "arribat des d'un enllaç.</strong> Entra pel teu marcador o escrivint l'adreça tu mateix.",
+  "consejoReportar": "Reporta-ho.</strong> Avisar és el més valuós que pots fer: un avís d'hora protegeix tota la plantilla.",
+  "siIntrodujiste": "I si has introduït la contrasenya?</strong> No passa res, era un simulacre i aquelles credencials no s'han utilitzat. Tot i així, aprofita per canviar-la i, si la feies servir en algun lloc més, canvia-la també allà. És el costum que et salvarà el dia que el correu sigui real.",
+  "explicacionEjercicio": "Exercici de conscienciació realitzat amb autorització de {{empresa}}.",
+  "cierreDudas": "Si tens dubtes, escriu a {{firma}}."
+}

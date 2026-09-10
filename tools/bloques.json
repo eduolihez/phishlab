@@ -1,0 +1,41 @@
+{
+  "_comentario": "Dónde empieza y acaba cada bloque de cada layout. `inicio` y `fin` son expresiones regulares sobre líneas; `tras` sirve para desambiguar cuando la línea de inicio se repite. Las etiquetas y ayudas que ve el usuario viven en el meta.json de cada plantilla; aquí solo está la geometría.",
+
+  "templates/emails/tarjeta-regalo-antiguedad": [
+    { "id": "preheader", "inicio": "<!-- Preencabezado", "fin": "^</div>", "opcional": true },
+    { "id": "cabecera", "inicio": "<!-- Cabecera -->", "fin": "^    </tr>", "opcional": true },
+    { "id": "tarjeta-importe", "inicio": "<!-- Tarjeta del importe -->", "fin": "^    </tr>", "opcional": true },
+    { "id": "urgencia", "inicio": "background-color:#fdf6e6", "fin": "^        </p>", "senal": "urgencia" },
+    { "id": "enlace-visible", "inicio": "<p style=\"margin:14px 0 0", "fin": "^        </p>", "senal": "enlace-visible" },
+    { "id": "pie", "inicio": "<!-- Pie -->", "fin": "^    </tr>", "opcional": true },
+    { "id": "tracker", "inicio": "^\\{\\{\\.Tracker\\}\\}", "opcional": true }
+  ],
+
+  "templates/emails/rrhh-nomina": [
+    { "id": "preheader", "inicio": "^<div style=\"display:none", "fin": "^</div>", "opcional": true },
+    { "id": "cabecera", "inicio": "<!-- Cabecera -->", "fin": "^    </tr>", "opcional": true },
+    { "id": "ficha-documento", "inicio": "<!-- Ficha del documento -->", "fin": "^    </tr>", "opcional": true },
+    { "id": "urgencia", "inicio": "<!-- Aviso -->", "fin": "^    </tr>", "senal": "urgencia" },
+    { "id": "enlace-visible", "inicio": "<p style=\"margin:14px 0 0", "fin": "^        </p>", "senal": "enlace-visible" },
+    { "id": "pie", "inicio": "<!-- Pie -->", "fin": "^    </tr>", "opcional": true },
+    { "id": "tracker", "inicio": "^\\{\\{\\.Tracker\\}\\}", "opcional": true }
+  ],
+
+  "templates/landings/microsoft-login": [
+    { "id": "aviso-sesion", "inicio": "<p class=\"aviso\">", "senal": "urgencia" },
+    { "id": "enlaces-ayuda", "inicio": "<a href=\"#\">\\{\\{enlaceCrearCuenta\\}\\}", "fin": "\\{\\{enlaceSinAcceso\\}\\}", "opcional": true },
+    { "id": "pie-legal", "inicio": "<span>\\{\\{enlaceCondiciones\\}\\}", "fin": "<span>\\{\\{enlacePrivacidad\\}\\}", "senal": "!incoherencia-marca" }
+  ],
+
+  "templates/landings/canjeo-tarjeta-regalo": [
+    { "id": "campos-empleado", "tras": "\\{\\{labelApellidos\\}\\}", "inicio": "<div class=\"dos\">", "fin": "^        </div>", "opcional": true },
+    { "id": "campo-entrega", "tras": "\\{\\{labelCentro\\}\\}", "inicio": "^        <div class=\"campo\">", "fin": "^        </div>", "opcional": true },
+    { "id": "aviso-legal", "inicio": "<p class=\"legal\">", "fin": "^        </p>", "senal": "!incoherencia-marca" }
+  ],
+
+  "templates/landings/pagina-formativa": [
+    { "id": "senales-detectadas", "inicio": "<h2>\\{\\{tituloSenales\\}\\}", "fin": "^    </ul>", "opcional": true },
+    { "id": "que-hacer", "inicio": "<h2>\\{\\{tituloQueHacer\\}\\}", "fin": "^    </ol>", "opcional": true },
+    { "id": "aviso-final", "inicio": "<p class=\"aviso-final\">", "fin": "^    </p>", "opcional": true }
+  ]
+}

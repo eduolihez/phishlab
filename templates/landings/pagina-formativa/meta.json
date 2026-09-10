@@ -1,46 +1,48 @@
 {
+  "schema": 2,
   "nombre": "Página formativa (post-clic)",
   "descripcion": "Explica que era un simulacro autorizado y enseña las señales. Va en el Redirect to de GoPhish.",
   "familia": "rrhh",
+  "categoria": "formacion",
+  "tags": [
+    "formativa",
+    "post-clic",
+    "concienciacion"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Página de aterrizaje formativa. Va en el Redirect to de GoPhish."
+  },
   "captura": null,
   "formativa": true,
-  "idiomas": ["es", "ca", "en"],
-
   "campos": [],
-
-  "fragmentos": {
-    "es": {
-      "facil": {
-        "pistas": "<li><strong>El saludo era genérico.</strong> «Estimado empleado» en lugar de tu nombre: una comunicación interna real sabe cómo te llamas.</li><li><strong>El dominio del remitente no era el nuestro.</strong> Se parecía, pero no coincidía con {{dominio}}.</li><li><strong>Había faltas de ortografía y mayúsculas de más.</strong> Ninguna comunicación oficial se escribe así.</li><li><strong>Metía prisa.</strong> «Antes de 24 horas o lo pierdes» es la palanca más usada: la urgencia impide pensar.</li>"
-      },
-      "medio": {
-        "pistas": "<li><strong>Metía prisa con un plazo corto.</strong> La urgencia sirve para que actúes antes de comprobar.</li><li><strong>El dominio se parecía al nuestro, pero no lo era.</strong> Compara carácter a carácter con {{dominio}}.</li><li><strong>Ofrecía algo a cambio de nada.</strong> Un premio inesperado siempre merece una segunda mirada.</li><li><strong>El enlace pedía credenciales.</strong> Pasa el ratón por encima antes de pulsar y mira a dónde lleva de verdad.</li>"
-      },
-      "dificil": {
-        "pistas": "<li><strong>Era casi indistinguible de un correo real</strong>, y ese es justo el punto: la detección a ojo no siempre funciona.</li><li><strong>Pedía credenciales tras pulsar un enlace del correo.</strong> Esa es la señal que nunca falla, por bien escrito que esté el mensaje.</li><li><strong>La dirección de la página no era la de nuestro portal.</strong> Antes de escribir la contraseña, mira siempre la barra de direcciones.</li><li><strong>Ante la duda, el camino seguro es entrar por tu marcador de siempre</strong>, no por el enlace del correo.</li>"
-      }
+  "bloques": [
+    {
+      "id": "senales-detectadas",
+      "etiqueta": "Lista de señales del correo",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Lo que se le enseña al empleado que tenía delante. Es el núcleo formativo de la página."
     },
-    "ca": {
-      "facil": {
-        "pistas": "<li><strong>La salutació era genèrica.</strong> «Benvolgut empleat» en lloc del teu nom: una comunicació interna real sap com et dius.</li><li><strong>El domini del remitent no era el nostre.</strong> S'assemblava, però no coincidia amb {{dominio}}.</li><li><strong>Hi havia faltes d'ortografia i majúscules de més.</strong> Cap comunicació oficial s'escriu així.</li><li><strong>Ficava pressa.</strong> «Abans de 24 hores o ho perds» és la palanca més usada: la urgència impedeix pensar.</li>"
-      },
-      "medio": {
-        "pistas": "<li><strong>Ficava pressa amb un termini curt.</strong> La urgència serveix perquè actuïs abans de comprovar.</li><li><strong>El domini s'assemblava al nostre, però no ho era.</strong> Compara caràcter a caràcter amb {{dominio}}.</li><li><strong>Oferia alguna cosa a canvi de res.</strong> Un premi inesperat sempre mereix una segona mirada.</li><li><strong>L'enllaç demanava credencials.</strong> Passa el ratolí per sobre abans de prémer i mira on porta de debò.</li>"
-      },
-      "dificil": {
-        "pistas": "<li><strong>Era gairebé indistingible d'un correu real</strong>, i aquest és justament el punt: la detecció a ull no sempre funciona.</li><li><strong>Demanava credencials després de prémer un enllaç del correu.</strong> Aquesta és la senyal que no falla mai, per ben escrit que estigui el missatge.</li><li><strong>L'adreça de la pàgina no era la del nostre portal.</strong> Abans d'escriure la contrasenya, mira sempre la barra d'adreces.</li><li><strong>En cas de dubte, el camí segur és entrar pel teu marcador de sempre</strong>, no per l'enllaç del correu.</li>"
-      }
+    {
+      "id": "que-hacer",
+      "etiqueta": "Qué hacer la próxima vez",
+      "opcional": true,
+      "defecto": true
     },
-    "en": {
-      "facil": {
-        "pistas": "<li><strong>The greeting was generic.</strong> \"Dear employee\" instead of your name: a real internal message knows who you are.</li><li><strong>The sender domain was not ours.</strong> It looked similar, but it did not match {{dominio}}.</li><li><strong>There were spelling mistakes and shouting capitals.</strong> No official communication is written like that.</li><li><strong>It rushed you.</strong> \"Within 24 hours or you lose it\" is the most used lever: urgency stops you thinking.</li>"
-      },
-      "medio": {
-        "pistas": "<li><strong>It rushed you with a short deadline.</strong> Urgency exists so you act before you check.</li><li><strong>The domain looked like ours but was not.</strong> Compare it character by character with {{dominio}}.</li><li><strong>It offered something for nothing.</strong> An unexpected prize always deserves a second look.</li><li><strong>The link asked for credentials.</strong> Hover over it before clicking and see where it really goes.</li>"
-      },
-      "dificil": {
-        "pistas": "<li><strong>It was almost indistinguishable from a real email</strong>, and that is exactly the point: spotting it by eye does not always work.</li><li><strong>It asked for credentials after clicking a link in an email.</strong> That is the signal that never fails, however well written the message is.</li><li><strong>The page address was not our portal's.</strong> Before typing your password, always check the address bar.</li><li><strong>When in doubt, the safe path is your own bookmark</strong>, not the link in the email.</li>"
-      }
+    {
+      "id": "aviso-final",
+      "etiqueta": "Aviso para quien introdujo la contraseña",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Importante dejarlo puesto: es lo que evita que alguien se quede callado por vergüenza."
     }
-  }
+  ]
 }

@@ -1,0 +1,21 @@
+{
+  "aviso": {
+    "base": "",
+    "urgencia": "La teva sessió ha expirat. Inicia la sessió de nou per continuar.",
+    "urgencia+erratas": "La seva sessio ha caducat. Torni a iniciar sessio per continuar."
+  },
+  "tituloPagina": "Iniciar sessió al compte",
+  "tituloPaso1": "Iniciar sessió",
+  "phEmail": "Correu electrònic, telèfon o Skype",
+  "errorEmail": "Escriu una adreça de correu vàlida.",
+  "enlaceCrearCuenta": "No teniu un compte? Creeu-ne un.",
+  "enlaceSinAcceso": "No podeu accedir al vostre compte?",
+  "btnSiguiente": "Següent",
+  "btnVolver": "Tornar",
+  "tituloPaso2": "Escriure la contrasenya",
+  "phPassword": "Contrasenya",
+  "enlaceOlvido": "He oblidat la contrasenya",
+  "btnEntrar": "Iniciar sessió",
+  "enlaceCondiciones": "Condicions d'us",
+  "enlacePrivacidad": "Privadesa i galetes"
+}

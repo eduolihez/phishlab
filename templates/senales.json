@@ -1,0 +1,48 @@
+{
+  "_comentario": "Las señales que un empleado puede detectar. Cada plantilla las enciende o apaga por separado; los niveles de dificultad son combinaciones de estas, no algo distinto. El informe al cliente se construye sobre esta lista: no basta con saber cuántos picaron, interesa qué señal dejaron pasar.",
+
+  "senales": [
+    {
+      "id": "urgencia",
+      "nombre": "Urgencia",
+      "descripcion": "Presión temporal y amenaza de consecuencia inmediata: cuentas que se suspenden, plazos de horas, mayúsculas.",
+      "queEnsena": "Que la prisa es la herramienta principal del atacante. Un aviso legítimo casi nunca exige actuar en el mismo día.",
+      "peso": "alta"
+    },
+    {
+      "id": "erratas",
+      "nombre": "Erratas y acentos",
+      "descripcion": "Faltas de ortografía, acentos ausentes y traducción automática. Típico de campañas masivas.",
+      "queEnsena": "Que un correo corporativo real pasa por revisión. Ojo: los ataques dirigidos ya no tienen erratas, así que su ausencia no prueba nada.",
+      "peso": "media"
+    },
+    {
+      "id": "saludo-generico",
+      "nombre": "Saludo genérico",
+      "descripcion": "«Estimado usuario» o «Estimado cliente» en lugar del nombre del destinatario.",
+      "queEnsena": "Que quien te escribe de verdad sabe cómo te llamas. Es la señal más fácil de enseñar en una primera campaña.",
+      "peso": "media"
+    },
+    {
+      "id": "dominio-ajeno",
+      "nombre": "Dominio del remitente",
+      "descripcion": "El remitente escribe desde un dominio distinto del de la organización o desde un lookalike.",
+      "queEnsena": "A leer lo que hay después de la arroba antes de hacer nada. La señal que más cuesta que se automatice en la cabeza del usuario.",
+      "peso": "alta"
+    },
+    {
+      "id": "enlace-visible",
+      "nombre": "Enlace que no coincide",
+      "descripcion": "La URL de destino se muestra en crudo y no corresponde con el texto del botón ni con la marca.",
+      "queEnsena": "A pasar el ratón por encima del enlace antes de pulsarlo, y a desconfiar del botón que no dice a dónde va.",
+      "peso": "alta"
+    },
+    {
+      "id": "incoherencia-marca",
+      "nombre": "Incoherencia de marca",
+      "descripcion": "Logo ausente o deformado, tono que no encaja, firma que no existe en la organización, pie legal que falta.",
+      "queEnsena": "Que la comunicación corporativa tiene un formato reconocible y constante. Requiere que el empleado conozca el original.",
+      "peso": "baja"
+    }
+  ]
+}

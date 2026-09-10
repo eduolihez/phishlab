@@ -1,0 +1,43 @@
+{
+  "asunto": {
+    "base": "Programa de reconeixement {{anio}} — val ref. {{referencia}}",
+    "urgencia": "Reconeixement pels teus {{anios}} anys a {{empresa}}",
+    "urgencia+erratas": "FELICITATS!! La teva targeta regal de {{importe}} t'esta esperant"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut empleat"
+  },
+  "entradilla": {
+    "base": "Dins del programa anual de reconeixement de {{empresa}}, se t'ha assignat un val de <strong>{{importe}}</strong> per a {{comercio}} corresponent als teus {{anios}} anys a la companyia.",
+    "urgencia": "Pels teus <strong>{{anios}} anys</strong> treballant a {{empresa}}, l'equip de persones ho ha volgut reconèixer amb una targeta regal de <strong>{{importe}}</strong> per a {{comercio}}.",
+    "urgencia+erratas": "L'informem que ha estat SELECCIONAT per rebre una targeta regal de <strong>{{importe}}</strong> per a {{comercio}} per la seva feina a {{empresa}}."
+  },
+  "detalle": {
+    "base": "Referència del val: {{referencia}}. L'activació és individual i queda registrada a nom del titular, per això et demanem que no comparteixis aquest enllaç.",
+    "urgencia": "El val queda registrat amb la referència {{referencia}} i va associat al teu correu corporatiu.",
+    "urgencia+erratas": "Aquesta promocio es exclusiva per a empleats i no es tornara a repetir."
+  },
+  "urgencia": {
+    "base": "El període d'activació es tanca d'aquí a {{plazo}}. Si no pots fer-ho dins d'aquest marge, respon a aquest correu i ho gestionem.",
+    "urgencia": "Tens {{plazo}} per activar-lo. Passat aquest termini, el val caduca i torna a la bossa comuna.",
+    "urgencia+erratas": "ATENCIO: ho ha de reclamar abans de {{plazo}} o el seu val sera assignat a un altre company."
+  },
+  "cta": {
+    "base": "Activar el val",
+    "urgencia": "Activar la meva targeta regal",
+    "urgencia+erratas": "RECLAMAR LA MEVA TARGETA ARA"
+  },
+  "cierre": {
+    "base": "{{firma}} · {{empresa}}",
+    "urgencia+erratas": "Departament de Beneficis a l'Empleat"
+  },
+  "preheader": "{{importe}} per a {{comercio}} · referència {{referencia}}",
+  "programaEtiqueta": "Programa de reconeixement {{anio}}",
+  "titular": "{{saludo}}, això és per a tu",
+  "tituloTarjeta": "Targeta regal {{comercio}}",
+  "etiquetaReferencia": "Referència ",
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoEnvio": "Aquest missatge s'ha enviat a {{.Email}} perquè forma part del programa intern de reconeixement de {{empresa}}.",
+  "avisoNoResponder": "Si us plau, no responguis a aquest missatge: la bústia no està atesa."
+}

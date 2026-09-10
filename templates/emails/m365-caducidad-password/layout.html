@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html lang="{{idioma}}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,10 +19,12 @@
 </head>
 <body style="margin:0;padding:0;background-color:#f3f3f3;">
 
+<!--@bloque:preheader @opcional-->
 <div style="display:none;font-size:1px;color:#f3f3f3;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
-  Action required on your {{empresa}} account
+  {{preheader}}
   &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
 </div>
+<!--@/bloque-->
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f3f3;">
 <tr>
@@ -30,15 +32,18 @@
 
   <table role="presentation" class="contenedor" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#ffffff;">
 
-    <!-- Cabecera: logo del cliente + marca del servicio -->
+    <!--@bloque:cabecera @opcional-->
     <tr>
       <td class="relleno" style="padding:22px 32px 18px;border-bottom:1px solid #e5e5e5;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
             <td align="left" style="vertical-align:middle;">{{logoHtml}}</td>
             <td align="right" style="vertical-align:middle;">
+              <!--@bloque:marca-servicio @senal:!incoherencia-marca-->
               <!-- Marca de cuatro cuadros dibujada con tablas: sin imagen externa
-                   que cargar ni que delate la apertura a un tercero. -->
+                   que cargar ni que delate la apertura a un tercero. Con la señal
+                   de incoherencia activa este bloque desaparece, y el correo se
+                   queda sin la marca del servicio que dice representar. -->
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-block;">
                 <tr>
                   <td width="9" height="9" bgcolor="#f25022" style="font-size:0;line-height:0;">&nbsp;</td>
@@ -52,18 +57,19 @@
                   <td width="9" height="9" bgcolor="#ffb900" style="font-size:0;line-height:0;">&nbsp;</td>
                 </tr>
               </table>
-              <span style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:#605e5c;padding-left:7px;vertical-align:middle;">Microsoft 365</span>
+              <span style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:#605e5c;padding-left:7px;vertical-align:middle;">{{nombreServicio}}</span>
+              <!--@/bloque-->
             </td>
           </tr>
         </table>
       </td>
     </tr>
+    <!--@/bloque-->
 
-    <!-- Cuerpo -->
     <tr>
       <td class="relleno" style="padding:30px 32px 6px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
         <h1 class="titular" style="margin:0 0 16px;font-size:23px;line-height:30px;font-weight:600;color:#201f1e;">
-          {{saludo}}, your password needs renewing
+          {{titular}}
         </h1>
         <p style="margin:0 0 16px;font-size:15px;line-height:24px;color:#323130;">
           {{entradilla}}
@@ -74,7 +80,7 @@
       </td>
     </tr>
 
-    <!-- Ficha de la cuenta -->
+    <!--@bloque:ficha-cuenta @opcional-->
     <tr>
       <td class="relleno" style="padding:6px 32px 4px;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#faf9f8;border-left:3px solid {{color}};">
@@ -82,16 +88,16 @@
             <td style="padding:16px 18px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#605e5c;width:120px;">Account</td>
+                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#605e5c;width:120px;">{{etiquetaCuenta}}</td>
                   <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#201f1e;font-weight:600;">{{.Email}}</td>
                 </tr>
                 <tr>
-                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#605e5c;">Organisation</td>
+                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#605e5c;">{{etiquetaOrganizacion}}</td>
                   <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#201f1e;">{{empresa}}</td>
                 </tr>
                 <tr>
-                  <td style="padding:0;font-size:13px;line-height:19px;color:#605e5c;">Status</td>
-                  <td style="padding:0;font-size:13px;line-height:19px;color:#a4262c;font-weight:600;">Renewal pending</td>
+                  <td style="padding:0;font-size:13px;line-height:19px;color:#605e5c;">{{etiquetaEstado}}</td>
+                  <td style="padding:0;font-size:13px;line-height:19px;color:#a4262c;font-weight:600;">{{valorEstado}}</td>
                 </tr>
               </table>
             </td>
@@ -99,8 +105,9 @@
         </table>
       </td>
     </tr>
+    <!--@/bloque-->
 
-    <!-- Aviso -->
+    <!--@bloque:urgencia @senal:urgencia-->
     <tr>
       <td class="relleno" style="padding:18px 32px 4px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
         <p style="margin:0 0 22px;font-size:14px;line-height:22px;color:#8a5a00;background-color:#fdf6e6;padding:11px 14px;">
@@ -108,8 +115,8 @@
         </p>
       </td>
     </tr>
+    <!--@/bloque-->
 
-    <!-- Llamada a la acción -->
     <tr>
       <td class="relleno" style="padding:0 32px 28px;">
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="boton">
@@ -122,28 +129,37 @@
             </td>
           </tr>
         </table>
+        <!--@bloque:enlace-visible @senal:enlace-visible-->
+        <!-- La URL en crudo bajo el botón: el texto del botón dice una cosa y la
+             dirección dice otra. Es la señal que se le pide detectar. -->
         <p style="margin:14px 0 0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#8a929c;">
-          If the button does not work, copy this address into your browser:<br>
+          {{textoEnlaceVisible}}<br>
           <span style="color:{{color}};word-break:break-all;">{{.URL}}</span>
         </p>
+        <!--@/bloque-->
       </td>
     </tr>
 
-    <!-- Pie -->
+    <!--@bloque:pie @opcional-->
     <tr>
       <td class="relleno" style="padding:18px 32px 26px;border-top:1px solid #e5e5e5;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
         <p style="margin:0 0 4px;font-size:13px;line-height:20px;color:#323130;font-weight:600;">
           {{cierre}}
         </p>
         <p style="margin:0 0 12px;font-size:12px;line-height:18px;color:#8a929c;">
-          Message generated automatically by the {{empresa}} identity management system.
+          {{avisoAutomatico}}
         </p>
+        <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+        <!-- El pie legal completo es justo lo que una campaña real no se molesta
+             en copiar. Con la señal de incoherencia activa desaparece. -->
         <p style="margin:0;font-size:11px;line-height:17px;color:#a0a6ad;">
-          © {{anio}} {{empresa}} · {{dominio}}<br>
-          If you believe this message is not legitimate, report it to {{equipoTi}}.
+          &copy; {{anio}} {{empresa}} &middot; {{dominio}}<br>
+          {{avisoReporte}}
         </p>
+        <!--@/bloque-->
       </td>
     </tr>
+    <!--@/bloque-->
 
   </table>
 
@@ -151,6 +167,8 @@
 </tr>
 </table>
 
+<!--@bloque:tracker @opcional-->
 {{.Tracker}}
+<!--@/bloque-->
 </body>
 </html>

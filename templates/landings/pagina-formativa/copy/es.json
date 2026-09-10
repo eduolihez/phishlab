@@ -1,0 +1,21 @@
+{
+  "pistas": {
+    "base": "<li><strong>Era casi indistinguible de un correo real</strong>, y ese es justo el punto: la detección a ojo no siempre funciona.</li><li><strong>Pedía credenciales tras pulsar un enlace del correo.</strong> Esa es la señal que nunca falla, por bien escrito que esté el mensaje.</li><li><strong>La dirección de la página no era la de nuestro portal.</strong> Antes de escribir la contraseña, mira siempre la barra de direcciones.</li><li><strong>Ante la duda, el camino seguro es entrar por tu marcador de siempre</strong>, no por el enlace del correo.</li>",
+    "urgencia": "<li><strong>Metía prisa con un plazo corto.</strong> La urgencia sirve para que actúes antes de comprobar.</li><li><strong>El dominio se parecía al nuestro, pero no lo era.</strong> Compara carácter a carácter con {{dominio}}.</li><li><strong>Ofrecía algo a cambio de nada.</strong> Un premio inesperado siempre merece una segunda mirada.</li><li><strong>El enlace pedía credenciales.</strong> Pasa el ratón por encima antes de pulsar y mira a dónde lleva de verdad.</li>",
+    "urgencia+erratas": "<li><strong>El saludo era genérico.</strong> «Estimado empleado» en lugar de tu nombre: una comunicación interna real sabe cómo te llamas.</li><li><strong>El dominio del remitente no era el nuestro.</strong> Se parecía, pero no coincidía con {{dominio}}.</li><li><strong>Había faltas de ortografía y mayúsculas de más.</strong> Ninguna comunicación oficial se escribe así.</li><li><strong>Metía prisa.</strong> «Antes de 24 horas o lo pierdes» es la palanca más usada: la urgencia impide pensar.</li>"
+  },
+  "tituloPagina": "Simulación de phishing · {{empresa}}",
+  "titular": "Esto era una simulación de phishing",
+  "subtitulo": "No ha pasado nada. Ningún dato tuyo se ha visto comprometido.",
+  "tranquilizador": "Tranquilo: no estás en problemas.</strong> El correo que acabas de abrir formaba parte de un ejercicio de concienciación autorizado por {{empresa}}. El objetivo no es señalar a nadie, sino medir cómo de preparados estamos como organización y practicar en un entorno donde equivocarse no cuesta nada.",
+  "tituloSenales": "Qué señales tenía ese correo",
+  "tituloQueHacer": "Qué hacer la próxima vez",
+  "consejoPrisa": "Para antes de pulsar.</strong> La prisa es la herramienta principal del atacante. Si un mensaje te presiona, eso ya es un motivo para desconfiar.",
+  "consejoRemitente": "Comprueba el remitente completo.</strong> No el nombre que se muestra, sino la dirección entera. Los dominios parecidos a {{dominio}} son el truco más habitual.",
+  "consejoContrasena": "No escribas tu contraseña en una página a la que has llegado",
+  "consejoContrasenaCont": "desde un enlace.</strong> Entra por tu marcador o escribiendo la dirección tú mismo.",
+  "consejoReportar": "Repórtalo.</strong> Avisar es lo más valioso que puedes hacer: un aviso temprano protege a toda la plantilla.",
+  "siIntrodujiste": "¿Y si has introducido tu contraseña?</strong> No pasa nada, era un simulacro y esas credenciales no se han utilizado. Aun así, aprovecha para cambiarla y, si la usabas en algún sitio más, cámbiala también allí. Es la costumbre que te salvará el día que el correo sea real.",
+  "explicacionEjercicio": "Ejercicio de concienciación realizado con autorización de {{empresa}}.",
+  "cierreDudas": "Si tienes dudas, escribe a {{firma}}."
+}

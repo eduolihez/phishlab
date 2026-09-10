@@ -2,60 +2,109 @@
  * Carga del catálogo de plantillas.
  *
  * El navegador no puede listar directorios, así que `templates/index.json`
- * hace de índice. Añadir una plantilla nueva = crear su carpeta y añadir
- * su id a ese fichero. No se toca ni una línea del dashboard.
+ * hace de índice. Añadir una plantilla = crear su carpeta y añadir su id a
+ * ese fichero. No se toca ni una línea del dashboard.
+ *
+ * Formato v2. Cada plantilla es:
+ *
+ *   <id>/meta.json          metadatos, campos y bloques declarados
+ *   <id>/layout.html        UN layout anotado, compartido entre idiomas
+ *   <id>/copy/{es,ca,en}.json   el copy, en variantes por señal
+ *
+ * En v1 había un HTML por idioma. Se unificaron porque la maquetación nunca
+ * cambiaba entre ellos: eran tres copias del mismo diseño que había que
+ * mantener a la vez, y el fallo típico era arreglar un `<td>` en `es.html`
+ * y olvidarse de los otros dos.
  */
 
 const RAIZ = 'templates';
 
-/** @returns {Promise<{emails: object[], landings: object[]}>} */
+/**
+ * Carga el catálogo entero: plantillas de fábrica, propias, señales y presets.
+ * @returns {Promise<{emails: object[], landings: object[], senales: object[], presets: object[]}>}
+ */
 export async function cargarCatalogo() {
-  const indice = await json(`${RAIZ}/index.json`);
-  const [emails, landings] = await Promise.all([
-    Promise.all(indice.emails.map((id) => cargarMeta('emails', id))),
-    Promise.all(indice.landings.map((id) => cargarMeta('landings', id))),
+  const [indice, senales, presets] = await Promise.all([
+    json(`${RAIZ}/index.json`),
+    json(`${RAIZ}/senales.json`),
+    json(`${RAIZ}/presets.json`),
   ]);
-  return { emails, landings };
+
+  const propias = await indicePropias();
+
+  const [emails, landings] = await Promise.all([
+    cargarLista('emails', indice.emails ?? [], propias.emails ?? []),
+    cargarLista('landings', indice.landings ?? [], propias.landings ?? []),
+  ]);
+
+  return { emails, landings, senales: senales.senales, presets: presets.presets };
 }
 
-async function cargarMeta(tipo, id) {
-  const meta = await json(`${RAIZ}/${tipo}/${id}/meta.json`);
-  return { ...meta, id, tipo, ruta: `${RAIZ}/${tipo}/${id}` };
+/**
+ * Las plantillas propias viven en `templates/propias/` y están fuera de git:
+ * son las que tú importas o guardas al editar, y suelen llevar dentro material
+ * de un cliente concreto. Que el índice no exista es lo normal en una
+ * instalación recién clonada, así que su ausencia no es un error.
+ */
+async function indicePropias() {
+  try {
+    const res = await fetch(`${RAIZ}/propias/index.json`);
+    if (!res.ok) return {};
+    return await res.json();
+  } catch {
+    return {};
+  }
 }
 
-/** Devuelve el HTML crudo de una plantilla en un idioma dado. */
-export async function cargarHtml(meta, idioma) {
-  const lang = meta.idiomas.includes(idioma) ? idioma : meta.idiomas[0];
-  const res = await fetch(`${meta.ruta}/${lang}.html`);
-  if (!res.ok) throw new Error(`No se pudo cargar ${meta.ruta}/${lang}.html`);
+async function cargarLista(tipo, deFabrica, propias) {
+  const todas = await Promise.all([
+    ...deFabrica.map((id) => cargarMeta(`${RAIZ}/${tipo}/${id}`, id, tipo, false)),
+    ...propias.map((id) => cargarMeta(`${RAIZ}/propias/${tipo}/${id}`, id, tipo, true)),
+  ]);
+  return todas.filter(Boolean);
+}
+
+async function cargarMeta(ruta, id, tipo, propia) {
+  try {
+    const meta = await json(`${ruta}/meta.json`);
+    if (meta.schema !== 2) {
+      console.error(`[${id}] meta.json no declara "schema": 2 — se omite del catálogo`);
+      return null;
+    }
+    return {
+      ...meta,
+      id,
+      tipo,
+      ruta,
+      propia,
+      bloques: meta.bloques ?? [],
+      tags: meta.tags ?? [],
+      idiomas: meta.idiomas ?? ['es'],
+    };
+  } catch (e) {
+    console.error(`[${id}] no se pudo cargar: ${e.message}`);
+    return null;
+  }
+}
+
+/** HTML crudo del layout, con los marcadores de bloque todavía puestos. */
+export async function cargarLayout(meta) {
+  const res = await fetch(`${meta.ruta}/layout.html`);
+  if (!res.ok) throw new Error(`No se pudo cargar ${meta.ruta}/layout.html`);
   return res.text();
 }
 
 /**
- * Resuelve los fragmentos de copy para un idioma y nivel de dificultad.
- * Si el idioma no existe cae al primero declarado; si el nivel no existe,
- * a "medio". Ambas caídas se avisan por consola en lugar de fallar en
- * silencio, que es como se cuelan las campañas en el idioma equivocado.
+ * Copy de un idioma. Si el idioma pedido no existe cae al primero declarado
+ * y avisa por consola: una campaña lanzada en el idioma equivocado es de los
+ * fallos que no se detectan hasta que responde el primer empleado.
  */
-export function resolverFragmentos(meta, idioma, nivel) {
-  const porIdioma = meta.fragmentos?.[idioma];
-  if (!porIdioma) {
-    console.warn(`[${meta.id}] sin fragmentos en "${idioma}", se usa "${meta.idiomas[0]}"`);
-    return meta.fragmentos?.[meta.idiomas[0]]?.[nivel] ?? {};
+export async function cargarCopy(meta, idioma) {
+  const lang = meta.idiomas.includes(idioma) ? idioma : meta.idiomas[0];
+  if (lang !== idioma) {
+    console.warn(`[${meta.id}] sin copy en "${idioma}", se usa "${lang}"`);
   }
-  const porNivel = porIdioma[nivel];
-  if (!porNivel) {
-    console.warn(`[${meta.id}] sin nivel "${nivel}" en "${idioma}", se usa "medio"`);
-    return porIdioma.medio ?? {};
-  }
-  return porNivel;
-}
-
-/** Texto del asunto para un idioma y nivel. */
-export function resolverAsunto(meta, idioma, nivel) {
-  const porIdioma = meta.asunto?.[idioma] ?? meta.asunto?.[meta.idiomas[0]];
-  if (!porIdioma) return '';
-  return porIdioma[nivel] ?? porIdioma.medio ?? '';
+  return json(`${meta.ruta}/copy/${lang}.json`);
 }
 
 async function json(url) {

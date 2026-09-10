@@ -1,0 +1,67 @@
+{
+  "asunto": {
+    "base": "Renovació de contrasenya abans del {{fechaCaducidad}}",
+    "urgencia": "La teva contrasenya de {{empresa}} caduca d'aquí a {{dias}} dies",
+    "urgencia+erratas": "AVIS: La seva contrasenya expira AVUI - accio requerida immediata"
+  },
+
+  "preheader": {
+    "base": "Renovació de contrasenya programada per al {{fechaCaducidad}}",
+    "urgencia": "Acció requerida al teu compte de {{empresa}}"
+  },
+
+  "titular": {
+    "base": "{{saludo}}, toca renovar la contrasenya",
+    "urgencia": "{{saludo}}, cal renovar la teva contrasenya",
+    "urgencia+erratas": "{{saludo}}, la seva contrasenya expira AVUI"
+  },
+
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut usuari"
+  },
+
+  "entradilla": {
+    "base": "Com a part de la política de credencials de {{empresa}}, la teva contrasenya arriba al final del seu cicle de 90 dies el <strong>{{fechaCaducidad}}</strong>.",
+    "urgencia": "La contrasenya del teu compte de {{empresa}} caduca d'aquí a <strong>{{dias}} dies</strong>. Per no perdre l'accés al correu, Teams i els arxius compartits, l'has de renovar abans d'aquesta data.",
+    "urgencia+erratas": "La seva contrasenya de correu electronic EXPIRA AVUI. Si no l'actualitza immediatament perdra l'acces al seu compte i a tots els seus arxius."
+  },
+
+  "detalle": {
+    "base": "Pots renovar-la des del portal habitual o des de l'enllaç de sota. Si ja l'has canviat aquesta setmana, ignora aquest missatge: l'avís es genera amb dos dies d'antelació.",
+    "urgencia": "El procés dura menys d'un minut i pots reutilitzar una contrasenya que ja recordis, sempre que compleixi la política de l'organització.",
+    "urgencia+erratas": "Aquest es un missatge automatic del servidor de correu. No ignori aquest avis."
+  },
+
+  "urgencia": {
+    "base": "Recorda que la nova contrasenya s'haurà d'actualitzar també al mòbil corporatiu perquè el correu continuï sincronitzant.",
+    "urgencia": "Si la contrasenya caduca, hauràs de contactar amb suport per recuperar l'accés manualment.",
+    "urgencia+erratas": "El seu compte sera SUSPES en les properes hores si no fa la verificacio."
+  },
+
+  "cta": {
+    "base": "Renovar contrasenya",
+    "urgencia+erratas": "VERIFICAR EL MEU COMPTE ARA"
+  },
+
+  "cierre": {
+    "base": "{{equipoTi}} · {{empresa}}",
+    "urgencia+erratas": "Administrador del Sistema"
+  },
+
+  "nombreServicio": "Microsoft 365",
+  "etiquetaCuenta": "Compte",
+  "etiquetaOrganizacion": "Organització",
+  "etiquetaEstado": "Estat",
+  "valorEstado": {
+    "base": "Renovació pendent",
+    "urgencia+erratas": "ACCIO REQUERIDA"
+  },
+
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament pel sistema de gestió d'identitats de {{empresa}}.",
+    "erratas": "Missatge generat automaticament pel servidor de correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a {{equipoTi}}."
+}

@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{idioma}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Gift card activation</title>
+<title>{{tituloPagina}}</title>
 <style>
   * { box-sizing: border-box; }
 
@@ -142,72 +142,69 @@
   <div class="tarjeta">
 
     <div class="banda">
-      <p class="etiqueta">{{comercio}} gift card</p>
+      <p class="etiqueta">{{etiquetaTarjeta}}</p>
       <p class="cifra">{{importe}}</p>
-      <p class="referencia">Reference {{referencia}}</p>
+      <p class="referencia">{{etiquetaReferencia}}</p>
     </div>
 
     <div class="cuerpo">
-      <h1>Activate your gift card</h1>
-      <p class="intro">
-        This voucher is reserved in your name as part of the {{empresa}}
-        recognition programme. Complete your details to receive it.
+      <h1>{{titular}}</h1>
+      <p class="intro">{{intro}}
       </p>
 
       <p class="aviso">{{aviso}}</p>
 
-      <!--
-        Landing sin contraseña: se piden datos de empleado, no credenciales.
-        El campo principal se llama "email" para que GoPhish lo registre igual
-        que en el resto de landings. Con "Capture Submitted Data" marcada y
-        "Capture Passwords" desmarcada se comporta como cabe esperar.
+      <!-- Landing sin contraseña: se piden datos de empleado, no credenciales. El campo principal se llama "email" para que GoPhish lo registre igual que en el resto de landings. Con "Capture Submitted Data" marcada y "Capture Passwords" desmarcada se comporta como cabe esperar.
       -->
       <form method="post" action="" autocomplete="off">
 
         <div class="dos">
           <div class="campo">
-            <label for="nombre">First name</label>
+            <label for="nombre">{{labelNombre}}</label>
             <input type="text" id="nombre" name="nombre" required>
           </div>
           <div class="campo">
-            <label for="apellidos">Last name</label>
+            <label for="apellidos">{{labelApellidos}}</label>
             <input type="text" id="apellidos" name="apellidos" required>
           </div>
         </div>
 
         <div class="campo">
-          <label for="email">Work email</label>
+          <label for="email">{{labelEmail}}</label>
           <input type="email" id="email" name="email" required>
-          <p class="pista">It must match the address the notification was sent to.</p>
+          <p class="pista">{{pistaEmail}}</p>
         </div>
 
+        <!--@bloque:campos-empleado @opcional-->
         <div class="dos">
           <div class="campo">
-            <label for="empleado">Employee number</label>
+            <label for="empleado">{{labelNumEmpleado}}</label>
             <input type="text" id="empleado" name="empleado" required>
           </div>
           <div class="campo">
-            <label for="centro">Work location</label>
+            <label for="centro">{{labelCentro}}</label>
             <input type="text" id="centro" name="centro">
           </div>
         </div>
+        <!--@/bloque-->
 
+        <!--@bloque:campo-entrega @opcional-->
         <div class="campo">
-          <label for="entrega">Where to send the code</label>
+          <label for="entrega">{{labelEntrega}}</label>
           <select id="entrega" name="entrega">
-            <option value="corporativo">Work email</option>
-            <option value="personal">Personal email</option>
-            <option value="movil">SMS to mobile</option>
+            <option value="corporativo">{{opcionCorporativo}}</option>
+            <option value="personal">{{opcionPersonal}}</option>
+            <option value="movil">{{opcionSms}}</option>
           </select>
         </div>
+        <!--@/bloque-->
 
-        <button class="boton" type="submit">Activate my gift card</button>
+        <button class="boton" type="submit">{{btnActivar}}</button>
 
-        <p class="legal">
-          By activating the voucher you accept the terms of the {{empresa}}
-          recognition programme. The code is issued in your name and is not
-          transferable.
+        <!--@bloque:aviso-legal @senal:!incoherencia-marca-->
+        <p class="legal">{{avisoLegal}}
         </p>
+        <!--@/bloque-->
       </form>
     </div>
 

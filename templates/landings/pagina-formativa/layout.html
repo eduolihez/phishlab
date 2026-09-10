@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="es">
+<html lang="{{idioma}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Simulación de phishing · {{empresa}}</title>
+<title>{{tituloPagina}}</title>
 <style>
   * { box-sizing: border-box; }
 
@@ -138,62 +138,53 @@
   <div class="banda">
     <div class="icono" aria-hidden="true">&#9888;</div>
     <div>
-      <h1>Esto era una simulación de phishing</h1>
-      <p class="subtitulo">No ha pasado nada. Ningún dato tuyo se ha visto comprometido.</p>
+      <h1>{{titular}}</h1>
+      <p class="subtitulo">{{subtitulo}}</p>
     </div>
   </div>
 
   <div class="panel">
 
     <p class="destacado">
-      <strong>Tranquilo: no estás en problemas.</strong> El correo que acabas de
-      abrir formaba parte de un ejercicio de concienciación autorizado por
-      {{empresa}}. El objetivo no es señalar a nadie, sino medir cómo de
-      preparados estamos como organización y practicar en un entorno donde
-      equivocarse no cuesta nada.
+      <strong>{{tranquilizador}}
     </p>
 
-    <h2>Qué señales tenía ese correo</h2>
-    <ul>
-      {{pistas}}
+    <!--@bloque:senales-detectadas @opcional-->
+    <h2>{{tituloSenales}}</h2>
+    <ul> {{pistas}}
     </ul>
+    <!--@/bloque-->
 
-    <h2>Qué hacer la próxima vez</h2>
+    <!--@bloque:que-hacer @opcional-->
+    <h2>{{tituloQueHacer}}</h2>
     <ol class="pasos">
       <li>
-        <strong>Para antes de pulsar.</strong> La prisa es la herramienta
-        principal del atacante. Si un mensaje te presiona, eso ya es un motivo
-        para desconfiar.
+        <strong>{{consejoPrisa}}
       </li>
       <li>
-        <strong>Comprueba el remitente completo.</strong> No el nombre que se
-        muestra, sino la dirección entera. Los dominios parecidos a
-        {{dominio}} son el truco más habitual.
+        <strong>{{consejoRemitente}}
       </li>
       <li>
-        <strong>No escribas tu contraseña en una página a la que has llegado
-        desde un enlace.</strong> Entra por tu marcador o escribiendo la
-        dirección tú mismo.
+        <strong>{{consejoContrasena}}
+        {{consejoContrasenaCont}}
       </li>
       <li>
-        <strong>Repórtalo.</strong> Avisar es lo más valioso que puedes hacer:
-        un aviso temprano protege a toda la plantilla.
+        <strong>{{consejoReportar}}
       </li>
     </ol>
+    <!--@/bloque-->
 
+    <!--@bloque:aviso-final @opcional-->
     <p class="aviso-final">
-      <strong>¿Y si has introducido tu contraseña?</strong> No pasa nada, era un
-      simulacro y esas credenciales no se han utilizado. Aun así, aprovecha para
-      cambiarla y, si la usabas en algún sitio más, cámbiala también allí. Es la
-      costumbre que te salvará el día que el correo sea real.
+      <strong>{{siIntrodujiste}}
     </p>
+    <!--@/bloque-->
 
   </div>
 
   <p class="pie">
-    Ejercicio de concienciación realizado con autorización de {{empresa}}.<br>
-    Si tienes dudas, escribe a {{firma}}.<br>
-    © {{anio}} {{empresa}} · {{dominio}}
+    {{explicacionEjercicio}}<br>
+    {{cierreDudas}}<br> © {{anio}} {{empresa}} · {{dominio}}
   </p>
 
 </main>
