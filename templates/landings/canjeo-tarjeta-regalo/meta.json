@@ -1,0 +1,27 @@
+{
+  "nombre": "Canje de tarjeta regalo",
+  "descripcion": "Formulario de canje con datos del empleado. Sin contraseña: pareja natural del email de recompensa.",
+  "familia": "recompensa",
+  "captura": "datos",
+  "idiomas": ["es", "ca", "en"],
+
+  "campos": [],
+
+  "fragmentos": {
+    "es": {
+      "facil": { "aviso": "Quedan pocas unidades disponibles. Complete sus datos ahora." },
+      "medio": { "aviso": "Completa tus datos para activar el vale asociado a tu cuenta." },
+      "dificil": { "aviso": "Verifica que los datos coinciden con los de tu ficha de empleado." }
+    },
+    "ca": {
+      "facil": { "aviso": "Queden poques unitats disponibles. Completi les seves dades ara." },
+      "medio": { "aviso": "Completa les teves dades per activar el val associat al teu compte." },
+      "dificil": { "aviso": "Verifica que les dades coincideixen amb les de la teva fitxa d'empleat." }
+    },
+    "en": {
+      "facil": { "aviso": "Only a few units left. Complete your details now." },
+      "medio": { "aviso": "Complete your details to activate the voucher linked to your account." },
+      "dificil": { "aviso": "Check that the details match those on your employee record." }
+    }
+  }
+}

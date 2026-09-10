@@ -1,0 +1,115 @@
+{
+  "nombre": "Microsoft 365 · Caducidad de contraseña",
+  "descripcion": "Aviso de expiración de credenciales. Enlaza de forma natural con la landing de login de Microsoft.",
+  "familia": "microsoft",
+  "idiomas": ["es", "ca", "en"],
+  "remitente": { "nombre": "Soporte TI", "buzon": "soporte" },
+
+  "campos": [
+    { "clave": "dias", "etiqueta": "Días hasta la caducidad", "tipo": "numero", "defecto": "2" },
+    { "clave": "fechaCaducidad", "etiqueta": "Fecha de caducidad", "tipo": "texto", "defecto": "viernes 18" },
+    { "clave": "equipoTi", "etiqueta": "Nombre del equipo de TI", "tipo": "texto", "defecto": "Servicio de Soporte TI",
+      "ayuda": "Si conoces el nombre real del equipo del cliente, úsalo: sube mucho la tasa en nivel difícil." }
+  ],
+
+  "asunto": {
+    "es": {
+      "facil": "AVISO: Su contraseña expira HOY - accion requerida inmediata",
+      "medio": "Tu contraseña de {{empresa}} caduca en {{dias}} días",
+      "dificil": "Renovación de contraseña antes del {{fechaCaducidad}}"
+    },
+    "ca": {
+      "facil": "AVIS: La seva contrasenya expira AVUI - accio requerida immediata",
+      "medio": "La teva contrasenya de {{empresa}} caduca d'aquí a {{dias}} dies",
+      "dificil": "Renovació de contrasenya abans del {{fechaCaducidad}}"
+    },
+    "en": {
+      "facil": "WARNING: Your password expires TODAY - immediate action required",
+      "medio": "Your {{empresa}} password expires in {{dias}} days",
+      "dificil": "Password renewal before {{fechaCaducidad}}"
+    }
+  },
+
+  "fragmentos": {
+    "es": {
+      "facil": {
+        "saludo": "Estimado usuario",
+        "entradilla": "Su contraseña de correo electronico EXPIRA HOY. Si no la actualiza inmediatamente perdera el acceso a su cuenta y a todos sus archivos.",
+        "detalle": "Este es un mensaje automatico del servidor de correo. No ignore este aviso.",
+        "urgencia": "Su cuenta sera SUSPENDIDA en las proximas horas si no realiza la verificacion.",
+        "cta": "VERIFICAR MI CUENTA AHORA",
+        "cierre": "Administrador del Sistema"
+      },
+      "medio": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "La contraseña de tu cuenta de {{empresa}} caduca en <strong>{{dias}} días</strong>. Para no perder el acceso al correo, Teams y los archivos compartidos, necesitas renovarla antes de esa fecha.",
+        "detalle": "El proceso lleva menos de un minuto y puedes reutilizar una contraseña que ya recuerdes, siempre que cumpla la política de la organización.",
+        "urgencia": "Si la contraseña caduca, tendrás que contactar con soporte para recuperar el acceso manualmente.",
+        "cta": "Renovar contraseña",
+        "cierre": "{{equipoTi}} · {{empresa}}"
+      },
+      "dificil": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "Como parte de la política de credenciales de {{empresa}}, tu contraseña llega al final de su ciclo de 90 días el <strong>{{fechaCaducidad}}</strong>.",
+        "detalle": "Puedes renovarla desde el portal habitual o desde el enlace de abajo. Si ya la has cambiado esta semana, ignora este mensaje: el aviso se genera con dos días de antelación.",
+        "urgencia": "Recuerda que la nueva contraseña deberá actualizarse también en el móvil corporativo para que el correo siga sincronizando.",
+        "cta": "Renovar contraseña",
+        "cierre": "{{equipoTi}} · {{empresa}}"
+      }
+    },
+
+    "ca": {
+      "facil": {
+        "saludo": "Benvolgut usuari",
+        "entradilla": "La seva contrasenya de correu electronic EXPIRA AVUI. Si no l'actualitza immediatament perdra l'acces al seu compte i a tots els seus arxius.",
+        "detalle": "Aquest es un missatge automatic del servidor de correu. No ignori aquest avis.",
+        "urgencia": "El seu compte sera SUSPES en les properes hores si no fa la verificacio.",
+        "cta": "VERIFICAR EL MEU COMPTE ARA",
+        "cierre": "Administrador del Sistema"
+      },
+      "medio": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "La contrasenya del teu compte de {{empresa}} caduca d'aquí a <strong>{{dias}} dies</strong>. Per no perdre l'accés al correu, Teams i els arxius compartits, l'has de renovar abans d'aquesta data.",
+        "detalle": "El procés dura menys d'un minut i pots reutilitzar una contrasenya que ja recordis, sempre que compleixi la política de l'organització.",
+        "urgencia": "Si la contrasenya caduca, hauràs de contactar amb suport per recuperar l'accés manualment.",
+        "cta": "Renovar contrasenya",
+        "cierre": "{{equipoTi}} · {{empresa}}"
+      },
+      "dificil": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "Com a part de la política de credencials de {{empresa}}, la teva contrasenya arriba al final del seu cicle de 90 dies el <strong>{{fechaCaducidad}}</strong>.",
+        "detalle": "Pots renovar-la des del portal habitual o des de l'enllaç de sota. Si ja l'has canviat aquesta setmana, ignora aquest missatge: l'avís es genera amb dos dies d'antelació.",
+        "urgencia": "Recorda que la nova contrasenya s'haurà d'actualitzar també al mòbil corporatiu perquè el correu continuï sincronitzant.",
+        "cta": "Renovar contrasenya",
+        "cierre": "{{equipoTi}} · {{empresa}}"
+      }
+    },
+
+    "en": {
+      "facil": {
+        "saludo": "Dear user",
+        "entradilla": "Your email password EXPIRES TODAY. If you do not update it immediately you will lose access to your account and all your files.",
+        "detalle": "This is an automatic message from the mail server. Do not ignore this notice.",
+        "urgencia": "Your account will be SUSPENDED within the next hours if you do not complete the verification.",
+        "cta": "VERIFY MY ACCOUNT NOW",
+        "cierre": "System Administrator"
+      },
+      "medio": {
+        "saludo": "Hi {{.FirstName}}",
+        "entradilla": "Your {{empresa}} account password expires in <strong>{{dias}} days</strong>. To keep access to email, Teams and shared files, you need to renew it before then.",
+        "detalle": "It takes less than a minute and you may reuse a password you already remember, as long as it meets the organisation's policy.",
+        "urgencia": "If the password expires, you will need to contact support to restore access manually.",
+        "cta": "Renew password",
+        "cierre": "{{equipoTi}} · {{empresa}}"
+      },
+      "dificil": {
+        "saludo": "Hi {{.FirstName}}",
+        "entradilla": "As part of the {{empresa}} credential policy, your password reaches the end of its 90-day cycle on <strong>{{fechaCaducidad}}</strong>.",
+        "detalle": "You can renew it from the usual portal or from the link below. If you already changed it this week, ignore this message: the notice is generated two days in advance.",
+        "urgencia": "Remember that the new password must also be updated on your work phone so that email keeps syncing.",
+        "cta": "Renew password",
+        "cierre": "{{equipoTi}} · {{empresa}}"
+      }
+    }
+  }
+}

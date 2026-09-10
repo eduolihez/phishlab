@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Simulació de phishing · {{empresa}}</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", -apple-system, system-ui, Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #23282e;
+    background: #f4f5f7;
+  }
+
+  .cabecera {
+    padding: 18px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e5e9;
+  }
+  .cabecera img { max-width: 150px; max-height: 40px; display: block; }
+
+  .contenido { max-width: 720px; margin: 0 auto; padding: 36px 20px 60px; }
+
+  .banda {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 26px;
+    background: #ffffff;
+    border-radius: 12px 12px 0 0;
+    border-top: 4px solid #e0a800;
+  }
+
+  .icono {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    background: #fdf6e6;
+    border-radius: 50%;
+  }
+
+  h1 { margin: 0; font-size: 24px; font-weight: 650; line-height: 1.25; }
+  .subtitulo { margin: 4px 0 0; font-size: 15px; color: #616a75; }
+
+  .panel {
+    padding: 26px;
+    background: #ffffff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .08);
+  }
+
+  .destacado {
+    margin: 0 0 22px;
+    padding: 16px 18px;
+    font-size: 15px;
+    background: #f0f6ff;
+    border-left: 3px solid {{color}};
+    border-radius: 0 6px 6px 0;
+  }
+  .destacado strong { color: #1b3a63; }
+
+  h2 {
+    margin: 28px 0 12px;
+    font-size: 17px;
+    font-weight: 650;
+    color: #1a1f26;
+  }
+  h2:first-of-type { margin-top: 0; }
+
+  ul { margin: 0 0 8px; padding-left: 22px; }
+  li { margin-bottom: 11px; }
+
+  .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 0; }
+  .pasos li {
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 14px;
+  }
+  .pasos li::before {
+    counter-increment: paso;
+    content: counter(paso);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: {{colorTexto}};
+    background: {{color}};
+    border-radius: 50%;
+  }
+
+  .aviso-final {
+    margin: 26px 0 0;
+    padding: 16px 18px;
+    font-size: 14.5px;
+    color: #3d4a2a;
+    background: #f2f7ea;
+    border-left: 3px solid #6a9a2f;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .pie {
+    margin: 26px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7b848f;
+    text-align: center;
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 15px; }
+    .contenido { padding: 20px 14px 40px; }
+    .banda { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
+    .panel { padding: 20px; }
+    h1 { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cabecera">{{logoHtml}}</header>
+
+<main class="contenido">
+
+  <div class="banda">
+    <div class="icono" aria-hidden="true">&#9888;</div>
+    <div>
+      <h1>Això era una simulació de phishing</h1>
+      <p class="subtitulo">No ha passat res. Cap dada teva s'ha vist compromesa.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+
+    <p class="destacado">
+      <strong>Tranquil: no estàs en problemes.</strong> El correu que acabes
+      d'obrir formava part d'un exercici de conscienciació autoritzat per
+      {{empresa}}. L'objectiu no és assenyalar ningú, sinó mesurar com de
+      preparats estem com a organització i practicar en un entorn on
+      equivocar-se no costa res.
+    </p>
+
+    <h2>Quines senyals tenia aquell correu</h2>
+    <ul>
+      {{pistas}}
+    </ul>
+
+    <h2>Què fer la propera vegada</h2>
+    <ol class="pasos">
+      <li>
+        <strong>Atura't abans de prémer.</strong> La pressa és l'eina
+        principal de l'atacant. Si un missatge et pressiona, això ja és un
+        motiu per desconfiar.
+      </li>
+      <li>
+        <strong>Comprova el remitent complet.</strong> No el nom que es
+        mostra, sinó l'adreça sencera. Els dominis semblants a
+        {{dominio}} són el truc més habitual.
+      </li>
+      <li>
+        <strong>No escriguis la contrasenya en una pàgina a la qual has
+        arribat des d'un enllaç.</strong> Entra pel teu marcador o escrivint
+        l'adreça tu mateix.
+      </li>
+      <li>
+        <strong>Reporta-ho.</strong> Avisar és el més valuós que pots fer:
+        un avís d'hora protegeix tota la plantilla.
+      </li>
+    </ol>
+
+    <p class="aviso-final">
+      <strong>I si has introduït la contrasenya?</strong> No passa res, era un
+      simulacre i aquelles credencials no s'han utilitzat. Tot i així, aprofita
+      per canviar-la i, si la feies servir en algun lloc més, canvia-la també
+      allà. És el costum que et salvarà el dia que el correu sigui real.
+    </p>
+
+  </div>
+
+  <p class="pie">
+    Exercici de conscienciació realitzat amb autorització de {{empresa}}.<br>
+    Si tens dubtes, escriu a {{firma}}.<br>
+    © {{anio}} {{empresa}} · {{dominio}}
+  </p>
+
+</main>
+
+</body>
+</html>

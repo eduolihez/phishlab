@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>PhishLab — Generador de plantillas para campañas autorizadas</title>
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<header class="barra">
+  <div class="marca-app">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M12 2 4 5.5v6c0 4.6 3.2 8.7 8 10.5 4.8-1.8 8-5.9 8-10.5v-6L12 2Z"
+            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="m8.8 12 2.3 2.3 4.3-4.6" fill="none" stroke="currentColor"
+            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>PhishLab</span>
+    <span class="etiqueta-uso">Uso interno · campañas autorizadas</span>
+  </div>
+  <div class="acciones-barra">
+    <button id="btn-copiar" class="btn btn-secundario" type="button">Copiar HTML</button>
+    <button id="btn-zip" class="btn btn-primario" type="button">Descargar campaña (.zip)</button>
+  </div>
+</header>
+
+<main class="disposicion">
+
+  <!-- ------------------------------ Controles ------------------------------ -->
+  <div class="panel" id="panel-controles">
+
+    <section class="bloque" aria-labelledby="t-plantillas">
+      <h2 class="titulo-bloque" id="t-plantillas"><span class="paso">1</span> Plantillas</h2>
+
+      <div class="filtros" id="filtros-familia" role="group" aria-label="Filtrar por familia"></div>
+
+      <h3 class="subtitulo">Correo</h3>
+      <div class="rejilla" id="catalogo-emails"></div>
+
+      <h3 class="subtitulo">Landing</h3>
+      <div class="rejilla" id="catalogo-landings"></div>
+    </section>
+
+    <section class="bloque" aria-labelledby="t-marca">
+      <h2 class="titulo-bloque" id="t-marca"><span class="paso">2</span> Marca del cliente</h2>
+
+      <div class="fila-presets">
+        <select id="sel-preset" aria-label="Preset de cliente">
+          <option value="">— Preset de cliente —</option>
+        </select>
+        <button id="btn-guardar-preset" class="btn btn-mini" type="button">Guardar</button>
+        <button id="btn-borrar-preset" class="btn btn-mini" type="button">Borrar</button>
+      </div>
+
+      <div class="campo">
+        <label for="f-empresa">Nombre de la empresa</label>
+        <input id="f-empresa" type="text" placeholder="Ferretería Industrial Beltrán" autocomplete="off">
+        <p class="ayuda">Se usa dentro del texto, no solo en la cabecera: «Por tu trabajo en…».</p>
+      </div>
+
+      <div class="dos-columnas">
+        <div class="campo">
+          <label for="f-sector">Sector</label>
+          <input id="f-sector" type="text" placeholder="distribución industrial" autocomplete="off">
+        </div>
+        <div class="campo">
+          <label for="f-dominio">Dominio</label>
+          <input id="f-dominio" type="text" placeholder="beltran.es" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="f-logo">Logo</label>
+        <div class="soltar-logo" id="soltar-logo" tabindex="0" role="button"
+             aria-describedby="ayuda-logo">
+          <img id="vista-logo" alt="" hidden>
+          <span id="texto-logo">Arrastra el logo aquí o pulsa para elegirlo</span>
+          <input id="f-logo" type="file" accept="image/*" hidden>
+        </div>
+        <p class="ayuda" id="ayuda-logo">Se incrusta en el HTML como data URI: no depende de ningún servidor externo.</p>
+        <button id="btn-quitar-logo" class="btn btn-mini" type="button" hidden>Quitar logo</button>
+      </div>
+
+      <div class="campo">
+        <label for="f-color">Color corporativo</label>
+        <div class="fila-color">
+          <input id="f-color" type="color" value="#0067b8">
+          <input id="f-color-hex" type="text" value="#0067b8" spellcheck="false" aria-label="Color en hexadecimal">
+          <span id="aviso-color" class="pildora" hidden>extraído del logo</span>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="f-firma">Firma / pie</label>
+        <input id="f-firma" type="text" placeholder="Departamento de Recursos Humanos" autocomplete="off">
+      </div>
+    </section>
+
+    <section class="bloque" aria-labelledby="t-campana">
+      <h2 class="titulo-bloque" id="t-campana"><span class="paso">3</span> Campaña</h2>
+
+      <div class="dos-columnas">
+        <div class="campo">
+          <label for="f-idioma">Idioma</label>
+          <select id="f-idioma">
+            <option value="es">Castellano</option>
+            <option value="ca">Catalán</option>
+            <option value="en">Inglés</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="f-nivel">Dificultad</label>
+          <select id="f-nivel">
+            <option value="facil">Fácil</option>
+            <option value="medio" selected>Medio</option>
+            <option value="dificil">Difícil</option>
+          </select>
+        </div>
+      </div>
+      <p class="ayuda" id="ayuda-nivel"></p>
+
+      <div class="campo">
+        <label for="f-asunto">Asunto del correo</label>
+        <input id="f-asunto" type="text" autocomplete="off">
+        <p class="ayuda">En la bandeja se leerá: <strong id="vista-asunto"></strong></p>
+      </div>
+
+      <div class="campo">
+        <label>Envelope sender sugerido</label>
+        <output id="salida-remitente" class="salida-mono"></output>
+      </div>
+
+      <div id="campos-dinamicos"></div>
+    </section>
+
+    <section class="bloque" aria-labelledby="t-exportar">
+      <h2 class="titulo-bloque" id="t-exportar"><span class="paso">4</span> Exportar</h2>
+
+      <div class="dos-columnas">
+        <div class="campo">
+          <label for="f-cliente">Cliente</label>
+          <input id="f-cliente" type="text" placeholder="Beltrán S.A." autocomplete="off">
+        </div>
+        <div class="campo">
+          <label for="f-expediente">Nº de expediente</label>
+          <input id="f-expediente" type="text" placeholder="AUD-2026-014" autocomplete="off">
+        </div>
+      </div>
+      <p class="ayuda">
+        Solo se estampan en el <code>INSTRUCCIONES.md</code> del ZIP. Nunca dentro
+        del correo ni de la landing: quien mirase el código fuente vería el expediente.
+      </p>
+
+      <label class="casilla">
+        <input id="f-formativa" type="checkbox" checked>
+        <span>Incluir página formativa en el ZIP</span>
+      </label>
+
+      <div id="avisos" class="avisos" hidden></div>
+    </section>
+
+  </div>
+
+  <!-- ---------------------------- Previsualización ---------------------------- -->
+  <div class="panel-vista">
+    <div class="barra-vista">
+      <div class="pestanas" id="pestanas-vista" role="tablist">
+        <button class="pestana activa" data-vista="email" role="tab" type="button">Correo</button>
+        <button class="pestana" data-vista="landing" role="tab" type="button">Landing</button>
+        <button class="pestana" data-vista="formativa" role="tab" type="button">Formativa</button>
+      </div>
+      <div class="controles-vista">
+        <label class="conmutador">
+          <input id="f-ejemplo" type="checkbox" checked>
+          <span>Datos de ejemplo</span>
+        </label>
+        <div class="grupo-dispositivo" role="group" aria-label="Dispositivo">
+          <button class="btn-dispositivo activa" data-ancho="escritorio" type="button">Escritorio</button>
+          <button class="btn-dispositivo" data-ancho="movil" type="button">Móvil</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lienzo" id="lienzo">
+      <!-- allow-scripts sin allow-same-origin: el JS de la landing se ejecuta (hace
+           falta para ver el paso 2 del login) pero corre en un origen opaco, y sin
+           allow-forms el formulario no puede enviarse desde la previsualización. -->
+      <iframe id="vista" title="Previsualización" sandbox="allow-scripts"></iframe>
+    </div>
+
+    <div class="pie-vista">
+      <span id="estado-vista">Cargando catálogo…</span>
+      <span id="peso-vista" class="peso"></span>
+    </div>
+  </div>
+
+</main>
+
+<div id="brindis" class="brindis" role="status" aria-live="polite"></div>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

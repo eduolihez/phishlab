@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Activación de tarjeta regalo</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", -apple-system, system-ui, Roboto, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #23282e;
+    background: #eef0f3;
+  }
+
+  .cabecera {
+    padding: 18px 24px;
+    background: #ffffff;
+    border-bottom: 3px solid {{color}};
+  }
+  .cabecera img { max-width: 150px; max-height: 40px; display: block; }
+
+  .contenido {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+  }
+
+  .tarjeta {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .1);
+    overflow: hidden;
+  }
+
+  .banda {
+    padding: 26px 28px;
+    text-align: center;
+    color: {{colorTexto}};
+    background: {{color}};
+  }
+  .banda .etiqueta {
+    margin: 0 0 4px;
+    font-size: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    opacity: .85;
+  }
+  .banda .cifra { margin: 0; font-size: 40px; font-weight: 700; line-height: 1.1; }
+  .banda .referencia { margin: 6px 0 0; font-size: 13px; opacity: .85; }
+
+  .cuerpo { padding: 26px 28px 30px; }
+
+  h1 { margin: 0 0 8px; font-size: 21px; font-weight: 600; line-height: 1.3; }
+
+  .intro { margin: 0 0 20px; color: #55606d; }
+
+  .aviso {
+    margin: 0 0 20px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: #8a5a00;
+    background: #fdf6e6;
+    border-left: 3px solid #e0a800;
+  }
+  .aviso:empty { display: none; }
+
+  .campo { margin-bottom: 16px; }
+  .campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #46505c;
+  }
+  .campo input, .campo select {
+    width: 100%;
+    padding: 9px 11px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #23282e;
+    background: #ffffff;
+    border: 1px solid #c6ccd4;
+    border-radius: 6px;
+  }
+  .campo input:focus, .campo select:focus {
+    outline: none;
+    border-color: {{color}};
+    box-shadow: 0 0 0 3px {{color}}26;
+  }
+  .campo .pista { margin: 5px 0 0; font-size: 12px; color: #7b848f; }
+
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .boton {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px 18px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: {{colorTexto}};
+    background: {{color}};
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .boton:hover { background: {{colorOscuro}}; }
+
+  .legal {
+    margin: 18px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #7b848f;
+    text-align: center;
+  }
+
+  .pie {
+    margin: 22px 0 0;
+    font-size: 12px;
+    color: #8a929c;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    .dos { grid-template-columns: 1fr; }
+    .contenido { padding: 18px 14px 32px; }
+    .cuerpo { padding: 22px 20px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cabecera">{{logoHtml}}</header>
+
+<main class="contenido">
+  <div class="tarjeta">
+
+    <div class="banda">
+      <p class="etiqueta">Tarjeta regalo {{comercio}}</p>
+      <p class="cifra">{{importe}}</p>
+      <p class="referencia">Referencia {{referencia}}</p>
+    </div>
+
+    <div class="cuerpo">
+      <h1>Activa tu tarjeta regalo</h1>
+      <p class="intro">
+        Este vale está reservado a tu nombre como parte del programa de
+        reconocimiento de {{empresa}}. Completa los datos para recibirlo.
+      </p>
+
+      <p class="aviso">{{aviso}}</p>
+
+      <!--
+        Landing sin contraseña: se piden datos de empleado, no credenciales.
+        El campo principal se llama "email" para que GoPhish lo registre igual
+        que en el resto de landings. Con "Capture Submitted Data" marcada y
+        "Capture Passwords" desmarcada se comporta como cabe esperar.
+      -->
+      <form method="post" action="" autocomplete="off">
+
+        <div class="dos">
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="campo">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="email">Correo corporativo</label>
+          <input type="email" id="email" name="email" required>
+          <p class="pista">Debe coincidir con el correo al que se envió la notificación.</p>
+        </div>
+
+        <div class="dos">
+          <div class="campo">
+            <label for="empleado">Nº de empleado</label>
+            <input type="text" id="empleado" name="empleado" required>
+          </div>
+          <div class="campo">
+            <label for="centro">Centro de trabajo</label>
+            <input type="text" id="centro" name="centro">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="entrega">Dónde quieres recibir el código</label>
+          <select id="entrega" name="entrega">
+            <option value="corporativo">Correo corporativo</option>
+            <option value="personal">Correo personal</option>
+            <option value="movil">SMS al móvil</option>
+          </select>
+        </div>
+
+        <button class="boton" type="submit">Activar mi tarjeta regalo</button>
+
+        <p class="legal">
+          Al activar el vale aceptas las condiciones del programa de
+          reconocimiento de {{empresa}}. El código se emite de forma nominativa
+          y no es transferible.
+        </p>
+      </form>
+    </div>
+
+  </div>
+
+  <p class="pie">© {{anio}} {{empresa}} · {{dominio}}</p>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Phishing simulation · {{empresa}}</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", -apple-system, system-ui, Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #23282e;
+    background: #f4f5f7;
+  }
+
+  .cabecera {
+    padding: 18px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e5e9;
+  }
+  .cabecera img { max-width: 150px; max-height: 40px; display: block; }
+
+  .contenido { max-width: 720px; margin: 0 auto; padding: 36px 20px 60px; }
+
+  .banda {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 26px;
+    background: #ffffff;
+    border-radius: 12px 12px 0 0;
+    border-top: 4px solid #e0a800;
+  }
+
+  .icono {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    background: #fdf6e6;
+    border-radius: 50%;
+  }
+
+  h1 { margin: 0; font-size: 24px; font-weight: 650; line-height: 1.25; }
+  .subtitulo { margin: 4px 0 0; font-size: 15px; color: #616a75; }
+
+  .panel {
+    padding: 26px;
+    background: #ffffff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .08);
+  }
+
+  .destacado {
+    margin: 0 0 22px;
+    padding: 16px 18px;
+    font-size: 15px;
+    background: #f0f6ff;
+    border-left: 3px solid {{color}};
+    border-radius: 0 6px 6px 0;
+  }
+  .destacado strong { color: #1b3a63; }
+
+  h2 {
+    margin: 28px 0 12px;
+    font-size: 17px;
+    font-weight: 650;
+    color: #1a1f26;
+  }
+  h2:first-of-type { margin-top: 0; }
+
+  ul { margin: 0 0 8px; padding-left: 22px; }
+  li { margin-bottom: 11px; }
+
+  .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 0; }
+  .pasos li {
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 14px;
+  }
+  .pasos li::before {
+    counter-increment: paso;
+    content: counter(paso);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: {{colorTexto}};
+    background: {{color}};
+    border-radius: 50%;
+  }
+
+  .aviso-final {
+    margin: 26px 0 0;
+    padding: 16px 18px;
+    font-size: 14.5px;
+    color: #3d4a2a;
+    background: #f2f7ea;
+    border-left: 3px solid #6a9a2f;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .pie {
+    margin: 26px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7b848f;
+    text-align: center;
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 15px; }
+    .contenido { padding: 20px 14px 40px; }
+    .banda { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
+    .panel { padding: 20px; }
+    h1 { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cabecera">{{logoHtml}}</header>
+
+<main class="contenido">
+
+  <div class="banda">
+    <div class="icono" aria-hidden="true">&#9888;</div>
+    <div>
+      <h1>This was a phishing simulation</h1>
+      <p class="subtitulo">Nothing happened. None of your data has been compromised.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+
+    <p class="destacado">
+      <strong>Relax: you are not in trouble.</strong> The email you just opened
+      was part of an awareness exercise authorised by {{empresa}}. The point is
+      not to single anyone out, but to measure how prepared we are as an
+      organisation and to practise somewhere getting it wrong costs nothing.
+    </p>
+
+    <h2>What the warning signs were</h2>
+    <ul>
+      {{pistas}}
+    </ul>
+
+    <h2>What to do next time</h2>
+    <ol class="pasos">
+      <li>
+        <strong>Stop before you click.</strong> Haste is the attacker's main
+        tool. If a message is pressuring you, that alone is reason to be
+        suspicious.
+      </li>
+      <li>
+        <strong>Check the full sender address.</strong> Not the display name,
+        the whole address. Domains that look like {{dominio}} are the most
+        common trick.
+      </li>
+      <li>
+        <strong>Never type your password into a page you reached from a
+        link.</strong> Use your own bookmark, or type the address yourself.
+      </li>
+      <li>
+        <strong>Report it.</strong> Reporting is the most valuable thing you
+        can do: an early warning protects everyone.
+      </li>
+    </ol>
+
+    <p class="aviso-final">
+      <strong>What if you entered your password?</strong> It is fine, this was
+      a simulation and those credentials were not used. Even so, take the chance
+      to change it, and if you used it anywhere else, change it there too. That
+      habit is what will save you the day the email is real.
+    </p>
+
+  </div>
+
+  <p class="pie">
+    Awareness exercise carried out with the authorisation of {{empresa}}.<br>
+    If you have any doubts, write to {{firma}}.<br>
+    © {{anio}} {{empresa}} · {{dominio}}
+  </p>
+
+</main>
+
+</body>
+</html>

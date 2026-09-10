@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ca" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{empresa}}</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+<style>
+  @media only screen and (max-width:620px) {
+    .contenedor { width:100% !important; }
+    .relleno { padding-left:20px !important; padding-right:20px !important; }
+    .titular { font-size:21px !important; line-height:28px !important; }
+    .boton a { display:block !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#f3f3f3;">
+
+<div style="display:none;font-size:1px;color:#f3f3f3;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+  Acció requerida al teu compte de {{empresa}}
+  &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f3f3;">
+<tr>
+<td align="center" style="padding:28px 12px;">
+
+  <table role="presentation" class="contenedor" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#ffffff;">
+
+    <!-- Cabecera: logo del cliente + marca del servicio -->
+    <tr>
+      <td class="relleno" style="padding:22px 32px 18px;border-bottom:1px solid #e5e5e5;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="left" style="vertical-align:middle;">{{logoHtml}}</td>
+            <td align="right" style="vertical-align:middle;">
+              <!-- Marca de cuatro cuadros dibujada con tablas: sin imagen externa
+                   que cargar ni que delate la apertura a un tercero. -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-block;">
+                <tr>
+                  <td width="9" height="9" bgcolor="#f25022" style="font-size:0;line-height:0;">&nbsp;</td>
+                  <td width="2" style="font-size:0;line-height:0;">&nbsp;</td>
+                  <td width="9" height="9" bgcolor="#7fba00" style="font-size:0;line-height:0;">&nbsp;</td>
+                </tr>
+                <tr><td colspan="3" height="2" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+                <tr>
+                  <td width="9" height="9" bgcolor="#00a4ef" style="font-size:0;line-height:0;">&nbsp;</td>
+                  <td width="2" style="font-size:0;line-height:0;">&nbsp;</td>
+                  <td width="9" height="9" bgcolor="#ffb900" style="font-size:0;line-height:0;">&nbsp;</td>
+                </tr>
+              </table>
+              <span style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:#605e5c;padding-left:7px;vertical-align:middle;">Microsoft 365</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Cuerpo -->
+    <tr>
+      <td class="relleno" style="padding:30px 32px 6px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+        <h1 class="titular" style="margin:0 0 16px;font-size:23px;line-height:30px;font-weight:600;color:#201f1e;">
+          {{saludo}}, cal renovar la teva contrasenya
+        </h1>
+        <p style="margin:0 0 16px;font-size:15px;line-height:24px;color:#323130;">
+          {{entradilla}}
+        </p>
+        <p style="margin:0 0 18px;font-size:15px;line-height:24px;color:#323130;">
+          {{detalle}}
+        </p>
+      </td>
+    </tr>
+
+    <!-- Ficha de la cuenta -->
+    <tr>
+      <td class="relleno" style="padding:6px 32px 4px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#faf9f8;border-left:3px solid {{color}};">
+          <tr>
+            <td style="padding:16px 18px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#605e5c;width:120px;">Compte</td>
+                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#201f1e;font-weight:600;">{{.Email}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#605e5c;">Organització</td>
+                  <td style="padding:0 0 7px;font-size:13px;line-height:19px;color:#201f1e;">{{empresa}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0;font-size:13px;line-height:19px;color:#605e5c;">Estat</td>
+                  <td style="padding:0;font-size:13px;line-height:19px;color:#a4262c;font-weight:600;">Renovació pendent</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Aviso -->
+    <tr>
+      <td class="relleno" style="padding:18px 32px 4px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+        <p style="margin:0 0 22px;font-size:14px;line-height:22px;color:#8a5a00;background-color:#fdf6e6;padding:11px 14px;">
+          {{urgencia}}
+        </p>
+      </td>
+    </tr>
+
+    <!-- Llamada a la acción -->
+    <tr>
+      <td class="relleno" style="padding:0 32px 28px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="boton">
+          <tr>
+            <td align="center" bgcolor="{{color}}">
+              <a href="{{.URL}}"
+                 style="display:inline-block;padding:12px 30px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;line-height:20px;color:{{colorTexto}};text-decoration:none;">
+                {{cta}}
+              </a>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:14px 0 0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#8a929c;">
+          Si el botó no funciona, copia aquesta adreça al teu navegador:<br>
+          <span style="color:{{color}};word-break:break-all;">{{.URL}}</span>
+        </p>
+      </td>
+    </tr>
+
+    <!-- Pie -->
+    <tr>
+      <td class="relleno" style="padding:18px 32px 26px;border-top:1px solid #e5e5e5;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+        <p style="margin:0 0 4px;font-size:13px;line-height:20px;color:#323130;font-weight:600;">
+          {{cierre}}
+        </p>
+        <p style="margin:0 0 12px;font-size:12px;line-height:18px;color:#8a929c;">
+          Missatge generat automàticament pel sistema de gestió d'identitats de {{empresa}}.
+        </p>
+        <p style="margin:0;font-size:11px;line-height:17px;color:#a0a6ad;">
+          © {{anio}} {{empresa}} · {{dominio}}<br>
+          Si creus que aquest missatge no és legítim, reporta-ho a {{equipoTi}}.
+        </p>
+      </td>
+    </tr>
+
+  </table>
+
+</td>
+</tr>
+</table>
+
+{{.Tracker}}
+</body>
+</html>

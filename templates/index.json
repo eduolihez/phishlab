@@ -1,0 +1,13 @@
+{
+  "_comentario": "Índice del catálogo. El navegador no puede listar directorios: para añadir una plantilla, crea su carpeta bajo emails/ o landings/ y añade su id aquí.",
+  "emails": [
+    "tarjeta-regalo-antiguedad",
+    "m365-caducidad-password",
+    "rrhh-nomina"
+  ],
+  "landings": [
+    "microsoft-login",
+    "canjeo-tarjeta-regalo",
+    "pagina-formativa"
+  ]
+}

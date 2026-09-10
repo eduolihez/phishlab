@@ -1,0 +1,117 @@
+{
+  "nombre": "Tarjeta regalo por antigüedad",
+  "descripcion": "Reconocimiento por los años trabajados, con tarjeta canjeable y plazo corto.",
+  "familia": "recompensa",
+  "idiomas": ["es", "ca", "en"],
+  "remitente": { "nombre": "Recursos Humanos", "buzon": "beneficios" },
+
+  "campos": [
+    { "clave": "anios", "etiqueta": "Años de antigüedad", "tipo": "numero", "defecto": "5" },
+    { "clave": "importe", "etiqueta": "Importe de la tarjeta", "tipo": "texto", "defecto": "100 €" },
+    { "clave": "comercio", "etiqueta": "Comercio del vale", "tipo": "texto", "defecto": "Amazon" },
+    { "clave": "plazo", "etiqueta": "Plazo para canjear", "tipo": "texto", "defecto": "48 horas",
+      "ayuda": "Cuanto más corto, más presión. En nivel difícil conviene un plazo creíble (una semana)." },
+    { "clave": "referencia", "etiqueta": "Referencia del vale", "tipo": "texto", "defecto": "RC-2026-4471" }
+  ],
+
+  "asunto": {
+    "es": {
+      "facil": "FELICIDADES!! Tu tarjeta regalo de {{importe}} te esta esperando",
+      "medio": "Reconocimiento por tus {{anios}} años en {{empresa}}",
+      "dificil": "Programa de reconocimiento {{anio}} — vale ref. {{referencia}}"
+    },
+    "ca": {
+      "facil": "FELICITATS!! La teva targeta regal de {{importe}} t'esta esperant",
+      "medio": "Reconeixement pels teus {{anios}} anys a {{empresa}}",
+      "dificil": "Programa de reconeixement {{anio}} — val ref. {{referencia}}"
+    },
+    "en": {
+      "facil": "CONGRATULATIONS!! Your {{importe}} gift card is waiting",
+      "medio": "Recognition for your {{anios}} years at {{empresa}}",
+      "dificil": "{{anio}} recognition programme — voucher ref. {{referencia}}"
+    }
+  },
+
+  "fragmentos": {
+    "es": {
+      "facil": {
+        "saludo": "Estimado empleado",
+        "entradilla": "Le informamos que ha sido SELECCIONADO para recibir una tarjeta regalo de <strong>{{importe}}</strong> para {{comercio}} por su trabajo en {{empresa}}.",
+        "detalle": "Esta promocion es exclusiva para empleados y no se volvera a repetir.",
+        "urgencia": "ATENCION: debe reclamarlo antes de {{plazo}} o su vale sera asignado a otro compañero.",
+        "cta": "RECLAMAR MI TARJETA AHORA",
+        "cierre": "Departamento de Beneficios al Empleado"
+      },
+      "medio": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "Por tus <strong>{{anios}} años</strong> trabajando en {{empresa}}, el equipo de personas ha querido reconocerlo con una tarjeta regalo de <strong>{{importe}}</strong> para {{comercio}}.",
+        "detalle": "El vale queda registrado con la referencia {{referencia}} y va asociado a tu correo corporativo.",
+        "urgencia": "Tienes {{plazo}} para activarlo. Pasado ese plazo, el vale caduca y vuelve a la bolsa común.",
+        "cta": "Activar mi tarjeta regalo",
+        "cierre": "{{firma}} · {{empresa}}"
+      },
+      "dificil": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "Dentro del programa anual de reconocimiento de {{empresa}}, se te ha asignado un vale de <strong>{{importe}}</strong> para {{comercio}} correspondiente a tus {{anios}} años en la compañía.",
+        "detalle": "Referencia del vale: {{referencia}}. La activación es individual y queda registrada a nombre del titular, por lo que te pedimos que no compartas este enlace.",
+        "urgencia": "El periodo de activación se cierra en {{plazo}}. Si no puedes hacerlo dentro de ese margen, responde a este correo y lo gestionamos.",
+        "cta": "Activar el vale",
+        "cierre": "{{firma}} · {{empresa}}"
+      }
+    },
+
+    "ca": {
+      "facil": {
+        "saludo": "Benvolgut empleat",
+        "entradilla": "L'informem que ha estat SELECCIONAT per rebre una targeta regal de <strong>{{importe}}</strong> per a {{comercio}} per la seva feina a {{empresa}}.",
+        "detalle": "Aquesta promocio es exclusiva per a empleats i no es tornara a repetir.",
+        "urgencia": "ATENCIO: ho ha de reclamar abans de {{plazo}} o el seu val sera assignat a un altre company.",
+        "cta": "RECLAMAR LA MEVA TARGETA ARA",
+        "cierre": "Departament de Beneficis a l'Empleat"
+      },
+      "medio": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "Pels teus <strong>{{anios}} anys</strong> treballant a {{empresa}}, l'equip de persones ho ha volgut reconèixer amb una targeta regal de <strong>{{importe}}</strong> per a {{comercio}}.",
+        "detalle": "El val queda registrat amb la referència {{referencia}} i va associat al teu correu corporatiu.",
+        "urgencia": "Tens {{plazo}} per activar-lo. Passat aquest termini, el val caduca i torna a la bossa comuna.",
+        "cta": "Activar la meva targeta regal",
+        "cierre": "{{firma}} · {{empresa}}"
+      },
+      "dificil": {
+        "saludo": "Hola {{.FirstName}}",
+        "entradilla": "Dins del programa anual de reconeixement de {{empresa}}, se t'ha assignat un val de <strong>{{importe}}</strong> per a {{comercio}} corresponent als teus {{anios}} anys a la companyia.",
+        "detalle": "Referència del val: {{referencia}}. L'activació és individual i queda registrada a nom del titular, per això et demanem que no comparteixis aquest enllaç.",
+        "urgencia": "El període d'activació es tanca d'aquí a {{plazo}}. Si no pots fer-ho dins d'aquest marge, respon a aquest correu i ho gestionem.",
+        "cta": "Activar el val",
+        "cierre": "{{firma}} · {{empresa}}"
+      }
+    },
+
+    "en": {
+      "facil": {
+        "saludo": "Dear employee",
+        "entradilla": "We inform you that you have been SELECTED to receive a <strong>{{importe}}</strong> {{comercio}} gift card for your work at {{empresa}}.",
+        "detalle": "This promotion is exclusive for employees and will not be repeated.",
+        "urgencia": "ATTENTION: you must claim it before {{plazo}} or your voucher will be assigned to another colleague.",
+        "cta": "CLAIM MY CARD NOW",
+        "cierre": "Employee Benefits Department"
+      },
+      "medio": {
+        "saludo": "Hi {{.FirstName}}",
+        "entradilla": "For your <strong>{{anios}} years</strong> at {{empresa}}, the people team would like to recognise it with a <strong>{{importe}}</strong> {{comercio}} gift card.",
+        "detalle": "The voucher is registered under reference {{referencia}} and linked to your corporate email address.",
+        "urgencia": "You have {{plazo}} to activate it. After that, the voucher expires and returns to the general pool.",
+        "cta": "Activate my gift card",
+        "cierre": "{{firma}} · {{empresa}}"
+      },
+      "dificil": {
+        "saludo": "Hi {{.FirstName}}",
+        "entradilla": "As part of the {{empresa}} annual recognition programme, a <strong>{{importe}}</strong> {{comercio}} voucher has been assigned to you for your {{anios}} years with the company.",
+        "detalle": "Voucher reference: {{referencia}}. Activation is individual and recorded in the holder's name, so please do not share this link.",
+        "urgencia": "The activation window closes in {{plazo}}. If you cannot make it in time, reply to this email and we will sort it out.",
+        "cta": "Activate voucher",
+        "cierre": "{{firma}} · {{empresa}}"
+      }
+    }
+  }
+}
