@@ -137,6 +137,20 @@ export function vistaCampana() {
       return el('.nota.alerta', 'Elige al menos una pieza para poder exportar.');
     }
 
+    // La demo pública enseña cómo se compone una campaña, no entrega el
+    // material. Un ZIP con el HTML listo para pegar en GoPhish descargable
+    // desde internet es justo lo que no puede salir de aquí.
+    if (estado.modoDemo) {
+      return el('section', [
+        el('h2.titulo-bloque', { texto: 'Exportar' }),
+        el('.nota.alerta', [
+          el('strong', { texto: 'Desactivado en la demo. ' }),
+          'En la herramienta local, este botón descarga un ZIP con el HTML del correo, el de la landing, la página formativa, ',
+          'las instrucciones de importación en GoPhish y el checklist de autorización.',
+        ]),
+      ]);
+    }
+
     return el('section', [
       el('h2.titulo-bloque', { texto: 'Exportar' }),
       el('div', { style: { display: 'flex', gap: '9px', flexWrap: 'wrap' } }, [

@@ -27,13 +27,27 @@ const IDIOMAS_ESPERADOS = ['es', 'ca', 'en'];
  * Browsing lo marque. Para la demo se usan marcas inventadas.
  */
 const MARCAS_REALES = [
-  'microsoft', 'office 365', 'office365', 'outlook', 'onedrive', 'sharepoint', 'teams', 'azure',
-  'google', 'gmail', 'workspace', 'apple', 'icloud', 'amazon', 'paypal', 'netflix', 'spotify',
-  'dropbox', 'docusign', 'adobe', 'slack', 'zoom', 'linkedin', 'whatsapp', 'facebook', 'instagram',
-  'bbva', 'caixabank', 'la caixa', 'santander', 'sabadell', 'bankinter', 'unicaja', 'ibercaja',
-  'openbank', 'revolut', 'bizum', 'correos', 'seur', 'dhl', 'ups', 'fedex', 'mrw', 'glovo',
-  'agencia tributaria', 'hacienda', 'seguridad social', 'dgt', 'sepe', 'endesa', 'iberdrola',
-  'naturgy', 'movistar', 'vodafone', 'orange', 'jazztel', 'trend micro', 'fortinet',
+  'microsoft', 'office 365', 'office365', 'onedrive', 'sharepoint', 'azure',
+  'gmail', 'icloud', 'amazon', 'paypal', 'netflix', 'spotify',
+  'dropbox', 'docusign', 'adobe', 'linkedin', 'whatsapp', 'facebook', 'instagram',
+  'bbva', 'caixabank', 'la caixa', 'bankinter', 'unicaja', 'ibercaja',
+  'openbank', 'revolut', 'bizum', 'seur', 'dhl', 'fedex', 'glovo',
+  'agencia tributaria', 'seguridad social', 'endesa', 'iberdrola',
+  'naturgy', 'movistar', 'vodafone', 'jazztel', 'trend micro', 'fortinet',
+];
+
+/**
+ * Marcas cuyo nombre es también una palabra corriente.
+ *
+ * «Correos» es la empresa postal y «correos» es el plural de correo; «Apple»
+ * es la marca y `-apple-system` es la tipografía del sistema; «Orange» es la
+ * operadora y también un color. Buscarlas sin distinguir mayúsculas llena el
+ * linter de falsos positivos y acaba con que nadie lo mira, así que estas se
+ * comprueban respetando la capitalización de la marca.
+ */
+const MARCAS_AMBIGUAS = [
+  'Correos', 'Apple', 'Orange', 'Teams', 'Google', 'Slack', 'Zoom', 'Outlook',
+  'Santander', 'Sabadell', 'Hacienda', 'DGT', 'SEPE', 'UPS', 'MRW', 'ING',
 ];
 
 let errores = 0;
@@ -247,14 +261,25 @@ function revisarHtml(plantilla, donde, html) {
  */
 function revisarDemo(plantilla) {
   const { id, carpeta, meta } = plantilla;
+
+  // Solo se mira lo que un visitante llegaría a leer. El andamiaje técnico de
+  // un layout de correo (el xmlns de VML, los comentarios condicionales de
+  // Outlook, `-apple-system` en la pila de fuentes) menciona marcas por
+  // motivos que no tienen nada que ver con suplantar a nadie.
   const textos = [
-    leerLayout(carpeta, meta),
-    JSON.stringify(meta),
-    ...meta.idiomas.map((l) => JSON.stringify(leerCopy(carpeta, l))),
-  ].join(' ').toLowerCase();
+    textoVisible(leerLayout(carpeta, meta)),
+    [meta.nombre, meta.descripcion, ...(meta.tags ?? []), ...(meta.campos ?? []).map((c) => `${c.etiqueta} ${c.defecto ?? ''}`)].join(' '),
+    ...meta.idiomas.map((l) => Object.values(leerCopy(carpeta, l)).map(aplanar).join(' ')),
+  ].join(' \n ');
 
   for (const marca of MARCAS_REALES) {
-    if (textos.includes(marca)) {
+    if (new RegExp(`\\b${escaparRegex(marca)}\\b`, 'i').test(textos)) {
+      error(`${id} (demo)`, `marcada como demo pública y menciona "${marca}" — usa una marca inventada`);
+    }
+  }
+
+  for (const marca of MARCAS_AMBIGUAS) {
+    if (new RegExp(`\\b${escaparRegex(marca)}\\b`).test(textos)) {
       error(`${id} (demo)`, `marcada como demo pública y menciona "${marca}" — usa una marca inventada`);
     }
   }
@@ -262,4 +287,27 @@ function revisarDemo(plantilla) {
   if (meta.captura === 'credenciales') {
     aviso(`${id} (demo)`, 'landing de credenciales en la demo pública: comprueba que el formulario no envía a ningún sitio');
   }
+}
+
+/**
+ * Texto que un lector vería en pantalla: fuera comentarios, <style>, <script>
+ * y todas las etiquetas con sus atributos.
+ */
+function textoVisible(html) {
+  return html
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ');
+}
+
+/** Aplana un fragmento de copy, sea cadena suelta u objeto de variantes. */
+function aplanar(valor) {
+  if (typeof valor === 'string') return valor;
+  if (valor && typeof valor === 'object') return Object.values(valor).join(' ');
+  return '';
+}
+
+function escaparRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }

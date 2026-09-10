@@ -119,7 +119,7 @@ export function vistaDetalle({ id }) {
             },
           })
         )),
-        el('button.btn.btn-mini', {
+        estado.modoDemo ? null : el('button.btn.btn-mini', {
           type: 'button',
           texto: 'Copiar HTML',
           onclick: async () => {
