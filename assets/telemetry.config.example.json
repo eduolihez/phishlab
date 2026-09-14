@@ -1,0 +1,4 @@
+{
+  "_comentario": "Copia este fichero a telemetry.config.json (sin '.example') y pon la clave real generada desde admin.eduolihez.com → Apps → phishlab. Sin ese fichero, la telemetría es un no-op: no rompe nada, simplemente no manda eventos.",
+  "apiKey": "PEGA_AQUI_LA_CLAVE_GENERADA_UNA_VEZ_DESDE_ADMIN"
+}
