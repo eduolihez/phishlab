@@ -167,3 +167,10 @@ El invariante de v1 se mantiene: la poda ocurre **antes** del render, y
 
 Clonado por URL. Envío de campañas (sigue siendo GoPhish). Cuentas de usuario.
 Build para la app. Page builder de bloques tipados.
+
+**Quishing (QR en el correo)**, evaluado 2026-09-14: un código QR solo enseña
+algo si codifica la URL de verdad, y esa URL la resuelve GoPhish en el
+momento de envío — PhishLab no la conoce en tiempo de composición. Renderizar
+un QR de mentira sería enseñar una señal falsa, no una real. Si algún día
+GoPhish expone la URL final antes del envío (por ejemplo, vía plantilla
+previa con `{{.URL}}` ya fijado), esto se puede reabrir.

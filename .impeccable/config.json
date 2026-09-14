@@ -1,0 +1,68 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "assets/css/app.css"
+        ],
+        "createdAt": "2026-09-10T12:44:21.921Z",
+        "reason": "Pre-existing .nota callout pattern from before this redesign (only recolored, not introduced); subtle 2px accent on a dark panel used consistently as a note/callout convention across the app, not new AI-slop styling"
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument sans",
+        "createdAt": "2026-09-10T12:44:22.025Z",
+        "reason": "user confirmed: chosen deliberately in DESIGN.md via /design-consultation and approved by the user (D5) as the body/UI font paired with General Sans display and JetBrains Mono code"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-09-10T16:34:05.108Z",
+        "reason": "HTML email/landing templates recreating real third-party brand typography (Google, PayPal, DHL, etc.) — email clients strip web fonts and fall back to system fonts, so Arial/Helvetica is the technically correct choice, not a lazy default. Same pattern as the pre-existing aviso.html and microsoft-login.html layouts."
+      },
+      {
+        "rule": "overused-font",
+        "value": "helvetica",
+        "createdAt": "2026-09-10T16:34:05.174Z",
+        "reason": "Same as Arial: web-safe font required for HTML email rendering, matching the real brand's actual email typography (PayPal, Netflix, Dropbox, Adobe)."
+      },
+      {
+        "rule": "overused-font",
+        "value": "helvetica neue",
+        "createdAt": "2026-09-10T16:34:05.259Z",
+        "reason": "Same as Arial/Helvetica: web-safe stack for HTML email templates (Dropbox), not a product-UI font choice."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "templates/landings/github-verificar-dispositivo/layout.html"
+        ],
+        "createdAt": "2026-09-14T13:04:04.796Z",
+        "reason": "Recreación fiel del login real de GitHub: los formularios de login de marca real son deliberadamente planos (titulo + texto de formulario uniforme), no paginas editoriales que necesiten escala dramatica. Mas contraste alejaria la plantilla del sitio original que replica."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "templates/landings/dropbox-iniciar-sesion/layout.html"
+        ],
+        "createdAt": "2026-09-14T13:04:04.889Z",
+        "reason": "Mismo caso: recreacion fiel del login real de Dropbox, jerarquia plana intencional propia de un formulario de acceso real."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "templates/landings/adobe-iniciar-sesion/layout.html"
+        ],
+        "createdAt": "2026-09-14T13:04:04.977Z",
+        "reason": "Mismo caso: recreacion fiel del login real de Adobe, jerarquia plana intencional propia de un formulario de acceso real."
+      }
+    ]
+  }
+}
