@@ -98,6 +98,35 @@ export function icono(nombre, tamano = 15) {
   return svg;
 }
 
+/**
+ * Indicador de wizard: Plantilla → Contenido → Marca → Exportar.
+ *
+ *   pasos(2, [
+ *     { etiqueta: 'Plantilla', onclick: () => ir(1) },
+ *     { etiqueta: 'Contenido', onclick: () => ir(2) },
+ *   ])
+ *
+ * `activo` es el número de paso actual (1-index). Los pasos anteriores se
+ * marcan como hechos; los pasos sin `onclick` no son navegables (por
+ * ejemplo, "Exportar" antes de haber elegido una plantilla).
+ */
+export function pasos(activo, lista) {
+  const nodos = lista.flatMap(({ etiqueta, onclick }, i) => {
+    const numero = i + 1;
+    const estadoPaso = numero < activo ? 'hecho' : numero === activo ? 'activa' : '';
+    const boton = el(`button.paso${estadoPaso ? '.' + estadoPaso : ''}`, {
+      type: 'button',
+      disabled: !onclick,
+      onclick,
+    }, [
+      el('span.paso-punto', { texto: numero < activo ? '✓' : String(numero) }),
+      el('span.paso-etiqueta', { texto: etiqueta }),
+    ]);
+    return i === 0 ? [boton] : [el('span.paso-linea'), boton];
+  });
+  return el('.pasos', nodos);
+}
+
 /** Interruptor con etiqueta y ayuda. Devuelve el <label> ya conectado. */
 export function interruptor({ id, etiqueta, ayuda, marcado, gobernado, insignia, alCambiar }) {
   const entrada = el('input', { type: 'checkbox', checked: Boolean(marcado), onchange: (e) => alCambiar(e.target.checked) });

@@ -7,7 +7,7 @@
  * iframe en cada tecla.
  */
 
-import { el, pintarEn, interruptor, brindis, peso, icono } from './dom.js';
+import { el, pintarEn, interruptor, brindis, peso, icono, pasos } from './dom.js';
 import {
   estado,
   actualizar,
@@ -16,7 +16,6 @@ import {
   ajustarBloque,
   reiniciarBloques,
   plantilla,
-  formativa,
 } from '../core/estado.js';
 import { componer, camposConDefectos } from '../core/componer.js';
 import { esPersonalizado, sugerirRemitente } from '../core/senales.js';
@@ -49,13 +48,21 @@ export function vistaDetalle({ id }) {
   const estadoVista = el('span', { texto: '' });
   const pesoVista = el('span.peso');
   const panelAjustes = el('.panel-ajustes');
+  const barraPasos = el('div');
   const cajaAvisos = el('div');
 
   const raiz = el('.detalle', [
-    panelAjustes,
-    el('.panel-vista', [barraDeVista(), lienzo, el('.pie-vista', [estadoVista, pesoVista])]),
+    barraPasos,
+    el('.detalle-cuerpo', [
+      panelAjustes,
+      el('.panel-vista', [barraDeVista(), lienzo, el('.pie-vista', [estadoVista, pesoVista])]),
+    ]),
   ]);
 
+  // Wizard de configuración: Plantilla (qué enseña) → Contenido (campos y
+  // textos) → Marca. "Exportar" vive en /nueva porque ahí es donde se
+  // emparejan correo y landing para el paquete final.
+  let pasoActual = 1;
   let temporizador = null;
   let ultimo = null;
 
@@ -138,27 +145,47 @@ export function vistaDetalle({ id }) {
 
   // ----------------------------------------------------------------- panel ---
 
+  function cambiarPaso(n) {
+    pasoActual = n;
+    pintarPanel();
+  }
+
   function pintarPanel() {
     const senalActiva = (id) => ultimo?.activas?.has(id) ?? false;
     const personalizado = esPersonalizado(estado.catalogo.presets, estado.preset, ultimo?.senales ?? {});
 
+    const contenidoDelPaso = {
+      1: () => [origen(), bloqueDificultad(personalizado), bloqueSenales(senalActiva), bloqueBloques()],
+      2: () => [bloqueCampos(), bloqueEditor(), bloqueIdioma()],
+      3: () => [panelMarca(() => recomponer(140))],
+    }[pasoActual]();
+
+    pintarEn(barraPasos, pasos(pasoActual, [
+      { etiqueta: 'Plantilla', onclick: () => cambiarPaso(1) },
+      { etiqueta: 'Contenido', onclick: () => cambiarPaso(2) },
+      { etiqueta: 'Marca', onclick: () => cambiarPaso(3) },
+      { etiqueta: 'Exportar', onclick: () => { location.hash = '#/nueva'; } },
+    ]));
+
     pintarEn(panelAjustes,
       el('a.volver', { href: '#/biblioteca' }, [icono('flecha', 13), 'Biblioteca']),
-      el('h2', { style: { margin: '0 0 3px', fontSize: '17px', letterSpacing: '-0.01em' }, texto: meta.nombre }),
-      el('p', { style: { margin: '0 0 18px', fontSize: '12.5px', color: 'var(--texto-medio)' }, texto: meta.descripcion ?? '' }),
-
-      origen(),
+      el('h2.titulo-detalle', { texto: meta.nombre }),
+      el('p.desc-detalle', { texto: meta.descripcion ?? '' }),
       cajaAvisos,
-
-      bloqueDificultad(personalizado),
-      bloqueSenales(senalActiva),
-      bloqueBloques(),
-      bloqueCampos(),
-      panelMarca(() => recomponer(140)),
-      bloqueIdioma(),
-      bloqueEditor(),
-      bloqueAcciones()
+      ...contenidoDelPaso,
+      piePaso()
     );
+  }
+
+  function piePaso() {
+    return el('.pie-paso', [
+      pasoActual > 1
+        ? el('button.btn.btn-mini', { type: 'button', onclick: () => cambiarPaso(pasoActual - 1) }, [icono('flecha', 12), 'Anterior'])
+        : el('span'),
+      pasoActual < 3
+        ? el('button.btn.btn-primario.btn-mini', { type: 'button', onclick: () => cambiarPaso(pasoActual + 1) }, ['Siguiente'])
+        : el('a.btn.btn-primario.btn-mini', { href: '#/nueva' }, [icono('descargar', 12), 'Ir a exportar']),
+    ]);
   }
 
   function origen() {
@@ -176,18 +203,30 @@ export function vistaDetalle({ id }) {
   function bloqueDificultad(personalizado) {
     return el('.bloque-ajustes', [
       el('h3.titulo-bloque', { texto: 'Dificultad' }),
-      el('.fila-presets', estado.catalogo.presets.map((p) =>
-        el(`button.chip-preset${estado.preset === p.id && !personalizado ? '.activa' : ''}`, {
+      el('.fila-presets', [
+        ...estado.catalogo.presets.map((p) =>
+          el(`button.chip-preset${estado.preset === p.id && !personalizado ? '.activa' : ''}`, {
+            type: 'button',
+            texto: p.nombre,
+            title: p.descripcion,
+            onclick: () => { volverAlPreset(p.id); recomponer(0); },
+          })
+        ),
+        el(`button.chip-preset${personalizado ? '.activa' : ''}`, {
           type: 'button',
-          texto: p.nombre,
-          title: p.descripcion,
-          onclick: () => { volverAlPreset(p.id); recomponer(0); },
-        })
-      )),
-      el('p.ayuda', { texto: estado.catalogo.presets.find((p) => p.id === estado.preset)?.descripcion ?? '' }),
-      personalizado
-        ? el('p.aviso-personalizado', { texto: `Ajustado a mano sobre «${estado.preset}» — pulsa el preset para volver` })
-        : null,
+          texto: 'Custom',
+          disabled: !personalizado,
+          title: personalizado
+            ? 'Combinación de señales que no coincide con ningún preset de fábrica'
+            : 'Cambia una señal suelta abajo para entrar en modo Custom',
+          onclick: () => {},
+        }),
+      ]),
+      el('p.ayuda', {
+        texto: personalizado
+          ? `Ajustado a mano sobre «${estado.catalogo.presets.find((p) => p.id === estado.preset)?.nombre ?? estado.preset}». Pulsa un preset para volver a una combinación de fábrica.`
+          : estado.catalogo.presets.find((p) => p.id === estado.preset)?.descripcion ?? '',
+      }),
     ]);
   }
 
@@ -293,19 +332,4 @@ export function vistaDetalle({ id }) {
     ]);
   }
 
-  function bloqueAcciones() {
-    const pareja = meta.tipo === 'emails' ? plantilla(estado.landingId) : plantilla(estado.emailId);
-    return el('.bloque-ajustes', [
-      el('h3.titulo-bloque', { texto: 'Siguiente paso' }),
-      el('.nota', [
-        'Seleccionada para la campaña actual. ',
-        pareja ? `Hace pareja con «${pareja.nombre}». ` : 'Falta elegir la otra mitad. ',
-        formativa() ? '' : 'No hay página formativa en el catálogo.',
-      ]),
-      el('a.btn.btn-primario', {
-        href: '#/campana',
-        style: { marginTop: '10px', width: '100%', justifyContent: 'center' },
-      }, [icono('descargar', 14), 'Ir a montar la campaña']),
-    ]);
-  }
 }

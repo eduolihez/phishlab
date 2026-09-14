@@ -16,10 +16,11 @@ import { cargarCatalogo } from './core/catalog.js';
 import { estado, actualizar, restaurar } from './core/estado.js';
 import { detectarServidor, hayServidor } from './core/importar.js';
 import { camposConDefectos } from './core/componer.js';
+import { registrarVisita, activarTelemetriaLocal } from './core/telemetry.js';
 
 import { vistaBiblioteca } from './ui/biblioteca.js';
 import { vistaDetalle } from './ui/detalle.js';
-import { vistaCampana } from './ui/campana.js';
+import { vistaNuevaCampana } from './ui/nuevaCampana.js';
 import { vistaImportar } from './ui/importar.js';
 import { vistaSenales } from './ui/senales.js';
 
@@ -52,9 +53,60 @@ async function arrancar() {
   sanearSeleccion();
   pintarCronica();
   conectarRutas();
+  avisoDeUso();
+  registrarVisita();
 
   alNavegar(marcarNavegacion);
-  await arrancarRouter($('#vista-principal'));
+  await arrancarRouter($('#vista-principal'), '/nueva');
+}
+
+const CLAVE_AVISO = 'phishlab_aviso_aceptado_v1';
+
+/**
+ * Aviso de uso responsable, una vez por navegador. No es decoración legal:
+ * quien abra esto por primera vez —incluida cualquier visita desde el
+ * portfolio— tiene que ver antes de nada que esto es material de
+ * concienciación bajo autorización, no un kit para usar contra quien sea.
+ */
+function avisoDeUso() {
+  if (localStorage.getItem(CLAVE_AVISO) === '1') return;
+
+  const cerrar = () => {
+    localStorage.setItem(CLAVE_AVISO, '1');
+    capa.remove();
+  };
+
+  const capa = el('.capa-modal', [
+    el('.modal', [
+      el('.modal-icono', { texto: '⚠' }),
+      el('h2', { texto: 'Uso responsable únicamente' }),
+      el('p', {
+        texto: 'PhishLab genera material de simulación de phishing para programas de concienciación en seguridad. No envía nada por sí mismo y no es una herramienta de ataque.',
+      }),
+      el('p', {
+        texto: 'Úsalo solo con autorización expresa por escrito del titular de los sistemas y de las cuentas implicadas, dentro de un encargo contratado. Cada exportación incluye un checklist de autorización (AUTORIZACION.md) que debe completarse antes de lanzar cualquier campaña.',
+      }),
+      el('p', {
+        texto: 'Usar este material contra personas o sistemas sin autorización es ilegal. Al continuar confirmas que lo usarás exclusivamente en el marco de pruebas autorizadas.',
+      }),
+      estado.modoDemo ? null : el('label.casilla', { style: { marginBottom: '18px' } }, [
+        el('input', {
+          type: 'checkbox',
+          onchange: (e) => activarTelemetriaLocal(e.target.checked),
+        }),
+        el('span', {
+          texto: 'Compartir estadísticas de uso anónimas (qué plantillas se usan, no clientes ni expedientes) con el panel de eduolihez.com. Opcional, y se puede cambiar luego.',
+        }),
+      ]),
+      el('button.btn.btn-primario', {
+        type: 'button',
+        texto: 'Entiendo, es solo para pruebas autorizadas',
+        onclick: cerrar,
+      }),
+    ]),
+  ]);
+
+  document.body.append(capa);
 }
 
 /**
@@ -82,9 +134,9 @@ function sanearSeleccion() {
 }
 
 function conectarRutas() {
+  registrar('/nueva', () => vistaNuevaCampana());
   registrar('/biblioteca', () => vistaBiblioteca());
   registrar('/plantilla/:tipo/:id', (params) => vistaDetalle(params));
-  registrar('/campana', () => vistaCampana());
   registrar('/senales', () => vistaSenales());
 
   if (estado.modoDemo) {
@@ -127,7 +179,7 @@ function pintarCronica() {
       texto: hayServidor() ? 'servidor local' : 'solo lectura',
       class: hayServidor() ? 'pildora pildora-acento' : 'pildora pildora-alerta',
     }),
-    el('a.btn.btn-primario.btn-mini', { href: '#/campana', texto: 'Montar campaña' })
+    el('a.btn.btn-primario.btn-mini', { href: '#/nueva', texto: 'Montar campaña' })
   );
 }
 
