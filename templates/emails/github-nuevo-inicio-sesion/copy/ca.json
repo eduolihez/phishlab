@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "[GitHub] S'ha afegit un nou dispositiu al teu compte",
+    "urgencia": "[GitHub] Nou inici de sessió des de {{ubicacion}}",
+    "urgencia+erratas": "[GitHub] ALERTA: acces no reconegut al seu compte"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Verifica aquest dispositiu si no vas ser tu"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hem vist un nou inici de sessió",
+    "urgencia": "{{saludo}}, reconeixes aquest dispositiu?",
+    "urgencia+erratas": "{{saludo}}, ACCES NO RECONEGUT detectat"
+  },
+  "entradilla": {
+    "base": "El teu compte de GitHub es va fer servir per iniciar sessió des d'un nou dispositiu. Si vas ser tu, no cal que facis res.",
+    "urgencia": "S'ha fet servir el teu compte per accedir a <strong>{{repositorio}}</strong> des de {{ubicacion}}, amb un dispositiu que no reconeixem.",
+    "urgencia+erratas": "S'ha detectat un acces no autoritzat al seu compte i al repositori {{repositorio}}. Si no ha estat vostè, actui de seguida."
+  },
+  "detalle": {
+    "base": "Pots revisar les teves sessions actives i les teves claus SSH des de la configuració de seguretat quan vulguis.",
+    "urgencia": "Si no reconeixes el dispositiu, revoca'l i rota els teus tokens d'accés personal des de l'enllaç de sota.",
+    "urgencia+erratas": "Revoqui l'acces i roti les seves credencials ARA. El repositori conte secrets de desplegament."
+  },
+  "urgencia": {
+    "base": "No hi ha cap acció urgent: això és només un avís informatiu.",
+    "urgencia": "Com abans revisis l'accés, menys temps té qui hagi entrat amb el teu compte.",
+    "urgencia+erratas": "ATENCIO: la sessio segueix ACTIVA ara mateix al repositori de produccio."
+  },
+  "cta": {
+    "base": "Veure dispositius",
+    "urgencia": "Revisar aquest dispositiu",
+    "urgencia+erratas": "REVOCAR ACCES ARA"
+  },
+  "cierre": {
+    "base": "L'equip de GitHub",
+    "urgencia+erratas": "GitHub Security"
+  },
+  "fichaEtiqueta1": "Repositori",
+  "fichaValor1": "{{repositorio}}",
+  "fichaEtiqueta2": "Dispositiu",
+  "fichaValor2": "{{dispositivo}}",
+  "fichaEtiqueta3": "Ubicació",
+  "fichaValor3": {
+    "base": "{{ubicacion}}",
+    "urgencia+erratas": "{{ubicacion}} · SENSE VERIFICAR"
+  }
+}

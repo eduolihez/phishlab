@@ -1,0 +1,21 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "tituloPagina": "Torna a iniciar sessió",
+  "subtitulo": "Per la teva seguretat, confirma la teva contrasenya per continuar.",
+  "aviso": {
+    "base": "",
+    "urgencia": "La teva subscripció està en risc. Confirma la teva contrasenya per actualitzar el pagament."
+  },
+  "phPassword": "Contrasenya",
+  "errorPassword": "Introdueix la teva contrasenya per continuar.",
+  "btnContinuar": "Continuar",
+  "enlaceOlvido": "Has oblidat la teva contrasenya?",
+  "enlaceAyuda": "Ajuda",
+  "enlacePrivacidad": "Privacitat",
+  "enlaceCondiciones": "Condicions d'ús"
+}

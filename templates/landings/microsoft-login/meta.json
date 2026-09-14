@@ -4,6 +4,7 @@
   "descripcion": "Login en dos pasos con branding del tenant. Escrito a mano, no es un volcado del sitio real.",
   "familia": "microsoft",
   "categoria": "saas-corporativo",
+  "empresa": "Microsoft",
   "tags": [
     "credenciales",
     "login",

@@ -4,38 +4,103 @@
   "descripcion": "Aviso de expiración de credenciales. Enlaza de forma natural con la landing de login de Microsoft.",
   "familia": "microsoft",
   "categoria": "saas-corporativo",
-  "tags": ["credenciales", "ti", "contraseña", "microsoft-365"],
-  "idiomas": ["es", "ca", "en"],
+  "empresa": "Microsoft",
+  "tags": [
+    "credenciales",
+    "ti",
+    "contraseña",
+    "microsoft-365"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
   "demo": false,
-
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-10",
     "notas": "Maquetación escrita a mano imitando el formato de los avisos de identidad de Microsoft 365. No es un volcado del correo real."
   },
-
-  "remitente": { "nombre": "Soporte TI", "buzon": "soporte" },
-
+  "remitente": {
+    "nombre": "Soporte TI",
+    "buzon": "soporte"
+  },
   "campos": [
-    { "clave": "dias", "etiqueta": "Días hasta la caducidad", "tipo": "numero", "defecto": "2" },
-    { "clave": "fechaCaducidad", "etiqueta": "Fecha de caducidad", "tipo": "texto", "defecto": "viernes 18" },
-    { "clave": "equipoTi", "etiqueta": "Nombre del equipo de TI", "tipo": "texto", "defecto": "Servicio de Soporte TI",
-      "ayuda": "Si conoces el nombre real del equipo del cliente, úsalo: sube mucho la tasa en nivel difícil." }
+    {
+      "clave": "dias",
+      "etiqueta": "Días hasta la caducidad",
+      "tipo": "numero",
+      "defecto": "2"
+    },
+    {
+      "clave": "fechaCaducidad",
+      "etiqueta": "Fecha de caducidad",
+      "tipo": "texto",
+      "defecto": "viernes 18"
+    },
+    {
+      "clave": "equipoTi",
+      "etiqueta": "Nombre del equipo de TI",
+      "tipo": "texto",
+      "defecto": "Servicio de Soporte TI",
+      "ayuda": "Si conoces el nombre real del equipo del cliente, úsalo: sube mucho la tasa en nivel difícil."
+    }
   ],
-
   "bloques": [
-    { "id": "preheader", "etiqueta": "Texto de vista previa", "opcional": true, "defecto": true,
-      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo." },
-    { "id": "cabecera", "etiqueta": "Cabecera con logo", "opcional": true, "defecto": true },
-    { "id": "marca-servicio", "etiqueta": "Marca del servicio (Microsoft 365)", "senal": "!incoherencia-marca",
-      "ayuda": "Desaparece cuando enciendes la señal de incoherencia de marca." },
-    { "id": "ficha-cuenta", "etiqueta": "Ficha de la cuenta", "opcional": true, "defecto": true,
-      "ayuda": "Cuenta, organización y estado. Sube mucho la credibilidad porque el correo demuestra saber quién eres." },
-    { "id": "urgencia", "etiqueta": "Bloque de urgencia", "senal": "urgencia" },
-    { "id": "enlace-visible", "etiqueta": "URL en crudo bajo el botón", "senal": "enlace-visible" },
-    { "id": "pie", "etiqueta": "Pie de firma", "opcional": true, "defecto": true },
-    { "id": "pie-legal", "etiqueta": "Pie legal completo", "senal": "!incoherencia-marca" },
-    { "id": "tracker", "etiqueta": "Píxel de seguimiento", "opcional": true, "defecto": true,
-      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe expresamente." }
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio (Microsoft 365)",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece cuando enciendes la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha-cuenta",
+      "etiqueta": "Ficha de la cuenta",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Cuenta, organización y estado. Sube mucho la credibilidad porque el correo demuestra saber quién eres."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe expresamente."
+    }
   ]
 }

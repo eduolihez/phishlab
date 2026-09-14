@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de Atlassian/Jira. Escrita a mano, no un
+     volcado del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #172b4d;
+    background-color: #f4f5f7;
+  }
+
+  .envoltorio { width: 100%; max-width: 400px; }
+
+  .marca-tenant { margin-bottom: 16px; min-height: 24px; text-align: center; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .marca-atl { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 24px; }
+  .marca-atl .icono {
+    width: 24px; height: 24px; background: #2684ff; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 14px;
+  }
+  .marca-atl span.texto { font-size: 18px; font-weight: 700; color: #172b4d; }
+
+  .tarjeta {
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(9,30,66,.25), 0 0 1px 1px rgba(9,30,66,.13);
+    padding: 40px 32px;
+  }
+
+  h1 { margin: 0 0 22px; font-size: 20px; font-weight: 600; text-align: center; }
+
+  .aviso {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #974f0c;
+    background: #fffae6;
+    padding: 11px 13px;
+    border-radius: 3px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 16px; }
+  label { display: block; margin-bottom: 6px; font-size: 12.5px; font-weight: 600; color: #5e6c84; }
+
+  .campo {
+    width: 100%;
+    padding: 9px 11px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #172b4d;
+    background: #fafbfc;
+    border: 2px solid #dfe1e6;
+    border-radius: 3px;
+    outline: none;
+  }
+  .campo:focus { border-color: #2684ff; background: #ffffff; }
+
+  .enlace-olvido { text-align: right; margin: -8px 0 18px; font-size: 12.5px; }
+  .enlace-olvido a { color: #0052cc; text-decoration: none; }
+
+  .boton {
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #0052cc;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .boton:hover { background: #0747a6; }
+
+  .pie {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 22px;
+    font-size: 11.5px;
+    color: #6b778c;
+  }
+  .pie a { color: #6b778c; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <div class="marca-tenant">{{logoHtml}}</div>
+
+  <!--@bloque:marca @opcional-->
+  <div class="marca-atl" aria-hidden="true">
+    <span class="icono">A</span>
+    <span class="texto">Atlassian</span>
+  </div>
+  <!--@/bloque-->
+
+  <div class="tarjeta">
+    <h1>{{tituloPagina}}</h1>
+
+    <!--@bloque:aviso-ticket @senal:urgencia-->
+    <p class="aviso">{{aviso}}</p>
+    <!--@/bloque-->
+
+    <!--
+      Campos "email"/"password" exactos: es como GoPhish sabe cuál descartar
+      cuando "Capture Passwords" está desmarcada en la campaña.
+    -->
+    <form method="post" action="" autocomplete="off">
+      <div class="grupo-campo">
+        <label for="email">{{etiquetaEmail}}</label>
+        <input class="campo" type="email" id="email" name="email" required autofocus>
+      </div>
+      <div class="grupo-campo">
+        <label for="password">{{etiquetaPassword}}</label>
+        <input class="campo" type="password" id="password" name="password" required>
+      </div>
+      <div class="enlace-olvido"><a href="#">{{enlaceOlvido}}</a></div>
+      <button class="boton" type="submit">{{btnEntrar}}</button>
+    </form>
+  </div>
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <a href="https://www.atlassian.com/legal/privacy-policy" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+    <a href="https://www.atlassian.com/legal/customer-agreement" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  </div>
+  <!--@/bloque-->
+</div>
+
+</body>
+</html>

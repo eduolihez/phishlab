@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación de la pantalla de reautenticación de Netflix antes de tocar
+     el método de pago. Escrita a mano, no un volcado del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    background: #000000;
+  }
+
+  .envoltorio { width: 100%; max-width: 440px; }
+
+  .marca-tenant { margin-bottom: 18px; min-height: 24px; text-align: center; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .marca-nf { text-align: center; margin-bottom: 30px; }
+  .marca-nf span { font-size: 30px; font-weight: 800; letter-spacing: -.5px; color: #e50914; }
+
+  .tarjeta { padding: 0 8px; }
+
+  h1 { margin: 0 0 10px; font-size: 25px; font-weight: 700; text-align: center; }
+  .subtitulo { margin: 0 0 26px; font-size: 15px; color: #b3b3b3; text-align: center; line-height: 22px; }
+
+  .aviso {
+    margin: 0 0 20px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #ffb15c;
+    background: #2a1f10;
+    padding: 12px 14px;
+    border-radius: 4px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 16px; position: relative; }
+  .campo {
+    width: 100%;
+    padding: 16px 14px 6px;
+    font-family: inherit;
+    font-size: 16px;
+    color: #ffffff;
+    background: #333333;
+    border: 1px solid #8c8c8c;
+    border-radius: 4px;
+    outline: none;
+  }
+  .campo:focus { border-color: #ffffff; }
+  .campo::placeholder { color: #8c8c8c; }
+
+  .error { margin: 6px 0 0; font-size: 13px; color: #e87c03; }
+  .error:empty { display: none; }
+
+  .boton {
+    width: 100%;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #e50914;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  .boton:hover { background: #c11119; }
+
+  .enlaces { text-align: center; margin-top: 18px; font-size: 13.5px; color: #b3b3b3; }
+  .enlaces a { color: #ffffff; text-decoration: none; }
+  .enlaces a:hover { text-decoration: underline; }
+
+  .pie {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 28px;
+    font-size: 12px;
+    color: #737373;
+  }
+  .pie a { color: #737373; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <div class="marca-tenant">{{logoHtml}}</div>
+  <!--@bloque:marca @opcional-->
+  <div class="marca-nf" aria-hidden="true"><span>NETFLIX</span></div>
+  <!--@/bloque-->
+
+  <div class="tarjeta">
+    <h1>{{tituloPagina}}</h1>
+    <p class="subtitulo">{{subtitulo}}</p>
+
+    <!--@bloque:aviso-pago @senal:urgencia-->
+    <p class="aviso">{{aviso}}</p>
+    <!--@/bloque-->
+
+    <!--
+      Campos "email"/"password" exactos: es como GoPhish sabe cuál descartar
+      cuando "Capture Passwords" está desmarcada en la campaña. La cuenta ya
+      "sabe" el correo (como en el flujo real), así que aquí solo se
+      reintroduce la contraseña.
+    -->
+    <form method="post" action="" autocomplete="off">
+      <input type="hidden" name="email" value="{{cuentaEmail}}">
+      <div class="grupo-campo">
+        <input class="campo" type="password" id="password" name="password" placeholder="{{phPassword}}" required autofocus>
+        <p class="error" id="error-password" hidden>{{errorPassword}}</p>
+      </div>
+      <button class="boton" type="submit">{{btnContinuar}}</button>
+    </form>
+
+    <div class="enlaces"><a href="#">{{enlaceOlvido}}</a></div>
+  </div>
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <a href="https://help.netflix.com" target="_blank" rel="noopener">{{enlaceAyuda}}</a>
+    <a href="https://help.netflix.com/legal/privacy" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+    <a href="https://help.netflix.com/legal/termsofuse" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  </div>
+  <!--@/bloque-->
+</div>
+
+</body>
+</html>

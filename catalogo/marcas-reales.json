@@ -1,0 +1,972 @@
+[
+  {
+    "id": "google-verificacion-actividad",
+    "tipo": "emails",
+    "nombre": "Google · Verificación de actividad inusual",
+    "descripcion": "Alerta de acceso desde un dispositivo nuevo a la cuenta de Google/Workspace. El correo con más autoridad percibida que existe: nadie cuestiona una alerta de seguridad de Google.",
+    "familia": "saas",
+    "categoria": "saas-corporativo",
+    "tags": ["google", "workspace", "acceso", "credenciales", "mfa"],
+    "remitente": { "nombre": "Google", "buzon": "no-reply" },
+    "campos": [
+      { "clave": "dispositivo", "etiqueta": "Dispositivo detectado", "tipo": "texto", "defecto": "Windows · Chrome" },
+      { "clave": "ubicacion", "etiqueta": "Ubicación aproximada", "tipo": "texto", "defecto": "Madrid, España" },
+      { "clave": "fechaAcceso", "etiqueta": "Fecha y hora del acceso", "tipo": "texto", "defecto": "hoy a las 09:41" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Alerta de seguridad para tu cuenta de Google",
+          "urgencia": "Nuevo inicio de sesión: ¿has sido tú?",
+          "urgencia+erratas": "ALERTA: actividad sospechosa detectada en su cuenta"
+        },
+        "preheader": {
+          "base": "{{dispositivo}} · {{ubicacion}}",
+          "urgencia": "Revisa la actividad reciente de tu cuenta"
+        },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, hemos bloqueado un inicio de sesión sospechoso",
+          "urgencia": "{{saludo}}, ¿reconoces este acceso?",
+          "urgencia+erratas": "{{saludo}}, ACTIVIDAD SOSPECHOSA en tu cuenta"
+        },
+        "entradilla": {
+          "base": "Alguien usó tu contraseña para intentar acceder a tu cuenta de Google. Hemos bloqueado el intento, pero conviene que revises tu actividad reciente.",
+          "urgencia": "Se ha iniciado sesión en tu cuenta <strong>{{fechaAcceso}}</strong> desde {{ubicacion}}, con un dispositivo que no reconocemos ({{dispositivo}}).",
+          "urgencia+erratas": "Hemos detectado actividad sospechosa en su cuenta de Google desde {{ubicacion}}. Si no ha sido usted, su cuenta podria estar en riesgo."
+        },
+        "detalle": {
+          "base": "Si fuiste tú, no tienes que hacer nada más. Si no, te recomendamos revisar tu actividad y cambiar la contraseña cuanto antes.",
+          "urgencia": "Si no has sido tú, cierra la sesión de ese dispositivo y protege tu cuenta desde el enlace de abajo.",
+          "urgencia+erratas": "Verifique su identidad AHORA para evitar que se bloquee el acceso a Gmail, Drive y el resto de servicios."
+        },
+        "urgencia": {
+          "base": "Puedes revisar tu actividad reciente cuando quieras desde la configuración de la cuenta.",
+          "urgencia": "Cuanto antes revises el acceso, antes podemos ayudarte a proteger la cuenta si no has sido tú.",
+          "urgencia+erratas": "ATENCION: si no verifica en las proximas 2 horas, restringiremos el acceso a la cuenta por seguridad."
+        },
+        "cta": {
+          "base": "Revisar actividad",
+          "urgencia": "Comprobar actividad reciente",
+          "urgencia+erratas": "PROTEGER MI CUENTA AHORA"
+        },
+        "cierre": {
+          "base": "El equipo de Google",
+          "urgencia+erratas": "Equipo de Seguridad de Google"
+        },
+        "fichaEtiqueta1": "Dispositivo", "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Ubicación", "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Hora", "fichaValor3": { "base": "{{fechaAcceso}}", "urgencia+erratas": "{{fechaAcceso}} · SIN VERIFICAR" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Alerta de seguretat per al teu compte de Google",
+          "urgencia": "Nou inici de sessió: has estat tu?",
+          "urgencia+erratas": "ALERTA: activitat sospitosa detectada al seu compte"
+        },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}", "urgencia": "Revisa l'activitat recent del teu compte" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, hem bloquejat un inici de sessió sospitós",
+          "urgencia": "{{saludo}}, reconeixes aquest accés?",
+          "urgencia+erratas": "{{saludo}}, ACTIVITAT SOSPITOSA al teu compte"
+        },
+        "entradilla": {
+          "base": "Algú va fer servir la teva contrasenya per intentar accedir al teu compte de Google. Hem bloquejat l'intent, però convé que revisis la teva activitat recent.",
+          "urgencia": "S'ha iniciat sessió al teu compte <strong>{{fechaAcceso}}</strong> des de {{ubicacion}}, amb un dispositiu que no reconeixem ({{dispositivo}}).",
+          "urgencia+erratas": "Hem detectat activitat sospitosa al seu compte de Google des de {{ubicacion}}. Si no ha estat vostè, el seu compte podria estar en risc."
+        },
+        "detalle": {
+          "base": "Si vas ser tu, no has de fer res més. Si no, et recomanem revisar la teva activitat i canviar la contrasenya com abans millor.",
+          "urgencia": "Si no has estat tu, tanca la sessió d'aquest dispositiu i protegeix el teu compte des de l'enllaç de sota.",
+          "urgencia+erratas": "Verifiqui la seva identitat ARA per evitar que es bloquegi l'acces a Gmail, Drive i la resta de serveis."
+        },
+        "urgencia": {
+          "base": "Pots revisar la teva activitat recent quan vulguis des de la configuració del compte.",
+          "urgencia": "Com abans revisis l'accés, abans et podem ajudar a protegir el compte si no has estat tu.",
+          "urgencia+erratas": "ATENCIO: si no verifica en les properes 2 hores, restringirem l'acces al compte per seguretat."
+        },
+        "cta": { "base": "Revisar activitat", "urgencia": "Comprovar activitat recent", "urgencia+erratas": "PROTEGIR EL MEU COMPTE ARA" },
+        "cierre": { "base": "L'equip de Google", "urgencia+erratas": "Equip de Seguretat de Google" },
+        "fichaEtiqueta1": "Dispositiu", "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Ubicació", "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Hora", "fichaValor3": { "base": "{{fechaAcceso}}", "urgencia+erratas": "{{fechaAcceso}} · SENSE VERIFICAR" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Security alert for your Google Account",
+          "urgencia": "New sign-in: was this you?",
+          "urgencia+erratas": "ALERT: suspicious activity detected on your account"
+        },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}", "urgencia": "Review your account's recent activity" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Hi" },
+        "titular": {
+          "base": "{{saludo}}, we blocked a suspicious sign-in",
+          "urgencia": "{{saludo}}, do you recognise this sign-in?",
+          "urgencia+erratas": "{{saludo}}, SUSPICIOUS ACTIVITY on your account"
+        },
+        "entradilla": {
+          "base": "Someone used your password to try to sign in to your Google Account. We blocked the attempt, but you should review your recent activity.",
+          "urgencia": "Your account was signed in to <strong>{{fechaAcceso}}</strong> from {{ubicacion}}, using a device we do not recognise ({{dispositivo}}).",
+          "urgencia+erratas": "We have detected suspicious activity on your Google account from {{ubicacion}}. If this was not you, your account may be at risk."
+        },
+        "detalle": {
+          "base": "If this was you, no further action is needed. If not, we recommend reviewing your activity and changing your password as soon as possible.",
+          "urgencia": "If this was not you, sign that device out and secure your account from the link below.",
+          "urgencia+erratas": "Verify your identity NOW to avoid losing access to Gmail, Drive and other services."
+        },
+        "urgencia": {
+          "base": "You can review your recent activity at any time from your account settings.",
+          "urgencia": "The sooner you review the sign-in, the sooner we can help secure the account if this was not you.",
+          "urgencia+erratas": "WARNING: if you do not verify within the next 2 hours, we will restrict account access for security."
+        },
+        "cta": { "base": "Review activity", "urgencia": "Check recent activity", "urgencia+erratas": "SECURE MY ACCOUNT NOW" },
+        "cierre": { "base": "The Google Team", "urgencia+erratas": "Google Security Team" },
+        "fichaEtiqueta1": "Device", "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Location", "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Time", "fichaValor3": { "base": "{{fechaAcceso}}", "urgencia+erratas": "{{fechaAcceso}} · UNVERIFIED" }
+      }
+    }
+  },
+
+  {
+    "id": "github-nuevo-inicio-sesion",
+    "tipo": "emails",
+    "nombre": "GitHub · Nuevo inicio de sesión",
+    "descripcion": "Notificación de acceso desde un dispositivo nuevo, dirigida a perfiles técnicos. Funciona mejor cuanto más devops es el objetivo: está acostumbrado a aprobar estas alertas sin pensarlo.",
+    "familia": "desarrollo",
+    "categoria": "saas-corporativo",
+    "tags": ["github", "desarrollo", "acceso", "credenciales", "mfa"],
+    "remitente": { "nombre": "GitHub", "buzon": "noreply" },
+    "campos": [
+      { "clave": "dispositivo", "etiqueta": "Dispositivo detectado", "tipo": "texto", "defecto": "Linux · Firefox" },
+      { "clave": "ubicacion", "etiqueta": "Ubicación aproximada", "tipo": "texto", "defecto": "Ámsterdam, Países Bajos" },
+      { "clave": "repositorio", "etiqueta": "Repositorio afectado", "tipo": "texto", "defecto": "org-interna/infra-prod" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "[GitHub] Se ha añadido un nuevo dispositivo a tu cuenta",
+          "urgencia": "[GitHub] Nuevo inicio de sesión desde {{ubicacion}}",
+          "urgencia+erratas": "[GitHub] ALERTA: acceso no reconocido a su cuenta"
+        },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}", "urgencia": "Verifica este dispositivo si no fuiste tú" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, hemos visto un nuevo inicio de sesión",
+          "urgencia": "{{saludo}}, ¿reconoces este dispositivo?",
+          "urgencia+erratas": "{{saludo}}, ACCESO NO RECONOCIDO detectado"
+        },
+        "entradilla": {
+          "base": "Tu cuenta de GitHub se usó para iniciar sesión desde un nuevo dispositivo. Si fuiste tú, no hace falta que hagas nada.",
+          "urgencia": "Se ha usado tu cuenta para acceder a <strong>{{repositorio}}</strong> desde {{ubicacion}}, con un dispositivo que no reconocemos.",
+          "urgencia+erratas": "Se ha detectado un acceso no autorizado a su cuenta y al repositorio {{repositorio}}. Si no ha sido usted, actue de inmediato."
+        },
+        "detalle": {
+          "base": "Puedes revisar tus sesiones activas y tus claves SSH desde la configuración de seguridad cuando quieras.",
+          "urgencia": "Si no reconoces el dispositivo, revócalo y rota tus tokens de acceso personal desde el enlace de abajo.",
+          "urgencia+erratas": "Revoque el acceso y rote sus credenciales AHORA. El repositorio contiene secretos de despliegue."
+        },
+        "urgencia": {
+          "base": "No hay ninguna acción urgente: esto es solo un aviso informativo.",
+          "urgencia": "Cuanto antes revises el acceso, menos tiempo tiene quien haya entrado con tu cuenta.",
+          "urgencia+erratas": "ATENCION: la sesion sigue ACTIVA ahora mismo en el repositorio de produccion."
+        },
+        "cta": { "base": "Ver dispositivos", "urgencia": "Revisar este dispositivo", "urgencia+erratas": "REVOCAR ACCESO AHORA" },
+        "cierre": { "base": "El equipo de GitHub", "urgencia+erratas": "GitHub Security" },
+        "fichaEtiqueta1": "Repositorio", "fichaValor1": "{{repositorio}}",
+        "fichaEtiqueta2": "Dispositivo", "fichaValor2": "{{dispositivo}}",
+        "fichaEtiqueta3": "Ubicación", "fichaValor3": { "base": "{{ubicacion}}", "urgencia+erratas": "{{ubicacion}} · SIN VERIFICAR" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "[GitHub] S'ha afegit un nou dispositiu al teu compte",
+          "urgencia": "[GitHub] Nou inici de sessió des de {{ubicacion}}",
+          "urgencia+erratas": "[GitHub] ALERTA: acces no reconegut al seu compte"
+        },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}", "urgencia": "Verifica aquest dispositiu si no vas ser tu" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, hem vist un nou inici de sessió",
+          "urgencia": "{{saludo}}, reconeixes aquest dispositiu?",
+          "urgencia+erratas": "{{saludo}}, ACCES NO RECONEGUT detectat"
+        },
+        "entradilla": {
+          "base": "El teu compte de GitHub es va fer servir per iniciar sessió des d'un nou dispositiu. Si vas ser tu, no cal que facis res.",
+          "urgencia": "S'ha fet servir el teu compte per accedir a <strong>{{repositorio}}</strong> des de {{ubicacion}}, amb un dispositiu que no reconeixem.",
+          "urgencia+erratas": "S'ha detectat un acces no autoritzat al seu compte i al repositori {{repositorio}}. Si no ha estat vostè, actui de seguida."
+        },
+        "detalle": {
+          "base": "Pots revisar les teves sessions actives i les teves claus SSH des de la configuració de seguretat quan vulguis.",
+          "urgencia": "Si no reconeixes el dispositiu, revoca'l i rota els teus tokens d'accés personal des de l'enllaç de sota.",
+          "urgencia+erratas": "Revoqui l'acces i roti les seves credencials ARA. El repositori conte secrets de desplegament."
+        },
+        "urgencia": {
+          "base": "No hi ha cap acció urgent: això és només un avís informatiu.",
+          "urgencia": "Com abans revisis l'accés, menys temps té qui hagi entrat amb el teu compte.",
+          "urgencia+erratas": "ATENCIO: la sessio segueix ACTIVA ara mateix al repositori de produccio."
+        },
+        "cta": { "base": "Veure dispositius", "urgencia": "Revisar aquest dispositiu", "urgencia+erratas": "REVOCAR ACCES ARA" },
+        "cierre": { "base": "L'equip de GitHub", "urgencia+erratas": "GitHub Security" },
+        "fichaEtiqueta1": "Repositori", "fichaValor1": "{{repositorio}}",
+        "fichaEtiqueta2": "Dispositiu", "fichaValor2": "{{dispositivo}}",
+        "fichaEtiqueta3": "Ubicació", "fichaValor3": { "base": "{{ubicacion}}", "urgencia+erratas": "{{ubicacion}} · SENSE VERIFICAR" }
+      },
+      "en": {
+        "asunto": {
+          "base": "[GitHub] A new device was added to your account",
+          "urgencia": "[GitHub] New sign-in from {{ubicacion}}",
+          "urgencia+erratas": "[GitHub] ALERT: unrecognised access to your account"
+        },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}", "urgencia": "Verify this device if it wasn't you" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Hi" },
+        "titular": {
+          "base": "{{saludo}}, we noticed a new sign-in",
+          "urgencia": "{{saludo}}, do you recognise this device?",
+          "urgencia+erratas": "{{saludo}}, UNRECOGNISED ACCESS detected"
+        },
+        "entradilla": {
+          "base": "Your GitHub account was used to sign in from a new device. If this was you, no action is needed.",
+          "urgencia": "Your account was used to access <strong>{{repositorio}}</strong> from {{ubicacion}}, using a device we do not recognise.",
+          "urgencia+erratas": "Unauthorised access to your account and to the {{repositorio}} repository has been detected. If this was not you, act immediately."
+        },
+        "detalle": {
+          "base": "You can review your active sessions and SSH keys from your security settings at any time.",
+          "urgencia": "If you do not recognise the device, revoke it and rotate your personal access tokens from the link below.",
+          "urgencia+erratas": "Revoke access and rotate your credentials NOW. The repository contains deployment secrets."
+        },
+        "urgencia": {
+          "base": "No urgent action is required: this is an informational notice only.",
+          "urgencia": "The sooner you review the sign-in, the less time whoever accessed your account has.",
+          "urgencia+erratas": "WARNING: the session is still ACTIVE right now on the production repository."
+        },
+        "cta": { "base": "View devices", "urgencia": "Review this device", "urgencia+erratas": "REVOKE ACCESS NOW" },
+        "cierre": { "base": "The GitHub Team", "urgencia+erratas": "GitHub Security" },
+        "fichaEtiqueta1": "Repository", "fichaValor1": "{{repositorio}}",
+        "fichaEtiqueta2": "Device", "fichaValor2": "{{dispositivo}}",
+        "fichaEtiqueta3": "Location", "fichaValor3": { "base": "{{ubicacion}}", "urgencia+erratas": "{{ubicacion}} · UNVERIFIED" }
+      }
+    }
+  },
+
+  {
+    "id": "netflix-problema-pago",
+    "tipo": "emails",
+    "nombre": "Netflix · Problema con tu pago",
+    "descripcion": "Aviso de cobro rechazado con la cuenta en riesgo de suspenderse. Pretexto personal, no corporativo: enseña el riesgo del dispositivo propio del empleado, no solo el del puesto de trabajo.",
+    "familia": "entretenimiento",
+    "categoria": "suscripciones-personales",
+    "tags": ["netflix", "suscripcion", "pago", "datos-personales"],
+    "captura": "datos",
+    "remitente": { "nombre": "Netflix", "buzon": "info" },
+    "campos": [
+      { "clave": "plan", "etiqueta": "Plan de suscripción", "tipo": "texto", "defecto": "Premium" },
+      { "clave": "importe", "etiqueta": "Importe del cargo", "tipo": "texto", "defecto": "17,99 €" },
+      { "clave": "plazo", "etiqueta": "Plazo antes de suspender", "tipo": "texto", "defecto": "3 días" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "No hemos podido procesar tu pago",
+          "urgencia": "Tu cuenta se suspenderá pronto: actualiza tu pago",
+          "urgencia+erratas": "URGENTE: problema con su forma de pago"
+        },
+        "preheader": { "base": "Plan {{plan}} · {{importe}}", "urgencia": "Actualiza tu método de pago para seguir viendo Netflix" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, hubo un problema con tu último pago",
+          "urgencia": "{{saludo}}, tu suscripción está en riesgo",
+          "urgencia+erratas": "{{saludo}}, PROBLEMA con su pago"
+        },
+        "entradilla": {
+          "base": "No hemos podido cobrar tu suscripción {{plan}} ({{importe}}) con el método de pago que tenemos guardado.",
+          "urgencia": "Tu forma de pago ha fallado y tu cuenta se suspenderá en {{plazo}} si no la actualizas.",
+          "urgencia+erratas": "No hemos podido procesar el cobro de {{importe}}. Su cuenta sera SUSPENDIDA si no actualiza sus datos."
+        },
+        "detalle": {
+          "base": "Actualiza tus datos de pago para que no se interrumpa tu suscripción.",
+          "urgencia": "Es rápido: solo tienes que confirmar o actualizar tu tarjeta desde el enlace de abajo.",
+          "urgencia+erratas": "Actualice sus datos de pago AHORA para evitar perder el acceso a su cuenta."
+        },
+        "urgencia": {
+          "base": "Tienes unos días antes de que la suscripción se pause automáticamente.",
+          "urgencia": "Pasado {{plazo}} sin actualizar el pago, la cuenta se pausa y perderás tu lista y tus perfiles.",
+          "urgencia+erratas": "ATENCION: solo quedan {{plazo}} antes de la SUSPENSION definitiva de la cuenta."
+        },
+        "cta": { "base": "Actualizar pago", "urgencia": "Actualizar mi método de pago", "urgencia+erratas": "EVITAR LA SUSPENSION" },
+        "cierre": { "base": "El equipo de Netflix", "urgencia+erratas": "Facturación de Netflix" },
+        "fichaEtiqueta1": "Plan", "fichaValor1": "{{plan}}",
+        "fichaEtiqueta2": "Importe", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": { "base": "Pago pendiente", "urgencia+erratas": "CUENTA EN RIESGO" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "No hem pogut processar el teu pagament",
+          "urgencia": "El teu compte se suspendrà aviat: actualitza el pagament",
+          "urgencia+erratas": "URGENT: problema amb la seva forma de pagament"
+        },
+        "preheader": { "base": "Pla {{plan}} · {{importe}}", "urgencia": "Actualitza el mètode de pagament per seguir veient Netflix" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, hi va haver un problema amb el teu últim pagament",
+          "urgencia": "{{saludo}}, la teva subscripció està en risc",
+          "urgencia+erratas": "{{saludo}}, PROBLEMA amb el seu pagament"
+        },
+        "entradilla": {
+          "base": "No hem pogut cobrar la teva subscripció {{plan}} ({{importe}}) amb el mètode de pagament que tenim desat.",
+          "urgencia": "La teva forma de pagament ha fallat i el teu compte se suspendrà en {{plazo}} si no l'actualitzes.",
+          "urgencia+erratas": "No hem pogut processar el cobrament de {{importe}}. El seu compte sera SUSPES si no actualitza les seves dades."
+        },
+        "detalle": {
+          "base": "Actualitza les teves dades de pagament perquè no s'interrompi la teva subscripció.",
+          "urgencia": "És ràpid: només has de confirmar o actualitzar la teva targeta des de l'enllaç de sota.",
+          "urgencia+erratas": "Actualitzi les seves dades de pagament ARA per evitar perdre l'acces al seu compte."
+        },
+        "urgencia": {
+          "base": "Tens uns dies abans que la subscripció es pausi automàticament.",
+          "urgencia": "Passat {{plazo}} sense actualitzar el pagament, el compte es pausa i perdràs la teva llista i els teus perfils.",
+          "urgencia+erratas": "ATENCIO: nomes queden {{plazo}} abans de la SUSPENSIO definitiva del compte."
+        },
+        "cta": { "base": "Actualitzar pagament", "urgencia": "Actualitzar el meu mètode de pagament", "urgencia+erratas": "EVITAR LA SUSPENSIO" },
+        "cierre": { "base": "L'equip de Netflix", "urgencia+erratas": "Facturació de Netflix" },
+        "fichaEtiqueta1": "Pla", "fichaValor1": "{{plan}}",
+        "fichaEtiqueta2": "Import", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": { "base": "Pagament pendent", "urgencia+erratas": "COMPTE EN RISC" }
+      },
+      "en": {
+        "asunto": {
+          "base": "We couldn't process your payment",
+          "urgencia": "Your account will be suspended soon: update your payment",
+          "urgencia+erratas": "URGENT: problem with your payment method"
+        },
+        "preheader": { "base": "{{plan}} plan · {{importe}}", "urgencia": "Update your payment method to keep watching Netflix" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Hi" },
+        "titular": {
+          "base": "{{saludo}}, there was a problem with your last payment",
+          "urgencia": "{{saludo}}, your subscription is at risk",
+          "urgencia+erratas": "{{saludo}}, PROBLEM with your payment"
+        },
+        "entradilla": {
+          "base": "We could not charge your {{plan}} subscription ({{importe}}) using the payment method we have on file.",
+          "urgencia": "Your payment method failed and your account will be suspended in {{plazo}} unless you update it.",
+          "urgencia+erratas": "We could not process the {{importe}} charge. Your account will be SUSPENDED unless you update your details."
+        },
+        "detalle": {
+          "base": "Update your payment details so your subscription is not interrupted.",
+          "urgencia": "It's quick: just confirm or update your card from the link below.",
+          "urgencia+erratas": "Update your payment details NOW to avoid losing access to your account."
+        },
+        "urgencia": {
+          "base": "You have a few days before the subscription is automatically paused.",
+          "urgencia": "After {{plazo}} without updating payment, the account is paused and you will lose your list and profiles.",
+          "urgencia+erratas": "WARNING: only {{plazo}} left before the account is permanently SUSPENDED."
+        },
+        "cta": { "base": "Update payment", "urgencia": "Update my payment method", "urgencia+erratas": "AVOID SUSPENSION" },
+        "cierre": { "base": "The Netflix Team", "urgencia+erratas": "Netflix Billing" },
+        "fichaEtiqueta1": "Plan", "fichaValor1": "{{plan}}",
+        "fichaEtiqueta2": "Amount", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": { "base": "Payment pending", "urgencia+erratas": "ACCOUNT AT RISK" }
+      }
+    }
+  },
+
+  {
+    "id": "paypal-actividad-sospechosa",
+    "tipo": "emails",
+    "nombre": "PayPal · Actividad sospechosa en tu cuenta",
+    "descripcion": "Aviso de un cargo o acceso que hay que verificar. El pretexto financiero más reconocible que existe: la marca por sí sola ya genera la mitad de la presión.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "tags": ["paypal", "pago", "credenciales", "fraude"],
+    "remitente": { "nombre": "PayPal", "buzon": "service" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe del cargo", "tipo": "texto", "defecto": "349,00 €" },
+      { "clave": "comercio", "etiqueta": "Comercio o destinatario", "tipo": "texto", "defecto": "TechStore Online Ltd" },
+      { "clave": "plazo", "etiqueta": "Plazo para reclamar", "tipo": "texto", "defecto": "24 horas" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Hemos detectado actividad inusual en tu cuenta",
+          "urgencia": "¿Reconoces este pago de {{importe}}?",
+          "urgencia+erratas": "AVISO: transaccion no reconocida en su cuenta PayPal"
+        },
+        "preheader": { "base": "{{comercio}} · {{importe}}", "urgencia": "Revisa este pago antes de que se complete" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado cliente" },
+        "titular": {
+          "base": "{{saludo}}, hemos limitado tu cuenta por precaución",
+          "urgencia": "{{saludo}}, ¿reconoces este pago?",
+          "urgencia+erratas": "{{saludo}}, TRANSACCION NO RECONOCIDA"
+        },
+        "entradilla": {
+          "base": "Detectamos un inicio de sesión inusual y hemos limitado temporalmente tu cuenta como medida de precaución.",
+          "urgencia": "Se ha iniciado un pago de <strong>{{importe}}</strong> a {{comercio}} desde tu cuenta. Si no lo reconoces, puedes cancelarlo ahora.",
+          "urgencia+erratas": "Se ha registrado un cargo de <strong>{{importe}}</strong> a {{comercio}} que no coincide con su actividad habitual."
+        },
+        "detalle": {
+          "base": "Verifica tu identidad para levantar la limitación y seguir usando tu cuenta con normalidad.",
+          "urgencia": "Tienes {{plazo}} para cancelarlo antes de que el pago se complete y ya no se pueda revertir desde aquí.",
+          "urgencia+erratas": "Verifique su identidad de inmediato o el cargo se consolidara sin posibilidad de reclamacion."
+        },
+        "urgencia": {
+          "base": "La verificación tarda menos de dos minutos y no afecta a tu saldo.",
+          "urgencia": "Pasado ese plazo, tendrás que abrir una disputa formal, que tarda varios días en resolverse.",
+          "urgencia+erratas": "ATENCION: quedan {{plazo}} para actuar. Pasado ese tiempo no podra recuperar el dinero."
+        },
+        "cta": { "base": "Verificar mi cuenta", "urgencia": "Revisar el pago", "urgencia+erratas": "CANCELAR EL PAGO AHORA" },
+        "cierre": { "base": "El equipo de PayPal", "urgencia+erratas": "Departamento de Prevención de Fraude" },
+        "fichaEtiqueta1": "Importe", "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "Destinatario", "fichaValor2": "{{comercio}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": { "base": "Cuenta limitada", "urgencia+erratas": "REQUIERE VERIFICACION" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Hem detectat activitat inusual al teu compte",
+          "urgencia": "Reconeixes aquest pagament de {{importe}}?",
+          "urgencia+erratas": "AVIS: transaccio no reconeguda al seu compte PayPal"
+        },
+        "preheader": { "base": "{{comercio}} · {{importe}}", "urgencia": "Revisa aquest pagament abans que es completi" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut client" },
+        "titular": {
+          "base": "{{saludo}}, hem limitat el teu compte per precaució",
+          "urgencia": "{{saludo}}, reconeixes aquest pagament?",
+          "urgencia+erratas": "{{saludo}}, TRANSACCIO NO RECONEGUDA"
+        },
+        "entradilla": {
+          "base": "Hem detectat un inici de sessió inusual i hem limitat temporalment el teu compte com a mesura de precaució.",
+          "urgencia": "S'ha iniciat un pagament de <strong>{{importe}}</strong> a {{comercio}} des del teu compte. Si no el reconeixes, pots cancel·lar-lo ara.",
+          "urgencia+erratas": "S'ha registrat un carrec de <strong>{{importe}}</strong> a {{comercio}} que no coincideix amb la seva activitat habitual."
+        },
+        "detalle": {
+          "base": "Verifica la teva identitat per aixecar la limitació i seguir fent servir el teu compte amb normalitat.",
+          "urgencia": "Tens {{plazo}} per cancel·lar-lo abans que el pagament es completi i ja no es pugui revertir des d'aquí.",
+          "urgencia+erratas": "Verifiqui la seva identitat de seguida o el carrec es consolidara sense possibilitat de reclamacio."
+        },
+        "urgencia": {
+          "base": "La verificació triga menys de dos minuts i no afecta el teu saldo.",
+          "urgencia": "Passat aquest termini, hauràs d'obrir una disputa formal, que triga diversos dies a resoldre's.",
+          "urgencia+erratas": "ATENCIO: queden {{plazo}} per actuar. Passat aquest temps no podra recuperar els diners."
+        },
+        "cta": { "base": "Verificar el meu compte", "urgencia": "Revisar el pagament", "urgencia+erratas": "CANCEL·LAR EL PAGAMENT ARA" },
+        "cierre": { "base": "L'equip de PayPal", "urgencia+erratas": "Departament de Prevenció de Frau" },
+        "fichaEtiqueta1": "Import", "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "Destinatari", "fichaValor2": "{{comercio}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": { "base": "Compte limitat", "urgencia+erratas": "REQUEREIX VERIFICACIO" }
+      },
+      "en": {
+        "asunto": {
+          "base": "We've detected unusual activity on your account",
+          "urgencia": "Do you recognise this {{importe}} payment?",
+          "urgencia+erratas": "NOTICE: unrecognised transaction on your PayPal account"
+        },
+        "preheader": { "base": "{{comercio}} · {{importe}}", "urgencia": "Review this payment before it completes" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear customer" },
+        "titular": {
+          "base": "{{saludo}}, we've limited your account as a precaution",
+          "urgencia": "{{saludo}}, do you recognise this payment?",
+          "urgencia+erratas": "{{saludo}}, UNRECOGNISED TRANSACTION"
+        },
+        "entradilla": {
+          "base": "We detected an unusual sign-in and have temporarily limited your account as a precaution.",
+          "urgencia": "A payment of <strong>{{importe}}</strong> to {{comercio}} was started from your account. If you don't recognise it, you can cancel it now.",
+          "urgencia+erratas": "A charge of <strong>{{importe}}</strong> to {{comercio}} was recorded that does not match your usual activity."
+        },
+        "detalle": {
+          "base": "Verify your identity to lift the limitation and keep using your account as normal.",
+          "urgencia": "You have {{plazo}} to cancel it before the payment completes and can no longer be reversed from here.",
+          "urgencia+erratas": "Verify your identity immediately or the charge will settle with no chance of a claim."
+        },
+        "urgencia": {
+          "base": "Verification takes less than two minutes and does not affect your balance.",
+          "urgencia": "After that window, you will have to open a formal dispute, which takes several days to resolve.",
+          "urgencia+erratas": "WARNING: {{plazo}} left to act. After that you will not be able to recover the money."
+        },
+        "cta": { "base": "Verify my account", "urgencia": "Review the payment", "urgencia+erratas": "CANCEL THE PAYMENT NOW" },
+        "cierre": { "base": "The PayPal Team", "urgencia+erratas": "Fraud Prevention Department" },
+        "fichaEtiqueta1": "Amount", "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "Recipient", "fichaValor2": "{{comercio}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": { "base": "Account limited", "urgencia+erratas": "VERIFICATION REQUIRED" }
+      }
+    }
+  },
+
+  {
+    "id": "dropbox-documento-compartido",
+    "tipo": "emails",
+    "nombre": "Dropbox · Documento compartido contigo",
+    "descripcion": "Aviso externo de que alguien ha compartido un fichero por Dropbox. A diferencia del genérico interno, este llega de un remitente ajeno a la empresa, lo que baja la guardia porque no se espera que lo cuiden tanto.",
+    "familia": "saas",
+    "categoria": "saas-corporativo",
+    "tags": ["dropbox", "documento", "credenciales", "externo"],
+    "remitente": { "nombre": "Dropbox", "buzon": "no-reply" },
+    "campos": [
+      { "clave": "remitenteExterno", "etiqueta": "Nombre de quien comparte", "tipo": "texto", "defecto": "Marta Bou (Estudio Legal Bou & Asociados)" },
+      { "clave": "documento", "etiqueta": "Nombre del documento", "tipo": "texto", "defecto": "Propuesta_contrato_2026.pdf" },
+      { "clave": "plazo", "etiqueta": "Plazo de acceso", "tipo": "texto", "defecto": "7 días" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "{{remitenteExterno}} ha compartido un archivo contigo",
+          "urgencia": "Documento pendiente de revisar: {{documento}}",
+          "urgencia+erratas": "IMPORTANTE: documento compartido, acceso limitado"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "El enlace caduca en {{plazo}}" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, tienes un archivo nuevo",
+          "urgencia": "{{saludo}}, un documento espera tu revisión",
+          "urgencia+erratas": "{{saludo}}, ACCESO LIMITADO a un documento"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteExterno}}</strong> ha compartido «{{documento}}» contigo a través de Dropbox.",
+          "urgencia": "<strong>{{remitenteExterno}}</strong> necesita que revises «{{documento}}» antes de seguir adelante.",
+          "urgencia+erratas": "<strong>{{remitenteExterno}}</strong> ha compartido «{{documento}}» con acceso limitado a {{plazo}}."
+        },
+        "detalle": {
+          "base": "Puedes verlo directamente desde el navegador, sin necesidad de instalar nada.",
+          "urgencia": "El enlace de acceso caduca en {{plazo}}, así que conviene revisarlo pronto.",
+          "urgencia+erratas": "El enlace caduca en {{plazo}} y no se puede volver a compartir una vez cerrado."
+        },
+        "urgencia": {
+          "base": "No hay plazo: el archivo se queda disponible en tu cuenta cuando quieras verlo.",
+          "urgencia": "Pasado {{plazo}}, tendrás que pedir que te lo compartan de nuevo.",
+          "urgencia+erratas": "ATENCION: pasado {{plazo}} el enlace deja de funcionar por completo."
+        },
+        "cta": { "base": "Ver archivo", "urgencia": "Revisar el documento", "urgencia+erratas": "ACCEDER ANTES DE QUE CADUQUE" },
+        "cierre": { "base": "El equipo de Dropbox", "urgencia+erratas": "Notificaciones de Dropbox" },
+        "fichaEtiqueta1": "Compartido por", "fichaValor1": "{{remitenteExterno}}",
+        "fichaEtiqueta2": "Documento", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Caduca", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · ACCESO LIMITADO" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "{{remitenteExterno}} ha compartit un arxiu amb tu",
+          "urgencia": "Document pendent de revisar: {{documento}}",
+          "urgencia+erratas": "IMPORTANT: document compartit, acces limitat"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "L'enllaç caduca en {{plazo}}" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, tens un arxiu nou",
+          "urgencia": "{{saludo}}, un document espera la teva revisió",
+          "urgencia+erratas": "{{saludo}}, ACCES LIMITAT a un document"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteExterno}}</strong> ha compartit «{{documento}}» amb tu a través de Dropbox.",
+          "urgencia": "<strong>{{remitenteExterno}}</strong> necessita que revisis «{{documento}}» abans de seguir endavant.",
+          "urgencia+erratas": "<strong>{{remitenteExterno}}</strong> ha compartit «{{documento}}» amb acces limitat a {{plazo}}."
+        },
+        "detalle": {
+          "base": "Pots veure'l directament des del navegador, sense necessitat d'instal·lar res.",
+          "urgencia": "L'enllaç d'accés caduca en {{plazo}}, així que convé revisar-lo aviat.",
+          "urgencia+erratas": "L'enllaç caduca en {{plazo}} i no es pot tornar a compartir un cop tancat."
+        },
+        "urgencia": {
+          "base": "No hi ha termini: l'arxiu queda disponible al teu compte quan vulguis veure'l.",
+          "urgencia": "Passat {{plazo}}, hauràs de demanar que te'l tornin a compartir.",
+          "urgencia+erratas": "ATENCIO: passat {{plazo}} l'enllaç deixa de funcionar per complet."
+        },
+        "cta": { "base": "Veure arxiu", "urgencia": "Revisar el document", "urgencia+erratas": "ACCEDIR ABANS QUE CADUQUI" },
+        "cierre": { "base": "L'equip de Dropbox", "urgencia+erratas": "Notificacions de Dropbox" },
+        "fichaEtiqueta1": "Compartit per", "fichaValor1": "{{remitenteExterno}}",
+        "fichaEtiqueta2": "Document", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Caduca", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · ACCES LIMITAT" }
+      },
+      "en": {
+        "asunto": {
+          "base": "{{remitenteExterno}} shared a file with you",
+          "urgencia": "Document awaiting your review: {{documento}}",
+          "urgencia+erratas": "IMPORTANT: shared document, limited access"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "The link expires in {{plazo}}" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Hi" },
+        "titular": {
+          "base": "{{saludo}}, you have a new file",
+          "urgencia": "{{saludo}}, a document is waiting for your review",
+          "urgencia+erratas": "{{saludo}}, LIMITED ACCESS to a document"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteExterno}}</strong> shared \"{{documento}}\" with you via Dropbox.",
+          "urgencia": "<strong>{{remitenteExterno}}</strong> needs you to review \"{{documento}}\" before moving forward.",
+          "urgencia+erratas": "<strong>{{remitenteExterno}}</strong> shared \"{{documento}}\" with access limited to {{plazo}}."
+        },
+        "detalle": {
+          "base": "You can view it directly from your browser, no install needed.",
+          "urgencia": "The access link expires in {{plazo}}, so it's worth reviewing it soon.",
+          "urgencia+erratas": "The link expires in {{plazo}} and cannot be re-shared once closed."
+        },
+        "urgencia": {
+          "base": "There is no deadline: the file stays available in your account whenever you want to view it.",
+          "urgencia": "After {{plazo}}, you will need to ask for it to be shared again.",
+          "urgencia+erratas": "WARNING: after {{plazo}} the link stops working entirely."
+        },
+        "cta": { "base": "View file", "urgencia": "Review the document", "urgencia+erratas": "ACCESS BEFORE IT EXPIRES" },
+        "cierre": { "base": "The Dropbox Team", "urgencia+erratas": "Dropbox Notifications" },
+        "fichaEtiqueta1": "Shared by", "fichaValor1": "{{remitenteExterno}}",
+        "fichaEtiqueta2": "Document", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Expires", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · LIMITED ACCESS" }
+      }
+    }
+  },
+
+  {
+    "id": "linkedin-mensaje-pendiente",
+    "tipo": "emails",
+    "nombre": "LinkedIn · Tienes un mensaje pendiente",
+    "descripcion": "Aviso de un mensaje o de una oferta de empleo sin leer. Funciona especialmente bien contra perfiles en búsqueda activa, y es uno de los pocos pretextos que llega al buzón personal, no al corporativo.",
+    "familia": "externos",
+    "categoria": "redes-profesionales",
+    "tags": ["linkedin", "empleo", "credenciales", "personal"],
+    "remitente": { "nombre": "LinkedIn", "buzon": "messages-noreply" },
+    "campos": [
+      { "clave": "remitenteMensaje", "etiqueta": "Quién envía el mensaje", "tipo": "texto", "defecto": "Laura Ferrer · Talent Acquisition en Grupo Meridian" },
+      { "clave": "asuntoMensaje", "etiqueta": "Asunto del mensaje", "tipo": "texto", "defecto": "Oportunidad que puede interesarte" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "{{remitenteMensaje}} te ha enviado un mensaje",
+          "urgencia": "Tienes 1 mensaje sin leer de {{remitenteMensaje}}",
+          "urgencia+erratas": "IMPORTANTE: tu solicitud de contacto esta pendiente"
+        },
+        "preheader": { "base": "{{asuntoMensaje}}", "urgencia": "No dejes esperando a {{remitenteMensaje}}" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, tienes un mensaje nuevo",
+          "urgencia": "{{saludo}}, {{remitenteMensaje}} está esperando tu respuesta",
+          "urgencia+erratas": "{{saludo}}, MENSAJE SIN LEER pendiente"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteMensaje}}</strong> te ha escrito: «{{asuntoMensaje}}».",
+          "urgencia": "<strong>{{remitenteMensaje}}</strong> lleva un tiempo esperando que veas su mensaje sobre «{{asuntoMensaje}}».",
+          "urgencia+erratas": "<strong>{{remitenteMensaje}}</strong> ha marcado su mensaje como urgente: «{{asuntoMensaje}}»."
+        },
+        "detalle": {
+          "base": "Inicia sesión para leer el mensaje completo y responder cuando puedas.",
+          "urgencia": "Los perfiles que responden rápido reciben más propuestas: no dejes pasar esta.",
+          "urgencia+erratas": "Inicie sesion ahora para no perder esta oportunidad de contacto."
+        },
+        "urgencia": {
+          "base": "El mensaje se queda guardado en tu bandeja de entrada hasta que lo leas.",
+          "urgencia": "Otros candidatos ya han empezado a responder ofertas similares esta semana.",
+          "urgencia+erratas": "ATENCION: los mensajes sin responder en 48 horas se marcan como no interesado."
+        },
+        "cta": { "base": "Ver mensaje", "urgencia": "Leer y responder", "urgencia+erratas": "VER MENSAJE AHORA" },
+        "cierre": { "base": "El equipo de LinkedIn", "urgencia+erratas": "LinkedIn Notificaciones" },
+        "fichaEtiqueta1": "De", "fichaValor1": "{{remitenteMensaje}}",
+        "fichaEtiqueta2": "Asunto", "fichaValor2": "{{asuntoMensaje}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": { "base": "Sin leer", "urgencia+erratas": "URGENTE · SIN RESPONDER" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "{{remitenteMensaje}} t'ha enviat un missatge",
+          "urgencia": "Tens 1 missatge sense llegir de {{remitenteMensaje}}",
+          "urgencia+erratas": "IMPORTANT: la teva sol·licitud de contacte esta pendent"
+        },
+        "preheader": { "base": "{{asuntoMensaje}}", "urgencia": "No deixis esperant {{remitenteMensaje}}" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "{{saludo}}, tens un missatge nou",
+          "urgencia": "{{saludo}}, {{remitenteMensaje}} espera la teva resposta",
+          "urgencia+erratas": "{{saludo}}, MISSATGE SENSE LLEGIR pendent"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteMensaje}}</strong> t'ha escrit: «{{asuntoMensaje}}».",
+          "urgencia": "<strong>{{remitenteMensaje}}</strong> fa temps que espera que vegis el seu missatge sobre «{{asuntoMensaje}}».",
+          "urgencia+erratas": "<strong>{{remitenteMensaje}}</strong> ha marcat el seu missatge com a urgent: «{{asuntoMensaje}}»."
+        },
+        "detalle": {
+          "base": "Inicia sessió per llegir el missatge complet i respondre quan puguis.",
+          "urgencia": "Els perfils que responen ràpid reben més propostes: no deixis passar aquesta.",
+          "urgencia+erratas": "Inicii sessio ara per no perdre aquesta oportunitat de contacte."
+        },
+        "urgencia": {
+          "base": "El missatge queda desat a la teva safata d'entrada fins que el llegeixis.",
+          "urgencia": "Altres candidats ja han començat a respondre ofertes similars aquesta setmana.",
+          "urgencia+erratas": "ATENCIO: els missatges sense respondre en 48 hores es marquen com a no interessat."
+        },
+        "cta": { "base": "Veure missatge", "urgencia": "Llegir i respondre", "urgencia+erratas": "VEURE MISSATGE ARA" },
+        "cierre": { "base": "L'equip de LinkedIn", "urgencia+erratas": "LinkedIn Notificacions" },
+        "fichaEtiqueta1": "De", "fichaValor1": "{{remitenteMensaje}}",
+        "fichaEtiqueta2": "Assumpte", "fichaValor2": "{{asuntoMensaje}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": { "base": "Sense llegir", "urgencia+erratas": "URGENT · SENSE RESPONDRE" }
+      },
+      "en": {
+        "asunto": {
+          "base": "{{remitenteMensaje}} sent you a message",
+          "urgencia": "You have 1 unread message from {{remitenteMensaje}}",
+          "urgencia+erratas": "IMPORTANT: your contact request is pending"
+        },
+        "preheader": { "base": "{{asuntoMensaje}}", "urgencia": "Don't keep {{remitenteMensaje}} waiting" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Hi" },
+        "titular": {
+          "base": "{{saludo}}, you have a new message",
+          "urgencia": "{{saludo}}, {{remitenteMensaje}} is waiting for your reply",
+          "urgencia+erratas": "{{saludo}}, UNREAD MESSAGE pending"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteMensaje}}</strong> wrote to you: \"{{asuntoMensaje}}\".",
+          "urgencia": "<strong>{{remitenteMensaje}}</strong> has been waiting a while for you to see their message about \"{{asuntoMensaje}}\".",
+          "urgencia+erratas": "<strong>{{remitenteMensaje}}</strong> marked their message as urgent: \"{{asuntoMensaje}}\"."
+        },
+        "detalle": {
+          "base": "Sign in to read the full message and reply when you can.",
+          "urgencia": "Profiles that respond quickly get more offers: don't let this one pass.",
+          "urgencia+erratas": "Sign in now so you don't miss this contact opportunity."
+        },
+        "urgencia": {
+          "base": "The message stays saved in your inbox until you read it.",
+          "urgencia": "Other candidates have already started replying to similar offers this week.",
+          "urgencia+erratas": "WARNING: messages unanswered after 48 hours are marked as not interested."
+        },
+        "cta": { "base": "View message", "urgencia": "Read and reply", "urgencia+erratas": "VIEW MESSAGE NOW" },
+        "cierre": { "base": "The LinkedIn Team", "urgencia+erratas": "LinkedIn Notifications" },
+        "fichaEtiqueta1": "From", "fichaValor1": "{{remitenteMensaje}}",
+        "fichaEtiqueta2": "Subject", "fichaValor2": "{{asuntoMensaje}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": { "base": "Unread", "urgencia+erratas": "URGENT · UNANSWERED" }
+      }
+    }
+  },
+
+  {
+    "id": "adobe-documento-para-firmar",
+    "tipo": "emails",
+    "nombre": "Adobe · Documento para firmar",
+    "descripcion": "Aviso de un documento pendiente de firma electrónica. Funciona en departamentos que firman de verdad muchos PDF (compras, RRHH, legal), donde este correo es rutina y no excepción.",
+    "familia": "saas",
+    "categoria": "saas-corporativo",
+    "tags": ["adobe", "firma", "documento", "credenciales"],
+    "remitente": { "nombre": "Adobe Sign", "buzon": "echosign" },
+    "campos": [
+      { "clave": "remitenteDoc", "etiqueta": "Quién envía a firmar", "tipo": "texto", "defecto": "Departamento de Compras" },
+      { "clave": "documento", "etiqueta": "Nombre del documento", "tipo": "texto", "defecto": "Acuerdo_de_proveedor_2026.pdf" },
+      { "clave": "plazo", "etiqueta": "Plazo para firmar", "tipo": "texto", "defecto": "3 días hábiles" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "{{remitenteDoc}} te ha enviado un documento para firmar",
+          "urgencia": "Firma pendiente: {{documento}}",
+          "urgencia+erratas": "URGENTE: firma requerida antes de {{plazo}}"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "Falta tu firma para completar el trámite" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado usuario" },
+        "titular": {
+          "base": "{{saludo}}, tienes un documento por firmar",
+          "urgencia": "{{saludo}}, tu firma está pendiente",
+          "urgencia+erratas": "{{saludo}}, FIRMA REQUERIDA con caracter urgente"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteDoc}}</strong> te ha enviado «{{documento}}» para tu firma electrónica.",
+          "urgencia": "El trámite «{{documento}}» de {{remitenteDoc}} no puede avanzar hasta que lo firmes.",
+          "urgencia+erratas": "{{remitenteDoc}} necesita su firma en «{{documento}}» antes de {{plazo}}."
+        },
+        "detalle": {
+          "base": "Puedes revisar el documento y firmarlo desde cualquier dispositivo, sin necesidad de imprimir nada.",
+          "urgencia": "El resto de firmantes ya han completado su parte: solo falta la tuya.",
+          "urgencia+erratas": "Sin su firma el tramite quedara bloqueado y podria generar un retraso en el pago al proveedor."
+        },
+        "urgencia": {
+          "base": "No hay un plazo estricto, pero cuanto antes lo firmes, antes se cierra el trámite.",
+          "urgencia": "El plazo para firmar es {{plazo}}; pasado ese tiempo, el documento vuelve a quien lo envió.",
+          "urgencia+erratas": "ATENCION: quedan {{plazo}} para firmar. Pasado ese plazo el acuerdo se cancela."
+        },
+        "cta": { "base": "Revisar documento", "urgencia": "Firmar ahora", "urgencia+erratas": "FIRMAR ANTES DEL PLAZO" },
+        "cierre": { "base": "El equipo de Adobe Sign", "urgencia+erratas": "Adobe Sign · Notificaciones" },
+        "fichaEtiqueta1": "Enviado por", "fichaValor1": "{{remitenteDoc}}",
+        "fichaEtiqueta2": "Documento", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Plazo", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · PENDIENTE" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "{{remitenteDoc}} t'ha enviat un document per signar",
+          "urgencia": "Signatura pendent: {{documento}}",
+          "urgencia+erratas": "URGENT: signatura requerida abans de {{plazo}}"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "Falta la teva signatura per completar el tràmit" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut usuari" },
+        "titular": {
+          "base": "{{saludo}}, tens un document per signar",
+          "urgencia": "{{saludo}}, la teva signatura està pendent",
+          "urgencia+erratas": "{{saludo}}, SIGNATURA REQUERIDA amb caracter urgent"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteDoc}}</strong> t'ha enviat «{{documento}}» per a la teva signatura electrònica.",
+          "urgencia": "El tràmit «{{documento}}» de {{remitenteDoc}} no pot avançar fins que el signis.",
+          "urgencia+erratas": "{{remitenteDoc}} necessita la seva signatura a «{{documento}}» abans de {{plazo}}."
+        },
+        "detalle": {
+          "base": "Pots revisar el document i signar-lo des de qualsevol dispositiu, sense necessitat d'imprimir res.",
+          "urgencia": "La resta de signants ja han completat la seva part: només falta la teva.",
+          "urgencia+erratas": "Sense la seva signatura el tramit quedara bloquejat i podria generar un retard en el pagament al proveidor."
+        },
+        "urgencia": {
+          "base": "No hi ha un termini estricte, però com abans el signis, abans es tanca el tràmit.",
+          "urgencia": "El termini per signar és {{plazo}}; passat aquest temps, el document torna a qui l'ha enviat.",
+          "urgencia+erratas": "ATENCIO: queden {{plazo}} per signar. Passat aquest termini l'acord es cancel·la."
+        },
+        "cta": { "base": "Revisar document", "urgencia": "Signar ara", "urgencia+erratas": "SIGNAR ABANS DEL TERMINI" },
+        "cierre": { "base": "L'equip d'Adobe Sign", "urgencia+erratas": "Adobe Sign · Notificacions" },
+        "fichaEtiqueta1": "Enviat per", "fichaValor1": "{{remitenteDoc}}",
+        "fichaEtiqueta2": "Document", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Termini", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · PENDENT" }
+      },
+      "en": {
+        "asunto": {
+          "base": "{{remitenteDoc}} sent you a document to sign",
+          "urgencia": "Signature pending: {{documento}}",
+          "urgencia+erratas": "URGENT: signature required before {{plazo}}"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "Your signature is needed to complete this" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear user" },
+        "titular": {
+          "base": "{{saludo}}, you have a document to sign",
+          "urgencia": "{{saludo}}, your signature is pending",
+          "urgencia+erratas": "{{saludo}}, SIGNATURE REQUIRED urgently"
+        },
+        "entradilla": {
+          "base": "<strong>{{remitenteDoc}}</strong> sent you \"{{documento}}\" for your electronic signature.",
+          "urgencia": "The \"{{documento}}\" process from {{remitenteDoc}} cannot move forward until you sign it.",
+          "urgencia+erratas": "{{remitenteDoc}} needs your signature on \"{{documento}}\" before {{plazo}}."
+        },
+        "detalle": {
+          "base": "You can review the document and sign it from any device, no printing needed.",
+          "urgencia": "The other signers have already completed their part: only yours is missing.",
+          "urgencia+erratas": "Without your signature the process will be blocked and may delay payment to the supplier."
+        },
+        "urgencia": {
+          "base": "There is no strict deadline, but the sooner you sign, the sooner it's closed.",
+          "urgencia": "The signing window is {{plazo}}; after that, the document goes back to whoever sent it.",
+          "urgencia+erratas": "WARNING: {{plazo}} left to sign. After that the agreement is cancelled."
+        },
+        "cta": { "base": "Review document", "urgencia": "Sign now", "urgencia+erratas": "SIGN BEFORE THE DEADLINE" },
+        "cierre": { "base": "The Adobe Sign Team", "urgencia+erratas": "Adobe Sign Notifications" },
+        "fichaEtiqueta1": "Sent by", "fichaValor1": "{{remitenteDoc}}",
+        "fichaEtiqueta2": "Document", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Deadline", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · PENDING" }
+      }
+    }
+  },
+
+  {
+    "id": "dhl-paquete-aduana",
+    "tipo": "emails",
+    "nombre": "DHL · Paquete retenido en aduana",
+    "descripcion": "Variante de marca real del pretexto de logística: el envío está parado por una tasa pequeña. Con el logo real de DHL, la tasa de apertura sube frente a la versión de mensajero genérico.",
+    "familia": "logistica",
+    "categoria": "logistica-administracion",
+    "tags": ["dhl", "envio", "aduana", "pago"],
+    "captura": "datos",
+    "remitente": { "nombre": "DHL Express", "buzon": "notificaciones" },
+    "campos": [
+      { "clave": "tracking", "etiqueta": "Número de seguimiento", "tipo": "texto", "defecto": "DHL-ES-88231940" },
+      { "clave": "importe", "etiqueta": "Tasa pendiente", "tipo": "texto", "defecto": "2,49 €" },
+      { "clave": "remitenteEnvio", "etiqueta": "Remitente del paquete", "tipo": "texto", "defecto": "Amazon EU" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Tu envío {{tracking}} está retenido en aduana",
+          "urgencia": "Acción requerida: paquete pendiente de una tasa de {{importe}}",
+          "urgencia+erratas": "URGENTE: su paquete sera devuelto al remitente"
+        },
+        "preheader": { "base": "{{tracking}} · {{remitenteEnvio}}", "urgencia": "Paga la tasa para liberar tu paquete" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado cliente" },
+        "titular": {
+          "base": "{{saludo}}, tu paquete está retenido",
+          "urgencia": "{{saludo}}, falta pagar una tasa de aduana",
+          "urgencia+erratas": "{{saludo}}, ACCION REQUERIDA para recibir su paquete"
+        },
+        "entradilla": {
+          "base": "Tu envío <strong>{{tracking}}</strong> de {{remitenteEnvio}} está retenido en nuestras instalaciones a la espera de una tasa aduanera.",
+          "urgencia": "El envío no puede seguir su ruta hasta que se abone la tasa pendiente de <strong>{{importe}}</strong>.",
+          "urgencia+erratas": "Su paquete {{tracking}} esta retenido por una tasa de <strong>{{importe}}</strong> sin pagar."
+        },
+        "detalle": {
+          "base": "Es un trámite habitual en envíos internacionales. Puedes pagarlo online en un par de minutos.",
+          "urgencia": "En cuanto se registre el pago, el paquete sigue su ruta normal de entrega.",
+          "urgencia+erratas": "Sin el pago, el paquete sera devuelto al remitente en un plazo de 5 dias."
+        },
+        "urgencia": {
+          "base": "El paquete queda guardado en nuestras instalaciones hasta que se resuelva.",
+          "urgencia": "Cuanto antes se pague, antes sale el paquete hacia tu dirección de entrega.",
+          "urgencia+erratas": "ATENCION: si no paga en las proximas 48 horas, el paquete inicia el proceso de devolucion."
+        },
+        "cta": { "base": "Ver estado del envío", "urgencia": "Pagar la tasa pendiente", "urgencia+erratas": "PAGAR AHORA Y EVITAR LA DEVOLUCION" },
+        "cierre": { "base": "DHL Express", "urgencia+erratas": "Aduanas · DHL Express" },
+        "fichaEtiqueta1": "Seguimiento", "fichaValor1": "{{tracking}}",
+        "fichaEtiqueta2": "Remitente", "fichaValor2": "{{remitenteEnvio}}",
+        "fichaEtiqueta3": "Tasa pendiente", "fichaValor3": { "base": "{{importe}}", "urgencia+erratas": "{{importe}} · SIN PAGAR" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "El teu enviament {{tracking}} està retingut a duana",
+          "urgencia": "Acció requerida: paquet pendent d'una taxa de {{importe}}",
+          "urgencia+erratas": "URGENT: el seu paquet sera retornat al remitent"
+        },
+        "preheader": { "base": "{{tracking}} · {{remitenteEnvio}}", "urgencia": "Paga la taxa per alliberar el teu paquet" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut client" },
+        "titular": {
+          "base": "{{saludo}}, el teu paquet està retingut",
+          "urgencia": "{{saludo}}, falta pagar una taxa de duana",
+          "urgencia+erratas": "{{saludo}}, ACCIO REQUERIDA per rebre el seu paquet"
+        },
+        "entradilla": {
+          "base": "El teu enviament <strong>{{tracking}}</strong> de {{remitenteEnvio}} està retingut a les nostres instal·lacions a l'espera d'una taxa duanera.",
+          "urgencia": "L'enviament no pot seguir la seva ruta fins que s'aboni la taxa pendent de <strong>{{importe}}</strong>.",
+          "urgencia+erratas": "El seu paquet {{tracking}} esta retingut per una taxa de <strong>{{importe}}</strong> sense pagar."
+        },
+        "detalle": {
+          "base": "És un tràmit habitual en enviaments internacionals. Ho pots pagar en línia en un parell de minuts.",
+          "urgencia": "Tan bon punt es registri el pagament, el paquet segueix la seva ruta normal d'entrega.",
+          "urgencia+erratas": "Sense el pagament, el paquet sera retornat al remitent en un termini de 5 dies."
+        },
+        "urgencia": {
+          "base": "El paquet queda desat a les nostres instal·lacions fins que es resolgui.",
+          "urgencia": "Com abans es pagui, abans surt el paquet cap a la teva adreça d'entrega.",
+          "urgencia+erratas": "ATENCIO: si no paga en les properes 48 hores, el paquet inicia el proces de devolucio."
+        },
+        "cta": { "base": "Veure estat de l'enviament", "urgencia": "Pagar la taxa pendent", "urgencia+erratas": "PAGAR ARA I EVITAR LA DEVOLUCIO" },
+        "cierre": { "base": "DHL Express", "urgencia+erratas": "Duanes · DHL Express" },
+        "fichaEtiqueta1": "Seguiment", "fichaValor1": "{{tracking}}",
+        "fichaEtiqueta2": "Remitent", "fichaValor2": "{{remitenteEnvio}}",
+        "fichaEtiqueta3": "Taxa pendent", "fichaValor3": { "base": "{{importe}}", "urgencia+erratas": "{{importe}} · SENSE PAGAR" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Your shipment {{tracking}} is held at customs",
+          "urgencia": "Action required: parcel pending a {{importe}} fee",
+          "urgencia+erratas": "URGENT: your parcel will be returned to sender"
+        },
+        "preheader": { "base": "{{tracking}} · {{remitenteEnvio}}", "urgencia": "Pay the fee to release your parcel" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear customer" },
+        "titular": {
+          "base": "{{saludo}}, your parcel is on hold",
+          "urgencia": "{{saludo}}, a customs fee is still unpaid",
+          "urgencia+erratas": "{{saludo}}, ACTION REQUIRED to receive your parcel"
+        },
+        "entradilla": {
+          "base": "Your shipment <strong>{{tracking}}</strong> from {{remitenteEnvio}} is being held at our facility pending a customs fee.",
+          "urgencia": "The shipment cannot continue its route until the outstanding fee of <strong>{{importe}}</strong> is paid.",
+          "urgencia+erratas": "Your parcel {{tracking}} is on hold over an unpaid fee of <strong>{{importe}}</strong>."
+        },
+        "detalle": {
+          "base": "This is routine for international shipments. You can pay it online in a couple of minutes.",
+          "urgencia": "As soon as the payment is recorded, the parcel continues on its normal delivery route.",
+          "urgencia+erratas": "Without payment, the parcel will be returned to sender within 5 days."
+        },
+        "urgencia": {
+          "base": "The parcel stays at our facility until this is resolved.",
+          "urgencia": "The sooner it's paid, the sooner the parcel heads to your delivery address.",
+          "urgencia+erratas": "WARNING: if you do not pay within the next 48 hours, the parcel starts the return process."
+        },
+        "cta": { "base": "View shipment status", "urgencia": "Pay the outstanding fee", "urgencia+erratas": "PAY NOW TO AVOID RETURN" },
+        "cierre": { "base": "DHL Express", "urgencia+erratas": "Customs · DHL Express" },
+        "fichaEtiqueta1": "Tracking", "fichaValor1": "{{tracking}}",
+        "fichaEtiqueta2": "Sender", "fichaValor2": "{{remitenteEnvio}}",
+        "fichaEtiqueta3": "Fee due", "fichaValor3": { "base": "{{importe}}", "urgencia+erratas": "{{importe}} · UNPAID" }
+      }
+    }
+  }
+]

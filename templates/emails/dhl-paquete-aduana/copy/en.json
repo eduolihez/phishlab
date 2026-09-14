@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your shipment {{tracking}} is held at customs",
+    "urgencia": "Action required: parcel pending a {{importe}} fee",
+    "urgencia+erratas": "URGENT: your parcel will be returned to sender"
+  },
+  "preheader": {
+    "base": "{{tracking}} · {{remitenteEnvio}}",
+    "urgencia": "Pay the fee to release your parcel"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear customer"
+  },
+  "titular": {
+    "base": "{{saludo}}, your parcel is on hold",
+    "urgencia": "{{saludo}}, a customs fee is still unpaid",
+    "urgencia+erratas": "{{saludo}}, ACTION REQUIRED to receive your parcel"
+  },
+  "entradilla": {
+    "base": "Your shipment <strong>{{tracking}}</strong> from {{remitenteEnvio}} is being held at our facility pending a customs fee.",
+    "urgencia": "The shipment cannot continue its route until the outstanding fee of <strong>{{importe}}</strong> is paid.",
+    "urgencia+erratas": "Your parcel {{tracking}} is on hold over an unpaid fee of <strong>{{importe}}</strong>."
+  },
+  "detalle": {
+    "base": "This is routine for international shipments. You can pay it online in a couple of minutes.",
+    "urgencia": "As soon as the payment is recorded, the parcel continues on its normal delivery route.",
+    "urgencia+erratas": "Without payment, the parcel will be returned to sender within 5 days."
+  },
+  "urgencia": {
+    "base": "The parcel stays at our facility until this is resolved.",
+    "urgencia": "The sooner it's paid, the sooner the parcel heads to your delivery address.",
+    "urgencia+erratas": "WARNING: if you do not pay within the next 48 hours, the parcel starts the return process."
+  },
+  "cta": {
+    "base": "View shipment status",
+    "urgencia": "Pay the outstanding fee",
+    "urgencia+erratas": "PAY NOW TO AVOID RETURN"
+  },
+  "cierre": {
+    "base": "DHL Express",
+    "urgencia+erratas": "Customs · DHL Express"
+  },
+  "fichaEtiqueta1": "Tracking",
+  "fichaValor1": "{{tracking}}",
+  "fichaEtiqueta2": "Sender",
+  "fichaValor2": "{{remitenteEnvio}}",
+  "fichaEtiqueta3": "Fee due",
+  "fichaValor3": {
+    "base": "{{importe}}",
+    "urgencia+erratas": "{{importe}} · UNPAID"
+  }
+}

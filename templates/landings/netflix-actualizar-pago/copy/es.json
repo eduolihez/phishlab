@@ -1,0 +1,21 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "tituloPagina": "Vuelve a iniciar sesión",
+  "subtitulo": "Por tu seguridad, confirma tu contraseña para continuar.",
+  "aviso": {
+    "base": "",
+    "urgencia": "Tu suscripción está en riesgo. Confirma tu contraseña para actualizar el pago."
+  },
+  "phPassword": "Contraseña",
+  "errorPassword": "Introduce tu contraseña para continuar.",
+  "btnContinuar": "Continuar",
+  "enlaceOlvido": "¿Has olvidado tu contraseña?",
+  "enlaceAyuda": "Ayuda",
+  "enlacePrivacidad": "Privacidad",
+  "enlaceCondiciones": "Condiciones de uso"
+}

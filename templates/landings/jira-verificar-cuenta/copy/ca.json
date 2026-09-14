@@ -1,0 +1,19 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "tituloPagina": "Iniciar sessió",
+  "aviso": {
+    "base": "",
+    "urgencia": "Inicia sessió per revalidar la teva contrasenya i tancar el tiquet."
+  },
+  "etiquetaEmail": "Correu electrònic",
+  "etiquetaPassword": "Contrasenya",
+  "enlaceOlvido": "Has oblidat la contrasenya?",
+  "btnEntrar": "Iniciar sessió",
+  "enlacePrivacidad": "Privacitat",
+  "enlaceCondiciones": "Condicions"
+}

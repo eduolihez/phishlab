@@ -1,0 +1,51 @@
+{
+  "schema": 2,
+  "nombre": "GitHub · Verificar dispositivo",
+  "descripcion": "Login de GitHub con aviso de dispositivo nuevo. Pareja natural del correo de nuevo inicio de sesión, pensado para perfiles técnicos.",
+  "familia": "desarrollo",
+  "categoria": "saas-corporativo",
+  "empresa": "GitHub",
+  "tags": [
+    "github",
+    "credenciales",
+    "login",
+    "desarrollo"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "marca",
+      "etiqueta": "marca",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "aviso-dispositivo",
+      "etiqueta": "aviso-dispositivo",
+      "senal": "urgencia"
+    },
+    {
+      "id": "pie-registro",
+      "etiqueta": "pie-registro",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

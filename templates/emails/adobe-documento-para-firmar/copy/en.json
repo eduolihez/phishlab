@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "{{remitenteDoc}} sent you a document to sign",
+    "urgencia": "Signature pending: {{documento}}",
+    "urgencia+erratas": "URGENT: signature required before {{plazo}}"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "Your signature is needed to complete this"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear user"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a document to sign",
+    "urgencia": "{{saludo}}, your signature is pending",
+    "urgencia+erratas": "{{saludo}}, SIGNATURE REQUIRED urgently"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteDoc}}</strong> sent you \"{{documento}}\" for your electronic signature.",
+    "urgencia": "The \"{{documento}}\" process from {{remitenteDoc}} cannot move forward until you sign it.",
+    "urgencia+erratas": "{{remitenteDoc}} needs your signature on \"{{documento}}\" before {{plazo}}."
+  },
+  "detalle": {
+    "base": "You can review the document and sign it from any device, no printing needed.",
+    "urgencia": "The other signers have already completed their part: only yours is missing.",
+    "urgencia+erratas": "Without your signature the process will be blocked and may delay payment to the supplier."
+  },
+  "urgencia": {
+    "base": "There is no strict deadline, but the sooner you sign, the sooner it's closed.",
+    "urgencia": "The signing window is {{plazo}}; after that, the document goes back to whoever sent it.",
+    "urgencia+erratas": "WARNING: {{plazo}} left to sign. After that the agreement is cancelled."
+  },
+  "cta": {
+    "base": "Review document",
+    "urgencia": "Sign now",
+    "urgencia+erratas": "SIGN BEFORE THE DEADLINE"
+  },
+  "cierre": {
+    "base": "The Adobe Sign Team",
+    "urgencia+erratas": "Adobe Sign Notifications"
+  },
+  "fichaEtiqueta1": "Sent by",
+  "fichaValor1": "{{remitenteDoc}}",
+  "fichaEtiqueta2": "Document",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Deadline",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · PENDING"
+  }
+}

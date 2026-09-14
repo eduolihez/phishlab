@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "[GitHub] Se ha añadido un nuevo dispositivo a tu cuenta",
+    "urgencia": "[GitHub] Nuevo inicio de sesión desde {{ubicacion}}",
+    "urgencia+erratas": "[GitHub] ALERTA: acceso no reconocido a su cuenta"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Verifica este dispositivo si no fuiste tú"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hemos visto un nuevo inicio de sesión",
+    "urgencia": "{{saludo}}, ¿reconoces este dispositivo?",
+    "urgencia+erratas": "{{saludo}}, ACCESO NO RECONOCIDO detectado"
+  },
+  "entradilla": {
+    "base": "Tu cuenta de GitHub se usó para iniciar sesión desde un nuevo dispositivo. Si fuiste tú, no hace falta que hagas nada.",
+    "urgencia": "Se ha usado tu cuenta para acceder a <strong>{{repositorio}}</strong> desde {{ubicacion}}, con un dispositivo que no reconocemos.",
+    "urgencia+erratas": "Se ha detectado un acceso no autorizado a su cuenta y al repositorio {{repositorio}}. Si no ha sido usted, actue de inmediato."
+  },
+  "detalle": {
+    "base": "Puedes revisar tus sesiones activas y tus claves SSH desde la configuración de seguridad cuando quieras.",
+    "urgencia": "Si no reconoces el dispositivo, revócalo y rota tus tokens de acceso personal desde el enlace de abajo.",
+    "urgencia+erratas": "Revoque el acceso y rote sus credenciales AHORA. El repositorio contiene secretos de despliegue."
+  },
+  "urgencia": {
+    "base": "No hay ninguna acción urgente: esto es solo un aviso informativo.",
+    "urgencia": "Cuanto antes revises el acceso, menos tiempo tiene quien haya entrado con tu cuenta.",
+    "urgencia+erratas": "ATENCION: la sesion sigue ACTIVA ahora mismo en el repositorio de produccion."
+  },
+  "cta": {
+    "base": "Ver dispositivos",
+    "urgencia": "Revisar este dispositivo",
+    "urgencia+erratas": "REVOCAR ACCESO AHORA"
+  },
+  "cierre": {
+    "base": "El equipo de GitHub",
+    "urgencia+erratas": "GitHub Security"
+  },
+  "fichaEtiqueta1": "Repositorio",
+  "fichaValor1": "{{repositorio}}",
+  "fichaEtiqueta2": "Dispositivo",
+  "fichaValor2": "{{dispositivo}}",
+  "fichaEtiqueta3": "Ubicación",
+  "fichaValor3": {
+    "base": "{{ubicacion}}",
+    "urgencia+erratas": "{{ubicacion}} · SIN VERIFICAR"
+  }
+}

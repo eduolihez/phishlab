@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="{{idioma}}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Netflix</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+<style>
+  @media only screen and (max-width:620px) {
+    .contenedor { width:100% !important; }
+    .relleno { padding-left:20px !important; padding-right:20px !important; }
+    .boton a { display:block !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#f3f3f3;">
+
+<!--@bloque:preheader @opcional-->
+<div style="display:none;font-size:1px;color:#f3f3f3;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+  {{preheader}}
+  &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+<!--@/bloque-->
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f3f3;">
+<tr>
+<td align="center" style="padding:0 12px;">
+
+  <table role="presentation" class="contenedor" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#ffffff;">
+
+    <!--@bloque:cabecera @opcional-->
+    <tr>
+      <td class="relleno" style="padding:26px 40px;background-color:#000000;">
+        <!--@bloque:marca-servicio @senal:!incoherencia-marca-->
+        <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:26px;font-weight:800;letter-spacing:-.5px;color:#e50914;">NETFLIX</p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <tr>
+      <td class="relleno" style="padding:36px 40px 6px;font-family:Helvetica,Arial,sans-serif;">
+        <h1 style="margin:0 0 16px;font-size:22px;line-height:28px;font-weight:700;color:#221f1f;">
+          {{titular}}
+        </h1>
+        <p style="margin:0 0 16px;font-size:14px;line-height:22px;color:#221f1f;">
+          {{entradilla}}
+        </p>
+        <p style="margin:0 0 18px;font-size:14px;line-height:22px;color:#221f1f;">
+          {{detalle}}
+        </p>
+      </td>
+    </tr>
+
+    <!--@bloque:ficha @opcional-->
+    <tr>
+      <td class="relleno" style="padding:6px 40px 4px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f6f6f6;">
+          <tr>
+            <td style="padding:16px 18px;font-family:Helvetica,Arial,sans-serif;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#737373;width:130px;">{{fichaEtiqueta1}}</td>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#221f1f;font-weight:600;">{{fichaValor1}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#737373;">{{fichaEtiqueta2}}</td>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#221f1f;">{{fichaValor2}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0;font-size:12.5px;line-height:19px;color:#737373;">{{fichaEtiqueta3}}</td>
+                  <td style="padding:0;font-size:12.5px;line-height:19px;color:#e50914;font-weight:600;">{{fichaValor3}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <!--@bloque:urgencia @senal:urgencia-->
+    <tr>
+      <td class="relleno" style="padding:18px 40px 4px;font-family:Helvetica,Arial,sans-serif;">
+        <p style="margin:0 0 22px;font-size:13px;line-height:20px;color:#8a6116;background-color:#fdf3dc;padding:11px 14px;">
+          {{urgencia}}
+        </p>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <tr>
+      <td class="relleno" style="padding:8px 40px 34px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="boton">
+          <tr>
+            <td align="center" bgcolor="#e50914" style="border-radius:3px;">
+              <a href="{{.URL}}"
+                 style="display:inline-block;padding:12px 30px;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:20px;color:#ffffff;text-decoration:none;border-radius:3px;">
+                {{cta}}
+              </a>
+            </td>
+          </tr>
+        </table>
+        <!--@bloque:enlace-visible @senal:enlace-visible-->
+        <p style="margin:14px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:11.5px;line-height:17px;color:#8c8c8c;">
+          {{textoEnlaceVisible}}<br>
+          <span style="color:#e50914;word-break:break-all;">{{.URL}}</span>
+        </p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+
+    <!--@bloque:pie @opcional-->
+    <tr>
+      <td class="relleno" style="padding:20px 40px 30px;border-top:1px solid #e6e6e6;font-family:Helvetica,Arial,sans-serif;">
+        <p style="margin:0 0 4px;font-size:12.5px;line-height:19px;color:#221f1f;font-weight:600;">
+          {{cierre}}
+        </p>
+        <p style="margin:0 0 12px;font-size:11.5px;line-height:17px;color:#8c8c8c;">
+          {{avisoAutomatico}}
+        </p>
+        <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+        <p style="margin:0;font-size:11px;line-height:16px;color:#a3a3a3;">
+          &copy; {{anio}} Netflix, Inc.<br>
+          {{avisoReporte}}
+        </p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+  </table>
+
+</td>
+</tr>
+</table>
+
+<!--@bloque:tracker @opcional-->
+{{.Tracker}}
+<!--@/bloque-->
+</body>
+</html>

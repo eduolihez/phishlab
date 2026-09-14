@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tu envío {{tracking}} está retenido en aduana",
+    "urgencia": "Acción requerida: paquete pendiente de una tasa de {{importe}}",
+    "urgencia+erratas": "URGENTE: su paquete sera devuelto al remitente"
+  },
+  "preheader": {
+    "base": "{{tracking}} · {{remitenteEnvio}}",
+    "urgencia": "Paga la tasa para liberar tu paquete"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado cliente"
+  },
+  "titular": {
+    "base": "{{saludo}}, tu paquete está retenido",
+    "urgencia": "{{saludo}}, falta pagar una tasa de aduana",
+    "urgencia+erratas": "{{saludo}}, ACCION REQUERIDA para recibir su paquete"
+  },
+  "entradilla": {
+    "base": "Tu envío <strong>{{tracking}}</strong> de {{remitenteEnvio}} está retenido en nuestras instalaciones a la espera de una tasa aduanera.",
+    "urgencia": "El envío no puede seguir su ruta hasta que se abone la tasa pendiente de <strong>{{importe}}</strong>.",
+    "urgencia+erratas": "Su paquete {{tracking}} esta retenido por una tasa de <strong>{{importe}}</strong> sin pagar."
+  },
+  "detalle": {
+    "base": "Es un trámite habitual en envíos internacionales. Puedes pagarlo online en un par de minutos.",
+    "urgencia": "En cuanto se registre el pago, el paquete sigue su ruta normal de entrega.",
+    "urgencia+erratas": "Sin el pago, el paquete sera devuelto al remitente en un plazo de 5 dias."
+  },
+  "urgencia": {
+    "base": "El paquete queda guardado en nuestras instalaciones hasta que se resuelva.",
+    "urgencia": "Cuanto antes se pague, antes sale el paquete hacia tu dirección de entrega.",
+    "urgencia+erratas": "ATENCION: si no paga en las proximas 48 horas, el paquete inicia el proceso de devolucion."
+  },
+  "cta": {
+    "base": "Ver estado del envío",
+    "urgencia": "Pagar la tasa pendiente",
+    "urgencia+erratas": "PAGAR AHORA Y EVITAR LA DEVOLUCION"
+  },
+  "cierre": {
+    "base": "DHL Express",
+    "urgencia+erratas": "Aduanas · DHL Express"
+  },
+  "fichaEtiqueta1": "Seguimiento",
+  "fichaValor1": "{{tracking}}",
+  "fichaEtiqueta2": "Remitente",
+  "fichaValor2": "{{remitenteEnvio}}",
+  "fichaEtiqueta3": "Tasa pendiente",
+  "fichaValor3": {
+    "base": "{{importe}}",
+    "urgencia+erratas": "{{importe}} · SIN PAGAR"
+  }
+}

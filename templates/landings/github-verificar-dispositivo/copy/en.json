@@ -1,0 +1,22 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "tituloPagina": "Sign in to GitHub",
+  "aviso": {
+    "base": "",
+    "urgencia": "We've detected a new device. Sign in again to verify it."
+  },
+  "etiquetaEmail": "Username or email address",
+  "etiquetaPassword": "Password",
+  "enlaceOlvido": "Forgot password?",
+  "btnEntrar": "Sign in",
+  "textoPieRegistro": "New to GitHub?",
+  "enlaceRegistro": "Create an account",
+  "enlaceCondiciones": "Terms",
+  "enlacePrivacidad": "Privacy",
+  "enlaceSeguridad": "Security"
+}

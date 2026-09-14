@@ -1,0 +1,45 @@
+{
+  "schema": 2,
+  "nombre": "PayPal · Verificar identidad",
+  "descripcion": "Login en dos pasos de PayPal. Pareja natural del correo de actividad sospechosa: la marca financiera más reconocible que existe.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "empresa": "PayPal",
+  "tags": [
+    "paypal",
+    "credenciales",
+    "login",
+    "pago"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "aviso-verificacion",
+      "etiqueta": "aviso-verificacion",
+      "senal": "urgencia"
+    },
+    {
+      "id": "cta-registro",
+      "etiqueta": "cta-registro",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+[
+  {
+    "id": "buzon-correo-casi-lleno",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "IT · Buzón de correo casi lleno",
+    "descripcion": "Aviso de cuota de almacenamiento a punto de agotarse. El pretexto más aburrido que existe, y por eso mismo el que menos sospecha levanta: nadie piensa dos veces antes de «liberar espacio».",
+    "familia": "it",
+    "categoria": "soporte-it",
+    "tags": ["it", "correo", "almacenamiento", "credenciales"],
+    "remitente": { "nombre": "Soporte de Sistemas", "buzon": "soporte" },
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del servicio de correo", "tipo": "texto", "defecto": "Correo corporativo" },
+      { "clave": "porcentaje", "etiqueta": "Porcentaje de cuota usado", "tipo": "texto", "defecto": "96%" },
+      { "clave": "espacioLibre", "etiqueta": "Espacio libre restante", "tipo": "texto", "defecto": "142 MB" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Tu buzón está casi lleno ({{porcentaje}})",
+          "urgencia": "Dejarás de recibir correo si no liberas espacio",
+          "urgencia+erratas": "URGENTE: buzon de correo a punto de bloquearse"
+        },
+        "preheader": { "base": "Quedan {{espacioLibre}} libres", "urgencia": "Libera espacio antes de que se bloquee el envío" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado usuario" },
+        "titular": {
+          "base": "{{saludo}}, tu buzón está casi lleno",
+          "urgencia": "{{saludo}}, vas a dejar de recibir correo",
+          "urgencia+erratas": "{{saludo}}, BUZON A PUNTO DE BLOQUEARSE"
+        },
+        "entradilla": {
+          "base": "Tu buzón de {{servicio}} está al {{porcentaje}} de su capacidad. Cuando llegue al 100%, dejarás de poder enviar y recibir correo.",
+          "urgencia": "Solo quedan <strong>{{espacioLibre}}</strong> libres en tu buzón. A este ritmo, se llenará en los próximos días.",
+          "urgencia+erratas": "Su buzon esta al {{porcentaje}} de su capacidad. Los correos entrantes empezaran a RECHAZARSE."
+        },
+        "detalle": {
+          "base": "Puedes liberar espacio borrando correo antiguo o ampliar tu cuota desde el enlace de abajo.",
+          "urgencia": "La forma más rápida es ampliar la cuota desde el portal: tarda menos de un minuto.",
+          "urgencia+erratas": "Amplie su cuota de inmediato desde el enlace para evitar perder correos entrantes."
+        },
+        "urgencia": {
+          "base": "No hay una fecha límite exacta: depende de cuánto correo sigas recibiendo.",
+          "urgencia": "Si no liberas espacio, los correos nuevos empezarán a rebotar sin previo aviso.",
+          "urgencia+erratas": "ATENCION: los correos nuevos se estan RECHAZANDO desde hoy mismo."
+        },
+        "cta": { "base": "Gestionar mi buzón", "urgencia": "Ampliar cuota ahora", "urgencia+erratas": "AMPLIAR CUOTA URGENTEMENTE" },
+        "cierre": { "base": "Soporte de Sistemas · {{empresa}}", "urgencia+erratas": "Servicio de Correo · {{empresa}}" },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Servicio", "fichaValor1": "{{servicio}}",
+        "fichaEtiqueta2": "Uso actual", "fichaValor2": "{{porcentaje}}",
+        "fichaEtiqueta3": "Espacio libre", "fichaValor3": { "base": "{{espacioLibre}}", "urgencia+erratas": "{{espacioLibre}} · CRITICO" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "La teva bústia està gairebé plena ({{porcentaje}})",
+          "urgencia": "Deixaràs de rebre correu si no alliberes espai",
+          "urgencia+erratas": "URGENT: bustia de correu a punt de bloquejar-se"
+        },
+        "preheader": { "base": "Queden {{espacioLibre}} lliures", "urgencia": "Allibera espai abans que es bloquegi l'enviament" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut usuari" },
+        "titular": {
+          "base": "{{saludo}}, la teva bústia està gairebé plena",
+          "urgencia": "{{saludo}}, deixaràs de rebre correu",
+          "urgencia+erratas": "{{saludo}}, BUSTIA A PUNT DE BLOQUEJAR-SE"
+        },
+        "entradilla": {
+          "base": "La teva bústia de {{servicio}} està al {{porcentaje}} de la seva capacitat. Quan arribi al 100%, deixaràs de poder enviar i rebre correu.",
+          "urgencia": "Només queden <strong>{{espacioLibre}}</strong> lliures a la teva bústia. A aquest ritme, s'omplirà en els propers dies.",
+          "urgencia+erratas": "La seva bustia esta al {{porcentaje}} de la seva capacitat. Els correus entrants començaran a REBUTJAR-SE."
+        },
+        "detalle": {
+          "base": "Pots alliberar espai esborrant correu antic o ampliar la teva quota des de l'enllaç de sota.",
+          "urgencia": "La manera més ràpida és ampliar la quota des del portal: triga menys d'un minut.",
+          "urgencia+erratas": "Amplii la seva quota de seguida des de l'enllaç per evitar perdre correus entrants."
+        },
+        "urgencia": {
+          "base": "No hi ha una data límit exacta: depèn de quant correu segueixis rebent.",
+          "urgencia": "Si no alliberes espai, els correus nous començaran a rebotar sense avís previ.",
+          "urgencia+erratas": "ATENCIO: els correus nous s'estan REBUTJANT des d'avui mateix."
+        },
+        "cta": { "base": "Gestionar la meva bústia", "urgencia": "Ampliar quota ara", "urgencia+erratas": "AMPLIAR QUOTA URGENTMENT" },
+        "cierre": { "base": "Suport de Sistemes · {{empresa}}", "urgencia+erratas": "Servei de Correu · {{empresa}}" },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Servei", "fichaValor1": "{{servicio}}",
+        "fichaEtiqueta2": "Ús actual", "fichaValor2": "{{porcentaje}}",
+        "fichaEtiqueta3": "Espai lliure", "fichaValor3": { "base": "{{espacioLibre}}", "urgencia+erratas": "{{espacioLibre}} · CRITIC" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Your mailbox is almost full ({{porcentaje}})",
+          "urgencia": "You will stop receiving mail unless you free up space",
+          "urgencia+erratas": "URGENT: mailbox about to be blocked"
+        },
+        "preheader": { "base": "{{espacioLibre}} left", "urgencia": "Free up space before sending gets blocked" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear user" },
+        "titular": {
+          "base": "{{saludo}}, your mailbox is almost full",
+          "urgencia": "{{saludo}}, you are about to stop receiving mail",
+          "urgencia+erratas": "{{saludo}}, MAILBOX ABOUT TO BE BLOCKED"
+        },
+        "entradilla": {
+          "base": "Your {{servicio}} mailbox is at {{porcentaje}} of capacity. Once it reaches 100%, you will not be able to send or receive mail.",
+          "urgencia": "Only <strong>{{espacioLibre}}</strong> is left in your mailbox. At this rate, it will fill up within days.",
+          "urgencia+erratas": "Your mailbox is at {{porcentaje}} of capacity. Incoming mail will start being REJECTED."
+        },
+        "detalle": {
+          "base": "You can free up space by deleting old mail or expand your quota from the link below.",
+          "urgencia": "The fastest way is to expand your quota from the portal: it takes less than a minute.",
+          "urgencia+erratas": "Expand your quota immediately from the link to avoid losing incoming mail."
+        },
+        "urgencia": {
+          "base": "There is no exact deadline: it depends on how much mail you keep receiving.",
+          "urgencia": "If you don't free up space, new mail will start bouncing without warning.",
+          "urgencia+erratas": "WARNING: new mail is being REJECTED as of today."
+        },
+        "cta": { "base": "Manage my mailbox", "urgencia": "Expand quota now", "urgencia+erratas": "EXPAND QUOTA URGENTLY" },
+        "cierre": { "base": "IT Support · {{empresa}}", "urgencia+erratas": "Mail Service · {{empresa}}" },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Service", "fichaValor1": "{{servicio}}",
+        "fichaEtiqueta2": "Current usage", "fichaValor2": "{{porcentaje}}",
+        "fichaEtiqueta3": "Free space", "fichaValor3": { "base": "{{espacioLibre}}", "urgencia+erratas": "{{espacioLibre}} · CRITICAL" }
+      }
+    }
+  },
+
+  {
+    "id": "antifraude-cuenta-investigacion",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "Antifraude · Cuenta bajo investigación",
+    "descripcion": "Aviso de un departamento antifraude genérico que dice haber abierto una investigación sobre la cuenta. Juega la carta de autoridad y miedo a la vez, sin necesitar la marca de ningún banco concreto.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "tags": ["antifraude", "investigacion", "credenciales", "miedo"],
+    "remitente": { "nombre": "Departamento Antifraude", "buzon": "antifraude" },
+    "campos": [
+      { "clave": "servicio", "etiqueta": "Nombre del servicio", "tipo": "texto", "defecto": "Plataforma de pagos" },
+      { "clave": "expediente", "etiqueta": "Número de expediente", "tipo": "texto", "defecto": "AF-2026-77410" },
+      { "clave": "plazo", "etiqueta": "Plazo para responder", "tipo": "texto", "defecto": "5 días naturales" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Tu cuenta está bajo revisión (expediente {{expediente}})",
+          "urgencia": "Investigación abierta sobre tu cuenta: se requiere tu respuesta",
+          "urgencia+erratas": "AVISO LEGAL: su cuenta esta bajo investigacion por fraude"
+        },
+        "preheader": { "base": "Expediente {{expediente}}", "urgencia": "Responde antes de que se apliquen restricciones" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado titular" },
+        "titular": {
+          "base": "{{saludo}}, hemos abierto una revisión sobre tu cuenta",
+          "urgencia": "{{saludo}}, tu cuenta está bajo investigación",
+          "urgencia+erratas": "{{saludo}}, CUENTA BAJO INVESTIGACION POR FRAUDE"
+        },
+        "entradilla": {
+          "base": "Como parte de nuestros controles habituales, hemos abierto el expediente <strong>{{expediente}}</strong> sobre la actividad reciente de tu cuenta.",
+          "urgencia": "Se ha abierto una investigación sobre tu cuenta (expediente <strong>{{expediente}}</strong>) por patrones de actividad inusuales.",
+          "urgencia+erratas": "Su cuenta esta siendo investigada por posible actividad fraudulenta (expediente <strong>{{expediente}}</strong>)."
+        },
+        "detalle": {
+          "base": "No hace falta que hagas nada salvo que te lo pidamos expresamente. Este correo es solo informativo.",
+          "urgencia": "Necesitamos que verifiques tu identidad para poder cerrar el expediente sin restringir la cuenta.",
+          "urgencia+erratas": "Debe verificar su identidad de inmediato o se aplicaran restricciones cautelares a la cuenta."
+        },
+        "urgencia": {
+          "base": "Si necesitamos algo de ti, te lo pediremos con más detalle en un próximo aviso.",
+          "urgencia": "Tienes {{plazo}} para verificar tu identidad antes de que se apliquen restricciones cautelares.",
+          "urgencia+erratas": "ATENCION: quedan {{plazo}}. Pasado ese plazo la cuenta se BLOQUEARA de forma preventiva."
+        },
+        "cta": { "base": "Ver el expediente", "urgencia": "Verificar mi identidad", "urgencia+erratas": "VERIFICAR IDENTIDAD AHORA" },
+        "cierre": { "base": "Departamento Antifraude · {{empresa}}", "urgencia+erratas": "Unidad de Prevención de Fraude" },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Expediente", "fichaValor1": "{{expediente}}",
+        "fichaEtiqueta2": "Servicio", "fichaValor2": "{{servicio}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": { "base": "En revisión", "urgencia+erratas": "REQUIERE VERIFICACION" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "El teu compte està en revisió (expedient {{expediente}})",
+          "urgencia": "Investigació oberta sobre el teu compte: es requereix resposta",
+          "urgencia+erratas": "AVIS LEGAL: el seu compte esta sota investigacio per frau"
+        },
+        "preheader": { "base": "Expedient {{expediente}}", "urgencia": "Respon abans que s'apliquin restriccions" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut titular" },
+        "titular": {
+          "base": "{{saludo}}, hem obert una revisió sobre el teu compte",
+          "urgencia": "{{saludo}}, el teu compte està sota investigació",
+          "urgencia+erratas": "{{saludo}}, COMPTE SOTA INVESTIGACIO PER FRAU"
+        },
+        "entradilla": {
+          "base": "Com a part dels nostres controls habituals, hem obert l'expedient <strong>{{expediente}}</strong> sobre l'activitat recent del teu compte.",
+          "urgencia": "S'ha obert una investigació sobre el teu compte (expedient <strong>{{expediente}}</strong>) per patrons d'activitat inusuals.",
+          "urgencia+erratas": "El seu compte esta sent investigat per possible activitat fraudulenta (expedient <strong>{{expediente}}</strong>)."
+        },
+        "detalle": {
+          "base": "No cal que facis res tret que t'ho demanem expressament. Aquest correu és només informatiu.",
+          "urgencia": "Necessitem que verifiquis la teva identitat per poder tancar l'expedient sense restringir el compte.",
+          "urgencia+erratas": "Ha de verificar la seva identitat de seguida o s'aplicaran restriccions cautelars al compte."
+        },
+        "urgencia": {
+          "base": "Si necessitem alguna cosa de tu, t'ho demanarem amb més detall en un proper avís.",
+          "urgencia": "Tens {{plazo}} per verificar la teva identitat abans que s'apliquin restriccions cautelars.",
+          "urgencia+erratas": "ATENCIO: queden {{plazo}}. Passat aquest termini el compte es BLOQUEJARA de forma preventiva."
+        },
+        "cta": { "base": "Veure l'expedient", "urgencia": "Verificar la meva identitat", "urgencia+erratas": "VERIFICAR IDENTITAT ARA" },
+        "cierre": { "base": "Departament Antifrau · {{empresa}}", "urgencia+erratas": "Unitat de Prevenció de Frau" },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Expedient", "fichaValor1": "{{expediente}}",
+        "fichaEtiqueta2": "Servei", "fichaValor2": "{{servicio}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": { "base": "En revisió", "urgencia+erratas": "REQUEREIX VERIFICACIO" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Your account is under review (case {{expediente}})",
+          "urgencia": "Investigation opened on your account: response required",
+          "urgencia+erratas": "LEGAL NOTICE: your account is under fraud investigation"
+        },
+        "preheader": { "base": "Case {{expediente}}", "urgencia": "Respond before restrictions are applied" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear account holder" },
+        "titular": {
+          "base": "{{saludo}}, we have opened a review of your account",
+          "urgencia": "{{saludo}}, your account is under investigation",
+          "urgencia+erratas": "{{saludo}}, ACCOUNT UNDER FRAUD INVESTIGATION"
+        },
+        "entradilla": {
+          "base": "As part of our routine controls, we have opened case <strong>{{expediente}}</strong> regarding recent activity on your account.",
+          "urgencia": "An investigation has been opened on your account (case <strong>{{expediente}}</strong>) due to unusual activity patterns.",
+          "urgencia+erratas": "Your account is being investigated for possible fraudulent activity (case <strong>{{expediente}}</strong>)."
+        },
+        "detalle": {
+          "base": "You do not need to do anything unless we ask you to explicitly. This email is for information only.",
+          "urgencia": "We need you to verify your identity so we can close the case without restricting the account.",
+          "urgencia+erratas": "You must verify your identity immediately or precautionary restrictions will be applied to the account."
+        },
+        "urgencia": {
+          "base": "If we need anything from you, we will ask with more detail in a future notice.",
+          "urgencia": "You have {{plazo}} to verify your identity before precautionary restrictions are applied.",
+          "urgencia+erratas": "WARNING: {{plazo}} left. After that the account will be preventively BLOCKED."
+        },
+        "cta": { "base": "View the case", "urgencia": "Verify my identity", "urgencia+erratas": "VERIFY IDENTITY NOW" },
+        "cierre": { "base": "Anti-Fraud Department · {{empresa}}", "urgencia+erratas": "Fraud Prevention Unit" },
+        "nombreServicio": "{{servicio}}",
+        "fichaEtiqueta1": "Case", "fichaValor1": "{{expediente}}",
+        "fichaEtiqueta2": "Service", "fichaValor2": "{{servicio}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": { "base": "Under review", "urgencia+erratas": "VERIFICATION REQUIRED" }
+      }
+    }
+  },
+
+  {
+    "id": "alerta-seguridad-urgente",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "Actualidad · Alerta de seguridad urgente",
+    "descripcion": "Aviso genérico de que ha ocurrido algo grave que te afecta directamente, sin marca ni departamento concreto detrás. Juega la carta de la curiosidad y el miedo a partes iguales, distinta de la autoridad corporativa habitual.",
+    "familia": "actualidad",
+    "categoria": "avisos-generales",
+    "tags": ["seguridad", "alerta", "curiosidad", "credenciales"],
+    "remitente": { "nombre": "Centro de Alertas", "buzon": "alertas" },
+    "campos": [
+      { "clave": "motivo", "etiqueta": "Motivo de la alerta", "tipo": "texto", "defecto": "una filtración de datos que afecta a tu sector" },
+      { "clave": "fecha", "etiqueta": "Fecha del incidente", "tipo": "texto", "defecto": "esta semana" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Aviso: {{motivo}}",
+          "urgencia": "Tu cuenta puede estar afectada por {{motivo}}",
+          "urgencia+erratas": "ALERTA: actua antes de que sea demasiado tarde"
+        },
+        "preheader": { "base": "Detectado {{fecha}}", "urgencia": "Revisa si te afecta antes de que sea tarde" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado usuario" },
+        "titular": {
+          "base": "{{saludo}}, te informamos de {{motivo}}",
+          "urgencia": "{{saludo}}, esto puede afectarte directamente",
+          "urgencia+erratas": "{{saludo}}, ACTUA ANTES DE QUE SEA TARDE"
+        },
+        "entradilla": {
+          "base": "Se ha detectado {{motivo}}, registrado {{fecha}}. Te lo comunicamos porque tu perfil podría estar entre los afectados.",
+          "urgencia": "Hemos confirmado que tu cuenta figura entre las potencialmente afectadas por {{motivo}}.",
+          "urgencia+erratas": "Su cuenta ha sido identificada como afectada por {{motivo}}. Esto requiere su atencion inmediata."
+        },
+        "detalle": {
+          "base": "Puedes comprobar si tu cuenta está afectada y qué hacer, si procede, desde el enlace de abajo.",
+          "urgencia": "Te recomendamos comprobarlo ahora y seguir los pasos que se indican si tu cuenta aparece afectada.",
+          "urgencia+erratas": "Compruebe su cuenta AHORA y siga los pasos indicados para protegerse."
+        },
+        "urgencia": {
+          "base": "No hay ninguna acción obligatoria: es solo información preventiva.",
+          "urgencia": "Cuanto antes lo compruebes, antes puedes tomar medidas si tu cuenta está afectada.",
+          "urgencia+erratas": "ATENCION: cada hora que pasa aumenta el riesgo si su cuenta esta afectada."
+        },
+        "cta": { "base": "Comprobar mi cuenta", "urgencia": "Ver si estoy afectado", "urgencia+erratas": "COMPROBAR AHORA" },
+        "cierre": { "base": "Centro de Alertas · {{empresa}}", "urgencia+erratas": "Aviso de Seguridad Urgente" },
+        "nombreServicio": "Centro de Alertas",
+        "fichaEtiqueta1": "Motivo", "fichaValor1": "{{motivo}}",
+        "fichaEtiqueta2": "Fecha", "fichaValor2": "{{fecha}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": { "base": "Informativo", "urgencia+erratas": "REQUIERE COMPROBACION" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Avís: {{motivo}}",
+          "urgencia": "El teu compte pot estar afectat per {{motivo}}",
+          "urgencia+erratas": "ALERTA: actua abans que sigui massa tard"
+        },
+        "preheader": { "base": "Detectat {{fecha}}", "urgencia": "Revisa si t'afecta abans que sigui tard" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut usuari" },
+        "titular": {
+          "base": "{{saludo}}, t'informem de {{motivo}}",
+          "urgencia": "{{saludo}}, això et pot afectar directament",
+          "urgencia+erratas": "{{saludo}}, ACTUA ABANS QUE SIGUI TARD"
+        },
+        "entradilla": {
+          "base": "S'ha detectat {{motivo}}, registrat {{fecha}}. T'ho comuniquem perquè el teu perfil podria estar entre els afectats.",
+          "urgencia": "Hem confirmat que el teu compte figura entre les potencialment afectades per {{motivo}}.",
+          "urgencia+erratas": "El seu compte ha estat identificat com afectat per {{motivo}}. Aixo requereix la seva atencio immediata."
+        },
+        "detalle": {
+          "base": "Pots comprovar si el teu compte està afectat i què fer, si escau, des de l'enllaç de sota.",
+          "urgencia": "Et recomanem comprovar-ho ara i seguir els passos que s'indiquen si el teu compte apareix afectat.",
+          "urgencia+erratas": "Comprovi el seu compte ARA i segueixi els passos indicats per protegir-se."
+        },
+        "urgencia": {
+          "base": "No hi ha cap acció obligatòria: és només informació preventiva.",
+          "urgencia": "Com abans ho comprovis, abans pots prendre mesures si el teu compte està afectat.",
+          "urgencia+erratas": "ATENCIO: cada hora que passa augmenta el risc si el seu compte esta afectat."
+        },
+        "cta": { "base": "Comprovar el meu compte", "urgencia": "Veure si estic afectat", "urgencia+erratas": "COMPROVAR ARA" },
+        "cierre": { "base": "Centre d'Alertes · {{empresa}}", "urgencia+erratas": "Avís de Seguretat Urgent" },
+        "nombreServicio": "Centre d'Alertes",
+        "fichaEtiqueta1": "Motiu", "fichaValor1": "{{motivo}}",
+        "fichaEtiqueta2": "Data", "fichaValor2": "{{fecha}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": { "base": "Informatiu", "urgencia+erratas": "REQUEREIX COMPROVACIO" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Notice: {{motivo}}",
+          "urgencia": "Your account may be affected by {{motivo}}",
+          "urgencia+erratas": "ALERT: act before it is too late"
+        },
+        "preheader": { "base": "Detected {{fecha}}", "urgencia": "Check if this affects you before it's too late" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear user" },
+        "titular": {
+          "base": "{{saludo}}, we are informing you about {{motivo}}",
+          "urgencia": "{{saludo}}, this may affect you directly",
+          "urgencia+erratas": "{{saludo}}, ACT BEFORE IT IS TOO LATE"
+        },
+        "entradilla": {
+          "base": "{{motivo}} has been detected, recorded {{fecha}}. We are letting you know because your profile could be among those affected.",
+          "urgencia": "We have confirmed that your account is among those potentially affected by {{motivo}}.",
+          "urgencia+erratas": "Your account has been identified as affected by {{motivo}}. This requires your immediate attention."
+        },
+        "detalle": {
+          "base": "You can check whether your account is affected, and what to do if so, from the link below.",
+          "urgencia": "We recommend checking now and following the steps shown if your account appears affected.",
+          "urgencia+erratas": "Check your account NOW and follow the steps shown to protect yourself."
+        },
+        "urgencia": {
+          "base": "No action is mandatory: this is preventive information only.",
+          "urgencia": "The sooner you check, the sooner you can act if your account is affected.",
+          "urgencia+erratas": "WARNING: every hour that passes increases the risk if your account is affected."
+        },
+        "cta": { "base": "Check my account", "urgencia": "See if I'm affected", "urgencia+erratas": "CHECK NOW" },
+        "cierre": { "base": "Alerts Centre · {{empresa}}", "urgencia+erratas": "Urgent Security Notice" },
+        "nombreServicio": "Alerts Centre",
+        "fichaEtiqueta1": "Reason", "fichaValor1": "{{motivo}}",
+        "fichaEtiqueta2": "Date", "fichaValor2": "{{fecha}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": { "base": "Informational", "urgencia+erratas": "CHECK REQUIRED" }
+      }
+    }
+  },
+
+  {
+    "id": "viaje-empresa-reserva-confirmacion",
+    "tipo": "emails",
+    "layout": "aviso",
+    "nombre": "Viajes · Confirmación de reserva pendiente",
+    "descripcion": "Aviso de una agencia de viajes de empresa con una reserva que hay que confirmar o pagar. Funciona muy bien contra perfiles que viajan a menudo por trabajo: reciben confirmaciones de viaje constantemente.",
+    "familia": "viajes",
+    "categoria": "logistica-administracion",
+    "tags": ["viajes", "reserva", "pago", "empresa"],
+    "remitente": { "nombre": "Agencia de Viajes Corporativa", "buzon": "reservas" },
+    "campos": [
+      { "clave": "destino", "etiqueta": "Destino del viaje", "tipo": "texto", "defecto": "Bruselas" },
+      { "clave": "fechaViaje", "etiqueta": "Fecha del viaje", "tipo": "texto", "defecto": "próximo lunes" },
+      { "clave": "localizador", "etiqueta": "Localizador de la reserva", "tipo": "texto", "defecto": "VJ-2026-40317" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "Confirma tu reserva a {{destino}} ({{localizador}})",
+          "urgencia": "Tu viaje a {{destino}} está pendiente de confirmar",
+          "urgencia+erratas": "URGENTE: reserva de viaje pendiente de pago"
+        },
+        "preheader": { "base": "{{destino}} · {{fechaViaje}}", "urgencia": "Confirma antes de perder la plaza" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado viajero" },
+        "titular": {
+          "base": "{{saludo}}, tienes una reserva por confirmar",
+          "urgencia": "{{saludo}}, tu viaje a {{destino}} está pendiente",
+          "urgencia+erratas": "{{saludo}}, RESERVA PENDIENTE DE PAGO"
+        },
+        "entradilla": {
+          "base": "Hemos preparado tu viaje a <strong>{{destino}}</strong> para {{fechaViaje}}, localizador <strong>{{localizador}}</strong>. Falta que lo confirmes.",
+          "urgencia": "La reserva a {{destino}} ({{fechaViaje}}) está a punto de liberarse porque falta tu confirmación.",
+          "urgencia+erratas": "Su reserva a {{destino}} sera CANCELADA si no confirma el pago antes del viaje."
+        },
+        "detalle": {
+          "base": "Puedes revisar los detalles del vuelo y del hotel y confirmarlos desde el enlace de abajo.",
+          "urgencia": "Las plazas de este vuelo son limitadas: si no confirmas pronto, tendremos que reasignarla.",
+          "urgencia+erratas": "Confirme el pago de inmediato o perdera la plaza reservada para {{fechaViaje}}."
+        },
+        "urgencia": {
+          "base": "No hay prisa: la reserva queda a tu nombre hasta un par de días antes del viaje.",
+          "urgencia": "Confírmalo hoy para asegurar el asiento y la habitación que se han reservado a tu nombre.",
+          "urgencia+erratas": "ATENCION: quedan pocas horas antes de que la plaza se libere a otro viajero."
+        },
+        "cta": { "base": "Ver mi reserva", "urgencia": "Confirmar el viaje", "urgencia+erratas": "CONFIRMAR PAGO AHORA" },
+        "cierre": { "base": "Agencia de Viajes Corporativa · {{empresa}}", "urgencia+erratas": "Gestión de Viajes" },
+        "nombreServicio": "Viajes {{empresa}}",
+        "fichaEtiqueta1": "Destino", "fichaValor1": "{{destino}}",
+        "fichaEtiqueta2": "Fecha", "fichaValor2": "{{fechaViaje}}",
+        "fichaEtiqueta3": "Localizador", "fichaValor3": { "base": "{{localizador}}", "urgencia+erratas": "{{localizador}} · SIN CONFIRMAR" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "Confirma la teva reserva a {{destino}} ({{localizador}})",
+          "urgencia": "El teu viatge a {{destino}} està pendent de confirmar",
+          "urgencia+erratas": "URGENT: reserva de viatge pendent de pagament"
+        },
+        "preheader": { "base": "{{destino}} · {{fechaViaje}}", "urgencia": "Confirma abans de perdre la plaça" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut viatger" },
+        "titular": {
+          "base": "{{saludo}}, tens una reserva per confirmar",
+          "urgencia": "{{saludo}}, el teu viatge a {{destino}} està pendent",
+          "urgencia+erratas": "{{saludo}}, RESERVA PENDENT DE PAGAMENT"
+        },
+        "entradilla": {
+          "base": "Hem preparat el teu viatge a <strong>{{destino}}</strong> per a {{fechaViaje}}, localitzador <strong>{{localizador}}</strong>. Falta que el confirmis.",
+          "urgencia": "La reserva a {{destino}} ({{fechaViaje}}) està a punt d'alliberar-se perquè falta la teva confirmació.",
+          "urgencia+erratas": "La seva reserva a {{destino}} sera CANCEL·LADA si no confirma el pagament abans del viatge."
+        },
+        "detalle": {
+          "base": "Pots revisar els detalls del vol i de l'hotel i confirmar-los des de l'enllaç de sota.",
+          "urgencia": "Les places d'aquest vol són limitades: si no confirmes aviat, haurem de reassignar-la.",
+          "urgencia+erratas": "Confirmi el pagament de seguida o perdra la plaça reservada per {{fechaViaje}}."
+        },
+        "urgencia": {
+          "base": "No hi ha pressa: la reserva queda al teu nom fins a un parell de dies abans del viatge.",
+          "urgencia": "Confirma-ho avui per assegurar el seient i l'habitació que s'han reservat al teu nom.",
+          "urgencia+erratas": "ATENCIO: queden poques hores abans que la plaça s'alliberi a un altre viatger."
+        },
+        "cta": { "base": "Veure la meva reserva", "urgencia": "Confirmar el viatge", "urgencia+erratas": "CONFIRMAR PAGAMENT ARA" },
+        "cierre": { "base": "Agència de Viatges Corporativa · {{empresa}}", "urgencia+erratas": "Gestió de Viatges" },
+        "nombreServicio": "Viatges {{empresa}}",
+        "fichaEtiqueta1": "Destí", "fichaValor1": "{{destino}}",
+        "fichaEtiqueta2": "Data", "fichaValor2": "{{fechaViaje}}",
+        "fichaEtiqueta3": "Localitzador", "fichaValor3": { "base": "{{localizador}}", "urgencia+erratas": "{{localizador}} · SENSE CONFIRMAR" }
+      },
+      "en": {
+        "asunto": {
+          "base": "Confirm your trip to {{destino}} ({{localizador}})",
+          "urgencia": "Your trip to {{destino}} is pending confirmation",
+          "urgencia+erratas": "URGENT: travel booking pending payment"
+        },
+        "preheader": { "base": "{{destino}} · {{fechaViaje}}", "urgencia": "Confirm before you lose your seat" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear traveller" },
+        "titular": {
+          "base": "{{saludo}}, you have a booking to confirm",
+          "urgencia": "{{saludo}}, your trip to {{destino}} is pending",
+          "urgencia+erratas": "{{saludo}}, BOOKING PENDING PAYMENT"
+        },
+        "entradilla": {
+          "base": "We have prepared your trip to <strong>{{destino}}</strong> for {{fechaViaje}}, reference <strong>{{localizador}}</strong>. It still needs your confirmation.",
+          "urgencia": "The booking to {{destino}} ({{fechaViaje}}) is about to be released because your confirmation is missing.",
+          "urgencia+erratas": "Your booking to {{destino}} will be CANCELLED unless you confirm payment before the trip."
+        },
+        "detalle": {
+          "base": "You can review the flight and hotel details and confirm them from the link below.",
+          "urgencia": "Seats on this flight are limited: if you don't confirm soon, we will have to reassign it.",
+          "urgencia+erratas": "Confirm payment immediately or you will lose the seat booked for {{fechaViaje}}."
+        },
+        "urgencia": {
+          "base": "No rush: the booking stays under your name until a couple of days before the trip.",
+          "urgencia": "Confirm today to secure the seat and room booked under your name.",
+          "urgencia+erratas": "WARNING: only a few hours left before the seat is released to another traveller."
+        },
+        "cta": { "base": "View my booking", "urgencia": "Confirm the trip", "urgencia+erratas": "CONFIRM PAYMENT NOW" },
+        "cierre": { "base": "Corporate Travel Agency · {{empresa}}", "urgencia+erratas": "Travel Management" },
+        "nombreServicio": "{{empresa}} Travel",
+        "fichaEtiqueta1": "Destination", "fichaValor1": "{{destino}}",
+        "fichaEtiqueta2": "Date", "fichaValor2": "{{fechaViaje}}",
+        "fichaEtiqueta3": "Reference", "fichaValor3": { "base": "{{localizador}}", "urgencia+erratas": "{{localizador}} · UNCONFIRMED" }
+      }
+    }
+  }
+]

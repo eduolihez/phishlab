@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Hemos detectado actividad inusual en tu cuenta",
+    "urgencia": "¿Reconoces este pago de {{importe}}?",
+    "urgencia+erratas": "AVISO: transaccion no reconocida en su cuenta PayPal"
+  },
+  "preheader": {
+    "base": "{{comercio}} · {{importe}}",
+    "urgencia": "Revisa este pago antes de que se complete"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado cliente"
+  },
+  "titular": {
+    "base": "{{saludo}}, hemos limitado tu cuenta por precaución",
+    "urgencia": "{{saludo}}, ¿reconoces este pago?",
+    "urgencia+erratas": "{{saludo}}, TRANSACCION NO RECONOCIDA"
+  },
+  "entradilla": {
+    "base": "Detectamos un inicio de sesión inusual y hemos limitado temporalmente tu cuenta como medida de precaución.",
+    "urgencia": "Se ha iniciado un pago de <strong>{{importe}}</strong> a {{comercio}} desde tu cuenta. Si no lo reconoces, puedes cancelarlo ahora.",
+    "urgencia+erratas": "Se ha registrado un cargo de <strong>{{importe}}</strong> a {{comercio}} que no coincide con su actividad habitual."
+  },
+  "detalle": {
+    "base": "Verifica tu identidad para levantar la limitación y seguir usando tu cuenta con normalidad.",
+    "urgencia": "Tienes {{plazo}} para cancelarlo antes de que el pago se complete y ya no se pueda revertir desde aquí.",
+    "urgencia+erratas": "Verifique su identidad de inmediato o el cargo se consolidara sin posibilidad de reclamacion."
+  },
+  "urgencia": {
+    "base": "La verificación tarda menos de dos minutos y no afecta a tu saldo.",
+    "urgencia": "Pasado ese plazo, tendrás que abrir una disputa formal, que tarda varios días en resolverse.",
+    "urgencia+erratas": "ATENCION: quedan {{plazo}} para actuar. Pasado ese tiempo no podra recuperar el dinero."
+  },
+  "cta": {
+    "base": "Verificar mi cuenta",
+    "urgencia": "Revisar el pago",
+    "urgencia+erratas": "CANCELAR EL PAGO AHORA"
+  },
+  "cierre": {
+    "base": "El equipo de PayPal",
+    "urgencia+erratas": "Departamento de Prevención de Fraude"
+  },
+  "fichaEtiqueta1": "Importe",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "Destinatario",
+  "fichaValor2": "{{comercio}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": {
+    "base": "Cuenta limitada",
+    "urgencia+erratas": "REQUIERE VERIFICACION"
+  }
+}

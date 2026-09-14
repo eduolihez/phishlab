@@ -1,0 +1,31 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "tituloPagina": "Sign in — Google",
+  "tituloPaso1": "Sign in",
+  "subtituloPaso1": "Use your Google Account",
+  "aviso": {
+    "base": "",
+    "urgencia": "We've detected unusual activity. Verify your identity to continue."
+  },
+  "phEmail": "Email or phone",
+  "errorEmail": "Enter a valid email address.",
+  "enlaceOlvidoEmail": "Forgot email?",
+  "enlaceCrearCuenta": "Create account",
+  "btnSiguiente": "Next",
+  "btnVolver": "Back",
+  "tituloPaso2": "Welcome",
+  "phPassword": "Enter your password",
+  "enlaceOlvidoPassword": "Forgot password?",
+  "btnEntrar": "Next",
+  "selectorIdioma": "English (United States)",
+  "enlaceAyuda": "Help",
+  "enlacePrivacidad": "Privacy",
+  "enlaceCondiciones": "Terms",
+  "subtituloPaso2": "",
+  "avisoPrivado": "Not your computer? Use a private browsing window to sign in."
+}

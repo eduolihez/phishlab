@@ -1,0 +1,105 @@
+{
+  "schema": 2,
+  "nombre": "Viajes · Confirmación de reserva pendiente",
+  "descripcion": "Aviso de una agencia de viajes de empresa con una reserva que hay que confirmar o pagar. Funciona muy bien contra perfiles que viajan a menudo por trabajo: reciben confirmaciones de viaje constantemente.",
+  "familia": "viajes",
+  "categoria": "logistica-administracion",
+  "tags": [
+    "viajes",
+    "reserva",
+    "pago",
+    "empresa"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "layout": "aviso",
+  "remitente": {
+    "nombre": "Agencia de Viajes Corporativa",
+    "buzon": "reservas"
+  },
+  "campos": [
+    {
+      "clave": "destino",
+      "etiqueta": "Destino del viaje",
+      "tipo": "texto",
+      "defecto": "Bruselas"
+    },
+    {
+      "clave": "fechaViaje",
+      "etiqueta": "Fecha del viaje",
+      "tipo": "texto",
+      "defecto": "próximo lunes"
+    },
+    {
+      "clave": "localizador",
+      "etiqueta": "Localizador de la reserva",
+      "tipo": "texto",
+      "defecto": "VJ-2026-40317"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

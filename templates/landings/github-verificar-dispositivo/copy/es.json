@@ -1,0 +1,22 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "tituloPagina": "Inicia sesión en GitHub",
+  "aviso": {
+    "base": "",
+    "urgencia": "Hemos detectado un nuevo dispositivo. Vuelve a iniciar sesión para verificarlo."
+  },
+  "etiquetaEmail": "Nombre de usuario o dirección de correo electrónico",
+  "etiquetaPassword": "Contraseña",
+  "enlaceOlvido": "¿Has olvidado la contraseña?",
+  "btnEntrar": "Iniciar sesión",
+  "textoPieRegistro": "¿Nuevo en GitHub?",
+  "enlaceRegistro": "Crea una cuenta",
+  "enlaceCondiciones": "Condiciones",
+  "enlacePrivacidad": "Privacidad",
+  "enlaceSeguridad": "Seguridad"
+}

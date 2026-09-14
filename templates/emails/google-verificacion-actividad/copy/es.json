@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Alerta de seguridad para tu cuenta de Google",
+    "urgencia": "Nuevo inicio de sesión: ¿has sido tú?",
+    "urgencia+erratas": "ALERTA: actividad sospechosa detectada en su cuenta"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Revisa la actividad reciente de tu cuenta"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hemos bloqueado un inicio de sesión sospechoso",
+    "urgencia": "{{saludo}}, ¿reconoces este acceso?",
+    "urgencia+erratas": "{{saludo}}, ACTIVIDAD SOSPECHOSA en tu cuenta"
+  },
+  "entradilla": {
+    "base": "Alguien usó tu contraseña para intentar acceder a tu cuenta de Google. Hemos bloqueado el intento, pero conviene que revises tu actividad reciente.",
+    "urgencia": "Se ha iniciado sesión en tu cuenta <strong>{{fechaAcceso}}</strong> desde {{ubicacion}}, con un dispositivo que no reconocemos ({{dispositivo}}).",
+    "urgencia+erratas": "Hemos detectado actividad sospechosa en su cuenta de Google desde {{ubicacion}}. Si no ha sido usted, su cuenta podria estar en riesgo."
+  },
+  "detalle": {
+    "base": "Si fuiste tú, no tienes que hacer nada más. Si no, te recomendamos revisar tu actividad y cambiar la contraseña cuanto antes.",
+    "urgencia": "Si no has sido tú, cierra la sesión de ese dispositivo y protege tu cuenta desde el enlace de abajo.",
+    "urgencia+erratas": "Verifique su identidad AHORA para evitar que se bloquee el acceso a Gmail, Drive y el resto de servicios."
+  },
+  "urgencia": {
+    "base": "Puedes revisar tu actividad reciente cuando quieras desde la configuración de la cuenta.",
+    "urgencia": "Cuanto antes revises el acceso, antes podemos ayudarte a proteger la cuenta si no has sido tú.",
+    "urgencia+erratas": "ATENCION: si no verifica en las proximas 2 horas, restringiremos el acceso a la cuenta por seguridad."
+  },
+  "cta": {
+    "base": "Revisar actividad",
+    "urgencia": "Comprobar actividad reciente",
+    "urgencia+erratas": "PROTEGER MI CUENTA AHORA"
+  },
+  "cierre": {
+    "base": "El equipo de Google",
+    "urgencia+erratas": "Equipo de Seguridad de Google"
+  },
+  "fichaEtiqueta1": "Dispositivo",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Ubicación",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Hora",
+  "fichaValor3": {
+    "base": "{{fechaAcceso}}",
+    "urgencia+erratas": "{{fechaAcceso}} · SIN VERIFICAR"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Security alert for your Google Account",
+    "urgencia": "New sign-in: was this you?",
+    "urgencia+erratas": "ALERT: suspicious activity detected on your account"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Review your account's recent activity"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Hi"
+  },
+  "titular": {
+    "base": "{{saludo}}, we blocked a suspicious sign-in",
+    "urgencia": "{{saludo}}, do you recognise this sign-in?",
+    "urgencia+erratas": "{{saludo}}, SUSPICIOUS ACTIVITY on your account"
+  },
+  "entradilla": {
+    "base": "Someone used your password to try to sign in to your Google Account. We blocked the attempt, but you should review your recent activity.",
+    "urgencia": "Your account was signed in to <strong>{{fechaAcceso}}</strong> from {{ubicacion}}, using a device we do not recognise ({{dispositivo}}).",
+    "urgencia+erratas": "We have detected suspicious activity on your Google account from {{ubicacion}}. If this was not you, your account may be at risk."
+  },
+  "detalle": {
+    "base": "If this was you, no further action is needed. If not, we recommend reviewing your activity and changing your password as soon as possible.",
+    "urgencia": "If this was not you, sign that device out and secure your account from the link below.",
+    "urgencia+erratas": "Verify your identity NOW to avoid losing access to Gmail, Drive and other services."
+  },
+  "urgencia": {
+    "base": "You can review your recent activity at any time from your account settings.",
+    "urgencia": "The sooner you review the sign-in, the sooner we can help secure the account if this was not you.",
+    "urgencia+erratas": "WARNING: if you do not verify within the next 2 hours, we will restrict account access for security."
+  },
+  "cta": {
+    "base": "Review activity",
+    "urgencia": "Check recent activity",
+    "urgencia+erratas": "SECURE MY ACCOUNT NOW"
+  },
+  "cierre": {
+    "base": "The Google Team",
+    "urgencia+erratas": "Google Security Team"
+  },
+  "fichaEtiqueta1": "Device",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Location",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Time",
+  "fichaValor3": {
+    "base": "{{fechaAcceso}}",
+    "urgencia+erratas": "{{fechaAcceso}} · UNVERIFIED"
+  }
+}

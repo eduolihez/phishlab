@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "{{remitenteExterno}} ha compartido un archivo contigo",
+    "urgencia": "Documento pendiente de revisar: {{documento}}",
+    "urgencia+erratas": "IMPORTANTE: documento compartido, acceso limitado"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "El enlace caduca en {{plazo}}"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tienes un archivo nuevo",
+    "urgencia": "{{saludo}}, un documento espera tu revisión",
+    "urgencia+erratas": "{{saludo}}, ACCESO LIMITADO a un documento"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteExterno}}</strong> ha compartido «{{documento}}» contigo a través de Dropbox.",
+    "urgencia": "<strong>{{remitenteExterno}}</strong> necesita que revises «{{documento}}» antes de seguir adelante.",
+    "urgencia+erratas": "<strong>{{remitenteExterno}}</strong> ha compartido «{{documento}}» con acceso limitado a {{plazo}}."
+  },
+  "detalle": {
+    "base": "Puedes verlo directamente desde el navegador, sin necesidad de instalar nada.",
+    "urgencia": "El enlace de acceso caduca en {{plazo}}, así que conviene revisarlo pronto.",
+    "urgencia+erratas": "El enlace caduca en {{plazo}} y no se puede volver a compartir una vez cerrado."
+  },
+  "urgencia": {
+    "base": "No hay plazo: el archivo se queda disponible en tu cuenta cuando quieras verlo.",
+    "urgencia": "Pasado {{plazo}}, tendrás que pedir que te lo compartan de nuevo.",
+    "urgencia+erratas": "ATENCION: pasado {{plazo}} el enlace deja de funcionar por completo."
+  },
+  "cta": {
+    "base": "Ver archivo",
+    "urgencia": "Revisar el documento",
+    "urgencia+erratas": "ACCEDER ANTES DE QUE CADUQUE"
+  },
+  "cierre": {
+    "base": "El equipo de Dropbox",
+    "urgencia+erratas": "Notificaciones de Dropbox"
+  },
+  "fichaEtiqueta1": "Compartido por",
+  "fichaValor1": "{{remitenteExterno}}",
+  "fichaEtiqueta2": "Documento",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Caduca",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · ACCESO LIMITADO"
+  }
+}

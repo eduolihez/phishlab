@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de Adobe. Escrita a mano, no un volcado
+     del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #1c1c1c;
+    background-color: #fafafa;
+  }
+
+  .envoltorio { width: 100%; max-width: 380px; }
+
+  .marca-tenant { margin-bottom: 18px; min-height: 24px; text-align: center; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .marca-adobe { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 26px; }
+  .marca-adobe .icono {
+    width: 26px; height: 26px; background: #fa0f00; color: #fff; border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; font-family: Georgia, serif;
+  }
+  .marca-adobe span.texto { font-size: 19px; font-weight: 600; }
+
+  .tarjeta {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 34px 30px;
+  }
+
+  h1 { margin: 0 0 22px; font-size: 20px; font-weight: 600; text-align: center; }
+
+  .aviso {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #7a5100;
+    background: #fdf0d5;
+    padding: 11px 13px;
+    border-radius: 4px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 16px; }
+  label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #464646; }
+
+  .campo {
+    width: 100%;
+    padding: 11px 13px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #1c1c1c;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  .campo:focus { border: 2px solid #fa0f00; padding: 10px 12px; }
+
+  .error { margin: 6px 0 0; font-size: 12.5px; color: #d31411; }
+  .error:empty { display: none; }
+
+  .identidad { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px; }
+  .volver { border: 0; background: none; padding: 0; cursor: pointer; color: #fa0f00; font-size: 17px; line-height: 1; }
+
+  .enlaces { text-align: center; margin: 6px 0 0; font-size: 13.5px; }
+  .enlaces a { color: #1473e6; text-decoration: none; }
+  .enlaces a:hover { text-decoration: underline; }
+
+  .boton {
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #fa0f00;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .boton:hover { background: #d80d00; }
+
+  .separador { display: flex; align-items: center; gap: 10px; margin: 22px 0; color: #8c8c8c; font-size: 12px; }
+  .separador::before, .separador::after { content: ''; flex: 1; height: 1px; background: #ebebeb; }
+
+  .pie {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #8c8c8c;
+  }
+  .pie a { color: #8c8c8c; text-decoration: none; }
+
+  .paso[hidden] { display: none; }
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <div class="marca-tenant">{{logoHtml}}</div>
+
+  <!--@bloque:marca @opcional-->
+  <div class="marca-adobe" aria-hidden="true">
+    <span class="icono">A</span>
+    <span class="texto">Adobe</span>
+  </div>
+  <!--@/bloque-->
+
+  <div class="tarjeta">
+    <form method="post" action="" autocomplete="off">
+
+      <div class="paso" id="paso-email">
+        <h1>{{tituloPaso1}}</h1>
+        <!--@bloque:aviso-acceso @senal:urgencia-->
+        <p class="aviso">{{aviso}}</p>
+        <!--@/bloque-->
+        <div class="grupo-campo">
+          <label for="email">{{etiquetaEmail}}</label>
+          <input class="campo" type="email" id="email" name="email" required autofocus>
+          <p class="error" id="error-email" hidden>{{errorEmail}}</p>
+        </div>
+        <button class="boton" type="button" id="btn-siguiente">{{btnSiguiente}}</button>
+      </div>
+
+      <div class="paso" id="paso-password" hidden>
+        <div class="identidad">
+          <button class="volver" type="button" id="btn-volver" aria-label="{{btnVolver}}">&#8592;</button>
+          <span id="eco-email"></span>
+        </div>
+        <h1>{{tituloPaso2}}</h1>
+        <div class="grupo-campo">
+          <label for="password">{{etiquetaPassword}}</label>
+          <input class="campo" type="password" id="password" name="password" required>
+        </div>
+        <button class="boton" type="submit">{{btnEntrar}}</button>
+        <div class="enlaces"><a href="#">{{enlaceOlvido}}</a></div>
+      </div>
+
+    </form>
+
+    <!--@bloque:cta-registro @opcional-->
+    <div class="separador">{{textoSeparador}}</div>
+    <div class="enlaces"><a href="#">{{enlaceCrearCuenta}}</a></div>
+    <!--@/bloque-->
+  </div>
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <a href="https://helpx.adobe.com" target="_blank" rel="noopener">{{enlaceAyuda}}</a>
+    <a href="https://www.adobe.com/privacy/policy.html" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+    <a href="https://www.adobe.com/legal/terms.html" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  </div>
+  <!--@/bloque-->
+</div>
+
+<script>
+  (function () {
+    var email = document.getElementById('email');
+    var errorEmail = document.getElementById('error-email');
+    var pasoEmail = document.getElementById('paso-email');
+    var pasoPassword = document.getElementById('paso-password');
+    var eco = document.getElementById('eco-email');
+
+    function avanzar() {
+      if (!email.value || email.value.indexOf('@') === -1) {
+        errorEmail.hidden = false;
+        email.focus();
+        return;
+      }
+      errorEmail.hidden = true;
+      eco.textContent = email.value;
+      pasoEmail.hidden = true;
+      pasoPassword.hidden = false;
+      document.getElementById('password').focus();
+    }
+
+    document.getElementById('btn-siguiente').addEventListener('click', avanzar);
+    email.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); avanzar(); } });
+
+    document.getElementById('btn-volver').addEventListener('click', function () {
+      pasoPassword.hidden = true;
+      pasoEmail.hidden = false;
+      email.focus();
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de DocuSign. Escrita a mano, no un
+     volcado del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #211f21;
+    background-color: #f2f2f2;
+  }
+
+  .envoltorio { width: 100%; max-width: 380px; }
+
+  .marca-tenant { margin-bottom: 18px; min-height: 24px; text-align: center; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .marca-ds { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 26px; }
+  .marca-ds .icono {
+    width: 26px; height: 26px; background: #ffcc00; border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; font-family: Georgia, serif; color: #01426a;
+  }
+  .marca-ds span.texto { font-size: 19px; font-weight: 700; color: #01426a; }
+
+  .tarjeta {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    padding: 34px 30px;
+  }
+
+  h1 { margin: 0 0 22px; font-size: 19px; font-weight: 700; text-align: center; }
+
+  .aviso {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #8a5a00;
+    background: #fff7e0;
+    padding: 11px 13px;
+    border-radius: 3px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 16px; }
+  label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; color: #48484a; }
+
+  .campo {
+    width: 100%;
+    padding: 11px 13px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #211f21;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    outline: none;
+  }
+  .campo:focus { border: 2px solid #01426a; padding: 10px 12px; }
+
+  .enlaces { text-align: center; margin: 6px 0 0; font-size: 13px; }
+  .enlaces a { color: #01426a; text-decoration: none; }
+
+  .boton {
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #01426a;
+    background: #ffcc00;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .boton:hover { background: #e6b800; }
+
+  .pie {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #8c8c8c;
+  }
+  .pie a { color: #8c8c8c; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <div class="marca-tenant">{{logoHtml}}</div>
+
+  <!--@bloque:marca @opcional-->
+  <div class="marca-ds" aria-hidden="true">
+    <span class="icono">D</span>
+    <span class="texto">DocuSign</span>
+  </div>
+  <!--@/bloque-->
+
+  <div class="tarjeta">
+    <h1>{{tituloPagina}}</h1>
+
+    <!--@bloque:aviso-firma @senal:urgencia-->
+    <p class="aviso">{{aviso}}</p>
+    <!--@/bloque-->
+
+    <!--
+      Campos "email"/"password" exactos: es como GoPhish sabe cuál descartar
+      cuando "Capture Passwords" está desmarcada en la campaña.
+    -->
+    <form method="post" action="" autocomplete="off">
+      <div class="grupo-campo">
+        <label for="email">{{etiquetaEmail}}</label>
+        <input class="campo" type="email" id="email" name="email" required autofocus>
+      </div>
+      <div class="grupo-campo">
+        <label for="password">{{etiquetaPassword}}</label>
+        <input class="campo" type="password" id="password" name="password" required>
+      </div>
+      <button class="boton" type="submit">{{btnEntrar}}</button>
+    </form>
+
+    <div class="enlaces" style="margin-top:14px;"><a href="#">{{enlaceOlvido}}</a></div>
+  </div>
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <a href="https://www.docusign.com/company/privacy-policy" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+    <a href="https://www.docusign.com/company/terms-and-conditions" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  </div>
+  <!--@/bloque-->
+</div>
+
+</body>
+</html>

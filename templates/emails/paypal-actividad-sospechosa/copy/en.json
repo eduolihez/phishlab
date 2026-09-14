@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "We've detected unusual activity on your account",
+    "urgencia": "Do you recognise this {{importe}} payment?",
+    "urgencia+erratas": "NOTICE: unrecognised transaction on your PayPal account"
+  },
+  "preheader": {
+    "base": "{{comercio}} · {{importe}}",
+    "urgencia": "Review this payment before it completes"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear customer"
+  },
+  "titular": {
+    "base": "{{saludo}}, we've limited your account as a precaution",
+    "urgencia": "{{saludo}}, do you recognise this payment?",
+    "urgencia+erratas": "{{saludo}}, UNRECOGNISED TRANSACTION"
+  },
+  "entradilla": {
+    "base": "We detected an unusual sign-in and have temporarily limited your account as a precaution.",
+    "urgencia": "A payment of <strong>{{importe}}</strong> to {{comercio}} was started from your account. If you don't recognise it, you can cancel it now.",
+    "urgencia+erratas": "A charge of <strong>{{importe}}</strong> to {{comercio}} was recorded that does not match your usual activity."
+  },
+  "detalle": {
+    "base": "Verify your identity to lift the limitation and keep using your account as normal.",
+    "urgencia": "You have {{plazo}} to cancel it before the payment completes and can no longer be reversed from here.",
+    "urgencia+erratas": "Verify your identity immediately or the charge will settle with no chance of a claim."
+  },
+  "urgencia": {
+    "base": "Verification takes less than two minutes and does not affect your balance.",
+    "urgencia": "After that window, you will have to open a formal dispute, which takes several days to resolve.",
+    "urgencia+erratas": "WARNING: {{plazo}} left to act. After that you will not be able to recover the money."
+  },
+  "cta": {
+    "base": "Verify my account",
+    "urgencia": "Review the payment",
+    "urgencia+erratas": "CANCEL THE PAYMENT NOW"
+  },
+  "cierre": {
+    "base": "The PayPal Team",
+    "urgencia+erratas": "Fraud Prevention Department"
+  },
+  "fichaEtiqueta1": "Amount",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "Recipient",
+  "fichaValor2": "{{comercio}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Account limited",
+    "urgencia+erratas": "VERIFICATION REQUIRED"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 2,
+  "nombre": "Netflix · Actualizar método de pago",
+  "descripcion": "Pantalla de reautenticación antes de tocar el método de pago, como pide Netflix de verdad. Pareja natural del correo de problema con el pago; enseña el riesgo del dispositivo personal, no solo el del puesto de trabajo.",
+  "familia": "entretenimiento",
+  "categoria": "suscripciones-personales",
+  "empresa": "Netflix",
+  "tags": [
+    "netflix",
+    "credenciales",
+    "pago",
+    "personal"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [
+    {
+      "clave": "cuentaEmail",
+      "etiqueta": "Correo de la cuenta (se muestra pre-rellenado)",
+      "tipo": "texto",
+      "defecto": "empleado@ejemplo.com"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "marca",
+      "etiqueta": "marca",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "aviso-pago",
+      "etiqueta": "aviso-pago",
+      "senal": "urgencia"
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

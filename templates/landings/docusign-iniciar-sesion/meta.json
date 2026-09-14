@@ -1,0 +1,45 @@
+{
+  "schema": 2,
+  "nombre": "DocuSign · Iniciar sesión",
+  "descripcion": "Login de DocuSign. Pareja natural del correo de documento pendiente de firma.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "empresa": "DocuSign",
+  "tags": [
+    "docusign",
+    "credenciales",
+    "login",
+    "firma"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-14",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "marca",
+      "etiqueta": "marca",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "aviso-firma",
+      "etiqueta": "aviso-firma",
+      "senal": "urgencia"
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your account is under review (case {{expediente}})",
+    "urgencia": "Investigation opened on your account: response required",
+    "urgencia+erratas": "LEGAL NOTICE: your account is under fraud investigation"
+  },
+  "preheader": {
+    "base": "Case {{expediente}}",
+    "urgencia": "Respond before restrictions are applied"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear account holder"
+  },
+  "titular": {
+    "base": "{{saludo}}, we have opened a review of your account",
+    "urgencia": "{{saludo}}, your account is under investigation",
+    "urgencia+erratas": "{{saludo}}, ACCOUNT UNDER FRAUD INVESTIGATION"
+  },
+  "entradilla": {
+    "base": "As part of our routine controls, we have opened case <strong>{{expediente}}</strong> regarding recent activity on your account.",
+    "urgencia": "An investigation has been opened on your account (case <strong>{{expediente}}</strong>) due to unusual activity patterns.",
+    "urgencia+erratas": "Your account is being investigated for possible fraudulent activity (case <strong>{{expediente}}</strong>)."
+  },
+  "detalle": {
+    "base": "You do not need to do anything unless we ask you to explicitly. This email is for information only.",
+    "urgencia": "We need you to verify your identity so we can close the case without restricting the account.",
+    "urgencia+erratas": "You must verify your identity immediately or precautionary restrictions will be applied to the account."
+  },
+  "urgencia": {
+    "base": "If we need anything from you, we will ask with more detail in a future notice.",
+    "urgencia": "You have {{plazo}} to verify your identity before precautionary restrictions are applied.",
+    "urgencia+erratas": "WARNING: {{plazo}} left. After that the account will be preventively BLOCKED."
+  },
+  "cta": {
+    "base": "View the case",
+    "urgencia": "Verify my identity",
+    "urgencia+erratas": "VERIFY IDENTITY NOW"
+  },
+  "cierre": {
+    "base": "Anti-Fraud Department · {{empresa}}",
+    "urgencia+erratas": "Fraud Prevention Unit"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Case",
+  "fichaValor1": "{{expediente}}",
+  "fichaEtiqueta2": "Service",
+  "fichaValor2": "{{servicio}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Under review",
+    "urgencia+erratas": "VERIFICATION REQUIRED"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Notice: {{motivo}}",
+    "urgencia": "Your account may be affected by {{motivo}}",
+    "urgencia+erratas": "ALERT: act before it is too late"
+  },
+  "preheader": {
+    "base": "Detected {{fecha}}",
+    "urgencia": "Check if this affects you before it's too late"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear user"
+  },
+  "titular": {
+    "base": "{{saludo}}, we are informing you about {{motivo}}",
+    "urgencia": "{{saludo}}, this may affect you directly",
+    "urgencia+erratas": "{{saludo}}, ACT BEFORE IT IS TOO LATE"
+  },
+  "entradilla": {
+    "base": "{{motivo}} has been detected, recorded {{fecha}}. We are letting you know because your profile could be among those affected.",
+    "urgencia": "We have confirmed that your account is among those potentially affected by {{motivo}}.",
+    "urgencia+erratas": "Your account has been identified as affected by {{motivo}}. This requires your immediate attention."
+  },
+  "detalle": {
+    "base": "You can check whether your account is affected, and what to do if so, from the link below.",
+    "urgencia": "We recommend checking now and following the steps shown if your account appears affected.",
+    "urgencia+erratas": "Check your account NOW and follow the steps shown to protect yourself."
+  },
+  "urgencia": {
+    "base": "No action is mandatory: this is preventive information only.",
+    "urgencia": "The sooner you check, the sooner you can act if your account is affected.",
+    "urgencia+erratas": "WARNING: every hour that passes increases the risk if your account is affected."
+  },
+  "cta": {
+    "base": "Check my account",
+    "urgencia": "See if I'm affected",
+    "urgencia+erratas": "CHECK NOW"
+  },
+  "cierre": {
+    "base": "Alerts Centre · {{empresa}}",
+    "urgencia+erratas": "Urgent Security Notice"
+  },
+  "nombreServicio": "Alerts Centre",
+  "fichaEtiqueta1": "Reason",
+  "fichaValor1": "{{motivo}}",
+  "fichaEtiqueta2": "Date",
+  "fichaValor2": "{{fecha}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Informational",
+    "urgencia+erratas": "CHECK REQUIRED"
+  }
+}

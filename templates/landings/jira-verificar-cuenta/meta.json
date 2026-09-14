@@ -1,0 +1,45 @@
+{
+  "schema": 2,
+  "nombre": "Jira · Verificar cuenta",
+  "descripcion": "Login de Atlassian/Jira. Pareja natural del correo de revalidación de contraseña, pensado para equipos técnicos.",
+  "familia": "desarrollo",
+  "categoria": "saas-corporativo",
+  "empresa": "Jira",
+  "tags": [
+    "jira",
+    "atlassian",
+    "credenciales",
+    "login"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-14",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "marca",
+      "etiqueta": "marca",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "aviso-ticket",
+      "etiqueta": "aviso-ticket",
+      "senal": "urgencia"
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

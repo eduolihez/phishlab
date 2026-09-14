@@ -1,0 +1,105 @@
+{
+  "schema": 2,
+  "nombre": "Adobe · Documento para firmar",
+  "descripcion": "Aviso de un documento pendiente de firma electrónica. Funciona en departamentos que firman de verdad muchos PDF (compras, RRHH, legal), donde este correo es rutina y no excepción.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "empresa": "Adobe",
+  "tags": [
+    "adobe",
+    "firma",
+    "documento",
+    "credenciales"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "remitente": {
+    "nombre": "Adobe Sign",
+    "buzon": "echosign"
+  },
+  "campos": [
+    {
+      "clave": "remitenteDoc",
+      "etiqueta": "Quién envía a firmar",
+      "tipo": "texto",
+      "defecto": "Departamento de Compras"
+    },
+    {
+      "clave": "documento",
+      "etiqueta": "Nombre del documento",
+      "tipo": "texto",
+      "defecto": "Acuerdo_de_proveedor_2026.pdf"
+    },
+    {
+      "clave": "plazo",
+      "etiqueta": "Plazo para firmar",
+      "tipo": "texto",
+      "defecto": "3 días hábiles"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

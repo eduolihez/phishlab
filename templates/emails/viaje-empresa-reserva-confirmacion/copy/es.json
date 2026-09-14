@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Confirma tu reserva a {{destino}} ({{localizador}})",
+    "urgencia": "Tu viaje a {{destino}} está pendiente de confirmar",
+    "urgencia+erratas": "URGENTE: reserva de viaje pendiente de pago"
+  },
+  "preheader": {
+    "base": "{{destino}} · {{fechaViaje}}",
+    "urgencia": "Confirma antes de perder la plaza"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado viajero"
+  },
+  "titular": {
+    "base": "{{saludo}}, tienes una reserva por confirmar",
+    "urgencia": "{{saludo}}, tu viaje a {{destino}} está pendiente",
+    "urgencia+erratas": "{{saludo}}, RESERVA PENDIENTE DE PAGO"
+  },
+  "entradilla": {
+    "base": "Hemos preparado tu viaje a <strong>{{destino}}</strong> para {{fechaViaje}}, localizador <strong>{{localizador}}</strong>. Falta que lo confirmes.",
+    "urgencia": "La reserva a {{destino}} ({{fechaViaje}}) está a punto de liberarse porque falta tu confirmación.",
+    "urgencia+erratas": "Su reserva a {{destino}} sera CANCELADA si no confirma el pago antes del viaje."
+  },
+  "detalle": {
+    "base": "Puedes revisar los detalles del vuelo y del hotel y confirmarlos desde el enlace de abajo.",
+    "urgencia": "Las plazas de este vuelo son limitadas: si no confirmas pronto, tendremos que reasignarla.",
+    "urgencia+erratas": "Confirme el pago de inmediato o perdera la plaza reservada para {{fechaViaje}}."
+  },
+  "urgencia": {
+    "base": "No hay prisa: la reserva queda a tu nombre hasta un par de días antes del viaje.",
+    "urgencia": "Confírmalo hoy para asegurar el asiento y la habitación que se han reservado a tu nombre.",
+    "urgencia+erratas": "ATENCION: quedan pocas horas antes de que la plaza se libere a otro viajero."
+  },
+  "cta": {
+    "base": "Ver mi reserva",
+    "urgencia": "Confirmar el viaje",
+    "urgencia+erratas": "CONFIRMAR PAGO AHORA"
+  },
+  "cierre": {
+    "base": "Agencia de Viajes Corporativa · {{empresa}}",
+    "urgencia+erratas": "Gestión de Viajes"
+  },
+  "nombreServicio": "Viajes {{empresa}}",
+  "fichaEtiqueta1": "Destino",
+  "fichaValor1": "{{destino}}",
+  "fichaEtiqueta2": "Fecha",
+  "fichaValor2": "{{fechaViaje}}",
+  "fichaEtiqueta3": "Localizador",
+  "fichaValor3": {
+    "base": "{{localizador}}",
+    "urgencia+erratas": "{{localizador}} · SIN CONFIRMAR"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "{{remitenteDoc}} sent you a document to sign via DocuSign",
+    "urgencia": "Signature pending: {{documento}}",
+    "urgencia+erratas": "URGENT: signature required within {{plazo}}"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "Complete the signature before the link expires"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Dear user"
+  },
+  "titular": {
+    "base": "You have a document to sign",
+    "urgencia": "Your signature is pending",
+    "urgencia+erratas": "SIGNATURE REQUIRED urgently"
+  },
+  "entradilla": {
+    "base": "{{remitenteDoc}} sent you \"{{documento}}\" via DocuSign for your electronic signature.",
+    "urgencia": "The \"{{documento}}\" document from {{remitenteDoc}} needs your signature before {{plazo}}.",
+    "urgencia+erratas": "{{remitenteDoc}} needs your signature on \"{{documento}}\" immediately."
+  },
+  "detalle": {
+    "base": "You can review and sign the document from any device, no printing needed.",
+    "urgencia": "The signing link expires in {{plazo}}; after that, {{remitenteDoc}} will need to resend it.",
+    "urgencia+erratas": "The link expires in {{plazo}}. After that you will need to request a new one."
+  },
+  "urgencia": {
+    "base": "There is no strict deadline, but the sooner you sign, the sooner it's closed.",
+    "urgencia": "{{plazo}} left before the signing link expires.",
+    "urgencia+erratas": "WARNING: {{plazo}} left. After that the document is cancelled."
+  },
+  "cta": {
+    "base": "Review document",
+    "urgencia": "Sign now",
+    "urgencia+erratas": "SIGN BEFORE IT EXPIRES"
+  },
+  "cierre": {
+    "base": "The DocuSign Team",
+    "urgencia+erratas": "DocuSign Notifications"
+  },
+  "fichaEtiqueta1": "Sent by",
+  "fichaValor1": "{{remitenteDoc}}",
+  "fichaEtiqueta2": "Document",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Expires",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · PENDING"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "La teva bústia està gairebé plena ({{porcentaje}})",
+    "urgencia": "Deixaràs de rebre correu si no alliberes espai",
+    "urgencia+erratas": "URGENT: bustia de correu a punt de bloquejar-se"
+  },
+  "preheader": {
+    "base": "Queden {{espacioLibre}} lliures",
+    "urgencia": "Allibera espai abans que es bloquegi l'enviament"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut usuari"
+  },
+  "titular": {
+    "base": "{{saludo}}, la teva bústia està gairebé plena",
+    "urgencia": "{{saludo}}, deixaràs de rebre correu",
+    "urgencia+erratas": "{{saludo}}, BUSTIA A PUNT DE BLOQUEJAR-SE"
+  },
+  "entradilla": {
+    "base": "La teva bústia de {{servicio}} està al {{porcentaje}} de la seva capacitat. Quan arribi al 100%, deixaràs de poder enviar i rebre correu.",
+    "urgencia": "Només queden <strong>{{espacioLibre}}</strong> lliures a la teva bústia. A aquest ritme, s'omplirà en els propers dies.",
+    "urgencia+erratas": "La seva bustia esta al {{porcentaje}} de la seva capacitat. Els correus entrants començaran a REBUTJAR-SE."
+  },
+  "detalle": {
+    "base": "Pots alliberar espai esborrant correu antic o ampliar la teva quota des de l'enllaç de sota.",
+    "urgencia": "La manera més ràpida és ampliar la quota des del portal: triga menys d'un minut.",
+    "urgencia+erratas": "Amplii la seva quota de seguida des de l'enllaç per evitar perdre correus entrants."
+  },
+  "urgencia": {
+    "base": "No hi ha una data límit exacta: depèn de quant correu segueixis rebent.",
+    "urgencia": "Si no alliberes espai, els correus nous començaran a rebotar sense avís previ.",
+    "urgencia+erratas": "ATENCIO: els correus nous s'estan REBUTJANT des d'avui mateix."
+  },
+  "cta": {
+    "base": "Gestionar la meva bústia",
+    "urgencia": "Ampliar quota ara",
+    "urgencia+erratas": "AMPLIAR QUOTA URGENTMENT"
+  },
+  "cierre": {
+    "base": "Suport de Sistemes · {{empresa}}",
+    "urgencia+erratas": "Servei de Correu · {{empresa}}"
+  },
+  "nombreServicio": "{{servicio}}",
+  "fichaEtiqueta1": "Servei",
+  "fichaValor1": "{{servicio}}",
+  "fichaEtiqueta2": "Ús actual",
+  "fichaValor2": "{{porcentaje}}",
+  "fichaEtiqueta3": "Espai lliure",
+  "fichaValor3": {
+    "base": "{{espacioLibre}}",
+    "urgencia+erratas": "{{espacioLibre}} · CRITIC"
+  }
+}

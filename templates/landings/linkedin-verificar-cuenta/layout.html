@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de LinkedIn. Escrita a mano, no un
+     volcado del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #000000e6;
+    background-color: #f9fafb;
+  }
+
+  .barra-superior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #ffffff;
+  }
+  .marca-tenant { min-height: 24px; }
+  .marca-tenant img { max-width: 140px; max-height: 36px; display: block; }
+
+  .subtitulo { margin: 0 0 22px; font-size: 15px; color: #000000e6; }
+  .subtitulo a { color: #0a66c2; text-decoration: none; font-weight: 600; }
+
+  .recordar { display: flex; align-items: center; gap: 8px; margin: 0 0 22px; font-size: 14px; }
+  .recordar input { width: 16px; height: 16px; accent-color: #057642; }
+
+  .contenido { flex: 1; display: flex; align-items: center; justify-content: center; padding: 32px 16px; }
+
+  .envoltorio { width: 100%; max-width: 380px; }
+
+  .marca-li { display: flex; align-items: center; gap: 8px; }
+  .marca-li .icono {
+    width: 30px; height: 30px; background: #0a66c2; color: #fff; border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;
+  }
+  .marca-li span.texto { font-size: 17px; font-weight: 600; }
+
+  .tarjeta {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 32px 28px;
+  }
+
+  h1 { margin: 0 0 20px; font-size: 24px; font-weight: 600; }
+
+  .aviso {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #7a5100;
+    background: #fdf0d5;
+    padding: 11px 13px;
+    border-radius: 6px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 18px; }
+  label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+
+  .campo {
+    width: 100%;
+    padding: 11px 12px;
+    font-family: inherit;
+    font-size: 16px;
+    color: #000000e6;
+    background: #ffffff;
+    border: 1px solid #00000066;
+    border-radius: 4px;
+    outline: none;
+  }
+  .campo:focus { border: 2px solid #0a66c2; padding: 10px 11px; }
+
+  .enlace-olvido { margin: -8px 0 20px; font-size: 14px; }
+  .enlace-olvido a { color: #0a66c2; text-decoration: none; font-weight: 600; }
+
+  .boton {
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #0a66c2;
+    border: 0;
+    border-radius: 24px;
+    cursor: pointer;
+  }
+  .boton:hover { background: #004182; }
+
+  .separador { display: flex; align-items: center; gap: 10px; margin: 22px 0; color: #00000099; font-size: 12px; }
+  .separador::before, .separador::after { content: ''; flex: 1; height: 1px; background: #e8e8e8; }
+
+  .enlaces-secundarios { text-align: center; font-size: 14px; }
+  .enlaces-secundarios a { color: #0a66c2; text-decoration: none; font-weight: 600; }
+
+  .pie {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 12px;
+    color: #00000099;
+  }
+  .pie a { color: #00000099; text-decoration: none; margin: 0 6px; }
+</style>
+</head>
+<body>
+
+<div class="barra-superior">
+  <div class="marca-tenant">{{logoHtml}}</div>
+  <!--@bloque:marca @opcional-->
+  <div class="marca-li" aria-hidden="true">
+    <span class="icono">in</span>
+    <span class="texto">LinkedIn</span>
+  </div>
+  <!--@/bloque-->
+</div>
+
+<div class="contenido">
+  <div class="envoltorio">
+
+    <div class="tarjeta">
+      <h1>{{tituloPagina}}</h1>
+      <!--@bloque:cta-registro @opcional-->
+      <p class="subtitulo">{{subtitulo}} <a href="#">{{enlaceCrearCuenta}}</a></p>
+      <!--@/bloque-->
+
+      <!--@bloque:aviso-verificacion @senal:urgencia-->
+      <p class="aviso">{{aviso}}</p>
+      <!--@/bloque-->
+
+      <!--
+        Campos "email"/"password" exactos: es como GoPhish sabe cuál
+        descartar cuando "Capture Passwords" está desmarcada en la campaña.
+      -->
+      <form method="post" action="" autocomplete="off">
+        <div class="grupo-campo">
+          <label for="email">{{etiquetaEmail}}</label>
+          <input class="campo" type="email" id="email" name="email" required autofocus>
+        </div>
+        <div class="grupo-campo">
+          <label for="password">{{etiquetaPassword}}</label>
+          <input class="campo" type="password" id="password" name="password" required>
+        </div>
+        <div class="enlace-olvido"><a href="#">{{enlaceOlvido}}</a></div>
+        <label class="recordar"><input type="checkbox" checked>{{textoRecordar}}</label>
+        <button class="boton" type="submit">{{btnEntrar}}</button>
+      </form>
+    </div>
+
+    <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+    <div class="pie">
+      <a href="https://www.linkedin.com/help/linkedin" target="_blank" rel="noopener">{{enlaceAyuda}}</a>
+      <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+      <a href="https://www.linkedin.com/legal/user-agreement" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+    </div>
+    <!--@/bloque-->
+  </div>
+</div>
+
+</body>
+</html>

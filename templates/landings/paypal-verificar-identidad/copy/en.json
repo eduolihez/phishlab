@@ -1,0 +1,28 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "tituloPaso1": "Log in",
+  "aviso": {
+    "base": "",
+    "urgencia": "Your account is temporarily limited. Log in to verify your identity."
+  },
+  "etiquetaEmail": "Email",
+  "errorEmail": "Enter a valid email address.",
+  "btnSiguiente": "Next",
+  "enlaceOlvidoEmail": "Forgot email?",
+  "tituloPaso2": "Enter your password",
+  "etiquetaPassword": "Password",
+  "btnEntrar": "Log in",
+  "enlaceOlvidoPassword": "Forgot password?",
+  "btnVolver": "Back",
+  "textoSeparador": "or",
+  "enlaceCrearCuenta": "Sign up",
+  "enlaceAyuda": "Help",
+  "enlacePrivacidad": "Privacy",
+  "enlaceCondiciones": "Terms of use",
+  "tituloPagina": "Log in — PayPal"
+}

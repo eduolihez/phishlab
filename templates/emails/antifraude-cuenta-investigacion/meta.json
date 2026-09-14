@@ -1,0 +1,105 @@
+{
+  "schema": 2,
+  "nombre": "Antifraude · Cuenta bajo investigación",
+  "descripcion": "Aviso de un departamento antifraude genérico que dice haber abierto una investigación sobre la cuenta. Juega la carta de autoridad y miedo a la vez, sin necesitar la marca de ningún banco concreto.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "tags": [
+    "antifraude",
+    "investigacion",
+    "credenciales",
+    "miedo"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "layout": "aviso",
+  "remitente": {
+    "nombre": "Departamento Antifraude",
+    "buzon": "antifraude"
+  },
+  "campos": [
+    {
+      "clave": "servicio",
+      "etiqueta": "Nombre del servicio",
+      "tipo": "texto",
+      "defecto": "Plataforma de pagos"
+    },
+    {
+      "clave": "expediente",
+      "etiqueta": "Número de expediente",
+      "tipo": "texto",
+      "defecto": "AF-2026-77410"
+    },
+    {
+      "clave": "plazo",
+      "etiqueta": "Plazo para responder",
+      "tipo": "texto",
+      "defecto": "5 días naturales"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

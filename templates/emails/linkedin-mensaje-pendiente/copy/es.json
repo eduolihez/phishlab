@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "{{remitenteMensaje}} te ha enviado un mensaje",
+    "urgencia": "Tienes 1 mensaje sin leer de {{remitenteMensaje}}",
+    "urgencia+erratas": "IMPORTANTE: tu solicitud de contacto esta pendiente"
+  },
+  "preheader": {
+    "base": "{{asuntoMensaje}}",
+    "urgencia": "No dejes esperando a {{remitenteMensaje}}"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tienes un mensaje nuevo",
+    "urgencia": "{{saludo}}, {{remitenteMensaje}} está esperando tu respuesta",
+    "urgencia+erratas": "{{saludo}}, MENSAJE SIN LEER pendiente"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteMensaje}}</strong> te ha escrito: «{{asuntoMensaje}}».",
+    "urgencia": "<strong>{{remitenteMensaje}}</strong> lleva un tiempo esperando que veas su mensaje sobre «{{asuntoMensaje}}».",
+    "urgencia+erratas": "<strong>{{remitenteMensaje}}</strong> ha marcado su mensaje como urgente: «{{asuntoMensaje}}»."
+  },
+  "detalle": {
+    "base": "Inicia sesión para leer el mensaje completo y responder cuando puedas.",
+    "urgencia": "Los perfiles que responden rápido reciben más propuestas: no dejes pasar esta.",
+    "urgencia+erratas": "Inicie sesion ahora para no perder esta oportunidad de contacto."
+  },
+  "urgencia": {
+    "base": "El mensaje se queda guardado en tu bandeja de entrada hasta que lo leas.",
+    "urgencia": "Otros candidatos ya han empezado a responder ofertas similares esta semana.",
+    "urgencia+erratas": "ATENCION: los mensajes sin responder en 48 horas se marcan como no interesado."
+  },
+  "cta": {
+    "base": "Ver mensaje",
+    "urgencia": "Leer y responder",
+    "urgencia+erratas": "VER MENSAJE AHORA"
+  },
+  "cierre": {
+    "base": "El equipo de LinkedIn",
+    "urgencia+erratas": "LinkedIn Notificaciones"
+  },
+  "fichaEtiqueta1": "De",
+  "fichaValor1": "{{remitenteMensaje}}",
+  "fichaEtiqueta2": "Asunto",
+  "fichaValor2": "{{asuntoMensaje}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": {
+    "base": "Sin leer",
+    "urgencia+erratas": "URGENTE · SIN RESPONDER"
+  }
+}

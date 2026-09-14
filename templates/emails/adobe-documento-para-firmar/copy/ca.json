@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "{{remitenteDoc}} t'ha enviat un document per signar",
+    "urgencia": "Signatura pendent: {{documento}}",
+    "urgencia+erratas": "URGENT: signatura requerida abans de {{plazo}}"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "Falta la teva signatura per completar el tràmit"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut usuari"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens un document per signar",
+    "urgencia": "{{saludo}}, la teva signatura està pendent",
+    "urgencia+erratas": "{{saludo}}, SIGNATURA REQUERIDA amb caracter urgent"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteDoc}}</strong> t'ha enviat «{{documento}}» per a la teva signatura electrònica.",
+    "urgencia": "El tràmit «{{documento}}» de {{remitenteDoc}} no pot avançar fins que el signis.",
+    "urgencia+erratas": "{{remitenteDoc}} necessita la seva signatura a «{{documento}}» abans de {{plazo}}."
+  },
+  "detalle": {
+    "base": "Pots revisar el document i signar-lo des de qualsevol dispositiu, sense necessitat d'imprimir res.",
+    "urgencia": "La resta de signants ja han completat la seva part: només falta la teva.",
+    "urgencia+erratas": "Sense la seva signatura el tramit quedara bloquejat i podria generar un retard en el pagament al proveidor."
+  },
+  "urgencia": {
+    "base": "No hi ha un termini estricte, però com abans el signis, abans es tanca el tràmit.",
+    "urgencia": "El termini per signar és {{plazo}}; passat aquest temps, el document torna a qui l'ha enviat.",
+    "urgencia+erratas": "ATENCIO: queden {{plazo}} per signar. Passat aquest termini l'acord es cancel·la."
+  },
+  "cta": {
+    "base": "Revisar document",
+    "urgencia": "Signar ara",
+    "urgencia+erratas": "SIGNAR ABANS DEL TERMINI"
+  },
+  "cierre": {
+    "base": "L'equip d'Adobe Sign",
+    "urgencia+erratas": "Adobe Sign · Notificacions"
+  },
+  "fichaEtiqueta1": "Enviat per",
+  "fichaValor1": "{{remitenteDoc}}",
+  "fichaEtiqueta2": "Document",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Termini",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · PENDENT"
+  }
+}

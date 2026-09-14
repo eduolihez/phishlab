@@ -1,0 +1,21 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "tituloPagina": "Sign in again",
+  "subtitulo": "For your security, confirm your password to continue.",
+  "aviso": {
+    "base": "",
+    "urgencia": "Your subscription is at risk. Confirm your password to update payment."
+  },
+  "phPassword": "Password",
+  "errorPassword": "Enter your password to continue.",
+  "btnContinuar": "Continue",
+  "enlaceOlvido": "Forgot your password?",
+  "enlaceAyuda": "Help",
+  "enlacePrivacidad": "Privacy",
+  "enlaceCondiciones": "Terms of use"
+}

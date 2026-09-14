@@ -1,0 +1,31 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "tituloPagina": "Iniciar sessió — Google",
+  "tituloPaso1": "Iniciar sessió",
+  "subtituloPaso1": "Fes servir el teu compte de Google",
+  "aviso": {
+    "base": "",
+    "urgencia": "Hem detectat activitat inusual. Verifica la teva identitat per continuar."
+  },
+  "phEmail": "Correu electrònic o telèfon",
+  "errorEmail": "Escriu un correu electrònic vàlid.",
+  "enlaceOlvidoEmail": "Has oblidat el teu correu?",
+  "enlaceCrearCuenta": "Crear compte",
+  "btnSiguiente": "Següent",
+  "btnVolver": "Tornar",
+  "tituloPaso2": "Benvingut/da",
+  "phPassword": "Introdueix la teva contrasenya",
+  "enlaceOlvidoPassword": "Has oblidat la teva contrasenya?",
+  "btnEntrar": "Següent",
+  "selectorIdioma": "Català",
+  "enlaceAyuda": "Ajuda",
+  "enlacePrivacidad": "Privacitat",
+  "enlaceCondiciones": "Condicions",
+  "subtituloPaso2": "",
+  "avisoPrivado": "No és el teu ordinador? Fes servir una finestra de navegació privada per iniciar sessió."
+}

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de Google. Escrita a mano en lugar de
+     volcar el sitio real: no arrastra assets externos que delaten la visita
+     al dominio original y se puede mantener sin depender de su markup. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #202124;
+    background-color: #ffffff;
+  }
+
+  .tarjeta {
+    width: 100%;
+    max-width: 450px;
+    padding: 48px 40px 36px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .marca-tenant { margin-bottom: 18px; min-height: 24px; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  /* Wordmark, no el icono: es lo que enseña la pantalla real de Google hoy. */
+  .google-wordmark { margin: 0 0 16px; font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; letter-spacing: -.5px; }
+  .google-wordmark span:nth-child(1) { color: #4285f4; }
+  .google-wordmark span:nth-child(2) { color: #ea4335; }
+  .google-wordmark span:nth-child(3) { color: #fbbc05; }
+  .google-wordmark span:nth-child(4) { color: #4285f4; }
+  .google-wordmark span:nth-child(5) { color: #34a853; }
+  .google-wordmark span:nth-child(6) { color: #ea4335; }
+
+  h1 { margin: 0 0 8px; font-size: 24px; font-weight: 400; color: #202124; }
+  .subtitulo { margin: 0 0 26px; font-size: 16px; color: #202124; }
+  .aviso-privado { margin: 22px 0 0; font-size: 12px; line-height: 17px; color: #5f6368; text-align: left; }
+  .aviso-privado a { color: #1a73e8; text-decoration: none; }
+
+  .aviso {
+    margin: 0 0 16px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #d93025;
+    background: #fce8e6;
+    padding: 10px 12px;
+    border-radius: 4px;
+  }
+  .aviso:empty { display: none; padding: 0; }
+
+  .identidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 6px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    font-size: 14px;
+    width: fit-content;
+  }
+  .volver { border: 0; background: none; padding: 0; cursor: pointer; color: #1a73e8; font-size: 16px; line-height: 1; }
+
+  .grupo-campo { position: relative; margin-bottom: 22px; text-align: left; }
+  /* Label flotante sobre el borde superior: el detalle Material Design que
+     más distingue un formulario de Google a simple vista. */
+  .grupo-campo label {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    padding: 0 4px;
+    background: #ffffff;
+    font-size: 12px;
+    color: #1a73e8;
+    font-weight: 500;
+  }
+  .campo {
+    width: 100%;
+    padding: 13px 15px;
+    font-family: inherit;
+    font-size: 16px;
+    color: #202124;
+    background: transparent;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    outline: none;
+  }
+  .campo:focus { border: 2px solid #1a73e8; padding: 12px 14px; }
+
+  .error { margin: 6px 0 0; font-size: 12px; color: #d93025; text-align: left; }
+
+  .enlaces { margin: 4px 0 28px; font-size: 14px; text-align: left; }
+  .enlaces a { color: #1a73e8; text-decoration: none; font-weight: 500; }
+  .enlaces a:hover { text-decoration: underline; }
+
+  .acciones { display: flex; justify-content: space-between; align-items: center; }
+  .crear-cuenta { color: #1a73e8; font-size: 14px; font-weight: 500; text-decoration: none; }
+
+  .boton {
+    padding: 10px 24px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background: #1a73e8;
+    border: 1px solid #1a73e8;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .boton:hover { background: #1765cc; border-color: #1765cc; }
+
+  .pie {
+    display: flex;
+    justify-content: space-between;
+    max-width: 450px;
+    width: 100%;
+    margin: 16px auto 0;
+    padding: 0 4px;
+    font-size: 12px;
+    color: #5f6368;
+  }
+  .pie select { border: none; background: none; color: #5f6368; font-size: 12px; }
+  .pie-enlaces { display: flex; gap: 22px; }
+  .pie a { color: #5f6368; text-decoration: none; }
+
+  .envoltorio { width: 100%; max-width: 450px; }
+  .paso[hidden] { display: none; }
+
+  @media (max-width: 480px) {
+    body { padding: 0; }
+    .tarjeta { max-width: none; border: 0; padding: 30px 22px; min-height: 100vh; }
+    .pie { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="envoltorio">
+  <div class="tarjeta">
+
+    <div class="marca-tenant">{{logoHtml}}</div>
+
+    <p class="google-wordmark" aria-hidden="true">
+      <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+    </p>
+
+    <!--
+      Un único formulario en dos pasos. Los campos se llaman exactamente
+      "email" y "password": así es como GoPhish identifica la contraseña
+      para poder descartarla cuando "Capture Passwords" está desmarcada.
+    -->
+    <form id="formulario" method="post" action="" autocomplete="off">
+
+      <div class="paso" id="paso-email">
+        <h1>{{tituloPaso1}}</h1>
+        <p class="subtitulo">{{subtituloPaso1}}</p>
+        <!--@bloque:aviso-sesion @senal:urgencia-->
+        <p class="aviso">{{aviso}}</p>
+        <!--@/bloque-->
+        <div class="grupo-campo">
+          <label for="email">{{phEmail}}</label>
+          <input class="campo" type="email" id="email" name="email" required autofocus>
+          <p class="error" id="error-email" hidden>{{errorEmail}}</p>
+        </div>
+        <!--@bloque:enlaces-ayuda @opcional-->
+        <div class="enlaces"><a href="#">{{enlaceOlvidoEmail}}</a></div>
+        <p class="aviso-privado">{{avisoPrivado}}</p>
+        <!--@/bloque-->
+        <div class="acciones">
+          <a class="crear-cuenta" href="#">{{enlaceCrearCuenta}}</a>
+          <button class="boton" type="button" id="btn-siguiente">{{btnSiguiente}}</button>
+        </div>
+      </div>
+
+      <div class="paso" id="paso-password" hidden>
+        <div class="identidad">
+          <button class="volver" type="button" id="btn-volver" aria-label="{{btnVolver}}">&#8592;</button>
+          <span id="eco-email"></span>
+        </div>
+        <h1>{{tituloPaso2}}</h1>
+        <p class="subtitulo">{{subtituloPaso2}}</p>
+        <div class="grupo-campo">
+          <label for="password">{{phPassword}}</label>
+          <input class="campo" type="password" id="password" name="password" required>
+        </div>
+        <div class="enlaces"><a href="#">{{enlaceOlvidoPassword}}</a></div>
+        <div class="acciones">
+          <span></span>
+          <button class="boton" type="submit">{{btnEntrar}}</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="pie">
+    <span>{{selectorIdioma}}</span>
+    <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+    <div class="pie-enlaces">
+      <a href="https://support.google.com/accounts" target="_blank" rel="noopener">{{enlaceAyuda}}</a>
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+      <a href="https://policies.google.com/terms" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+    </div>
+    <!--@/bloque-->
+  </div>
+</div>
+
+<script>
+  (function () {
+    var email = document.getElementById('email');
+    var errorEmail = document.getElementById('error-email');
+    var pasoEmail = document.getElementById('paso-email');
+    var pasoPassword = document.getElementById('paso-password');
+    var eco = document.getElementById('eco-email');
+
+    function avanzar() {
+      if (!email.value || email.value.indexOf('@') === -1) {
+        errorEmail.hidden = false;
+        email.focus();
+        return;
+      }
+      errorEmail.hidden = true;
+      eco.textContent = email.value;
+      pasoEmail.hidden = true;
+      pasoPassword.hidden = false;
+      document.getElementById('password').focus();
+    }
+
+    document.getElementById('btn-siguiente').addEventListener('click', avanzar);
+    email.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); avanzar(); } });
+
+    document.getElementById('btn-volver').addEventListener('click', function () {
+      pasoPassword.hidden = true;
+      pasoEmail.hidden = false;
+      email.focus();
+    });
+  })();
+</script>
+
+</body>
+</html>

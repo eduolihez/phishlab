@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de GitHub. Escrita a mano, no un volcado
+     del sitio real: sin assets externos que delaten la visita al dominio.
+     La página real no lleva tarjeta con borde: es contenido centrado sobre
+     blanco, sin caja. */
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #1f2328;
+    background-color: #ffffff;
+  }
+
+  .contenido { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 64px 16px 40px; }
+
+  .marca-tenant { margin-bottom: 18px; min-height: 24px; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .octo { margin-bottom: 18px; color: #1f2328; }
+
+  h1 { margin: 0 0 26px; font-size: 24px; font-weight: 600; text-align: center; color: #1f2328; }
+
+  .caja { width: 100%; max-width: 308px; }
+
+  .aviso {
+    margin: 0 0 16px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #9a6700;
+    background: #fff8c5;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d4a72c;
+  }
+  .aviso:empty { display: none; padding: 0; border: 0; }
+
+  label { display: block; margin-bottom: 5px; font-size: 14px; font-weight: 600; }
+
+  .campo {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 7px 11px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #1f2328;
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    outline: none;
+  }
+  .campo:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9,105,218,.15); }
+
+  .error { margin: -10px 0 16px; font-size: 12px; color: #cf222e; }
+  .error:empty { display: none; }
+
+  .enlace-olvido { float: right; font-size: 12px; color: #0969da; text-decoration: none; font-weight: 400; }
+
+  .boton {
+    width: 100%;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #1f883d;
+    border: 1px solid rgba(31,35,40,.15);
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .boton:hover { background: #1a7f37; }
+
+  .separador { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #59636e; font-size: 13px; }
+  .separador::before, .separador::after { content: ''; flex: 1; height: 1px; background: #d0d7de; }
+
+  .pie-registro { text-align: center; font-size: 14px; margin-bottom: 6px; }
+  .pie-registro a { color: #0969da; text-decoration: none; }
+
+  .pie-legal {
+    padding: 18px 16px;
+    background: #f6f8fa;
+    border-top: 1px solid #d0d7de;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 12px;
+    color: #59636e;
+    flex-wrap: wrap;
+  }
+  .pie-legal a { color: #59636e; text-decoration: none; }
+  .pie-legal a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="contenido">
+  <div class="marca-tenant">{{logoHtml}}</div>
+
+  <!--@bloque:marca @opcional-->
+  <svg class="octo" width="48" height="48" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+             0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+             -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+             .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+             -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+             .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+             .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+             0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8
+             c0-4.42-3.58-8-8-8Z"/>
+  </svg>
+  <!--@/bloque-->
+
+  <h1>{{tituloPagina}}</h1>
+
+  <div class="caja">
+    <!--@bloque:aviso-dispositivo @senal:urgencia-->
+    <p class="aviso">{{aviso}}</p>
+    <!--@/bloque-->
+
+    <!--
+      Campos "email"/"password" exactos: es como GoPhish sabe cuál descartar
+      cuando "Capture Passwords" está desmarcada en la campaña.
+    -->
+    <form method="post" action="" autocomplete="off">
+      <label for="email">{{etiquetaEmail}}</label>
+      <input class="campo" type="text" id="email" name="email" required autofocus>
+
+      <label for="password">
+        {{etiquetaPassword}}
+        <a class="enlace-olvido" href="#">{{enlaceOlvido}}</a>
+      </label>
+      <input class="campo" type="password" id="password" name="password" required>
+
+      <button class="boton" type="submit">{{btnEntrar}}</button>
+    </form>
+
+    <!--@bloque:pie-registro @opcional-->
+    <div class="separador">o</div>
+    <p class="pie-registro">{{textoPieRegistro}} <a href="#">{{enlaceRegistro}}</a></p>
+    <!--@/bloque-->
+  </div>
+</div>
+
+<!--@bloque:pie-legal @senal:!incoherencia-marca-->
+<div class="pie-legal">
+  <a href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+  <a href="https://github.com/security" target="_blank" rel="noopener">{{enlaceSeguridad}}</a>
+</div>
+<!--@/bloque-->
+
+</body>
+</html>

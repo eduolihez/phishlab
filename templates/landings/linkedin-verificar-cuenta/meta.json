@@ -1,0 +1,51 @@
+{
+  "schema": 2,
+  "nombre": "LinkedIn · Verificar cuenta",
+  "descripcion": "Login de LinkedIn. Pareja natural del correo de mensaje pendiente, uno de los pocos que llega al buzón personal y no al corporativo.",
+  "familia": "externos",
+  "categoria": "redes-profesionales",
+  "empresa": "LinkedIn",
+  "tags": [
+    "linkedin",
+    "credenciales",
+    "login",
+    "personal"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "marca",
+      "etiqueta": "marca",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "aviso-verificacion",
+      "etiqueta": "aviso-verificacion",
+      "senal": "urgencia"
+    },
+    {
+      "id": "cta-registro",
+      "etiqueta": "cta-registro",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

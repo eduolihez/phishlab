@@ -21,6 +21,11 @@ const FAMILIAS = {
   administracion: 'Administración pública',
   saas: 'SaaS corporativo',
   externos: 'Externos',
+  it: 'IT y soporte',
+  desarrollo: 'Desarrollo y DevOps',
+  entretenimiento: 'Entretenimiento y suscripciones',
+  viajes: 'Viajes y desplazamientos',
+  actualidad: 'Actualidad y avisos',
 };
 
 const CATEGORIAS = {
@@ -29,6 +34,10 @@ const CATEGORIAS = {
   'saas-corporativo': 'SaaS y colaboración',
   'interno-rrhh': 'Interno y RRHH',
   formacion: 'Formación',
+  'soporte-it': 'Soporte y TI',
+  'suscripciones-personales': 'Suscripciones personales',
+  'redes-profesionales': 'Redes profesionales',
+  'avisos-generales': 'Avisos generales',
 };
 
 const CAPTURAS = {
@@ -106,7 +115,7 @@ export function vistaBiblioteca() {
   }
 
   function filtrar() {
-    const { tipo, familia, categoria, captura } = estado.filtros;
+    const { tipo, familia, categoria, captura, marca } = estado.filtros;
     const busqueda = estado.busqueda.trim().toLowerCase();
 
     return todas().filter((m) => {
@@ -117,9 +126,11 @@ export function vistaBiblioteca() {
       if (familia !== 'todas' && m.familia !== familia) return false;
       if (categoria !== 'todas' && m.categoria !== categoria) return false;
       if (captura !== 'todas' && (m.captura ?? 'ninguna') !== captura) return false;
+      if (marca === 'generica' && m.empresa) return false;
+      if (marca !== 'todas' && marca !== 'generica' && m.empresa !== marca) return false;
 
       if (!busqueda) return true;
-      const heno = [m.nombre, m.descripcion, m.familia, m.categoria, m.id, ...(m.tags ?? [])]
+      const heno = [m.nombre, m.descripcion, m.familia, m.categoria, m.empresa, m.id, ...(m.tags ?? [])]
         .join(' ')
         .toLowerCase();
       // Todas las palabras tienen que aparecer: buscar "banca credenciales"
@@ -139,6 +150,15 @@ export function vistaBiblioteca() {
         ['landings', 'Landings', cuenta((m) => m.tipo === 'landings')],
         ['favoritos', 'Favoritas', estado.favoritos.length],
         ['propias', 'Propias', cuenta((m) => m.propia)],
+      ]),
+      grupo('Compañía', 'marca', [
+        ['todas', 'Todas', lista.length],
+        ['generica', 'Genéricas (marca propia)', cuenta((m) => !m.empresa)],
+        ...[...new Set(lista.map((m) => m.empresa).filter(Boolean))].sort().map((e) => [
+          e,
+          e,
+          cuenta((m) => m.empresa === e),
+        ]),
       ]),
       grupo('Categoría', 'categoria', [
         ['todas', 'Todas', lista.length],
@@ -200,6 +220,7 @@ export function vistaBiblioteca() {
 
     const abrir = () => { location.hash = `#/plantilla/${meta.tipo}/${meta.id}`; };
     const esFavorita = estado.favoritos.includes(meta.id);
+    const senales = senalesDe(meta).slice(0, 3);
 
     // La tarjeta es un div y no un button porque lleva dentro el botón de
     // favorita, y un button anidado en otro no es HTML válido: el navegador
@@ -212,17 +233,25 @@ export function vistaBiblioteca() {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); }
       },
     }, [
+      // Las señales que enseña la plantilla van primero: es lo que distingue
+      // a PhishLab de una galería de plantillas de email genérica.
+      el('.senales-tarjeta', [
+        ...(senales.length
+          ? senales.map((s) => el('span.pildora.pildora-acento', { texto: s.nombre }))
+          : [el('span.pildora', { texto: 'sin señal marcada' })]),
+        el(`span.pildora${meta.tipo === 'emails' ? '' : '.pildora-info'}`, {
+          style: { marginLeft: 'auto' },
+          texto: meta.tipo === 'emails' ? 'correo' : meta.formativa ? 'formativa' : 'landing',
+        }),
+      ]),
       miniatura,
       el('.cuerpo-tarjeta', [
         el('.titulo-tarjeta', { texto: meta.nombre }),
         el('.desc-tarjeta', { texto: meta.descripcion ?? '' }),
         el('.pies-tarjeta', [
-          el(`span.pildora${meta.tipo === 'emails' ? '.pildora-acento' : ''}`, {
-            texto: meta.tipo === 'emails' ? 'correo' : meta.formativa ? 'formativa' : 'landing',
-          }),
           meta.captura === 'credenciales' ? el('span.pildora.pildora-alerta', { texto: 'credenciales' }) : null,
-          meta.propia ? el('span.pildora.pildora-info', { texto: 'propia' }) : null,
-          meta.origen?.tipo?.startsWith('importado') ? el('span.pildora.pildora-info', { texto: 'importada' }) : null,
+          meta.propia ? el('span.pildora.pildora-ok', { texto: 'propia' }) : null,
+          meta.origen?.tipo?.startsWith('importado') ? el('span.pildora.pildora-ok', { texto: 'importada' }) : null,
           el('span.pildora', { texto: (meta.idiomas ?? []).join(' · ') }),
           el('button.btn.btn-icono', {
             type: 'button',
@@ -240,6 +269,14 @@ export function vistaBiblioteca() {
         ]),
       ]),
     ]);
+  }
+
+  /** Señales que una plantilla puede enseñar, según los bloques que declara. */
+  function senalesDe(meta) {
+    const ids = [...new Set((meta.bloques ?? []).map((b) => b.senal).filter(Boolean).map((s) => s.replace(/^!/, '')))];
+    return ids
+      .map((id) => estado.catalogo.senales.find((s) => s.id === id))
+      .filter(Boolean);
   }
 }
 

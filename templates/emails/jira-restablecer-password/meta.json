@@ -1,0 +1,112 @@
+{
+  "schema": 2,
+  "nombre": "Jira · Restablecimiento de contraseña requerido",
+  "descripcion": "Ticket automático de mesa de ayuda pidiendo revalidar la contraseña. Funciona especialmente bien en equipos técnicos: un ticket de Jira no despierta la misma sospecha que un correo de banca.",
+  "familia": "desarrollo",
+  "categoria": "saas-corporativo",
+  "empresa": "Jira",
+  "tags": [
+    "jira",
+    "atlassian",
+    "helpdesk",
+    "credenciales",
+    "ti"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-14",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "remitente": {
+    "nombre": "Mesa de Ayuda",
+    "buzon": "soporte"
+  },
+  "campos": [
+    {
+      "clave": "numeroTicket",
+      "etiqueta": "Número de ticket",
+      "tipo": "texto",
+      "defecto": "TKT-2026-08841"
+    },
+    {
+      "clave": "departamento",
+      "etiqueta": "Departamento afectado",
+      "tipo": "texto",
+      "defecto": "Infraestructura"
+    },
+    {
+      "clave": "plazo",
+      "etiqueta": "Plazo para revalidar",
+      "tipo": "texto",
+      "defecto": "48 horas"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha-ticket",
+      "etiqueta": "ficha-ticket",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

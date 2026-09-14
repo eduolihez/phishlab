@@ -46,7 +46,7 @@ export const estado = {
 
   // Filtros de la biblioteca
   busqueda: '',
-  filtros: { tipo: 'todos', familia: 'todas', categoria: 'todas', captura: 'todas' },
+  filtros: { tipo: 'todos', familia: 'todas', categoria: 'todas', captura: 'todas', marca: 'todas' },
 
   // Capacidades del entorno, resueltas al arrancar
   conServidor: false,

@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "{{remitenteExterno}} ha compartit un arxiu amb tu",
+    "urgencia": "Document pendent de revisar: {{documento}}",
+    "urgencia+erratas": "IMPORTANT: document compartit, acces limitat"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "L'enllaç caduca en {{plazo}}"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens un arxiu nou",
+    "urgencia": "{{saludo}}, un document espera la teva revisió",
+    "urgencia+erratas": "{{saludo}}, ACCES LIMITAT a un document"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteExterno}}</strong> ha compartit «{{documento}}» amb tu a través de Dropbox.",
+    "urgencia": "<strong>{{remitenteExterno}}</strong> necessita que revisis «{{documento}}» abans de seguir endavant.",
+    "urgencia+erratas": "<strong>{{remitenteExterno}}</strong> ha compartit «{{documento}}» amb acces limitat a {{plazo}}."
+  },
+  "detalle": {
+    "base": "Pots veure'l directament des del navegador, sense necessitat d'instal·lar res.",
+    "urgencia": "L'enllaç d'accés caduca en {{plazo}}, així que convé revisar-lo aviat.",
+    "urgencia+erratas": "L'enllaç caduca en {{plazo}} i no es pot tornar a compartir un cop tancat."
+  },
+  "urgencia": {
+    "base": "No hi ha termini: l'arxiu queda disponible al teu compte quan vulguis veure'l.",
+    "urgencia": "Passat {{plazo}}, hauràs de demanar que te'l tornin a compartir.",
+    "urgencia+erratas": "ATENCIO: passat {{plazo}} l'enllaç deixa de funcionar per complet."
+  },
+  "cta": {
+    "base": "Veure arxiu",
+    "urgencia": "Revisar el document",
+    "urgencia+erratas": "ACCEDIR ABANS QUE CADUQUI"
+  },
+  "cierre": {
+    "base": "L'equip de Dropbox",
+    "urgencia+erratas": "Notificacions de Dropbox"
+  },
+  "fichaEtiqueta1": "Compartit per",
+  "fichaValor1": "{{remitenteExterno}}",
+  "fichaEtiqueta2": "Document",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Caduca",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · ACCES LIMITAT"
+  }
+}

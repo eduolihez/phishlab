@@ -1,0 +1,31 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "tituloPagina": "Iniciar sesión — Google",
+  "tituloPaso1": "Iniciar sesión",
+  "subtituloPaso1": "Usa tu cuenta de Google",
+  "aviso": {
+    "base": "",
+    "urgencia": "Hemos detectado actividad inusual. Verifica tu identidad para continuar."
+  },
+  "phEmail": "Correo electrónico o teléfono",
+  "errorEmail": "Escribe un correo electrónico válido.",
+  "enlaceOlvidoEmail": "¿Has olvidado tu correo?",
+  "enlaceCrearCuenta": "Crear cuenta",
+  "btnSiguiente": "Siguiente",
+  "btnVolver": "Volver",
+  "tituloPaso2": "Bienvenido/a",
+  "phPassword": "Introduce tu contraseña",
+  "enlaceOlvidoPassword": "¿Has olvidado tu contraseña?",
+  "btnEntrar": "Siguiente",
+  "selectorIdioma": "Español (España)",
+  "enlaceAyuda": "Ayuda",
+  "enlacePrivacidad": "Privacidad",
+  "enlaceCondiciones": "Condiciones",
+  "subtituloPaso2": "",
+  "avisoPrivado": "¿No es tu ordenador? Usa una ventana de navegación privada para iniciar sesión."
+}

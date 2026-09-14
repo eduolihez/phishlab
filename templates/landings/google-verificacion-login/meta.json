@@ -1,0 +1,47 @@
+{
+  "schema": 2,
+  "nombre": "Google · Inicio de sesión",
+  "descripcion": "Login en dos pasos con el diseño real de Google. Escrito a mano, no un volcado del sitio real. Pareja natural del correo de verificación de actividad inusual.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "empresa": "Google",
+  "tags": [
+    "google",
+    "credenciales",
+    "login",
+    "workspace"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "aviso-sesion",
+      "etiqueta": "Aviso de sesión caducada",
+      "senal": "urgencia",
+      "ayuda": "El pretexto de por qué se pide iniciar sesión otra vez."
+    },
+    {
+      "id": "enlaces-ayuda",
+      "etiqueta": "Enlaces de ayuda",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Crear cuenta y recuperar acceso. Un portal real los tiene."
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

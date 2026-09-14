@@ -1,0 +1,24 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "tituloPagina": "Inicia sessió",
+  "aviso": {
+    "base": "",
+    "urgencia": "Inicia sessió per llegir el teu missatge pendent."
+  },
+  "etiquetaEmail": "Correu electrònic o telèfon",
+  "etiquetaPassword": "Contrasenya",
+  "enlaceOlvido": "Has oblidat la contrasenya?",
+  "btnEntrar": "Iniciar sessió",
+  "textoSeparador": "o",
+  "enlaceCrearCuenta": "Uneix-t'hi ara",
+  "subtitulo": "Estàs començant a fer servir LinkedIn?",
+  "textoRecordar": "Mantenir la sessió iniciada",
+  "enlaceAyuda": "Ajuda",
+  "enlacePrivacidad": "Privacitat",
+  "enlaceCondiciones": "Condicions d'ús"
+}

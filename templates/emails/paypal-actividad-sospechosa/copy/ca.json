@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Hem detectat activitat inusual al teu compte",
+    "urgencia": "Reconeixes aquest pagament de {{importe}}?",
+    "urgencia+erratas": "AVIS: transaccio no reconeguda al seu compte PayPal"
+  },
+  "preheader": {
+    "base": "{{comercio}} · {{importe}}",
+    "urgencia": "Revisa aquest pagament abans que es completi"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut client"
+  },
+  "titular": {
+    "base": "{{saludo}}, hem limitat el teu compte per precaució",
+    "urgencia": "{{saludo}}, reconeixes aquest pagament?",
+    "urgencia+erratas": "{{saludo}}, TRANSACCIO NO RECONEGUDA"
+  },
+  "entradilla": {
+    "base": "Hem detectat un inici de sessió inusual i hem limitat temporalment el teu compte com a mesura de precaució.",
+    "urgencia": "S'ha iniciat un pagament de <strong>{{importe}}</strong> a {{comercio}} des del teu compte. Si no el reconeixes, pots cancel·lar-lo ara.",
+    "urgencia+erratas": "S'ha registrat un carrec de <strong>{{importe}}</strong> a {{comercio}} que no coincideix amb la seva activitat habitual."
+  },
+  "detalle": {
+    "base": "Verifica la teva identitat per aixecar la limitació i seguir fent servir el teu compte amb normalitat.",
+    "urgencia": "Tens {{plazo}} per cancel·lar-lo abans que el pagament es completi i ja no es pugui revertir des d'aquí.",
+    "urgencia+erratas": "Verifiqui la seva identitat de seguida o el carrec es consolidara sense possibilitat de reclamacio."
+  },
+  "urgencia": {
+    "base": "La verificació triga menys de dos minuts i no afecta el teu saldo.",
+    "urgencia": "Passat aquest termini, hauràs d'obrir una disputa formal, que triga diversos dies a resoldre's.",
+    "urgencia+erratas": "ATENCIO: queden {{plazo}} per actuar. Passat aquest temps no podra recuperar els diners."
+  },
+  "cta": {
+    "base": "Verificar el meu compte",
+    "urgencia": "Revisar el pagament",
+    "urgencia+erratas": "CANCEL·LAR EL PAGAMENT ARA"
+  },
+  "cierre": {
+    "base": "L'equip de PayPal",
+    "urgencia+erratas": "Departament de Prevenció de Frau"
+  },
+  "fichaEtiqueta1": "Import",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "Destinatari",
+  "fichaValor2": "{{comercio}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": {
+    "base": "Compte limitat",
+    "urgencia+erratas": "REQUEREIX VERIFICACIO"
+  }
+}

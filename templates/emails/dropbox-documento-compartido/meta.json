@@ -1,0 +1,105 @@
+{
+  "schema": 2,
+  "nombre": "Dropbox · Documento compartido contigo",
+  "descripcion": "Aviso externo de que alguien ha compartido un fichero por Dropbox. A diferencia del genérico interno, este llega de un remitente ajeno a la empresa, lo que baja la guardia porque no se espera que lo cuiden tanto.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "empresa": "Dropbox",
+  "tags": [
+    "dropbox",
+    "documento",
+    "credenciales",
+    "externo"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "remitente": {
+    "nombre": "Dropbox",
+    "buzon": "no-reply"
+  },
+  "campos": [
+    {
+      "clave": "remitenteExterno",
+      "etiqueta": "Nombre de quien comparte",
+      "tipo": "texto",
+      "defecto": "Marta Bou (Estudio Legal Bou & Asociados)"
+    },
+    {
+      "clave": "documento",
+      "etiqueta": "Nombre del documento",
+      "tipo": "texto",
+      "defecto": "Propuesta_contrato_2026.pdf"
+    },
+    {
+      "clave": "plazo",
+      "etiqueta": "Plazo de acceso",
+      "tipo": "texto",
+      "defecto": "7 días"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "tituloPagina": "Sign in",
+  "aviso": {
+    "base": "",
+    "urgencia": "Sign in to revalidate your password and close the ticket."
+  },
+  "etiquetaEmail": "Email",
+  "etiquetaPassword": "Password",
+  "enlaceOlvido": "Forgot password?",
+  "btnEntrar": "Sign in",
+  "enlacePrivacidad": "Privacy",
+  "enlaceCondiciones": "Terms"
+}

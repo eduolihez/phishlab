@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "[{{numeroTicket}}] Revalidació de contrasenya programada",
+    "urgencia": "[{{numeroTicket}}] La teva contrasenya caduca abans de {{plazo}}",
+    "urgencia+erratas": "[{{numeroTicket}}] URGENT: compte bloquejat sense revalidacio"
+  },
+  "preheader": {
+    "base": "Tiquet {{numeroTicket}}",
+    "urgencia": "Revalida abans que caduqui l'accés"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "S'ha obert un tiquet de revalidació de contrasenya",
+    "urgencia": "La teva contrasenya necessita revalidació abans de {{plazo}}",
+    "urgencia+erratas": "ACCIO REQUERIDA: revalidacio de contrasenya pendent"
+  },
+  "entradilla": {
+    "base": "Com a part de la política de rotació de credencials de {{departamento}}, s'ha obert el tiquet <strong>{{numeroTicket}}</strong> per revalidar la teva contrasenya.",
+    "urgencia": "La teva contrasenya d'accés caduca en {{plazo}}. Revalida-la ara per no perdre l'accés als teus projectes.",
+    "urgencia+erratas": "El seu compte sera BLOQUEJAT si no revalida la seva contrasenya. Tiquet {{numeroTicket}} obert pel departament de {{departamento}}."
+  },
+  "detalle": {
+    "base": "El procés triga menys d'un minut i no afecta les teves sessions actives en altres dispositius.",
+    "urgencia": "Fes clic a l'enllaç de sota per revalidar la teva contrasenya abans que caduqui l'accés.",
+    "urgencia+erratas": "Revalidi de seguida per evitar perdre l'accés a tots els seus repositoris i taulers."
+  },
+  "urgencia": {
+    "base": "No hi ha cap acció urgent a fer: pots revalidar quan et vagi bé dins el termini habitual.",
+    "urgencia": "Passat {{plazo}} sense revalidar, el teu compte queda en mode de només lectura fins que ho facis.",
+    "urgencia+erratas": "ATENCIO: queden {{plazo}}. Passat aquest termini l'acces es BLOQUEJA per complet."
+  },
+  "cta": {
+    "base": "Veure tiquet",
+    "urgencia": "Revalidar contrasenya",
+    "urgencia+erratas": "REVALIDAR ARA"
+  },
+  "cierre": {
+    "base": "Mesa de Suport TI",
+    "urgencia+erratas": "Suport Tècnic · Prioritat Alta"
+  },
+  "fichaEtiqueta1": "Tiquet",
+  "fichaValor1": "{{numeroTicket}}",
+  "fichaEtiqueta2": "Departament",
+  "fichaValor2": "{{departamento}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": {
+    "base": "Pendent",
+    "urgencia+erratas": "CRITIC"
+  }
+}

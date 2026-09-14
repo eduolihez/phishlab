@@ -135,6 +135,7 @@ function crear(spec) {
     descripcion: spec.descripcion ?? '',
     familia: spec.familia,
     categoria: spec.categoria ?? '',
+    ...(spec.empresa ? { empresa: spec.empresa } : {}),
     tags: spec.tags ?? [],
     idiomas,
     demo: spec.demo ?? false,

@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "No hem pogut processar el teu pagament",
+    "urgencia": "El teu compte se suspendrà aviat: actualitza el pagament",
+    "urgencia+erratas": "URGENT: problema amb la seva forma de pagament"
+  },
+  "preheader": {
+    "base": "Pla {{plan}} · {{importe}}",
+    "urgencia": "Actualitza el mètode de pagament per seguir veient Netflix"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hi va haver un problema amb el teu últim pagament",
+    "urgencia": "{{saludo}}, la teva subscripció està en risc",
+    "urgencia+erratas": "{{saludo}}, PROBLEMA amb el seu pagament"
+  },
+  "entradilla": {
+    "base": "No hem pogut cobrar la teva subscripció {{plan}} ({{importe}}) amb el mètode de pagament que tenim desat.",
+    "urgencia": "La teva forma de pagament ha fallat i el teu compte se suspendrà en {{plazo}} si no l'actualitzes.",
+    "urgencia+erratas": "No hem pogut processar el cobrament de {{importe}}. El seu compte sera SUSPES si no actualitza les seves dades."
+  },
+  "detalle": {
+    "base": "Actualitza les teves dades de pagament perquè no s'interrompi la teva subscripció.",
+    "urgencia": "És ràpid: només has de confirmar o actualitzar la teva targeta des de l'enllaç de sota.",
+    "urgencia+erratas": "Actualitzi les seves dades de pagament ARA per evitar perdre l'acces al seu compte."
+  },
+  "urgencia": {
+    "base": "Tens uns dies abans que la subscripció es pausi automàticament.",
+    "urgencia": "Passat {{plazo}} sense actualitzar el pagament, el compte es pausa i perdràs la teva llista i els teus perfils.",
+    "urgencia+erratas": "ATENCIO: nomes queden {{plazo}} abans de la SUSPENSIO definitiva del compte."
+  },
+  "cta": {
+    "base": "Actualitzar pagament",
+    "urgencia": "Actualitzar el meu mètode de pagament",
+    "urgencia+erratas": "EVITAR LA SUSPENSIO"
+  },
+  "cierre": {
+    "base": "L'equip de Netflix",
+    "urgencia+erratas": "Facturació de Netflix"
+  },
+  "fichaEtiqueta1": "Pla",
+  "fichaValor1": "{{plan}}",
+  "fichaEtiqueta2": "Import",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": {
+    "base": "Pagament pendent",
+    "urgencia+erratas": "COMPTE EN RISC"
+  }
+}

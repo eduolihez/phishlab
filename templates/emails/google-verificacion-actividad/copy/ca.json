@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Alerta de seguretat per al teu compte de Google",
+    "urgencia": "Nou inici de sessió: has estat tu?",
+    "urgencia+erratas": "ALERTA: activitat sospitosa detectada al seu compte"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Revisa l'activitat recent del teu compte"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hem bloquejat un inici de sessió sospitós",
+    "urgencia": "{{saludo}}, reconeixes aquest accés?",
+    "urgencia+erratas": "{{saludo}}, ACTIVITAT SOSPITOSA al teu compte"
+  },
+  "entradilla": {
+    "base": "Algú va fer servir la teva contrasenya per intentar accedir al teu compte de Google. Hem bloquejat l'intent, però convé que revisis la teva activitat recent.",
+    "urgencia": "S'ha iniciat sessió al teu compte <strong>{{fechaAcceso}}</strong> des de {{ubicacion}}, amb un dispositiu que no reconeixem ({{dispositivo}}).",
+    "urgencia+erratas": "Hem detectat activitat sospitosa al seu compte de Google des de {{ubicacion}}. Si no ha estat vostè, el seu compte podria estar en risc."
+  },
+  "detalle": {
+    "base": "Si vas ser tu, no has de fer res més. Si no, et recomanem revisar la teva activitat i canviar la contrasenya com abans millor.",
+    "urgencia": "Si no has estat tu, tanca la sessió d'aquest dispositiu i protegeix el teu compte des de l'enllaç de sota.",
+    "urgencia+erratas": "Verifiqui la seva identitat ARA per evitar que es bloquegi l'acces a Gmail, Drive i la resta de serveis."
+  },
+  "urgencia": {
+    "base": "Pots revisar la teva activitat recent quan vulguis des de la configuració del compte.",
+    "urgencia": "Com abans revisis l'accés, abans et podem ajudar a protegir el compte si no has estat tu.",
+    "urgencia+erratas": "ATENCIO: si no verifica en les properes 2 hores, restringirem l'acces al compte per seguretat."
+  },
+  "cta": {
+    "base": "Revisar activitat",
+    "urgencia": "Comprovar activitat recent",
+    "urgencia+erratas": "PROTEGIR EL MEU COMPTE ARA"
+  },
+  "cierre": {
+    "base": "L'equip de Google",
+    "urgencia+erratas": "Equip de Seguretat de Google"
+  },
+  "fichaEtiqueta1": "Dispositiu",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Ubicació",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Hora",
+  "fichaValor3": {
+    "base": "{{fechaAcceso}}",
+    "urgencia+erratas": "{{fechaAcceso}} · SENSE VERIFICAR"
+  }
+}

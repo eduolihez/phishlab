@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "{{remitenteDoc}} t'ha enviat un document per signar via DocuSign",
+    "urgencia": "Signatura pendent: {{documento}}",
+    "urgencia+erratas": "URGENT: signatura requerida en les properes {{plazo}}"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "Completa la signatura abans que expiri l'enllaç"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut usuari"
+  },
+  "titular": {
+    "base": "Tens un document per signar",
+    "urgencia": "La teva signatura està pendent",
+    "urgencia+erratas": "SIGNATURA REQUERIDA amb caracter urgent"
+  },
+  "entradilla": {
+    "base": "{{remitenteDoc}} t'ha enviat «{{documento}}» a través de DocuSign per a la teva signatura electrònica.",
+    "urgencia": "El document «{{documento}}» de {{remitenteDoc}} necessita la teva signatura abans de {{plazo}}.",
+    "urgencia+erratas": "{{remitenteDoc}} necessita la seva signatura a «{{documento}}» de forma immediata."
+  },
+  "detalle": {
+    "base": "Pots revisar i signar el document des de qualsevol dispositiu, sense necessitat d'imprimir res.",
+    "urgencia": "L'enllaç de signatura caduca en {{plazo}}; passat aquest termini, {{remitenteDoc}} l'haurà de reenviar.",
+    "urgencia+erratas": "L'enllaç caduca en {{plazo}}. Passat aquest temps haura de sol·licitar un nou enviament."
+  },
+  "urgencia": {
+    "base": "No hi ha un termini estricte, però com abans el signis, abans es tanca el tràmit.",
+    "urgencia": "Queden {{plazo}} abans que l'enllaç de signatura caduqui.",
+    "urgencia+erratas": "ATENCIO: queden {{plazo}}. Passat aquest termini el document es cancel·la."
+  },
+  "cta": {
+    "base": "Revisar document",
+    "urgencia": "Signar ara",
+    "urgencia+erratas": "SIGNAR ABANS QUE CADUQUI"
+  },
+  "cierre": {
+    "base": "L'equip de DocuSign",
+    "urgencia+erratas": "DocuSign · Notificacions"
+  },
+  "fichaEtiqueta1": "Enviat per",
+  "fichaValor1": "{{remitenteDoc}}",
+  "fichaEtiqueta2": "Document",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Caduca",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · PENDENT"
+  }
+}

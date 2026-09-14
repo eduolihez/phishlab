@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "{{remitenteExterno}} shared a file with you",
+    "urgencia": "Document awaiting your review: {{documento}}",
+    "urgencia+erratas": "IMPORTANT: shared document, limited access"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "The link expires in {{plazo}}"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Hi"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a new file",
+    "urgencia": "{{saludo}}, a document is waiting for your review",
+    "urgencia+erratas": "{{saludo}}, LIMITED ACCESS to a document"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteExterno}}</strong> shared \"{{documento}}\" with you via Dropbox.",
+    "urgencia": "<strong>{{remitenteExterno}}</strong> needs you to review \"{{documento}}\" before moving forward.",
+    "urgencia+erratas": "<strong>{{remitenteExterno}}</strong> shared \"{{documento}}\" with access limited to {{plazo}}."
+  },
+  "detalle": {
+    "base": "You can view it directly from your browser, no install needed.",
+    "urgencia": "The access link expires in {{plazo}}, so it's worth reviewing it soon.",
+    "urgencia+erratas": "The link expires in {{plazo}} and cannot be re-shared once closed."
+  },
+  "urgencia": {
+    "base": "There is no deadline: the file stays available in your account whenever you want to view it.",
+    "urgencia": "After {{plazo}}, you will need to ask for it to be shared again.",
+    "urgencia+erratas": "WARNING: after {{plazo}} the link stops working entirely."
+  },
+  "cta": {
+    "base": "View file",
+    "urgencia": "Review the document",
+    "urgencia+erratas": "ACCESS BEFORE IT EXPIRES"
+  },
+  "cierre": {
+    "base": "The Dropbox Team",
+    "urgencia+erratas": "Dropbox Notifications"
+  },
+  "fichaEtiqueta1": "Shared by",
+  "fichaValor1": "{{remitenteExterno}}",
+  "fichaEtiqueta2": "Document",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Expires",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · LIMITED ACCESS"
+  }
+}

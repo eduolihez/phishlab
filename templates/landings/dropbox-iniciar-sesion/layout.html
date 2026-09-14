@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="{{idioma}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{tituloPagina}}</title>
+<style>
+  /* Recreación del inicio de sesión de Dropbox. Escrita a mano, no un
+     volcado del sitio real. */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #1e1919;
+    background-color: #ffffff;
+  }
+
+  /* Barra superior real de Dropbox: blanca, con el logo a la izquierda —
+     no dentro de la tarjeta de login, que es donde iba en la v1. */
+  .barra-superior {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #eeece7;
+  }
+  .marca-db { display: flex; align-items: center; gap: 9px; }
+  .marca-db .icono {
+    width: 26px; height: 22px; background: #0061fe; border-radius: 5px;
+    display: grid; place-items: center;
+  }
+  .marca-db .icono svg { display: block; }
+  .marca-db span.texto { font-size: 19px; font-weight: 700; color: #1e1919; }
+
+  .contenido { display: flex; align-items: center; justify-content: center; padding: 48px 16px; background-color: #f7f5f2; min-height: calc(100vh - 55px); }
+
+  .envoltorio { width: 100%; max-width: 400px; }
+
+  .marca-tenant { margin-bottom: 18px; min-height: 24px; text-align: center; }
+  .marca-tenant img { max-width: 150px; max-height: 42px; display: block; margin: 0 auto; }
+
+  .tarjeta {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 34px 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06);
+  }
+
+  h1 { margin: 0 0 22px; font-size: 20px; font-weight: 700; text-align: center; }
+
+  .aviso {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #7a5100;
+    background: #fbf0da;
+    padding: 11px 13px;
+    border-radius: 8px;
+  }
+  .aviso:empty { display: none; padding: 0; margin: 0; }
+
+  .grupo-campo { margin-bottom: 14px; }
+  label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #1e1919; }
+
+  .campo {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #1e1919;
+    background: #ffffff;
+    border: 1px solid #cac6bd;
+    border-radius: 8px;
+    outline: none;
+  }
+  .campo:focus { border: 2px solid #0061fe; padding: 10px 13px; }
+
+  .error { margin: 6px 0 0; font-size: 12.5px; color: #d0021b; }
+  .error:empty { display: none; }
+
+  .enlace-olvido { text-align: right; margin: -6px 0 18px; font-size: 13px; }
+  .enlace-olvido a { color: #0061fe; text-decoration: none; }
+
+  .boton {
+    width: 100%;
+    padding: 13px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #0061fe;
+    border: 0;
+    border-radius: 24px;
+    cursor: pointer;
+  }
+  .boton:hover { background: #0050d1; }
+
+  .separador { display: flex; align-items: center; gap: 10px; margin: 22px 0; color: #93908a; font-size: 12px; }
+  .separador::before, .separador::after { content: ''; flex: 1; height: 1px; background: #eeece7; }
+
+  .enlaces-secundarios { text-align: center; font-size: 13.5px; }
+  .enlaces-secundarios a { color: #0061fe; text-decoration: none; font-weight: 600; }
+
+  .pie {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #93908a;
+  }
+  .pie a { color: #93908a; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!--@bloque:marca @opcional-->
+<div class="barra-superior">
+  <div class="marca-db" aria-hidden="true">
+    <span class="icono">
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="#ffffff"><path d="M3.5 0 0 2.4l3.5 2.4L7 2.4 3.5 0Zm7 0L7 2.4l3.5 2.4L14 2.4 10.5 0ZM0 7.2l3.5 2.4L7 7.2 3.5 4.8 0 7.2Zm10.5-2.4L7 7.2l3.5 2.4L14 7.2l-3.5-2.4ZM3.5 9.8 7 12l3.5-2.2L7 7.4l-3.5 2.4Z"/></svg>
+    </span>
+    <span class="texto">Dropbox</span>
+  </div>
+</div>
+<!--@/bloque-->
+
+<div class="contenido">
+<div class="envoltorio">
+  <div class="marca-tenant">{{logoHtml}}</div>
+
+  <div class="tarjeta">
+    <h1>{{tituloPagina}}</h1>
+
+    <!--@bloque:aviso-acceso @senal:urgencia-->
+    <p class="aviso">{{aviso}}</p>
+    <!--@/bloque-->
+
+    <!--
+      Campos "email"/"password" exactos: es como GoPhish sabe cuál descartar
+      cuando "Capture Passwords" está desmarcada en la campaña.
+    -->
+    <form method="post" action="" autocomplete="off">
+      <div class="grupo-campo">
+        <label for="email">{{etiquetaEmail}}</label>
+        <input class="campo" type="email" id="email" name="email" required autofocus>
+      </div>
+      <div class="grupo-campo">
+        <label for="password">{{etiquetaPassword}}</label>
+        <input class="campo" type="password" id="password" name="password" required>
+      </div>
+      <div class="enlace-olvido"><a href="#">{{enlaceOlvido}}</a></div>
+      <button class="boton" type="submit">{{btnEntrar}}</button>
+    </form>
+
+    <!--@bloque:cta-registro @opcional-->
+    <div class="separador">{{textoSeparador}}</div>
+    <div class="enlaces-secundarios"><a href="#">{{enlaceCrearCuenta}}</a></div>
+    <!--@/bloque-->
+  </div>
+
+  <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+  <div class="pie">
+    <a href="https://help.dropbox.com" target="_blank" rel="noopener">{{enlaceAyuda}}</a>
+    <a href="https://www.dropbox.com/privacy" target="_blank" rel="noopener">{{enlacePrivacidad}}</a>
+    <a href="https://www.dropbox.com/terms" target="_blank" rel="noopener">{{enlaceCondiciones}}</a>
+  </div>
+  <!--@/bloque-->
+</div>
+</div>
+
+</body>
+</html>

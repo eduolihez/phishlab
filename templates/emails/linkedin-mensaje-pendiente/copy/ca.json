@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "{{remitenteMensaje}} t'ha enviat un missatge",
+    "urgencia": "Tens 1 missatge sense llegir de {{remitenteMensaje}}",
+    "urgencia+erratas": "IMPORTANT: la teva sol·licitud de contacte esta pendent"
+  },
+  "preheader": {
+    "base": "{{asuntoMensaje}}",
+    "urgencia": "No deixis esperant {{remitenteMensaje}}"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens un missatge nou",
+    "urgencia": "{{saludo}}, {{remitenteMensaje}} espera la teva resposta",
+    "urgencia+erratas": "{{saludo}}, MISSATGE SENSE LLEGIR pendent"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteMensaje}}</strong> t'ha escrit: «{{asuntoMensaje}}».",
+    "urgencia": "<strong>{{remitenteMensaje}}</strong> fa temps que espera que vegis el seu missatge sobre «{{asuntoMensaje}}».",
+    "urgencia+erratas": "<strong>{{remitenteMensaje}}</strong> ha marcat el seu missatge com a urgent: «{{asuntoMensaje}}»."
+  },
+  "detalle": {
+    "base": "Inicia sessió per llegir el missatge complet i respondre quan puguis.",
+    "urgencia": "Els perfils que responen ràpid reben més propostes: no deixis passar aquesta.",
+    "urgencia+erratas": "Inicii sessio ara per no perdre aquesta oportunitat de contacte."
+  },
+  "urgencia": {
+    "base": "El missatge queda desat a la teva safata d'entrada fins que el llegeixis.",
+    "urgencia": "Altres candidats ja han començat a respondre ofertes similars aquesta setmana.",
+    "urgencia+erratas": "ATENCIO: els missatges sense respondre en 48 hores es marquen com a no interessat."
+  },
+  "cta": {
+    "base": "Veure missatge",
+    "urgencia": "Llegir i respondre",
+    "urgencia+erratas": "VEURE MISSATGE ARA"
+  },
+  "cierre": {
+    "base": "L'equip de LinkedIn",
+    "urgencia+erratas": "LinkedIn Notificacions"
+  },
+  "fichaEtiqueta1": "De",
+  "fichaValor1": "{{remitenteMensaje}}",
+  "fichaEtiqueta2": "Assumpte",
+  "fichaValor2": "{{asuntoMensaje}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": {
+    "base": "Sense llegir",
+    "urgencia+erratas": "URGENT · SENSE RESPONDRE"
+  }
+}

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="{{idioma}}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LinkedIn</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+<style>
+  @media only screen and (max-width:620px) {
+    .contenedor { width:100% !important; }
+    .relleno { padding-left:20px !important; padding-right:20px !important; }
+    .boton a { display:block !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f2ee;">
+
+<!--@bloque:preheader @opcional-->
+<div style="display:none;font-size:1px;color:#f4f2ee;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+  {{preheader}}
+  &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+<!--@/bloque-->
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f2ee;">
+<tr>
+<td align="center" style="padding:0 12px 28px;">
+
+  <table role="presentation" class="contenedor" width="560" cellpadding="0" cellspacing="0" border="0" style="width:560px;max-width:560px;background-color:#ffffff;">
+
+    <!--@bloque:cabecera @opcional-->
+    <tr>
+      <td class="relleno" style="padding:18px 32px;background-color:#ffffff;border-bottom:3px solid #0a66c2;">
+        <!--@bloque:marca-servicio @senal:!incoherencia-marca-->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="width:26px;height:26px;background-color:#0a66c2;text-align:center;font-family:Arial,sans-serif;font-size:15px;font-weight:700;line-height:26px;color:#ffffff;">in</td>
+            <td style="padding-left:9px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:600;color:#000000;">LinkedIn</td>
+          </tr>
+        </table>
+        <!--@/bloque-->
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <tr>
+      <td class="relleno" style="padding:28px 32px 6px;font-family:Arial,Helvetica,sans-serif;">
+        <h1 style="margin:0 0 16px;font-size:20px;line-height:27px;font-weight:600;color:#000000e6;">
+          {{titular}}
+        </h1>
+        <p style="margin:0 0 16px;font-size:14px;line-height:22px;color:#000000cc;">
+          {{entradilla}}
+        </p>
+        <p style="margin:0 0 18px;font-size:14px;line-height:22px;color:#000000cc;">
+          {{detalle}}
+        </p>
+      </td>
+    </tr>
+
+    <!--@bloque:ficha @opcional-->
+    <tr>
+      <td class="relleno" style="padding:6px 32px 4px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f2ef;border-radius:8px;">
+          <tr>
+            <td style="padding:16px 18px;font-family:Arial,Helvetica,sans-serif;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#00000099;width:130px;">{{fichaEtiqueta1}}</td>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#000000e6;font-weight:600;">{{fichaValor1}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#00000099;">{{fichaEtiqueta2}}</td>
+                  <td style="padding:0 0 7px;font-size:12.5px;line-height:19px;color:#000000e6;">{{fichaValor2}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0;font-size:12.5px;line-height:19px;color:#00000099;">{{fichaEtiqueta3}}</td>
+                  <td style="padding:0;font-size:12.5px;line-height:19px;color:#0a66c2;font-weight:600;">{{fichaValor3}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <!--@bloque:urgencia @senal:urgencia-->
+    <tr>
+      <td class="relleno" style="padding:18px 32px 4px;font-family:Arial,Helvetica,sans-serif;">
+        <p style="margin:0 0 22px;font-size:13px;line-height:21px;color:#7a5100;background-color:#fdf0d5;padding:11px 14px;border-radius:6px;">
+          {{urgencia}}
+        </p>
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+    <tr>
+      <td class="relleno" style="padding:8px 32px 30px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="boton">
+          <tr>
+            <td align="center" bgcolor="#0a66c2" style="border-radius:24px;">
+              <a href="{{.URL}}"
+                 style="display:inline-block;padding:10px 28px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;line-height:20px;color:#ffffff;text-decoration:none;border-radius:24px;">
+                {{cta}}
+              </a>
+            </td>
+          </tr>
+        </table>
+        <!--@bloque:enlace-visible @senal:enlace-visible-->
+        <p style="margin:14px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:11.5px;line-height:17px;color:#00000099;">
+          {{textoEnlaceVisible}}<br>
+          <span style="color:#0a66c2;word-break:break-all;">{{.URL}}</span>
+        </p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+
+    <!--@bloque:pie @opcional-->
+    <tr>
+      <td class="relleno" style="padding:18px 32px 26px;border-top:1px solid #e8e8e8;font-family:Arial,Helvetica,sans-serif;">
+        <p style="margin:0 0 4px;font-size:12.5px;line-height:19px;color:#000000e6;font-weight:600;">
+          {{cierre}}
+        </p>
+        <p style="margin:0 0 12px;font-size:11.5px;line-height:17px;color:#00000099;">
+          {{avisoAutomatico}}
+        </p>
+        <!--@bloque:pie-legal @senal:!incoherencia-marca-->
+        <p style="margin:0;font-size:11px;line-height:16px;color:#00000080;">
+          &copy; {{anio}} LinkedIn Corporation<br>
+          {{avisoReporte}}
+        </p>
+        <!--@/bloque-->
+      </td>
+    </tr>
+    <!--@/bloque-->
+
+  </table>
+
+</td>
+</tr>
+</table>
+
+<!--@bloque:tracker @opcional-->
+{{.Tracker}}
+<!--@/bloque-->
+</body>
+</html>

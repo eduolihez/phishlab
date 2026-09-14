@@ -14,118 +14,140 @@
     font-family: "Segoe UI", -apple-system, system-ui, Roboto, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #23282e;
-    background: #f4f5f7;
+    color: #1a1f26;
+    background: #f6f7f9;
   }
 
   .cabecera {
     padding: 18px 24px;
     background: #ffffff;
-    border-bottom: 1px solid #e2e5e9;
+    border-bottom: 1px solid #e5e7eb;
   }
   .cabecera img { max-width: 150px; max-height: 40px; display: block; }
 
-  .contenido { max-width: 720px; margin: 0 auto; padding: 36px 20px 60px; }
+  .contenido { max-width: 700px; margin: 0 auto; padding: 48px 20px 60px; }
 
-  .banda {
+  .insignia {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 22px 26px;
-    background: #ffffff;
-    border-radius: 12px 12px 0 0;
-    border-top: 4px solid #e0a800;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    border-radius: 999px;
+    background: #eaf6ec;
+    font-size: 28px;
   }
 
-  .icono {
-    flex: none;
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-    font-size: 24px;
-    background: #fdf6e6;
-    border-radius: 50%;
-  }
-
-  h1 { margin: 0; font-size: 24px; font-weight: 650; line-height: 1.25; }
-  .subtitulo { margin: 4px 0 0; font-size: 15px; color: #616a75; }
-
-  .panel {
-    padding: 26px;
-    background: #ffffff;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 1px 3px rgba(16, 24, 40, .08);
-  }
+  .cabecera-texto { text-align: center; margin-bottom: 32px; }
+  h1 { margin: 0 0 8px; font-size: 27px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
+  .subtitulo { margin: 0; font-size: 16px; color: #5b6470; }
 
   .destacado {
-    margin: 0 0 22px;
-    padding: 16px 18px;
+    margin: 0 0 28px;
+    padding: 18px 20px;
     font-size: 15px;
-    background: #f0f6ff;
-    border-left: 3px solid {{color}};
-    border-radius: 0 6px 6px 0;
+    line-height: 1.6;
+    color: #17324f;
+    background: #eef6ff;
+    border: 1px solid #d6e9fc;
+    border-radius: 10px;
   }
-  .destacado strong { color: #1b3a63; }
+  .destacado strong { display: block; margin-bottom: 3px; font-size: 15.5px; }
+
+  .tarjeta {
+    margin-bottom: 28px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
 
   h2 {
-    margin: 28px 0 12px;
-    font-size: 17px;
-    font-weight: 650;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 18px;
+    font-size: 16px;
+    font-weight: 700;
     color: #1a1f26;
   }
-  h2:first-of-type { margin-top: 0; }
+  h2 .marca-h2 { width: 6px; height: 18px; border-radius: 3px; background: {{color}}; flex: none; }
 
-  ul { margin: 0 0 8px; padding-left: 22px; }
-  li { margin-bottom: 11px; }
-
-  .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 0; }
-  .pasos li {
-    position: relative;
-    padding-left: 38px;
-    margin-bottom: 14px;
+  .lista-senales { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .lista-senales li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    background: #fbfbfc;
+    border: 1px solid #edeef0;
+    border-radius: 9px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: #3a414c;
   }
+  .lista-senales li::before {
+    content: "✕";
+    flex: none;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #b42318;
+    background: #fef1f0;
+    border-radius: 999px;
+    margin-top: 1px;
+  }
+  .lista-senales strong { color: #1a1f26; }
+
+  .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+  .pasos li { position: relative; padding-left: 40px; font-size: 14.5px; line-height: 1.55; color: #3a414c; }
   .pasos li::before {
     counter-increment: paso;
     content: counter(paso);
     position: absolute;
     left: 0;
-    top: 1px;
-    width: 25px;
-    height: 25px;
+    top: 0;
+    width: 27px;
+    height: 27px;
     display: grid;
     place-items: center;
     font-size: 13px;
     font-weight: 700;
     color: {{colorTexto}};
     background: {{color}};
-    border-radius: 50%;
+    border-radius: 999px;
   }
+  .pasos strong { color: #1a1f26; }
 
   .aviso-final {
-    margin: 26px 0 0;
-    padding: 16px 18px;
+    margin: 0;
+    padding: 18px 20px;
     font-size: 14.5px;
+    line-height: 1.6;
     color: #3d4a2a;
-    background: #f2f7ea;
-    border-left: 3px solid #6a9a2f;
-    border-radius: 0 6px 6px 0;
+    background: #f4f8ec;
+    border: 1px solid #dcebc4;
+    border-radius: 10px;
   }
+  .aviso-final strong { display: block; margin-bottom: 3px; color: #2f3a20; }
 
   .pie {
-    margin: 26px 0 0;
-    font-size: 13px;
+    margin: 32px 0 0;
+    font-size: 12.5px;
     line-height: 1.6;
-    color: #7b848f;
+    color: #8a929c;
     text-align: center;
   }
 
   @media (max-width: 560px) {
     body { font-size: 15px; }
-    .contenido { padding: 20px 14px 40px; }
-    .banda { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
-    .panel { padding: 20px; }
-    h1 { font-size: 21px; }
+    .contenido { padding: 32px 14px 40px; }
+    .tarjeta { padding: 20px; }
+    h1 { font-size: 22px; }
   }
 </style>
 </head>
@@ -135,28 +157,27 @@
 
 <main class="contenido">
 
-  <div class="banda">
-    <div class="icono" aria-hidden="true">&#9888;</div>
-    <div>
-      <h1>{{titular}}</h1>
-      <p class="subtitulo">{{subtitulo}}</p>
-    </div>
+  <div class="cabecera-texto">
+    <div class="insignia" aria-hidden="true">✓</div>
+    <h1>{{titular}}</h1>
+    <p class="subtitulo">{{subtitulo}}</p>
   </div>
 
-  <div class="panel">
+  <p class="destacado">
+    <strong>{{tranquilizador}}
+  </p>
 
-    <p class="destacado">
-      <strong>{{tranquilizador}}
-    </p>
-
-    <!--@bloque:senales-detectadas @opcional-->
-    <h2>{{tituloSenales}}</h2>
-    <ul> {{pistas}}
+  <!--@bloque:senales-detectadas @opcional-->
+  <div class="tarjeta">
+    <h2><span class="marca-h2"></span>{{tituloSenales}}</h2>
+    <ul class="lista-senales"> {{pistas}}
     </ul>
-    <!--@/bloque-->
+  </div>
+  <!--@/bloque-->
 
-    <!--@bloque:que-hacer @opcional-->
-    <h2>{{tituloQueHacer}}</h2>
+  <!--@bloque:que-hacer @opcional-->
+  <div class="tarjeta">
+    <h2><span class="marca-h2"></span>{{tituloQueHacer}}</h2>
     <ol class="pasos">
       <li>
         <strong>{{consejoPrisa}}
@@ -172,15 +193,14 @@
         <strong>{{consejoReportar}}
       </li>
     </ol>
-    <!--@/bloque-->
-
-    <!--@bloque:aviso-final @opcional-->
-    <p class="aviso-final">
-      <strong>{{siIntrodujiste}}
-    </p>
-    <!--@/bloque-->
-
   </div>
+  <!--@/bloque-->
+
+  <!--@bloque:aviso-final @opcional-->
+  <p class="aviso-final">
+    <strong>{{siIntrodujiste}}
+  </p>
+  <!--@/bloque-->
 
   <p class="pie">
     {{explicacionEjercicio}}<br>

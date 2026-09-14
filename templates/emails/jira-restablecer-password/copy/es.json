@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "[{{numeroTicket}}] Revalidación de contraseña programada",
+    "urgencia": "[{{numeroTicket}}] Tu contraseña caduca antes de {{plazo}}",
+    "urgencia+erratas": "[{{numeroTicket}}] URGENTE: cuenta bloqueada sin revalidacion"
+  },
+  "preheader": {
+    "base": "Ticket {{numeroTicket}}",
+    "urgencia": "Revalida antes de que caduque el acceso"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Hola"
+  },
+  "titular": {
+    "base": "Se ha abierto un ticket de revalidación de contraseña",
+    "urgencia": "Tu contraseña necesita revalidación antes de {{plazo}}",
+    "urgencia+erratas": "ACCION REQUERIDA: revalidacion de contraseña pendiente"
+  },
+  "entradilla": {
+    "base": "Como parte de la política de rotación de credenciales de {{departamento}}, se ha abierto el ticket <strong>{{numeroTicket}}</strong> para revalidar tu contraseña.",
+    "urgencia": "Tu contraseña de acceso caduca en {{plazo}}. Revalídala ahora para no perder el acceso a tus proyectos.",
+    "urgencia+erratas": "Su cuenta sera BLOQUEADA si no revalida su contraseña. Ticket {{numeroTicket}} abierto por el departamento de {{departamento}}."
+  },
+  "detalle": {
+    "base": "El proceso tarda menos de un minuto y no afecta a tus sesiones activas en otros dispositivos.",
+    "urgencia": "Haz clic en el enlace de abajo para revalidar tu contraseña antes de que caduque el acceso.",
+    "urgencia+erratas": "Revalide de inmediato para evitar perder el acceso a todos sus repositorios y tableros."
+  },
+  "urgencia": {
+    "base": "No hay una acción urgente que tomar: puedes revalidar cuando te venga bien dentro del plazo habitual.",
+    "urgencia": "Pasado {{plazo}} sin revalidar, tu cuenta queda en modo de solo lectura hasta que lo hagas.",
+    "urgencia+erratas": "ATENCION: quedan {{plazo}}. Pasado ese plazo el acceso se BLOQUEA por completo."
+  },
+  "cta": {
+    "base": "Ver ticket",
+    "urgencia": "Revalidar contraseña",
+    "urgencia+erratas": "REVALIDAR AHORA"
+  },
+  "cierre": {
+    "base": "Mesa de Ayuda TI",
+    "urgencia+erratas": "Soporte Técnico · Prioridad Alta"
+  },
+  "fichaEtiqueta1": "Ticket",
+  "fichaValor1": "{{numeroTicket}}",
+  "fichaEtiqueta2": "Departamento",
+  "fichaValor2": "{{departamento}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": {
+    "base": "Pendiente",
+    "urgencia+erratas": "CRITICO"
+  }
+}

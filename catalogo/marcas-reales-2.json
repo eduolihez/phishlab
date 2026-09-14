@@ -1,0 +1,243 @@
+[
+  {
+    "id": "jira-restablecer-password",
+    "tipo": "emails",
+    "nombre": "Jira · Restablecimiento de contraseña requerido",
+    "descripcion": "Ticket automático de mesa de ayuda pidiendo revalidar la contraseña. Funciona especialmente bien en equipos técnicos: un ticket de Jira no despierta la misma sospecha que un correo de banca.",
+    "familia": "desarrollo",
+    "categoria": "saas-corporativo",
+    "empresa": "Jira",
+    "tags": ["jira", "atlassian", "helpdesk", "credenciales", "ti"],
+    "remitente": { "nombre": "Mesa de Ayuda", "buzon": "soporte" },
+    "campos": [
+      { "clave": "numeroTicket", "etiqueta": "Número de ticket", "tipo": "texto", "defecto": "TKT-2026-08841" },
+      { "clave": "departamento", "etiqueta": "Departamento afectado", "tipo": "texto", "defecto": "Infraestructura" },
+      { "clave": "plazo", "etiqueta": "Plazo para revalidar", "tipo": "texto", "defecto": "48 horas" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "[{{numeroTicket}}] Revalidación de contraseña programada",
+          "urgencia": "[{{numeroTicket}}] Tu contraseña caduca antes de {{plazo}}",
+          "urgencia+erratas": "[{{numeroTicket}}] URGENTE: cuenta bloqueada sin revalidacion"
+        },
+        "preheader": { "base": "Ticket {{numeroTicket}}", "urgencia": "Revalida antes de que caduque el acceso" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "Se ha abierto un ticket de revalidación de contraseña",
+          "urgencia": "Tu contraseña necesita revalidación antes de {{plazo}}",
+          "urgencia+erratas": "ACCION REQUERIDA: revalidacion de contraseña pendiente"
+        },
+        "entradilla": {
+          "base": "Como parte de la política de rotación de credenciales de {{departamento}}, se ha abierto el ticket <strong>{{numeroTicket}}</strong> para revalidar tu contraseña.",
+          "urgencia": "Tu contraseña de acceso caduca en {{plazo}}. Revalídala ahora para no perder el acceso a tus proyectos.",
+          "urgencia+erratas": "Su cuenta sera BLOQUEADA si no revalida su contraseña. Ticket {{numeroTicket}} abierto por el departamento de {{departamento}}."
+        },
+        "detalle": {
+          "base": "El proceso tarda menos de un minuto y no afecta a tus sesiones activas en otros dispositivos.",
+          "urgencia": "Haz clic en el enlace de abajo para revalidar tu contraseña antes de que caduque el acceso.",
+          "urgencia+erratas": "Revalide de inmediato para evitar perder el acceso a todos sus repositorios y tableros."
+        },
+        "urgencia": {
+          "base": "No hay una acción urgente que tomar: puedes revalidar cuando te venga bien dentro del plazo habitual.",
+          "urgencia": "Pasado {{plazo}} sin revalidar, tu cuenta queda en modo de solo lectura hasta que lo hagas.",
+          "urgencia+erratas": "ATENCION: quedan {{plazo}}. Pasado ese plazo el acceso se BLOQUEA por completo."
+        },
+        "cta": { "base": "Ver ticket", "urgencia": "Revalidar contraseña", "urgencia+erratas": "REVALIDAR AHORA" },
+        "cierre": { "base": "Mesa de Ayuda TI", "urgencia+erratas": "Soporte Técnico · Prioridad Alta" },
+        "fichaEtiqueta1": "Ticket", "fichaValor1": "{{numeroTicket}}",
+        "fichaEtiqueta2": "Departamento", "fichaValor2": "{{departamento}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": { "base": "Pendiente", "urgencia+erratas": "CRITICO" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "[{{numeroTicket}}] Revalidació de contrasenya programada",
+          "urgencia": "[{{numeroTicket}}] La teva contrasenya caduca abans de {{plazo}}",
+          "urgencia+erratas": "[{{numeroTicket}}] URGENT: compte bloquejat sense revalidacio"
+        },
+        "preheader": { "base": "Tiquet {{numeroTicket}}", "urgencia": "Revalida abans que caduqui l'accés" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Hola" },
+        "titular": {
+          "base": "S'ha obert un tiquet de revalidació de contrasenya",
+          "urgencia": "La teva contrasenya necessita revalidació abans de {{plazo}}",
+          "urgencia+erratas": "ACCIO REQUERIDA: revalidacio de contrasenya pendent"
+        },
+        "entradilla": {
+          "base": "Com a part de la política de rotació de credencials de {{departamento}}, s'ha obert el tiquet <strong>{{numeroTicket}}</strong> per revalidar la teva contrasenya.",
+          "urgencia": "La teva contrasenya d'accés caduca en {{plazo}}. Revalida-la ara per no perdre l'accés als teus projectes.",
+          "urgencia+erratas": "El seu compte sera BLOQUEJAT si no revalida la seva contrasenya. Tiquet {{numeroTicket}} obert pel departament de {{departamento}}."
+        },
+        "detalle": {
+          "base": "El procés triga menys d'un minut i no afecta les teves sessions actives en altres dispositius.",
+          "urgencia": "Fes clic a l'enllaç de sota per revalidar la teva contrasenya abans que caduqui l'accés.",
+          "urgencia+erratas": "Revalidi de seguida per evitar perdre l'accés a tots els seus repositoris i taulers."
+        },
+        "urgencia": {
+          "base": "No hi ha cap acció urgent a fer: pots revalidar quan et vagi bé dins el termini habitual.",
+          "urgencia": "Passat {{plazo}} sense revalidar, el teu compte queda en mode de només lectura fins que ho facis.",
+          "urgencia+erratas": "ATENCIO: queden {{plazo}}. Passat aquest termini l'acces es BLOQUEJA per complet."
+        },
+        "cta": { "base": "Veure tiquet", "urgencia": "Revalidar contrasenya", "urgencia+erratas": "REVALIDAR ARA" },
+        "cierre": { "base": "Mesa de Suport TI", "urgencia+erratas": "Suport Tècnic · Prioritat Alta" },
+        "fichaEtiqueta1": "Tiquet", "fichaValor1": "{{numeroTicket}}",
+        "fichaEtiqueta2": "Departament", "fichaValor2": "{{departamento}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": { "base": "Pendent", "urgencia+erratas": "CRITIC" }
+      },
+      "en": {
+        "asunto": {
+          "base": "[{{numeroTicket}}] Password revalidation scheduled",
+          "urgencia": "[{{numeroTicket}}] Your password expires before {{plazo}}",
+          "urgencia+erratas": "[{{numeroTicket}}] URGENT: account locked without revalidation"
+        },
+        "preheader": { "base": "Ticket {{numeroTicket}}", "urgencia": "Revalidate before access expires" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Hi" },
+        "titular": {
+          "base": "A password revalidation ticket has been opened",
+          "urgencia": "Your password needs revalidation before {{plazo}}",
+          "urgencia+erratas": "ACTION REQUIRED: pending password revalidation"
+        },
+        "entradilla": {
+          "base": "As part of {{departamento}}'s credential rotation policy, ticket <strong>{{numeroTicket}}</strong> was opened to revalidate your password.",
+          "urgencia": "Your access password expires in {{plazo}}. Revalidate it now to avoid losing access to your projects.",
+          "urgencia+erratas": "Your account will be LOCKED unless you revalidate your password. Ticket {{numeroTicket}} opened by {{departamento}}."
+        },
+        "detalle": {
+          "base": "The process takes less than a minute and does not affect your active sessions on other devices.",
+          "urgencia": "Click the link below to revalidate your password before access expires.",
+          "urgencia+erratas": "Revalidate immediately to avoid losing access to all your repositories and boards."
+        },
+        "urgencia": {
+          "base": "No urgent action is needed: you can revalidate whenever suits you within the usual window.",
+          "urgencia": "After {{plazo}} without revalidating, your account switches to read-only until you do.",
+          "urgencia+erratas": "WARNING: {{plazo}} left. After that access is FULLY BLOCKED."
+        },
+        "cta": { "base": "View ticket", "urgencia": "Revalidate password", "urgencia+erratas": "REVALIDATE NOW" },
+        "cierre": { "base": "IT Help Desk", "urgencia+erratas": "Technical Support · High Priority" },
+        "fichaEtiqueta1": "Ticket", "fichaValor1": "{{numeroTicket}}",
+        "fichaEtiqueta2": "Department", "fichaValor2": "{{departamento}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": { "base": "Pending", "urgencia+erratas": "CRITICAL" }
+      }
+    }
+  },
+
+  {
+    "id": "docusign-documento-firma",
+    "tipo": "emails",
+    "nombre": "DocuSign · Documento pendiente de firma",
+    "descripcion": "Aviso de firma electrónica pendiente. Marca distinta de Adobe Sign, con el mismo pretexto de fondo: útil para no repetir siempre la misma firma en campañas sucesivas contra el mismo departamento.",
+    "familia": "saas",
+    "categoria": "saas-corporativo",
+    "empresa": "DocuSign",
+    "tags": ["docusign", "firma", "documento", "credenciales"],
+    "remitente": { "nombre": "DocuSign", "buzon": "dse" },
+    "campos": [
+      { "clave": "remitenteDoc", "etiqueta": "Quién envía a firmar", "tipo": "texto", "defecto": "Departamento Legal" },
+      { "clave": "documento", "etiqueta": "Nombre del documento", "tipo": "texto", "defecto": "NDA_proveedor_2026.pdf" },
+      { "clave": "plazo", "etiqueta": "Plazo para firmar", "tipo": "texto", "defecto": "48 horas" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": {
+          "base": "{{remitenteDoc}} te ha enviado un documento para firmar vía DocuSign",
+          "urgencia": "Firma pendiente: {{documento}}",
+          "urgencia+erratas": "URGENTE: firma requerida en las proximas {{plazo}}"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "Completa la firma antes de que expire el enlace" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Estimado usuario" },
+        "titular": {
+          "base": "Tienes un documento para firmar",
+          "urgencia": "Tu firma está pendiente",
+          "urgencia+erratas": "FIRMA REQUERIDA con caracter urgente"
+        },
+        "entradilla": {
+          "base": "{{remitenteDoc}} te ha enviado «{{documento}}» a través de DocuSign para tu firma electrónica.",
+          "urgencia": "El documento «{{documento}}» de {{remitenteDoc}} necesita tu firma antes de {{plazo}}.",
+          "urgencia+erratas": "{{remitenteDoc}} necesita su firma en «{{documento}}» de forma inmediata."
+        },
+        "detalle": {
+          "base": "Puedes revisar y firmar el documento desde cualquier dispositivo, sin necesidad de imprimir nada.",
+          "urgencia": "El enlace de firma caduca en {{plazo}}; pasado ese plazo, {{remitenteDoc}} tendrá que reenviarlo.",
+          "urgencia+erratas": "El enlace caduca en {{plazo}}. Pasado ese tiempo debera solicitar un nuevo envio."
+        },
+        "urgencia": {
+          "base": "No hay un plazo estricto, pero cuanto antes lo firmes, antes se cierra el trámite.",
+          "urgencia": "Quedan {{plazo}} antes de que el enlace de firma caduque.",
+          "urgencia+erratas": "ATENCION: quedan {{plazo}}. Pasado ese plazo el documento se cancela."
+        },
+        "cta": { "base": "Revisar documento", "urgencia": "Firmar ahora", "urgencia+erratas": "FIRMAR ANTES DE QUE CADUQUE" },
+        "cierre": { "base": "El equipo de DocuSign", "urgencia+erratas": "DocuSign · Notificaciones" },
+        "fichaEtiqueta1": "Enviado por", "fichaValor1": "{{remitenteDoc}}",
+        "fichaEtiqueta2": "Documento", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Caduca", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · PENDIENTE" }
+      },
+      "ca": {
+        "asunto": {
+          "base": "{{remitenteDoc}} t'ha enviat un document per signar via DocuSign",
+          "urgencia": "Signatura pendent: {{documento}}",
+          "urgencia+erratas": "URGENT: signatura requerida en les properes {{plazo}}"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "Completa la signatura abans que expiri l'enllaç" },
+        "saludo": { "base": "Hola {{.FirstName}}", "saludo-generico": "Benvolgut usuari" },
+        "titular": {
+          "base": "Tens un document per signar",
+          "urgencia": "La teva signatura està pendent",
+          "urgencia+erratas": "SIGNATURA REQUERIDA amb caracter urgent"
+        },
+        "entradilla": {
+          "base": "{{remitenteDoc}} t'ha enviat «{{documento}}» a través de DocuSign per a la teva signatura electrònica.",
+          "urgencia": "El document «{{documento}}» de {{remitenteDoc}} necessita la teva signatura abans de {{plazo}}.",
+          "urgencia+erratas": "{{remitenteDoc}} necessita la seva signatura a «{{documento}}» de forma immediata."
+        },
+        "detalle": {
+          "base": "Pots revisar i signar el document des de qualsevol dispositiu, sense necessitat d'imprimir res.",
+          "urgencia": "L'enllaç de signatura caduca en {{plazo}}; passat aquest termini, {{remitenteDoc}} l'haurà de reenviar.",
+          "urgencia+erratas": "L'enllaç caduca en {{plazo}}. Passat aquest temps haura de sol·licitar un nou enviament."
+        },
+        "urgencia": {
+          "base": "No hi ha un termini estricte, però com abans el signis, abans es tanca el tràmit.",
+          "urgencia": "Queden {{plazo}} abans que l'enllaç de signatura caduqui.",
+          "urgencia+erratas": "ATENCIO: queden {{plazo}}. Passat aquest termini el document es cancel·la."
+        },
+        "cta": { "base": "Revisar document", "urgencia": "Signar ara", "urgencia+erratas": "SIGNAR ABANS QUE CADUQUI" },
+        "cierre": { "base": "L'equip de DocuSign", "urgencia+erratas": "DocuSign · Notificacions" },
+        "fichaEtiqueta1": "Enviat per", "fichaValor1": "{{remitenteDoc}}",
+        "fichaEtiqueta2": "Document", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Caduca", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · PENDENT" }
+      },
+      "en": {
+        "asunto": {
+          "base": "{{remitenteDoc}} sent you a document to sign via DocuSign",
+          "urgencia": "Signature pending: {{documento}}",
+          "urgencia+erratas": "URGENT: signature required within {{plazo}}"
+        },
+        "preheader": { "base": "{{documento}}", "urgencia": "Complete the signature before the link expires" },
+        "saludo": { "base": "Hi {{.FirstName}}", "saludo-generico": "Dear user" },
+        "titular": {
+          "base": "You have a document to sign",
+          "urgencia": "Your signature is pending",
+          "urgencia+erratas": "SIGNATURE REQUIRED urgently"
+        },
+        "entradilla": {
+          "base": "{{remitenteDoc}} sent you \"{{documento}}\" via DocuSign for your electronic signature.",
+          "urgencia": "The \"{{documento}}\" document from {{remitenteDoc}} needs your signature before {{plazo}}.",
+          "urgencia+erratas": "{{remitenteDoc}} needs your signature on \"{{documento}}\" immediately."
+        },
+        "detalle": {
+          "base": "You can review and sign the document from any device, no printing needed.",
+          "urgencia": "The signing link expires in {{plazo}}; after that, {{remitenteDoc}} will need to resend it.",
+          "urgencia+erratas": "The link expires in {{plazo}}. After that you will need to request a new one."
+        },
+        "urgencia": {
+          "base": "There is no strict deadline, but the sooner you sign, the sooner it's closed.",
+          "urgencia": "{{plazo}} left before the signing link expires.",
+          "urgencia+erratas": "WARNING: {{plazo}} left. After that the document is cancelled."
+        },
+        "cta": { "base": "Review document", "urgencia": "Sign now", "urgencia+erratas": "SIGN BEFORE IT EXPIRES" },
+        "cierre": { "base": "The DocuSign Team", "urgencia+erratas": "DocuSign Notifications" },
+        "fichaEtiqueta1": "Sent by", "fichaValor1": "{{remitenteDoc}}",
+        "fichaEtiqueta2": "Document", "fichaValor2": "{{documento}}",
+        "fichaEtiqueta3": "Expires", "fichaValor3": { "base": "{{plazo}}", "urgencia+erratas": "{{plazo}} · PENDING" }
+      }
+    }
+  }
+]

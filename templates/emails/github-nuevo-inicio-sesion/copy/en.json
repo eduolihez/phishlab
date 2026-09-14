@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "[GitHub] A new device was added to your account",
+    "urgencia": "[GitHub] New sign-in from {{ubicacion}}",
+    "urgencia+erratas": "[GitHub] ALERT: unrecognised access to your account"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}",
+    "urgencia": "Verify this device if it wasn't you"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Hi"
+  },
+  "titular": {
+    "base": "{{saludo}}, we noticed a new sign-in",
+    "urgencia": "{{saludo}}, do you recognise this device?",
+    "urgencia+erratas": "{{saludo}}, UNRECOGNISED ACCESS detected"
+  },
+  "entradilla": {
+    "base": "Your GitHub account was used to sign in from a new device. If this was you, no action is needed.",
+    "urgencia": "Your account was used to access <strong>{{repositorio}}</strong> from {{ubicacion}}, using a device we do not recognise.",
+    "urgencia+erratas": "Unauthorised access to your account and to the {{repositorio}} repository has been detected. If this was not you, act immediately."
+  },
+  "detalle": {
+    "base": "You can review your active sessions and SSH keys from your security settings at any time.",
+    "urgencia": "If you do not recognise the device, revoke it and rotate your personal access tokens from the link below.",
+    "urgencia+erratas": "Revoke access and rotate your credentials NOW. The repository contains deployment secrets."
+  },
+  "urgencia": {
+    "base": "No urgent action is required: this is an informational notice only.",
+    "urgencia": "The sooner you review the sign-in, the less time whoever accessed your account has.",
+    "urgencia+erratas": "WARNING: the session is still ACTIVE right now on the production repository."
+  },
+  "cta": {
+    "base": "View devices",
+    "urgencia": "Review this device",
+    "urgencia+erratas": "REVOKE ACCESS NOW"
+  },
+  "cierre": {
+    "base": "The GitHub Team",
+    "urgencia+erratas": "GitHub Security"
+  },
+  "fichaEtiqueta1": "Repository",
+  "fichaValor1": "{{repositorio}}",
+  "fichaEtiqueta2": "Device",
+  "fichaValor2": "{{dispositivo}}",
+  "fichaEtiqueta3": "Location",
+  "fichaValor3": {
+    "base": "{{ubicacion}}",
+    "urgencia+erratas": "{{ubicacion}} · UNVERIFIED"
+  }
+}

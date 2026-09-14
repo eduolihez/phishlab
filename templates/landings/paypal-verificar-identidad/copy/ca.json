@@ -1,0 +1,28 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "tituloPaso1": "Iniciar sessió",
+  "aviso": {
+    "base": "",
+    "urgencia": "El teu compte està temporalment limitat. Inicia sessió per verificar la teva identitat."
+  },
+  "etiquetaEmail": "Correu electrònic",
+  "errorEmail": "Escriu un correu electrònic vàlid.",
+  "btnSiguiente": "Següent",
+  "enlaceOlvidoEmail": "Has oblidat el teu correu?",
+  "tituloPaso2": "Introdueix la teva contrasenya",
+  "etiquetaPassword": "Contrasenya",
+  "btnEntrar": "Iniciar sessió",
+  "enlaceOlvidoPassword": "Has oblidat la teva contrasenya?",
+  "btnVolver": "Tornar",
+  "textoSeparador": "o",
+  "enlaceCrearCuenta": "Crear un compte",
+  "enlaceAyuda": "Ajuda",
+  "enlacePrivacidad": "Privacitat",
+  "enlaceCondiciones": "Condicions d'ús",
+  "tituloPagina": "Iniciar sessió — PayPal"
+}

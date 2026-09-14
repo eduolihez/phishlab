@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "El teu enviament {{tracking}} està retingut a duana",
+    "urgencia": "Acció requerida: paquet pendent d'una taxa de {{importe}}",
+    "urgencia+erratas": "URGENT: el seu paquet sera retornat al remitent"
+  },
+  "preheader": {
+    "base": "{{tracking}} · {{remitenteEnvio}}",
+    "urgencia": "Paga la taxa per alliberar el teu paquet"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut client"
+  },
+  "titular": {
+    "base": "{{saludo}}, el teu paquet està retingut",
+    "urgencia": "{{saludo}}, falta pagar una taxa de duana",
+    "urgencia+erratas": "{{saludo}}, ACCIO REQUERIDA per rebre el seu paquet"
+  },
+  "entradilla": {
+    "base": "El teu enviament <strong>{{tracking}}</strong> de {{remitenteEnvio}} està retingut a les nostres instal·lacions a l'espera d'una taxa duanera.",
+    "urgencia": "L'enviament no pot seguir la seva ruta fins que s'aboni la taxa pendent de <strong>{{importe}}</strong>.",
+    "urgencia+erratas": "El seu paquet {{tracking}} esta retingut per una taxa de <strong>{{importe}}</strong> sense pagar."
+  },
+  "detalle": {
+    "base": "És un tràmit habitual en enviaments internacionals. Ho pots pagar en línia en un parell de minuts.",
+    "urgencia": "Tan bon punt es registri el pagament, el paquet segueix la seva ruta normal d'entrega.",
+    "urgencia+erratas": "Sense el pagament, el paquet sera retornat al remitent en un termini de 5 dies."
+  },
+  "urgencia": {
+    "base": "El paquet queda desat a les nostres instal·lacions fins que es resolgui.",
+    "urgencia": "Com abans es pagui, abans surt el paquet cap a la teva adreça d'entrega.",
+    "urgencia+erratas": "ATENCIO: si no paga en les properes 48 hores, el paquet inicia el proces de devolucio."
+  },
+  "cta": {
+    "base": "Veure estat de l'enviament",
+    "urgencia": "Pagar la taxa pendent",
+    "urgencia+erratas": "PAGAR ARA I EVITAR LA DEVOLUCIO"
+  },
+  "cierre": {
+    "base": "DHL Express",
+    "urgencia+erratas": "Duanes · DHL Express"
+  },
+  "fichaEtiqueta1": "Seguiment",
+  "fichaValor1": "{{tracking}}",
+  "fichaEtiqueta2": "Remitent",
+  "fichaValor2": "{{remitenteEnvio}}",
+  "fichaEtiqueta3": "Taxa pendent",
+  "fichaValor3": {
+    "base": "{{importe}}",
+    "urgencia+erratas": "{{importe}} · SENSE PAGAR"
+  }
+}

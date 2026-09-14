@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "We couldn't process your payment",
+    "urgencia": "Your account will be suspended soon: update your payment",
+    "urgencia+erratas": "URGENT: problem with your payment method"
+  },
+  "preheader": {
+    "base": "{{plan}} plan · {{importe}}",
+    "urgencia": "Update your payment method to keep watching Netflix"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Hi"
+  },
+  "titular": {
+    "base": "{{saludo}}, there was a problem with your last payment",
+    "urgencia": "{{saludo}}, your subscription is at risk",
+    "urgencia+erratas": "{{saludo}}, PROBLEM with your payment"
+  },
+  "entradilla": {
+    "base": "We could not charge your {{plan}} subscription ({{importe}}) using the payment method we have on file.",
+    "urgencia": "Your payment method failed and your account will be suspended in {{plazo}} unless you update it.",
+    "urgencia+erratas": "We could not process the {{importe}} charge. Your account will be SUSPENDED unless you update your details."
+  },
+  "detalle": {
+    "base": "Update your payment details so your subscription is not interrupted.",
+    "urgencia": "It's quick: just confirm or update your card from the link below.",
+    "urgencia+erratas": "Update your payment details NOW to avoid losing access to your account."
+  },
+  "urgencia": {
+    "base": "You have a few days before the subscription is automatically paused.",
+    "urgencia": "After {{plazo}} without updating payment, the account is paused and you will lose your list and profiles.",
+    "urgencia+erratas": "WARNING: only {{plazo}} left before the account is permanently SUSPENDED."
+  },
+  "cta": {
+    "base": "Update payment",
+    "urgencia": "Update my payment method",
+    "urgencia+erratas": "AVOID SUSPENSION"
+  },
+  "cierre": {
+    "base": "The Netflix Team",
+    "urgencia+erratas": "Netflix Billing"
+  },
+  "fichaEtiqueta1": "Plan",
+  "fichaValor1": "{{plan}}",
+  "fichaEtiqueta2": "Amount",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Payment pending",
+    "urgencia+erratas": "ACCOUNT AT RISK"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 2,
+  "nombre": "Dropbox · Iniciar sesión",
+  "descripcion": "Login de Dropbox. Pareja natural del correo de documento compartido, para el acceso al fichero que «alguien externo» ha enviado.",
+  "familia": "saas",
+  "categoria": "saas-corporativo",
+  "empresa": "Dropbox",
+  "tags": [
+    "dropbox",
+    "credenciales",
+    "login",
+    "documento"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-10",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "marca",
+      "etiqueta": "marca",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "aviso-acceso",
+      "etiqueta": "aviso-acceso",
+      "senal": "urgencia"
+    },
+    {
+      "id": "cta-registro",
+      "etiqueta": "cta-registro",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    }
+  ]
+}

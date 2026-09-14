@@ -1,0 +1,22 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "tituloPagina": "Inicia sessió a GitHub",
+  "aviso": {
+    "base": "",
+    "urgencia": "Hem detectat un nou dispositiu. Torna a iniciar sessió per verificar-lo."
+  },
+  "etiquetaEmail": "Nom d'usuari o adreça de correu electrònic",
+  "etiquetaPassword": "Contrasenya",
+  "enlaceOlvido": "Has oblidat la contrasenya?",
+  "btnEntrar": "Iniciar sessió",
+  "textoPieRegistro": "Nou a GitHub?",
+  "enlaceRegistro": "Crea un compte",
+  "enlaceCondiciones": "Condicions",
+  "enlacePrivacidad": "Privacitat",
+  "enlaceSeguridad": "Seguretat"
+}

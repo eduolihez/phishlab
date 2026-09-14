@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "{{remitenteDoc}} te ha enviado un documento para firmar vía DocuSign",
+    "urgencia": "Firma pendiente: {{documento}}",
+    "urgencia+erratas": "URGENTE: firma requerida en las proximas {{plazo}}"
+  },
+  "preheader": {
+    "base": "{{documento}}",
+    "urgencia": "Completa la firma antes de que expire el enlace"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Estimado usuario"
+  },
+  "titular": {
+    "base": "Tienes un documento para firmar",
+    "urgencia": "Tu firma está pendiente",
+    "urgencia+erratas": "FIRMA REQUERIDA con caracter urgente"
+  },
+  "entradilla": {
+    "base": "{{remitenteDoc}} te ha enviado «{{documento}}» a través de DocuSign para tu firma electrónica.",
+    "urgencia": "El documento «{{documento}}» de {{remitenteDoc}} necesita tu firma antes de {{plazo}}.",
+    "urgencia+erratas": "{{remitenteDoc}} necesita su firma en «{{documento}}» de forma inmediata."
+  },
+  "detalle": {
+    "base": "Puedes revisar y firmar el documento desde cualquier dispositivo, sin necesidad de imprimir nada.",
+    "urgencia": "El enlace de firma caduca en {{plazo}}; pasado ese plazo, {{remitenteDoc}} tendrá que reenviarlo.",
+    "urgencia+erratas": "El enlace caduca en {{plazo}}. Pasado ese tiempo debera solicitar un nuevo envio."
+  },
+  "urgencia": {
+    "base": "No hay un plazo estricto, pero cuanto antes lo firmes, antes se cierra el trámite.",
+    "urgencia": "Quedan {{plazo}} antes de que el enlace de firma caduque.",
+    "urgencia+erratas": "ATENCION: quedan {{plazo}}. Pasado ese plazo el documento se cancela."
+  },
+  "cta": {
+    "base": "Revisar documento",
+    "urgencia": "Firmar ahora",
+    "urgencia+erratas": "FIRMAR ANTES DE QUE CADUQUE"
+  },
+  "cierre": {
+    "base": "El equipo de DocuSign",
+    "urgencia+erratas": "DocuSign · Notificaciones"
+  },
+  "fichaEtiqueta1": "Enviado por",
+  "fichaValor1": "{{remitenteDoc}}",
+  "fichaEtiqueta2": "Documento",
+  "fichaValor2": "{{documento}}",
+  "fichaEtiqueta3": "Caduca",
+  "fichaValor3": {
+    "base": "{{plazo}}",
+    "urgencia+erratas": "{{plazo}} · PENDIENTE"
+  }
+}

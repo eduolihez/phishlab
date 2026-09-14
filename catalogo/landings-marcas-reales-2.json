@@ -1,0 +1,91 @@
+[
+  {
+    "id": "jira-verificar-cuenta",
+    "tipo": "landings",
+    "nombre": "Jira · Verificar cuenta",
+    "descripcion": "Login de Atlassian/Jira. Pareja natural del correo de revalidación de contraseña, pensado para equipos técnicos.",
+    "familia": "desarrollo",
+    "categoria": "saas-corporativo",
+    "empresa": "Jira",
+    "tags": ["jira", "atlassian", "credenciales", "login"],
+    "captura": "credenciales",
+    "campos": [],
+    "copy": {
+      "es": {
+        "tituloPagina": "Iniciar sesión",
+        "aviso": { "base": "", "urgencia": "Inicia sesión para revalidar tu contraseña y cerrar el ticket." },
+        "etiquetaEmail": "Correo electrónico",
+        "etiquetaPassword": "Contraseña",
+        "enlaceOlvido": "¿Has olvidado la contraseña?",
+        "btnEntrar": "Iniciar sesión",
+        "enlacePrivacidad": "Privacidad",
+        "enlaceCondiciones": "Condiciones"
+      },
+      "ca": {
+        "tituloPagina": "Iniciar sessió",
+        "aviso": { "base": "", "urgencia": "Inicia sessió per revalidar la teva contrasenya i tancar el tiquet." },
+        "etiquetaEmail": "Correu electrònic",
+        "etiquetaPassword": "Contrasenya",
+        "enlaceOlvido": "Has oblidat la contrasenya?",
+        "btnEntrar": "Iniciar sessió",
+        "enlacePrivacidad": "Privacitat",
+        "enlaceCondiciones": "Condicions"
+      },
+      "en": {
+        "tituloPagina": "Sign in",
+        "aviso": { "base": "", "urgencia": "Sign in to revalidate your password and close the ticket." },
+        "etiquetaEmail": "Email",
+        "etiquetaPassword": "Password",
+        "enlaceOlvido": "Forgot password?",
+        "btnEntrar": "Sign in",
+        "enlacePrivacidad": "Privacy",
+        "enlaceCondiciones": "Terms"
+      }
+    }
+  },
+
+  {
+    "id": "docusign-iniciar-sesion",
+    "tipo": "landings",
+    "nombre": "DocuSign · Iniciar sesión",
+    "descripcion": "Login de DocuSign. Pareja natural del correo de documento pendiente de firma.",
+    "familia": "saas",
+    "categoria": "saas-corporativo",
+    "empresa": "DocuSign",
+    "tags": ["docusign", "credenciales", "login", "firma"],
+    "captura": "credenciales",
+    "campos": [],
+    "copy": {
+      "es": {
+        "tituloPagina": "Iniciar sesión",
+        "aviso": { "base": "", "urgencia": "Inicia sesión para revisar y firmar el documento pendiente." },
+        "etiquetaEmail": "Correo electrónico",
+        "etiquetaPassword": "Contraseña",
+        "enlaceOlvido": "¿Has olvidado tu contraseña?",
+        "btnEntrar": "Iniciar sesión",
+        "enlacePrivacidad": "Privacidad",
+        "enlaceCondiciones": "Condiciones"
+      },
+      "ca": {
+        "tituloPagina": "Iniciar sessió",
+        "aviso": { "base": "", "urgencia": "Inicia sessió per revisar i signar el document pendent." },
+        "etiquetaEmail": "Correu electrònic",
+        "etiquetaPassword": "Contrasenya",
+        "enlaceOlvido": "Has oblidat la teva contrasenya?",
+        "btnEntrar": "Iniciar sessió",
+        "enlacePrivacidad": "Privacitat",
+        "enlaceCondiciones": "Condicions"
+      },
+      "en": {
+        "tituloPagina": "Sign in",
+        "aviso": { "base": "", "urgencia": "Sign in to review and sign the pending document." },
+        "etiquetaEmail": "Email",
+        "etiquetaPassword": "Password",
+        "enlaceOlvido": "Forgot your password?",
+        "btnEntrar": "Sign in",
+        "enlacePrivacidad": "Privacy",
+        "enlaceCondiciones": "Terms"
+      }
+    }
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Confirma la teva reserva a {{destino}} ({{localizador}})",
+    "urgencia": "El teu viatge a {{destino}} està pendent de confirmar",
+    "urgencia+erratas": "URGENT: reserva de viatge pendent de pagament"
+  },
+  "preheader": {
+    "base": "{{destino}} · {{fechaViaje}}",
+    "urgencia": "Confirma abans de perdre la plaça"
+  },
+  "saludo": {
+    "base": "Hola {{.FirstName}}",
+    "saludo-generico": "Benvolgut viatger"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens una reserva per confirmar",
+    "urgencia": "{{saludo}}, el teu viatge a {{destino}} està pendent",
+    "urgencia+erratas": "{{saludo}}, RESERVA PENDENT DE PAGAMENT"
+  },
+  "entradilla": {
+    "base": "Hem preparat el teu viatge a <strong>{{destino}}</strong> per a {{fechaViaje}}, localitzador <strong>{{localizador}}</strong>. Falta que el confirmis.",
+    "urgencia": "La reserva a {{destino}} ({{fechaViaje}}) està a punt d'alliberar-se perquè falta la teva confirmació.",
+    "urgencia+erratas": "La seva reserva a {{destino}} sera CANCEL·LADA si no confirma el pagament abans del viatge."
+  },
+  "detalle": {
+    "base": "Pots revisar els detalls del vol i de l'hotel i confirmar-los des de l'enllaç de sota.",
+    "urgencia": "Les places d'aquest vol són limitades: si no confirmes aviat, haurem de reassignar-la.",
+    "urgencia+erratas": "Confirmi el pagament de seguida o perdra la plaça reservada per {{fechaViaje}}."
+  },
+  "urgencia": {
+    "base": "No hi ha pressa: la reserva queda al teu nom fins a un parell de dies abans del viatge.",
+    "urgencia": "Confirma-ho avui per assegurar el seient i l'habitació que s'han reservat al teu nom.",
+    "urgencia+erratas": "ATENCIO: queden poques hores abans que la plaça s'alliberi a un altre viatger."
+  },
+  "cta": {
+    "base": "Veure la meva reserva",
+    "urgencia": "Confirmar el viatge",
+    "urgencia+erratas": "CONFIRMAR PAGAMENT ARA"
+  },
+  "cierre": {
+    "base": "Agència de Viatges Corporativa · {{empresa}}",
+    "urgencia+erratas": "Gestió de Viatges"
+  },
+  "nombreServicio": "Viatges {{empresa}}",
+  "fichaEtiqueta1": "Destí",
+  "fichaValor1": "{{destino}}",
+  "fichaEtiqueta2": "Data",
+  "fichaValor2": "{{fechaViaje}}",
+  "fichaEtiqueta3": "Localitzador",
+  "fichaValor3": {
+    "base": "{{localizador}}",
+    "urgencia+erratas": "{{localizador}} · SENSE CONFIRMAR"
+  }
+}

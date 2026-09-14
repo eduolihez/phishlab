@@ -1,0 +1,59 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "{{remitenteMensaje}} sent you a message",
+    "urgencia": "You have 1 unread message from {{remitenteMensaje}}",
+    "urgencia+erratas": "IMPORTANT: your contact request is pending"
+  },
+  "preheader": {
+    "base": "{{asuntoMensaje}}",
+    "urgencia": "Don't keep {{remitenteMensaje}} waiting"
+  },
+  "saludo": {
+    "base": "Hi {{.FirstName}}",
+    "saludo-generico": "Hi"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a new message",
+    "urgencia": "{{saludo}}, {{remitenteMensaje}} is waiting for your reply",
+    "urgencia+erratas": "{{saludo}}, UNREAD MESSAGE pending"
+  },
+  "entradilla": {
+    "base": "<strong>{{remitenteMensaje}}</strong> wrote to you: \"{{asuntoMensaje}}\".",
+    "urgencia": "<strong>{{remitenteMensaje}}</strong> has been waiting a while for you to see their message about \"{{asuntoMensaje}}\".",
+    "urgencia+erratas": "<strong>{{remitenteMensaje}}</strong> marked their message as urgent: \"{{asuntoMensaje}}\"."
+  },
+  "detalle": {
+    "base": "Sign in to read the full message and reply when you can.",
+    "urgencia": "Profiles that respond quickly get more offers: don't let this one pass.",
+    "urgencia+erratas": "Sign in now so you don't miss this contact opportunity."
+  },
+  "urgencia": {
+    "base": "The message stays saved in your inbox until you read it.",
+    "urgencia": "Other candidates have already started replying to similar offers this week.",
+    "urgencia+erratas": "WARNING: messages unanswered after 48 hours are marked as not interested."
+  },
+  "cta": {
+    "base": "View message",
+    "urgencia": "Read and reply",
+    "urgencia+erratas": "VIEW MESSAGE NOW"
+  },
+  "cierre": {
+    "base": "The LinkedIn Team",
+    "urgencia+erratas": "LinkedIn Notifications"
+  },
+  "fichaEtiqueta1": "From",
+  "fichaValor1": "{{remitenteMensaje}}",
+  "fichaEtiqueta2": "Subject",
+  "fichaValor2": "{{asuntoMensaje}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": {
+    "base": "Unread",
+    "urgencia+erratas": "URGENT · UNANSWERED"
+  }
+}
