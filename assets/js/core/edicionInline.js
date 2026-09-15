@@ -2,7 +2,7 @@
  * Edición en línea sobre la preview.
  *
  * La preview sigue en `iframe sandbox="allow-scripts"` sin `allow-same-origin`
- * (ver `preview.js` / `detalle.js`): el JS que corre ahí dentro no puede tocar
+ * (ver `detalle.js`): el JS que corre ahí dentro no puede tocar
  * el DOM del padre. Por eso la edición no se hace "desde fuera" manipulando el
  * iframe, sino AL REVÉS: es el propio HTML compuesto el que lleva inyectado un
  * script pequeño que hace los nodos editables y avisa al padre por

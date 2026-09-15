@@ -52,7 +52,7 @@ hace la API local. La aplicación lo detecta al arrancar y lo dice en la barra.
 Para desarrollar:
 
 ```bash
-npm test             # 259 pruebas, sin dependencias
+npm test             # 339 pruebas, sin dependencias
 npm run lint         # revisión del catálogo
 npm run build:demo   # genera la demo pública en demo/
 ```
@@ -259,7 +259,7 @@ alojado. La herramienta completa se queda en local.
 index.html                 Shell de la aplicación (nav: Biblioteca · Importar)
 assets/css/                Estilos, sin CDN
 assets/js/core/            engine · senales · catalog · componer · edicionInline · brand · zip · gophish · importar · estado
-assets/js/ui/              router · biblioteca · detalle · exportar · editorEnVivo · importar · importarWeb · marca · fields · preview · dom
+assets/js/ui/              router · biblioteca · detalle · exportar · editorEnVivo · importar · importarWeb · marca · fields · dom
 assets/js/bookmarklet/     capturar.js — fuente del marcador Ctrl+S de clonado
 templates/senales.json     Las seis señales
 templates/presets.json     facil / medio / dificil como combinaciones de señales
@@ -269,7 +269,7 @@ templates/emails/<id>/     meta.json + copy/{es,ca,en}.json  (+ layout.html prop
 templates/landings/<id>/   Igual
 templates/propias/         Importadas, clonadas y variantes propias. Fuera de git.
 catalogo/                  Ficheros de alta de plantillas para tools/nueva-plantilla.js
-tests/                     325 pruebas (node --test)
+tests/                     339 pruebas (node --test)
 tools/servidor.js          Servidor local + API de importación y clonado
 tools/eml.js               Parser de .eml sin dependencias
 tools/sanear.js            Saneado del HTML importado
