@@ -32,7 +32,7 @@
 - Produces: `codigoPareado` (variable de módulo, `string | null`), `FICHERO_PAREADO` (const, ruta absoluta a `.pareado`), `cargarCodigoPareado()`, `parejaValida(peticion)` — usadas por la Task 2.
 - Consumes: nada nuevo — usa `RAIZ`, `json()`, `origenLocal()` ya existentes en `tools/servidor.js`.
 
-- [ ] **Step 1: Añadir `.pareado` a `.gitignore`**
+- [x] **Step 1: Añadir `.pareado` a `.gitignore`**
 
 Editar `.gitignore` añadiendo al final:
 
@@ -42,7 +42,7 @@ Editar `.gitignore` añadiendo al final:
 .pareado
 ```
 
-- [ ] **Step 2: Escribir el test que falla, para GET/POST /api/emparejar**
+- [x] **Step 2: Escribir el test que falla, para GET/POST /api/emparejar**
 
 Crear `tests/servidorExtension.test.js`:
 
@@ -127,12 +127,12 @@ test('POST /api/emparejar genera un código y lo persiste', async () => {
 });
 ```
 
-- [ ] **Step 3: Ejecutar y comprobar que falla**
+- [x] **Step 3: Ejecutar y comprobar que falla**
 
 Run: `node --test tests/servidorExtension.test.js`
 Expected: FAIL — `/api/emparejar` todavía no existe, da 404.
 
-- [ ] **Step 4: Implementar el endpoint en `tools/servidor.js`**
+- [x] **Step 4: Implementar el endpoint en `tools/servidor.js`**
 
 Añadir el import de `randomBytes` junto a los demás imports de `node:crypto` (no existe todavía ese import en el fichero, se añade nuevo):
 
@@ -185,12 +185,12 @@ async function emparejar(respuesta) {
 }
 ```
 
-- [ ] **Step 5: Ejecutar y comprobar que pasa**
+- [x] **Step 5: Ejecutar y comprobar que pasa**
 
 Run: `node --test tests/servidorExtension.test.js`
 Expected: PASS (2 tests)
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add tools/servidor.js .gitignore tests/servidorExtension.test.js
@@ -209,7 +209,7 @@ git commit -m "Servidor: endpoint de emparejamiento para la extension de captura
 - Consumes: `parejaValida(peticion)`, `codigoPareado` de la Task 1; `sanearWeb` ya importado en `tools/servidor.js`; `origenLocal()` existente.
 - Produces: nada que otras tasks del servidor consuman — el resto de tasks son cliente/extensión y hablan por HTTP, no por import.
 
-- [ ] **Step 1: Escribir los tests que fallan**
+- [x] **Step 1: Escribir los tests que fallan**
 
 Añadir a `tests/servidorExtension.test.js`, después de los tests de emparejamiento:
 
@@ -281,12 +281,12 @@ test('/api/extension/pendientes exige origen local, no código de emparejamiento
 });
 ```
 
-- [ ] **Step 2: Ejecutar y comprobar que fallan**
+- [x] **Step 2: Ejecutar y comprobar que fallan**
 
 Run: `node --test tests/servidorExtension.test.js`
 Expected: FAIL — `/api/extension/clonar-flujo` da 404 (no pasa por `origenLocal`, así que sin ruta específica cae al 404 genérico del servidor estático o similar).
 
-- [ ] **Step 3: Implementar en `tools/servidor.js`**
+- [x] **Step 3: Implementar en `tools/servidor.js`**
 
 Añadir constante junto a `MAX_PETICIONES` (dentro de `crearResolver` no, es aparte — junto a `CUERPO_MAXIMO`):
 
@@ -370,17 +370,17 @@ function vaciarPendientes() {
 }
 ```
 
-- [ ] **Step 4: Ejecutar y comprobar que pasan**
+- [x] **Step 4: Ejecutar y comprobar que pasan**
 
 Run: `node --test tests/servidorExtension.test.js`
 Expected: PASS (7 tests en total, sumando los de la Task 1)
 
-- [ ] **Step 5: Ejecutar la suite completa para comprobar que no rompió nada**
+- [x] **Step 5: Ejecutar la suite completa para comprobar que no rompió nada**
 
 Run: `npm test`
 Expected: PASS — todos los ficheros de `tests/*.test.js`, incluido `servidor.test.js` sin cambios.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add tools/servidor.js tests/servidorExtension.test.js
@@ -400,7 +400,7 @@ git commit -m "Servidor: /api/extension/clonar-flujo y /api/extension/pendientes
 
 No hay arnés de test de navegador en este proyecto para el módulo cliente (se prueba a través de la UI, Task 4). Este task es implementación directa, verificada manualmente en la Task 4.
 
-- [ ] **Step 1: Añadir el helper GET y las tres funciones exportadas**
+- [x] **Step 1: Añadir el helper GET y las tres funciones exportadas**
 
 En `assets/js/core/importar.js`, añadir después de la función `pedir(...)` existente:
 
@@ -434,7 +434,7 @@ export async function obtenerPendientesExtension() {
 }
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add assets/js/core/importar.js
@@ -452,7 +452,7 @@ git commit -m "Cliente: helpers de emparejamiento y lectura de pendientes de la 
 - Consumes: `obtenerCodigoEmparejamiento`, `generarCodigoEmparejamiento`, `obtenerPendientesExtension` de la Task 3; `el`, `pintarEn`, `brindis` de `./dom.js` (ya importados).
 - Produces: nada que otras tasks consuman — es la última pieza del lado servidor/UI.
 
-- [ ] **Step 1: Importar los nuevos helpers**
+- [x] **Step 1: Importar los nuevos helpers**
 
 Modificar la línea de import existente:
 
@@ -460,7 +460,7 @@ Modificar la línea de import existente:
 import { clonarUrl, clonarHtml, guardarPlantilla, obtenerCodigoEmparejamiento, generarCodigoEmparejamiento, obtenerPendientesExtension } from '../core/importar.js';
 ```
 
-- [ ] **Step 2: Añadir estado de cola y polling en `panelImportarWeb`**
+- [x] **Step 2: Añadir estado de cola y polling en `panelImportarWeb`**
 
 Modificar la parte alta de `panelImportarWeb()`, donde se declaran `paso` y `resultado`:
 
@@ -517,7 +517,7 @@ Sustituir la función `pintar()` existente por esta versión, que arranca/para e
   }
 ```
 
-- [ ] **Step 3: Añadir la zona "Desde la extensión" al paso Origen**
+- [x] **Step 3: Añadir la zona "Desde la extensión" al paso Origen**
 
 Modificar `pasoOrigen()` para incluir la nueva zona entre el marcador y la URL:
 
@@ -602,7 +602,7 @@ Añadir la función `zonaExtension()`, cerca de `zonaMarcador()`:
   }
 ```
 
-- [ ] **Step 4: Ofrecer el siguiente paso de la cola tras guardar uno**
+- [x] **Step 4: Ofrecer el siguiente paso de la cola tras guardar uno**
 
 Modificar el bloque `try`/`catch` de éxito dentro del `onclick` del botón "Guardar como plantilla propia" en `pasoGuardar()` (donde hoy se llama a `pintarEn(zonaAviso, ...)` tras guardar con éxito), añadiendo el aviso de cola pendiente justo después de la nota de "Guardada.":
 
@@ -623,12 +623,12 @@ Modificar el bloque `try`/`catch` de éxito dentro del `onclick` del botón "Gua
               ]));
 ```
 
-- [ ] **Step 5: Verificación manual**
+- [x] **Step 5: Verificación manual**
 
 Run: `npm run dev` y abrir `http://127.0.0.1:8080/#/importar` (pestaña Web).
 Expected: la nueva zona "Extensión de captura" aparece entre el marcador y la URL, muestra "Todavía no hay código de emparejamiento generado." y el botón "Generar código" funciona (tras pulsarlo aparece el código y el brindis de confirmación). Esto valida el servidor + cliente de las Tasks 1–3 de punta a punta, sin necesitar todavía la extensión (Tasks 5–7).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add assets/js/ui/importarWeb.js
@@ -647,7 +647,7 @@ git commit -m "UI: zona de emparejamiento y recepcion de capturas de la extensio
 - Produces: el contrato de retorno de `content.js` cuando se inyecta vía `chrome.scripting.executeScript` — un objeto `{ html: string, recursos: string[], huboPosibleShadowCerrado: boolean }`, consumido por `background.js` en la Task 6.
 - Consumes: nada — es la pieza más aislada, sin dependencias de las tasks anteriores.
 
-- [ ] **Step 1: Crear `extension/manifest.json`**
+- [x] **Step 1: Crear `extension/manifest.json`**
 
 ```json
 {
@@ -663,7 +663,7 @@ git commit -m "UI: zona de emparejamiento y recepcion de capturas de la extensio
 }
 ```
 
-- [ ] **Step 2: Crear `extension/content.js`**
+- [x] **Step 2: Crear `extension/content.js`**
 
 ```js
 /**
@@ -752,11 +752,11 @@ git commit -m "UI: zona de emparejamiento y recepcion de capturas de la extensio
 })();
 ```
 
-- [ ] **Step 3: Verificación manual**
+- [x] **Step 3: Verificación manual**
 
 Cargar la carpeta `extension/` como extensión descomprimida en `chrome://extensions` (Modo desarrollador → Cargar descomprimida). Confirmar que Chrome no marca ningún error de manifest y que el icono aparece en la barra (sin popup funcional todavía — eso es la Task 7).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add extension/manifest.json extension/content.js
@@ -774,7 +774,7 @@ git commit -m "Extension: manifest MV3 y content script de captura con shadow DO
 - Consumes: el contrato de retorno de `content.js` (Task 5): `{ html, recursos, huboPosibleShadowCerrado }`.
 - Produces: el protocolo de mensajes que `popup.js` (Task 7) envía vía `chrome.runtime.sendMessage`: `{ tipo: 'capturar-paso' }`, `{ tipo: 'estado-sesion' }`, `{ tipo: 'descartar-sesion' }`, `{ tipo: 'enviar-sesion' }`, cada uno resuelto a un objeto con `{ ok: true, ... }` o `{ error: string }`.
 
-- [ ] **Step 1: Crear `extension/background.js`**
+- [x] **Step 1: Crear `extension/background.js`**
 
 ```js
 /**
@@ -906,11 +906,11 @@ async function actualizarBadge(n) {
 }
 ```
 
-- [ ] **Step 2: Verificación manual**
+- [x] **Step 2: Verificación manual**
 
 Recargar la extensión en `chrome://extensions`. Abrir cualquier página, hacer clic en el icono de la extensión (el popup de la Task 7 todavía no existe, así que se usa la consola del service worker: `chrome://extensions` → "Inspeccionar vistas: service worker" → en la consola, ejecutar `chrome.runtime.sendMessage({tipo: 'capturar-paso'})` y comprobar que devuelve `{ok: true, pasos: 1}` sin lanzar ningún error.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add extension/background.js
@@ -930,7 +930,7 @@ git commit -m "Extension: service worker que incrusta recursos y habla con el se
 **Interfaces:**
 - Consumes: el protocolo de mensajes de `background.js` (Task 6); `chrome.storage.local` con las claves `codigoPareado` y `puerto`, escritas aquí y leídas por `enviarSesion()` en `background.js`.
 
-- [ ] **Step 1: Crear `extension/popup.html`**
+- [x] **Step 1: Crear `extension/popup.html`**
 
 ```html
 <!doctype html>
@@ -960,7 +960,7 @@ git commit -m "Extension: service worker que incrusta recursos y habla con el se
 </html>
 ```
 
-- [ ] **Step 2: Crear `extension/popup.js`**
+- [x] **Step 2: Crear `extension/popup.js`**
 
 ```js
 const elEstado = document.getElementById('estado');
@@ -994,7 +994,7 @@ async function actualizarEstado() {
 }
 ```
 
-- [ ] **Step 3: Crear `extension/options.html`**
+- [x] **Step 3: Crear `extension/options.html`**
 
 ```html
 <!doctype html>
@@ -1025,7 +1025,7 @@ async function actualizarEstado() {
 </html>
 ```
 
-- [ ] **Step 4: Crear `extension/options.js`**
+- [x] **Step 4: Crear `extension/options.js`**
 
 ```js
 const campoCodigo = document.getElementById('codigo');
@@ -1047,7 +1047,7 @@ document.getElementById('guardar').addEventListener('click', async () => {
 });
 ```
 
-- [ ] **Step 5: Verificación manual — flujo completo de un paso**
+- [x] **Step 5: Verificación manual — flujo completo de un paso**
 
 1. Recargar la extensión en `chrome://extensions`.
 2. `npm run dev` en PhishLab, abrir Importar → Web, generar el código de emparejamiento.
@@ -1058,13 +1058,13 @@ document.getElementById('guardar').addEventListener('click', async () => {
 
 Expected: los 6 pasos anteriores completan sin error manual y el HTML revisado en el paso 2 del wizard corresponde a la página capturada.
 
-- [ ] **Step 6: Verificación manual — flujo multi-paso**
+- [x] **Step 6: Verificación manual — flujo multi-paso**
 
 Repetir "Capturar paso" dos o tres veces en páginas distintas antes de "Enviar a PhishLab". Confirmar que el badge sube con cada captura, que el envío manda todos los pasos juntos, y que en Importar → Web aparece el primero para revisar con un botón "Revisar el siguiente paso capturado (quedan N)" tras guardarlo.
 
 Expected: cada paso llega con su propio informe de saneado y detección de campos de login, sin mezclarse entre sí.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add extension/popup.html extension/popup.js extension/options.html extension/options.js
@@ -1080,21 +1080,21 @@ git commit -m "Extension: popup de captura y pagina de opciones"
 
 **Interfaces:** ninguna — task de cierre.
 
-- [ ] **Step 1: Ejecutar toda la suite de pruebas**
+- [x] **Step 1: Ejecutar toda la suite de pruebas**
 
 Run: `npm test`
 Expected: PASS — todos los `tests/*.test.js`, incluidos los nuevos de `servidorExtension.test.js`.
 
-- [ ] **Step 2: Ejecutar el linter del catálogo**
+- [x] **Step 2: Ejecutar el linter del catálogo**
 
 Run: `npm run lint`
 Expected: PASS — esta spec no toca `templates/`, así que no debería haber cambios de comportamiento aquí; confirma que nada se rompió por accidente.
 
-- [ ] **Step 3: Verificación manual contra un login real de varios pasos**
+- [x] **Step 3: Verificación manual contra un login real de varios pasos**
 
 Probar la extensión contra un login real de dos pantallas (ej. un formulario que pide email primero y contraseña en una pantalla separada, sin necesidad de completarlo con credenciales reales). Documentar en el propio README lo que salió: qué se incrustó, qué no, y si la heurística de shadow DOM cerrado dio algún falso positivo.
 
-- [ ] **Step 4: Documentar la extensión en `README.md`**
+- [x] **Step 4: Documentar la extensión en `README.md`**
 
 Añadir un párrafo nuevo en la sección "Clonar una web entera (pestaña 'Web')" del README, después del párrafo que describe el marcador Ctrl+S actual:
 
@@ -1112,7 +1112,7 @@ restricciones de CORS de un fetch normal. Requiere emparejarse una vez con
 un código que se genera desde esta misma pantalla.
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add README.md
