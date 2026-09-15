@@ -50,6 +50,15 @@ async function pedir(ruta, cuerpo) {
   return datos;
 }
 
+async function pedirGet(ruta) {
+  if (!disponible) throw new Error('el servidor local no está arrancado');
+
+  const res = await fetch(`api/${ruta}`, { headers: { Accept: 'application/json' } });
+  const datos = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(datos.error ?? `error ${res.status}`);
+  return datos;
+}
+
 /**
  * Convierte un `.eml` en plantilla.
  *
@@ -88,6 +97,21 @@ export async function clonarUrl(url) {
 /** Sanea el HTML que el marcador dejó en el portapapeles y que se ha pegado aquí. */
 export async function clonarHtml(html, urlOrigen) {
   return pedir('clonar-html', { html, urlOrigen });
+}
+
+/** Código de emparejamiento actual con la extensión de captura, o null si no se ha generado ninguno. */
+export async function obtenerCodigoEmparejamiento() {
+  return pedirGet('emparejar');
+}
+
+/** Genera (o regenera) el código de emparejamiento con la extensión. */
+export async function generarCodigoEmparejamiento() {
+  return pedir('emparejar', {});
+}
+
+/** Lo que la extensión haya mandado desde la última vez que se consultó: la cola se vacía al leerla. */
+export async function obtenerPendientesExtension() {
+  return pedirGet('extension/pendientes');
 }
 
 function comoBase64(fichero) {
