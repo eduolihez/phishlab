@@ -225,23 +225,22 @@ línea de la aplicación. Ver `docs/PLANTILLAS.md`.
 
 ## Catálogo actual
 
-17 plantillas en cinco categorías, las tres en castellano, catalán e inglés.
+22 plantillas (11 correos + 11 landings), todas de marca real salvo la página
+formativa, las tres en castellano, catalán e inglés.
 
-**Banca y medios de pago** — cargo no reconocido, acceso desde dispositivo
-nuevo, transferencia pendiente de validar, verificación de identidad (landing).
+**Correos** — Adobe (documento para firmar), DHL (paquete en aduana), DocuSign
+(documento por firmar), Dropbox (documento compartido), GitHub (nuevo inicio de
+sesión), Google (verificación de actividad), Jira (restablecer contraseña),
+LinkedIn (mensaje pendiente), Microsoft 365 (caducidad de contraseña), Netflix
+(problema de pago), PayPal (actividad sospechosa).
 
-**Logística y administración** — paquete retenido en aduana, notificación
-electrónica con plazo legal.
+**Landings** — la misma marca, en login o verificación: Adobe, DocuSign,
+Dropbox, GitHub, Google, Jira (vía Atlassian), LinkedIn, Microsoft, Netflix,
+PayPal.
 
-**SaaS y colaboración** — documento compartido, solicitud de verificación en dos
-pasos, caducidad de contraseña, login de Microsoft 365 (landing), portal
-corporativo genérico (landing).
+**Formación** — página formativa post-clic, sin marca.
 
-**Interno y RRHH** — nómina disponible, evaluación de desempeño, fraude del CEO,
-tarjeta regalo por antigüedad, canje de tarjeta regalo (landing).
-
-**Formación** — página formativa post-clic.
-
-Los pretextos son genéricos y la marca la pone `{{empresa}}`, así que el
-repositorio no lleva dentro la imagen de ninguna empresa real y la misma
-plantilla sirve para cualquier cliente.
+El logo de cada marca vive en `assets/img/marcas/` (SVG real, descargado de
+fuentes libres de derechos — ver `SECURITY.md`). `{{logoHtml}}` sigue siendo
+aparte: es el logo del **cliente** (tenant), que se sube al montar la campaña,
+no el de la marca suplantada.

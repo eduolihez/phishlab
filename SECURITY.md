@@ -64,9 +64,32 @@ mirase el código fuente.
 las variantes editadas, que llevan dentro marca y pretextos de un encargo
 concreto.
 
-Las plantillas del catálogo usan pretextos genéricos y la marca la aporta
-`{{empresa}}` en tiempo de ejecución, así que el repositorio no contiene la
-imagen de ninguna empresa real.
+## Logos de marca real en el catálogo
+
+Desde la ampliación de septiembre de 2026 el catálogo dejó de ser genérico:
+cada plantilla lleva el logo real de la marca que suplanta (Adobe, DHL,
+DocuSign, Dropbox, GitHub, Google, Jira, LinkedIn, Microsoft, Netflix,
+PayPal), en `assets/img/marcas/*.svg`, incrustado en el HTML — nunca
+cargado desde el dominio real. Es una decisión deliberada: un login clonado
+con el logo de verdad se acerca mucho más a lo que un empleado recibe en un
+ataque real que una recreación con CSS.
+
+Los ficheros de `assets/img/marcas/` vienen de Wikimedia Commons (logos
+corporativos de dominio informativo/baja complejidad) y de Simple Icons
+(CC0). Ninguno se sirve desde el dominio de la marca ni hace ninguna petición
+de red al abrir la plantilla.
+
+Esto es distinto de `{{logoHtml}}`: ese sigue siendo el logo del **cliente**
+(tenant), el que se sube al montar cada campaña — nunca el de la marca
+suplantada, que ya viene fijo en la plantilla.
+
+**Implicación para la demo pública:** todas las plantillas de marca real
+tienen `"demo": false` a propósito — no pueden aparecer en el estático que
+genera `npm run build:demo`, porque eso publicaría un generador de páginas de
+login de Google/PayPal/Microsoft funcional en un dominio público (ver más
+abajo). La demo pública ha quedado casi vacía tras esta ampliación; si se
+quiere seguir enseñando la herramienta en el portfolio hace falta retomar un
+catálogo `demo:true` con marcas inventadas, separado de este.
 
 ---
 
