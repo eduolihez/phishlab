@@ -32,7 +32,14 @@ export function generarBookmarklet() {
 }
 
 const FUENTE = `(function () {
+  var CLASE_AVISO = 'phishlab-aviso-tmp-' + Math.random().toString(36).slice(2);
+
   function capturar() {
+    // Se quita cualquier aviso nuestro ANTES de leer el HTML: si quedara uno
+    // en pantalla (el de "armado" del primer clic, o el de "copiada" de un
+    // Ctrl+S anterior que todavía no se hubiera desvanecido), se colaría
+    // dentro de la propia captura.
+    limpiarAvisos();
     try {
       // El origen va como comentario HTML al principio, no como JSON aparte:
       // así lo copiado sigue siendo HTML reconocible si alguien lo abre en un
@@ -70,13 +77,25 @@ const FUENTE = `(function () {
     return ok;
   }
 
+  function limpiarAvisos() {
+    var previos = document.querySelectorAll('.' + CLASE_AVISO);
+    for (var i = 0; i < previos.length; i++) previos[i].remove();
+  }
+
   function aviso(texto) {
+    limpiarAvisos();
     var d = document.createElement('div');
+    d.className = CLASE_AVISO;
     d.textContent = texto;
     d.style.cssText = 'position:fixed;top:12px;right:12px;max-width:320px;z-index:2147483647;background:#14171C;color:#EDEEF0;border:1px solid #262B33;border-radius:8px;padding:10px 14px;font:600 13px system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4)';
     document.body.appendChild(d);
     setTimeout(function () { d.remove(); }, 7000);
   }
+
+  // La captura va primero: el aviso de "armado" se pinta DESPUÉS y solo una
+  // vez, para que no pueda colarse en la primera captura del clic que lo
+  // activa, y para no tapar la confirmación de "copiada" en cada Ctrl+S.
+  capturar();
 
   if (!window.__phishlabArmado__) {
     window.__phishlabArmado__ = true;
@@ -86,8 +105,8 @@ const FUENTE = `(function () {
         capturar();
       }
     });
-    aviso('PhishLab armado: Ctrl+S copia esta página en cualquier momento.');
+    setTimeout(function () {
+      aviso('PhishLab armado: Ctrl+S copia esta página en cualquier momento.');
+    }, 1500);
   }
-
-  capturar();
 })();`;
