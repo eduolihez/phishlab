@@ -73,6 +73,12 @@ export async function sanearWeb(html, { urlOrigen = '', resolver = null } = {}) 
 
   salida = await reemplazarAsync(salida, /<link\b[^>]*\brel=["']?stylesheet[^>]*>/gi, async (etiqueta) => {
     const href = etiqueta.match(/\bhref=["']([^"']+)["']/i)?.[1];
+    // Ya viene incrustada (típicamente desde la extensión, que la incrusta
+    // ella misma con las cookies de la pestaña antes de mandarla aquí): no
+    // hay nada que resolver, y sin esta comprobación se trataba como
+    // cualquier <link> sin resolver y se borraba entera — perdiendo un CSS
+    // que ya estaba correctamente incrustado.
+    if (href && /^data:/i.test(href)) return etiqueta;
     const absoluta = absolutizar(href, urlOrigen);
     const recurso = absoluta ? await intentarResolver(resolver, absoluta) : null;
     if (recurso && esTexto(recurso.contentType)) {

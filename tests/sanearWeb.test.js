@@ -68,6 +68,20 @@ test('incrusta la hoja de estilos externa como <style> en línea', async () => {
   assert.match(html, /<style>body\{color:red\}<\/style>/);
 });
 
+test('una hoja de estilos que ya llega como data: URI se conserva tal cual, sin resolver ni recortar', async () => {
+  // Así llega desde la extensión: ya incrustó el CSS ella misma (con las
+  // cookies de la pestaña, sin CORS) antes de mandarlo al servidor, así que
+  // aquí no hay nada que resolver — pero sin este caso, el saneado la
+  // trataba como cualquier <link> sin resolver y la borraba entera.
+  const conCssIncrustado = `<!doctype html><html><head>
+<link rel="stylesheet" href="data:text/css;base64,${Buffer.from('body{color:red}').toString('base64')}">
+</head><body>hola</body></html>`;
+
+  const { html } = await sanearWeb(conCssIncrustado, { urlOrigen: 'https://ejemplo.example/login', resolver: null });
+
+  assert.match(html, /<link\b[^>]*rel="stylesheet"[^>]*href="data:text\/css;base64,/, 'el <link> con CSS ya incrustado no debería borrarse');
+});
+
 test('reescribe los enlaces al destino original y deja las anclas', async () => {
   const { html } = await sanearWeb(LOGIN_BASICO, { urlOrigen: 'https://ejemplo.example/login' });
   assert.doesNotMatch(html, /ejemplo\.example\/recuperar/);
