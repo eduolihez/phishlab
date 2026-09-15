@@ -164,8 +164,19 @@ página real —típicamente un login— en landing, con dos formas de traerla:
   navegador, JavaScript incluido.
 - **Pegar una URL.** El servidor local hace el fetch él mismo. Más simple,
   pero no sirve para logins que se pintan por JavaScript.
+- **Extensión de captura (recomendado si la tienes instalada).** Vive en
+  `extension/`, se carga como extensión descomprimida
+  (`chrome://extensions` → Modo desarrollador → Cargar descomprimida). A
+  diferencia del marcador, manda la captura directa al servidor local — sin
+  copiar ni pegar — porque una extensión instalada sí puede pedir permiso de
+  host para `127.0.0.1` en su instalación, el permiso que una web pública no
+  puede obtener (ver `SECURITY.md`). También soporta capturar varios pasos de
+  un login antes de enviarlos juntos, y su incrustado de recursos es más fiel
+  que el del servidor: corre con las cookies de la propia pestaña y sin las
+  restricciones de CORS de un fetch normal. Requiere emparejarse una vez con
+  un código que se genera desde esta misma pantalla.
 
-Las dos pasan por `tools/sanearWeb.js`, que se parece al saneado de correo en
+Las tres pasan por `tools/sanearWeb.js`, que se parece al saneado de correo en
 lo esencial (fuera scripts y manejadores, enlaces a `{{.URL}}`) pero difiere en
 las imágenes: en vez de cortarlas, **intenta incrustarlas** como data URI —son
 el logo y el fondo de la propia página que se clona, no un píxel de un
@@ -269,7 +280,8 @@ templates/emails/<id>/     meta.json + copy/{es,ca,en}.json  (+ layout.html prop
 templates/landings/<id>/   Igual
 templates/propias/         Importadas, clonadas y variantes propias. Fuera de git.
 catalogo/                  Ficheros de alta de plantillas para tools/nueva-plantilla.js
-tests/                     339 pruebas (node --test)
+tests/                     346 pruebas (node --test)
+extension/                 Extensión de captura MV3 (sustituye al marcador para clonar webs)
 tools/servidor.js          Servidor local + API de importación y clonado
 tools/eml.js               Parser de .eml sin dependencias
 tools/sanear.js            Saneado del HTML importado
