@@ -247,3 +247,28 @@ había incrustado correctamente con las cookies de la pestaña acababa tirado
 en el propio saneado del servidor. Arreglado con la misma comprobación que ya
 tenía la rama de imágenes: si el `href` ya es `data:`, se deja la etiqueta
 tal cual.
+
+## Addendum 4 — CSS corrompido al capturar 2 o más páginas
+
+Reportado como "los estilos se rompen con 2+ páginas". El culpable no era el
+número de páginas en sí, sino cuántos recursos distintos trae cada una: D1
+proponía sustituir cada URL de recurso en el HTML capturado con
+`html.split(url).join(dataUri)` sobre el documento entero. Si dos recursos de
+la misma página comparten una subcadena (un bundle de CSS compartido entre
+pasos de un mismo login, o simplemente `style.css` siendo subcadena de
+`old-style.css`), esa sustitución global corrompe el que no tocaba —
+`old-style.css` se queda en `old-data:text/css;base64,...`, un href inválido
+que el navegador no puede cargar. Una página de login de un solo paso, más
+simple y con pocos recursos, raramente lo sufre; una de varias pantallas,
+con más CSS y más JS, lo sufre con facilidad — de ahí el patrón "con 2 o más
+páginas" que se reportó, aunque el disparador real es la cantidad de
+recursos, no la cantidad de pasos.
+
+Arreglado sustituyendo el esquema de "URL cruda + split/join posterior" por
+marcadores únicos (`phishlab-recurso-N-xxxxxx`) que `content.js` escribe
+directamente en el DOM clonado, nodo a nodo, mientras serializa — nunca hay
+ya un momento en que la URL original conviva sin marcar en el HTML que
+`background.js` recibe, así que no hay subcadena que pueda colisionar.
+Verificado reproduciendo el algoritmo en Node con dos recursos con subcadena
+compartida: el esquema antiguo producía el href inválido, el de marcadores
+no.
