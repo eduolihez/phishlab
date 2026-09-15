@@ -13,14 +13,10 @@
 
 let disponible = false;
 let version = null;
-let tokenClonado = null;
 
 /** ¿Está el servidor local con la API detrás? */
 export const hayServidor = () => disponible;
 export const versionServidor = () => version;
-
-/** Token que hay que meter en el marcador Ctrl+S — ver tools/servidor.js. */
-export const tokenDeClonado = () => tokenClonado;
 
 /**
  * Se llama una vez al arrancar. No lanza: no tener servidor es un modo de
@@ -33,7 +29,6 @@ export async function detectarServidor() {
     const datos = await res.json();
     disponible = datos.phishlab === true;
     version = datos.version ?? null;
-    tokenClonado = datos.tokenClonado ?? null;
     return disponible;
   } catch {
     disponible = false;
@@ -90,17 +85,9 @@ export async function clonarUrl(url) {
   return pedir('clonar-url', { url });
 }
 
-/** ¿Hay una captura del marcador Ctrl+S esperando revisión? */
-export async function clonadoPendiente() {
-  if (!disponible) return { disponible: false };
-  const res = await fetch('api/clonar/pendiente', { headers: { Accept: 'application/json' } });
-  if (!res.ok) return { disponible: false };
-  return res.json();
-}
-
-/** Descarta la captura pendiente sin guardarla como plantilla. */
-export async function descartarClonadoPendiente() {
-  return pedir('clonar/pendiente/descartar', {});
+/** Sanea el HTML que el marcador dejó en el portapapeles y que se ha pegado aquí. */
+export async function clonarHtml(html, urlOrigen) {
+  return pedir('clonar-html', { html, urlOrigen });
 }
 
 function comoBase64(fichero) {

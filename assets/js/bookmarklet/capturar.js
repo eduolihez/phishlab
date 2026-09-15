@@ -1,6 +1,6 @@
 /**
- * Marcador Ctrl+S: captura la web real, ya cargada y renderizada, y la manda
- * al servidor local de PhishLab para clonarla como landing.
+ * Marcador Ctrl+S: captura la web real, ya cargada y renderizada, y la deja
+ * en el portapapeles para pegarla en Importar → Web.
  *
  * Vive como una cadena de texto porque se sirve dentro de un enlace
  * `javascript:` — el marcador que arrastras a la barra — y no hay build que
@@ -8,51 +8,74 @@
  * importa desde `ui/importarWeb.js`; el resto es la fuente en sí, pensada
  * para leerse tal cual correría en la pestaña de la web real.
  *
- * Un solo clic ya captura la página tal como está. Además arma un atajo de
+ * La primera versión de esto mandaba la captura por `POST` directo al
+ * servidor local. Se descartó: Chrome trata una petición desde una web
+ * pública hacia `127.0.0.1` como acceso a la red local (Private/Local
+ * Network Access) y exige un permiso del navegador que no se puede conceder
+ * solo desde el servidor — en la práctica, la petición se bloqueaba con un
+ * fallo de red genérico sin que hubiera nada que arreglar en el código.
+ * Copiar al portapapeles no cruza esa frontera: es una acción local a la
+ * pestaña, iniciada por el usuario, sin permisos de red de por medio. Cuesta
+ * un paso más (volver a la pestaña de PhishLab y pegar), pero funciona
+ * siempre y no depende de una política del navegador que puede cambiar otra
+ * vez. El marcador ya no necesita saber en qué puerto corre tu PhishLab ni
+ * llevar un token: no habla con ningún servidor.
+ *
+ * Un solo clic ya copia la página tal como está. Además arma un atajo de
  * Ctrl+S (de ahí el nombre) para volver a capturar sin tener que ir a buscar
  * el marcador otra vez, algo útil en un login de varios pasos: llegas a la
  * pantalla de contraseña y pulsas Ctrl+S ahí, sin recargar nada.
- *
- * El token va en el propio marcador (se genera con el de esta instalación en
- * el momento de arrastrarlo) porque el Origin de esta petición nunca va a ser
- * local: es la pestaña de otro dominio la que manda el POST. Ver
- * `tools/servidor.js` para la otra mitad de esta comprobación.
  */
 
-export function generarBookmarklet(origenServidor, token) {
-  const fuente = FUENTE
-    .replace('__ORIGEN__', JSON.stringify(origenServidor))
-    .replace('__TOKEN__', JSON.stringify(token));
-  return `javascript:${encodeURIComponent(fuente)}`;
+export function generarBookmarklet() {
+  return `javascript:${encodeURIComponent(FUENTE)}`;
 }
 
 const FUENTE = `(function () {
-  var ORIGEN = __ORIGEN__;
-  var TOKEN = __TOKEN__;
-
   function capturar() {
     try {
-      var html = '<!doctype html>' + document.documentElement.outerHTML;
-      fetch(ORIGEN + '/api/clonar', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ html: html, urlOrigen: location.href, token: TOKEN })
-      }).then(function (r) {
-        aviso(r.ok ? 'PhishLab: capturado. Vuelve a la pestaña de PhishLab.' : 'PhishLab: fallo al capturar (' + r.status + ').');
-      }).catch(function () {
-        aviso('PhishLab: no se pudo contactar con el servidor local. ¿Está arrancado?');
+      // El origen va como comentario HTML al principio, no como JSON aparte:
+      // así lo copiado sigue siendo HTML reconocible si alguien lo abre en un
+      // editor de texto, y el paso de pegar en PhishLab solo tiene que
+      // quitarle la primera línea.
+      var html = '<!--phishlab-origen:' + location.href + '-->\\n<!doctype html>' + document.documentElement.outerHTML;
+      copiar(html).then(function (ok) {
+        aviso(ok
+          ? 'PhishLab: página copiada. Vuelve a la pestaña de PhishLab → Importar → Web y pégala.'
+          : 'PhishLab: el navegador no dejó copiar al portapapeles.');
       });
     } catch (e) {
       aviso('PhishLab: error al capturar — ' + e.message);
     }
   }
 
+  function copiar(texto) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(texto).then(function () { return true; }).catch(function () { return copiarConTextarea(texto); });
+    }
+    return Promise.resolve(copiarConTextarea(texto));
+  }
+
+  function copiarConTextarea(texto) {
+    var area = document.createElement('textarea');
+    area.value = texto;
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    area.remove();
+    return ok;
+  }
+
   function aviso(texto) {
     var d = document.createElement('div');
     d.textContent = texto;
-    d.style.cssText = 'position:fixed;top:12px;right:12px;z-index:2147483647;background:#14171C;color:#EDEEF0;border:1px solid #262B33;border-radius:8px;padding:10px 14px;font:600 13px system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4)';
+    d.style.cssText = 'position:fixed;top:12px;right:12px;max-width:320px;z-index:2147483647;background:#14171C;color:#EDEEF0;border:1px solid #262B33;border-radius:8px;padding:10px 14px;font:600 13px system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.4)';
     document.body.appendChild(d);
-    setTimeout(function () { d.remove(); }, 6000);
+    setTimeout(function () { d.remove(); }, 7000);
   }
 
   if (!window.__phishlabArmado__) {
@@ -63,7 +86,7 @@ const FUENTE = `(function () {
         capturar();
       }
     });
-    aviso('PhishLab armado: Ctrl+S captura esta página en cualquier momento.');
+    aviso('PhishLab armado: Ctrl+S copia esta página en cualquier momento.');
   }
 
   capturar();

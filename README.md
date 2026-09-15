@@ -155,9 +155,13 @@ página real —típicamente un login— en landing, con dos formas de traerla:
 - **Marcador Ctrl+S.** Lo arrastras a la barra de marcadores una vez; en la
   web real, ya cargada y logueada si hace falta, lo pulsas o usas Ctrl+S en
   cualquier momento — sirve incluso para una pantalla que solo aparece tras
-  interactuar con la página, como el segundo paso de un login. Es la opción
-  con más fidelidad: captura la página tal como la renderizó el navegador,
-  JavaScript incluido.
+  interactuar con la página, como el segundo paso de un login. Copia la
+  página al portapapeles (no manda nada por red: un intento anterior posteaba
+  directo al servidor local, pero Chrome bloquea ese salto de una web pública
+  a una dirección local salvo permiso explícito del navegador — ver
+  `SECURITY.md`), así que el último paso es volver a esta pestaña y pegarlo.
+  Es la opción con más fidelidad: captura la página tal como la renderizó el
+  navegador, JavaScript incluido.
 - **Pegar una URL.** El servidor local hace el fetch él mismo. Más simple,
   pero no sirve para logins que se pintan por JavaScript.
 

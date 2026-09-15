@@ -10,8 +10,11 @@
 
 import { el, pintarEn, brindis, comoId, pasos, icono, informeSaneado } from './dom.js';
 import { estado } from '../core/estado.js';
-import { clonarUrl, clonadoPendiente, descartarClonadoPendiente, guardarPlantilla, tokenDeClonado } from '../core/importar.js';
+import { clonarUrl, clonarHtml, guardarPlantilla } from '../core/importar.js';
 import { generarBookmarklet } from '../bookmarklet/capturar.js';
+
+/** El marcador antepone esto al HTML copiado — ver bookmarklet/capturar.js. */
+const RE_ORIGEN_PEGADO = /^<!--phishlab-origen:(.*?)-->\r?\n/;
 
 const CONFIANZA = {
   alta: ['alta', 'pildora-ok'],
@@ -65,39 +68,48 @@ export function panelImportarWeb() {
   }
 
   function zonaMarcador() {
-    const token = tokenDeClonado();
-
     const enlace = el('a.btn.btn-primario', {
-      href: token ? generarBookmarklet(location.origin, token) : '#',
+      href: generarBookmarklet(),
       texto: 'Clonar con PhishLab',
-      onclick: (e) => {
-        if (token) return;
-        e.preventDefault();
-        brindis('El servidor local todavía no ha dado un token; recarga la página e inténtalo otra vez.');
-      },
+    });
+
+    const area = el('textarea', {
+      rows: 4,
+      placeholder: 'Pega aquí lo que haya copiado el marcador (Ctrl+V)…',
+      style: { width: '100%', marginTop: '10px' },
     });
 
     return el('.zona-soltar', [
       el('strong', { texto: 'Arrastra este botón a tu barra de marcadores.' }),
       el('div', { style: { margin: '10px 0' } }, [enlace]),
       el('div', {
-        texto: 'En la web real —ya cargada, y logueada si hace falta— púlsalo, o usa Ctrl+S en cualquier momento después de pulsarlo una vez. Sirve incluso para una pantalla que solo aparece tras interactuar con la página, como el segundo paso de un login.',
+        texto: 'En la web real —ya cargada, y logueada si hace falta— púlsalo, o usa Ctrl+S en cualquier momento después de pulsarlo una vez. Sirve incluso para una pantalla que solo aparece tras interactuar con la página, como el segundo paso de un login. Copia la página al portapapeles: no manda nada por red, así que no depende de ningún permiso del navegador.',
       }),
+      area,
       el('button.btn.btn-mini', {
         type: 'button',
-        style: { marginTop: '10px' },
-        texto: 'Ya he capturado — comprobar',
-        onclick: comprobarCaptura,
+        style: { marginTop: '8px' },
+        texto: 'Sanear lo pegado',
+        onclick: () => procesarPegado(area.value),
       }),
     ]);
   }
 
-  async function comprobarCaptura() {
-    const p = await clonadoPendiente();
-    if (!p.disponible) return brindis('Todavía no hay ninguna captura pendiente.');
-    resultado = { r: p, procedencia: p.urlOrigen || 'captura del marcador' };
-    await descartarClonadoPendiente();
-    ir(2);
+  async function procesarPegado(texto) {
+    const coincide = texto.match(RE_ORIGEN_PEGADO);
+    const urlOrigen = coincide?.[1] ?? '';
+    const html = coincide ? texto.slice(coincide[0].length) : texto;
+
+    if (!html.trim()) return brindis('Pega primero lo que haya copiado el marcador');
+
+    pintarEn(cuerpo, el('.cargando', { texto: 'Saneando…' }));
+    try {
+      const r = await clonarHtml(html, urlOrigen);
+      resultado = { r, procedencia: urlOrigen || 'captura del marcador' };
+      ir(2);
+    } catch (e) {
+      pintarEn(cuerpo, el('.nota.peligro', [el('strong', { texto: 'No se pudo clonar. ' }), e.message]));
+    }
   }
 
   function zonaUrl() {

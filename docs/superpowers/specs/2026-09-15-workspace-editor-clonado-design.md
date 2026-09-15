@@ -1,7 +1,7 @@
 # PhishLab v3 — workspace único, editor en vivo y clonado de webs
 
 Fecha: 2026-09-15
-Estado: aprobado, pendiente de plan de implementación
+Estado: implementado, con una revisión sobre la marcha en D4 (ver Addendum al final)
 Revisa: [2026-09-10-phishlab-biblioteca-design.md](2026-09-10-phishlab-biblioteca-design.md) (v2).
 Reabre explícitamente dos puntos que esa spec dejaba fuera de alcance:
 clonado por URL y edición en línea sobre la preview.
@@ -275,3 +275,32 @@ ratón + cursor de texto + lápiz pequeño en imágenes) y para la pantalla de
 informe de clonado (reusa `.avisos`/`.nota`, con la variante roja para
 recursos no inlinados). Entrada nueva en el log de decisiones con fecha
 2026-09-15 referenciando esta spec.
+
+## Addendum (mismo día) — D4 revisado: el marcador copia, no postea
+
+D4 diseñaba el marcador para postear la captura directamente a
+`http://127.0.0.1:<puerto>/api/clonar`, protegido por un token de sesión en
+vez de por el origen. Al probarlo contra una web real se confirmó con la
+consola del navegador que Chrome bloquea ese salto (origen público → dirección
+local) como **Private Network Access / Local Network Access**: un permiso de
+navegador aparte del CORS normal que no se puede conceder solo desde
+cabeceras del servidor. El error observado fue textual: *"Permission was
+denied for this request to access the `loopback` address space."* — no
+relacionado con el token ni con el origen, así que no había nada que arreglar
+en ese diseño; el mecanismo de transporte era el problema.
+
+Se descarta el POST directo. El marcador ahora **copia la página al
+portapapeles** (`navigator.clipboard.writeText`, con `execCommand('copy')`
+como respaldo) anteponiendo `<!--phishlab-origen:URL-->` al HTML capturado.
+Importar → Web gana una caja de "pegar lo capturado" que separa ese
+comentario y llama a un nuevo endpoint local, `/api/clonar-html` — mismo
+saneado (`sanearWeb.js`), sin fetch de por medio. Se retiran `TOKEN_CLONADO`,
+`/api/clonar`, `/api/clonar/pendiente` y el preflight CORS: ya no hace falta
+ninguna excepción a "toda la API exige origen local", que vuelve a ser una
+regla sin excepciones.
+
+Costo: un paso más (volver a la pestaña y pegar, en vez de una captura
+totalmente automática). Gana: no depende de una política de navegador en
+evolución activa, y quita superficie de ataque (sin token, sin CORS abierto a
+ningún origen) sin perder nada de fidelidad — la página sigue capturándose tal
+como la renderizó el navegador real.

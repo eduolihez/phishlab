@@ -58,28 +58,26 @@ mirase el código fuente.
 
 ---
 
-## El marcador de clonado y por qué tiene su propia puerta
+## El marcador de clonado no habla con el servidor
 
 El servidor local rechaza cualquier petición a `/api/*` cuyo `Origin` no sea
 local — así una pestaña abierta en cualquier otra web no puede hablar con él
-mientras lo tienes arrancado. El marcador Ctrl+S rompe esa regla a propósito:
-postea la captura desde la pestaña de la **web real** que estás clonando, así
-que su `Origin` nunca va a ser local.
+mientras lo tienes arrancado, sin excepciones.
 
-Para esa única ruta (`/api/clonar`) la protección deja de ser el origen y pasa
-a ser un token aleatorio de 16 bytes que genera el servidor en cada arranque y
-que el marcador lleva incrustado desde el momento en que lo generas en
-Importar → Web. Sin el token, una web cualquiera que abrieras mientras el
-servidor está arrancado podría intentar postear a ciegas — con él, tendría que
-adivinarlo. El resto de la API (guardar plantillas, importar `.eml`, clonar
-por URL) sigue exigiendo origen local sin excepción: lo único que puede llegar
-desde fuera es el HTML ya capturado de la página que tú misma decidiste
-clonar, nunca una escritura en disco.
+La primera versión del marcador Ctrl+S rompía esa regla a propósito: posteaba
+la captura directamente desde la pestaña de la web real hacia el servidor
+local, protegido por un token en vez de por el origen. Se descartó al
+probarlo: Chrome trata ese salto (web pública → dirección local) como acceso a
+la red local, un permiso de navegador aparte del CORS normal que no se puede
+conceder solo desde el servidor — en la práctica, la petición se bloqueaba con
+un fallo de red genérico sin relación con el token ni con el origen.
 
-`/api/clonar` tampoco guarda nada por sí sola: deja el resultado saneado en
-memoria, a la espera de que lo revises en Importar → Web y decidas guardarlo
-como plantilla propia — con su nota de autorización, igual que cualquier otra
-importación.
+El marcador ahora **copia la página al portapapeles** en vez de mandarla por
+red. No cruza ningún límite de origen ni de red: es una acción local a la
+pestaña, iniciada por un clic o un Ctrl+S del usuario. Volver a la pestaña de
+PhishLab y pegar el resultado en Importar → Web es un paso más, pero
+funciona siempre y no depende de una política del navegador que puede volver
+a cambiar. Toda la API sigue exigiendo origen local sin ninguna excepción.
 
 ---
 

@@ -14,7 +14,6 @@ import { readFile, stat, mkdir, writeFile, readdir, cp } from 'node:fs/promises'
 import { existsSync } from 'node:fs';
 import { join, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { randomBytes } from 'node:crypto';
 
 import { parsearEml } from './eml.js';
 import { sanear } from './sanear.js';
@@ -23,23 +22,7 @@ import { sanearWeb } from './sanearWeb.js';
 const RAIZ = resolve(join(fileURLToPath(import.meta.url), '..', '..'));
 const PROPIAS = join(RAIZ, 'templates', 'propias');
 const PUERTO = Number(process.argv[2]) || 8080;
-const VERSION = '3.0';
-
-/**
- * El marcador Ctrl+S postea la captura desde la pestaña de la web real: su
- * Origin nunca va a ser local, a propósito — es la pestaña de otra persona
- * abierta en otro dominio. Para esa única ruta la protección no es el origen
- * (ver `origenLocal()`) sino este token de sesión, que solo conoce el
- * marcador que se generó DESDE esta misma instalación (ver `importarWeb.js`).
- * Sin él, cualquier web que abrieras mientras el servidor está arrancado
- * podría intentar postear a ciegas — con el token, necesita adivinar 16
- * bytes aleatorios.
- */
-const TOKEN_CLONADO = randomBytes(16).toString('hex');
-
-/** Última captura del marcador a la espera de que la revises. Una sola: esta
- * herramienta la usa una persona a la vez. */
-let capturaPendiente = null;
+const VERSION = '3.1';
 
 const CUERPO_MAXIMO = 25 * 1024 * 1024;
 
@@ -59,33 +42,11 @@ const servidor = createServer(async (peticion, respuesta) => {
   try {
     const url = new URL(peticion.url, `http://${peticion.headers.host}`);
 
-    // Preflight de CORS: solo para /api/clonar, que es la única ruta pensada
-    // para que la llame una pestaña de otro origen (ver TOKEN_CLONADO).
-    //
-    // Hace falta además Access-Control-Allow-Private-Network: true. El
-    // marcador llama desde la web real (origen público, típicamente HTTPS) a
-    // 127.0.0.1 (dirección local): Chrome trata ese salto como Private
-    // Network Access, un permiso aparte del CORS normal, y sin esta cabecera
-    // en el preflight bloquea la petición con un fallo de red genérico —
-    // exactamente "no se pudo contactar con el servidor local", aunque el
-    // servidor esté arrancado y respondiendo.
-    if (peticion.method === 'OPTIONS' && url.pathname === '/api/clonar') {
-      respuesta.writeHead(204, {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Private-Network': 'true',
-      });
-      return respuesta.end();
-    }
-
     if (url.pathname.startsWith('/api/')) {
-      const ruta = url.pathname.slice(5);
-
-      if (ruta !== 'clonar' && !origenLocal(peticion)) {
+      if (!origenLocal(peticion)) {
         return json(respuesta, 403, { error: 'origen no local' });
       }
-      return await api(peticion, respuesta, ruta);
+      return await api(peticion, respuesta, url.pathname.slice(5));
     }
 
     return await estatico(url, respuesta);
@@ -143,13 +104,7 @@ async function estatico(url, respuesta) {
 
 async function api(peticion, respuesta, ruta) {
   if (ruta === 'salud' && peticion.method === 'GET') {
-    // El token va aquí, no en un endpoint aparte: /api/salud ya está detrás
-    // de origenLocal(), y es lo primero que pide la aplicación al arrancar.
-    return json(respuesta, 200, { phishlab: true, version: VERSION, tokenClonado: TOKEN_CLONADO });
-  }
-
-  if (ruta === 'clonar/pendiente' && peticion.method === 'GET') {
-    return json(respuesta, 200, capturaPendiente ? { disponible: true, ...capturaPendiente } : { disponible: false });
+    return json(respuesta, 200, { phishlab: true, version: VERSION });
   }
 
   if (peticion.method !== 'POST') return json(respuesta, 405, { error: 'method not allowed' });
@@ -159,28 +114,28 @@ async function api(peticion, respuesta, ruta) {
   if (ruta === 'importar/eml') return await importarEml(respuesta, datos);
   if (ruta === 'importar/html') return await importarHtml(respuesta, datos);
   if (ruta === 'plantillas') return await guardarPlantilla(respuesta, datos);
-  if (ruta === 'clonar') return await clonarCaptura(respuesta, datos);
+  if (ruta === 'clonar-html') return await clonarHtml(respuesta, datos);
   if (ruta === 'clonar-url') return await clonarUrl(respuesta, datos);
-  if (ruta === 'clonar/pendiente/descartar') { capturaPendiente = null; return json(respuesta, 200, { ok: true }); }
 
   return json(respuesta, 404, { error: `ruta desconocida: ${ruta}` });
 }
 
 // ------------------------------------------------------------ clonado web ---
 
-/** Recibe la captura del marcador Ctrl+S: HTML ya renderizado por el navegador real. */
-async function clonarCaptura(respuesta, { html, urlOrigen, token }) {
-  if (token !== TOKEN_CLONADO) {
-    return json(respuesta, 403, { error: 'token de clonado inválido o caducado: vuelve a generar el marcador desde Importar → Web' }, { cors: true });
-  }
-  if (!html?.trim()) return json(respuesta, 400, { error: 'falta el HTML capturado' }, { cors: true });
+/**
+ * Sanea el HTML que el marcador dejó en el portapapeles y que se ha pegado en
+ * Importar → Web. Es una petición normal, desde la propia pestaña de
+ * PhishLab: no hace falta ningún permiso especial ni salir a buscar nada por
+ * la red, porque el navegador ya hizo el trabajo de renderizar la página.
+ */
+async function clonarHtml(respuesta, { html, urlOrigen }) {
+  if (!html?.trim()) return json(respuesta, 400, { error: 'falta el HTML pegado' });
 
   try {
     const resultado = await sanearWeb(html, { urlOrigen: urlOrigen ?? '', resolver: crearResolver() });
-    capturaPendiente = { ...resultado, urlOrigen: urlOrigen ?? '', capturadoEn: new Date().toISOString() };
-    json(respuesta, 200, { guardado: true }, { cors: true });
+    json(respuesta, 200, { ...resultado, urlOrigen: urlOrigen ?? '' });
   } catch (e) {
-    json(respuesta, 500, { error: e.message }, { cors: true });
+    json(respuesta, 500, { error: e.message });
   }
 }
 
@@ -396,12 +351,8 @@ function leerJson(peticion) {
   });
 }
 
-function json(respuesta, codigo, cuerpo, { cors = false } = {}) {
-  const cabeceras = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' };
-  // Solo /api/clonar responde con esto: es la única ruta que llama una
-  // pestaña de otro origen (ver TOKEN_CLONADO más arriba).
-  if (cors) cabeceras['Access-Control-Allow-Origin'] = '*';
-  respuesta.writeHead(codigo, cabeceras);
+function json(respuesta, codigo, cuerpo) {
+  respuesta.writeHead(codigo, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
   respuesta.end(JSON.stringify(cuerpo));
 }
 
