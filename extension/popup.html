@@ -10,6 +10,8 @@
   button { width: 100%; padding: 8px; margin-bottom: 8px; border: none; border-radius: 6px; font: inherit; cursor: pointer; }
   .primario { background: #1E8A3B; color: #fff; }
   .secundario { background: #262B33; color: #EDEEF0; }
+  .peligro { background: #E5484D; color: #fff; }
+  button:disabled { opacity: .5; cursor: default; }
   .aviso { color: #E5484D; font-size: 12px; margin-top: 4px; margin-bottom: 8px; min-height: 14px; }
   .separador { border: none; border-top: 1px solid #262B33; margin: 10px 0; }
   details { margin-bottom: 8px; }
@@ -25,6 +27,7 @@
 
   <button class="primario" id="btn-capturar">Capturar paso</button>
   <button class="secundario" id="btn-auto">Capturar flujo automático</button>
+  <button class="peligro" id="btn-detener" hidden>Detener flujo automático</button>
   <button class="secundario" id="btn-enviar">Enviar a PhishLab</button>
   <button class="secundario" id="btn-descartar">Descartar</button>
   <div class="aviso" id="aviso"></div>

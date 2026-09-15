@@ -25,7 +25,13 @@ const PROPIAS = join(RAIZ, 'templates', 'propias');
 const PUERTO = Number(process.argv[2]) || 8080;
 const VERSION = '3.1';
 
-const CUERPO_MAXIMO = 25 * 1024 * 1024;
+// 25MB bastaba para un .eml o un HTML pegado a mano, pero un envío de la
+// extensión (`/api/extension/clonar-flujo`) puede traer hasta 8 pasos, cada
+// uno con hasta 60 recursos incrustados en base64 de hasta 5MB — un login
+// con un par de imágenes de fondo ya superaba 25MB de sobra. Sigue siendo un
+// tope, no una vía libre: solo protege contra un envío accidentalmente
+// descontrolado, no está pensado para acercarse a él en uso normal.
+const CUERPO_MAXIMO = 200 * 1024 * 1024;
 const MAX_PASOS_FLUJO = 8;
 
 const FICHERO_PAREADO = join(RAIZ, '.pareado');

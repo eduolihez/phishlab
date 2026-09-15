@@ -28,6 +28,12 @@ const TIMEOUT_RECURSO_MS = 8000;
 const CONCURRENCIA_RECURSOS = 6;
 const ESPERA_TRAS_AVANZAR_MS = 1600;
 
+/** Bandera de parada del autopiloto — module-level porque un mensaje corto
+ * ("Detener") necesita poder interrumpir un mensaje largo ya en marcha
+ * ("Capturar flujo automático"); no hay otra forma de comunicar dos
+ * invocaciones distintas del listener entre sí. */
+let autopilotoEnMarcha = false;
+
 chrome.runtime.onStartup.addListener(() => {
   chrome.storage.local.remove('pasos');
 });
@@ -42,6 +48,7 @@ chrome.runtime.onMessage.addListener((mensaje, _remitente, enviarRespuesta) => {
 async function manejar(mensaje) {
   if (mensaje.tipo === 'capturar-paso') return await capturarPaso();
   if (mensaje.tipo === 'capturar-flujo-automatico') return await capturarFlujoAutomatico();
+  if (mensaje.tipo === 'detener-flujo-automatico') { autopilotoEnMarcha = false; return { ok: true }; }
   if (mensaje.tipo === 'estado-sesion') return await leerSesion();
   if (mensaje.tipo === 'descartar-sesion') return await descartarSesion();
   if (mensaje.tipo === 'enviar-sesion') return await enviarSesion();
@@ -104,38 +111,53 @@ async function capturarPasoDe(pestana) {
  * cualquier formulario de email/contraseña que encuentre y lo envía, espera
  * a que la SPA pinte el siguiente paso, y repite. Pensado para logins de
  * varios pasos (Google, Microsoft) donde antes había que ir pulsando
- * "Capturar paso" a mano en cada pantalla. Se detiene sola al llegar al tope
- * de pasos o en cuanto no encuentra ya ningún formulario que avanzar.
+ * "Capturar paso" a mano en cada pantalla.
+ *
+ * Se detiene sola en cuanto la pantalla recién capturada trae ya un campo de
+ * contraseña visible — esa es la última captura útil: en una campaña real,
+ * de ahí el flujo pasa a la página de concienciación, así que seguir
+ * rellenando y enviando esa contraseña de mentira no aporta nada y sí cruza
+ * una línea que no hace falta cruzar (enviar un intento de login, aunque sea
+ * con datos inventados, contra el sitio real). También para si se agota el
+ * tope de pasos, si no encuentra ya ningún formulario que avanzar, o si el
+ * usuario pulsa "Detener" en el popup (`autopilotoEnMarcha` se comprueba
+ * entre cada paso).
  *
  * GoPhish solo admite una página por landing (ver README/SECURITY.md): esto
  * no intenta encadenar las capturas en una sola plantilla, solo ahorra el
  * trabajo manual de rellenar y enviar cada pantalla — de las N capturas que
- * deja en la cola, en PhishLab se exporta una sola (normalmente la que trae
- * el campo de contraseña).
+ * deja en la cola, en PhishLab se exporta una sola (la última, con la
+ * contraseña).
  */
 async function capturarFlujoAutomatico() {
   await descartarSesion();
+  autopilotoEnMarcha = true;
   const pasos = [];
 
-  for (let i = 0; i < MAX_PASOS; i++) {
-    const pestana = await pestanaActiva();
-    let paso;
-    try {
-      paso = await capturarPasoDe(pestana);
-    } catch (e) {
-      if (pasos.length === 0) throw e;
-      break; // ya hay algo capturado: se entrega lo conseguido en vez de perderlo todo
+  try {
+    for (let i = 0; i < MAX_PASOS && autopilotoEnMarcha; i++) {
+      const pestana = await pestanaActiva();
+      let paso;
+      try {
+        paso = await capturarPasoDe(pestana);
+      } catch (e) {
+        if (pasos.length === 0) throw e;
+        break; // ya hay algo capturado: se entrega lo conseguido en vez de perderlo todo
+      }
+      pasos.push(paso);
+      await chrome.storage.local.set({ pasos });
+      await actualizarBadge(pasos.length);
+
+      if (pasos.length >= MAX_PASOS || !autopilotoEnMarcha) break;
+      if (await tienePasswordVisible(pestana)) break;
+
+      const avance = await intentarAvanzar(pestana);
+      if (!avance.avanzado) break;
+
+      await esperar(ESPERA_TRAS_AVANZAR_MS);
     }
-    pasos.push(paso);
-    await chrome.storage.local.set({ pasos });
-    await actualizarBadge(pasos.length);
-
-    if (pasos.length >= MAX_PASOS) break;
-
-    const avance = await intentarAvanzar(pestana);
-    if (!avance.avanzado) break;
-
-    await esperar(ESPERA_TRAS_AVANZAR_MS);
+  } finally {
+    autopilotoEnMarcha = false;
   }
 
   return { ok: true, pasos: pasos.length };
@@ -150,6 +172,20 @@ async function intentarAvanzar(pestana) {
     return inyeccion?.[0]?.result ?? { avanzado: false };
   } catch {
     return { avanzado: false };
+  }
+}
+
+/** Detección ligera, sin fichero aparte: solo mira si hay ya un campo de
+ * contraseña visible en la pantalla que se acaba de capturar. */
+async function tienePasswordVisible(pestana) {
+  try {
+    const inyeccion = await chrome.scripting.executeScript({
+      target: { tabId: pestana.id },
+      func: () => Array.from(document.querySelectorAll('input[type="password"]')).some((c) => c.offsetParent !== null),
+    });
+    return Boolean(inyeccion?.[0]?.result);
+  } catch {
+    return false;
   }
 }
 
@@ -214,7 +250,7 @@ function arrayBufferABase64(buffer) {
 
 async function leerSesion() {
   const { pasos = [] } = await chrome.storage.local.get('pasos');
-  return { pasos };
+  return { pasos, autopilotoEnMarcha };
 }
 
 async function descartarSesion() {

@@ -4,11 +4,17 @@ const campoCodigo = document.getElementById('codigo');
 const campoPuerto = document.getElementById('puerto');
 const avisoGuardado = document.getElementById('guardado');
 const elAjustes = document.getElementById('ajustes');
+const btnCapturar = document.getElementById('btn-capturar');
+const btnAuto = document.getElementById('btn-auto');
+const btnDetener = document.getElementById('btn-detener');
+const btnEnviar = document.getElementById('btn-enviar');
+const btnDescartar = document.getElementById('btn-descartar');
 
-document.getElementById('btn-capturar').addEventListener('click', () => ejecutar({ tipo: 'capturar-paso' }));
-document.getElementById('btn-auto').addEventListener('click', () => ejecutar({ tipo: 'capturar-flujo-automatico' }, 'Capturando flujo…'));
-document.getElementById('btn-enviar').addEventListener('click', () => ejecutar({ tipo: 'enviar-sesion' }));
-document.getElementById('btn-descartar').addEventListener('click', () => ejecutar({ tipo: 'descartar-sesion' }));
+btnCapturar.addEventListener('click', () => ejecutar({ tipo: 'capturar-paso' }));
+btnAuto.addEventListener('click', iniciarAutopiloto);
+btnDetener.addEventListener('click', detenerAutopiloto);
+btnEnviar.addEventListener('click', () => ejecutar({ tipo: 'enviar-sesion' }));
+btnDescartar.addEventListener('click', () => ejecutar({ tipo: 'descartar-sesion' }));
 
 document.getElementById('btn-guardar-ajustes').addEventListener('click', async () => {
   await chrome.storage.local.set({
@@ -27,6 +33,35 @@ async function cargarAjustes() {
   if (codigoPareado) campoCodigo.value = codigoPareado;
   else elAjustes.open = true; // sin código todavía: abre los ajustes para que salte a la vista
   if (puerto) campoPuerto.value = puerto;
+}
+
+async function iniciarAutopiloto() {
+  ponerModoAutopiloto(true);
+  // Polling ligero mientras corre: sin esto el texto se queda clavado en
+  // "Capturando flujo…" hasta el final entero, sin dar pista de cuántos
+  // pasos lleva ya — justo la información que hace falta para decidir
+  // cuándo pulsar "Detener".
+  const intervalo = setInterval(actualizarEstado, 1000);
+  await ejecutar({ tipo: 'capturar-flujo-automatico' }, 'Capturando flujo…');
+  clearInterval(intervalo);
+  ponerModoAutopiloto(false);
+}
+
+async function detenerAutopiloto() {
+  btnDetener.disabled = true;
+  await chrome.runtime.sendMessage({ tipo: 'detener-flujo-automatico' });
+  // btnDetener se vuelve a ocultar cuando iniciarAutopiloto() reciba la
+  // respuesta del bucle principal, no aquí: parar es solo avisar, el propio
+  // bucle en background.js tarda hasta el final del paso en curso en notarlo.
+}
+
+function ponerModoAutopiloto(activo) {
+  btnCapturar.disabled = activo;
+  btnAuto.disabled = activo;
+  btnEnviar.disabled = activo;
+  btnDescartar.disabled = activo;
+  btnDetener.hidden = !activo;
+  btnDetener.disabled = false;
 }
 
 async function ejecutar(mensaje, textoEnCurso) {
@@ -49,4 +84,9 @@ async function actualizarEstado() {
   elEstado.textContent = pasos.length === 0
     ? 'Sin capturar'
     : `${pasos.length} paso${pasos.length === 1 ? '' : 's'} capturado${pasos.length === 1 ? '' : 's'}`;
+
+  // Cubre el caso de reabrir el popup mientras el autopiloto seguía
+  // corriendo desde una apertura anterior — el estado real vive en
+  // background.js, no en este popup, que puede haberse cerrado y reabierto.
+  ponerModoAutopiloto(Boolean(respuesta?.autopilotoEnMarcha));
 }
