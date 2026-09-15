@@ -10,7 +10,7 @@
 
 import { el, pintarEn, brindis, comoId, pasos, icono, informeSaneado } from './dom.js';
 import { estado } from '../core/estado.js';
-import { clonarUrl, clonarHtml, guardarPlantilla } from '../core/importar.js';
+import { clonarUrl, clonarHtml, guardarPlantilla, obtenerCodigoEmparejamiento, generarCodigoEmparejamiento, obtenerPendientesExtension } from '../core/importar.js';
 import { generarBookmarklet } from '../bookmarklet/capturar.js';
 
 /** El marcador antepone esto al HTML copiado — ver bookmarklet/capturar.js. */
@@ -30,6 +30,8 @@ export function panelImportarWeb() {
 
   let paso = 1;
   let resultado = null; // { r, procedencia }
+  let colaExtension = []; // pasos adicionales capturados en un mismo envío de la extensión, pendientes de revisar
+  let intervaloExtension = null;
 
   pintar();
   return raiz;
@@ -48,9 +50,39 @@ export function panelImportarWeb() {
       { etiqueta: 'Guardar', onclick: resultado ? () => ir(3) : undefined },
     ]));
 
-    if (paso === 1) return pintarEn(cuerpo, pasoOrigen());
+    detenerPollingExtension();
+
+    if (paso === 1) {
+      pintarEn(cuerpo, pasoOrigen());
+      iniciarPollingExtension();
+      return;
+    }
     if (paso === 2) return pintarEn(cuerpo, pasoRevision());
     return pintarEn(cuerpo, pasoGuardar());
+  }
+
+  function iniciarPollingExtension() {
+    intervaloExtension = setInterval(async () => {
+      try {
+        const { pasos: pendientes } = await obtenerPendientesExtension();
+        if (pendientes.length === 0) return;
+
+        detenerPollingExtension();
+        colaExtension = pendientes.map((p, i) => ({
+          r: p,
+          procedencia: p.urlOrigen || `captura de la extensión (paso ${i + 1})`,
+        }));
+        resultado = colaExtension.shift();
+        ir(2);
+      } catch {
+        // servidor no disponible o sin código generado todavía: se reintenta en el siguiente tick
+      }
+    }, 3000);
+  }
+
+  function detenerPollingExtension() {
+    if (intervaloExtension) clearInterval(intervaloExtension);
+    intervaloExtension = null;
   }
 
   // ------------------------------------------------------------- paso 1 ---
@@ -62,9 +94,72 @@ export function panelImportarWeb() {
         'Recrear el login de una marca real para una simulación entra dentro del encargo, pero conviene que quede por escrito de dónde salió: cada plantilla clonada guarda una nota de autorización obligatoria, y el linter no la deja pasar vacía.',
       ]),
       zonaMarcador(),
+      el('.separador-o', { texto: 'o desde la extensión' }),
+      zonaExtension(),
       el('.separador-o', { texto: 'o pega una URL' }),
       zonaUrl(),
     ]);
+  }
+
+  function zonaExtension() {
+    const contenido = el('div', { texto: 'Comprobando emparejamiento…' });
+    const zona = el('.zona-soltar', [
+      el('strong', { texto: 'Extensión de captura.' }),
+      contenido,
+    ]);
+
+    refrescarExtension();
+    return zona;
+
+    async function refrescarExtension() {
+      try {
+        const { codigo } = await obtenerCodigoEmparejamiento();
+        pintarEn(contenido, codigo ? conCodigo(codigo) : sinCodigo());
+      } catch {
+        pintarEn(contenido, el('p.ayuda', { texto: 'El servidor local no responde: la extensión no puede usarse sin él.' }));
+      }
+    }
+
+    function sinCodigo() {
+      return el('div', [
+        el('div', { texto: 'Todavía no hay código de emparejamiento generado.' }),
+        el('button.btn.btn-mini', {
+          type: 'button',
+          style: { marginTop: '8px' },
+          texto: 'Generar código',
+          onclick: async () => {
+            try {
+              const { codigo } = await generarCodigoEmparejamiento();
+              brindis(`Código generado: ${codigo}. Pégalo en las opciones de la extensión.`);
+              await refrescarExtension();
+            } catch (err) {
+              brindis(`No se pudo generar: ${err.message}`);
+            }
+          },
+        }),
+      ]);
+    }
+
+    function conCodigo(codigo) {
+      return el('div', [
+        el('div', { texto: 'Código de emparejamiento (pégalo en las opciones de la extensión):' }),
+        el('output.salida-mono', { texto: codigo, style: { display: 'block', margin: '8px 0' } }),
+        el('button.btn.btn-mini', {
+          type: 'button',
+          texto: 'Regenerar código',
+          onclick: async () => {
+            try {
+              const { codigo: nuevo } = await generarCodigoEmparejamiento();
+              brindis(`Nuevo código: ${nuevo}. Actualiza las opciones de la extensión.`);
+              await refrescarExtension();
+            } catch (err) {
+              brindis(`No se pudo regenerar: ${err.message}`);
+            }
+          },
+        }),
+        el('p.ayuda', { texto: 'Esta pantalla revisa cada pocos segundos si la extensión ha mandado algo. Solo con pulsar "Enviar a PhishLab" en su icono, la captura aparece aquí sola.' }),
+      ]);
+    }
   }
 
   function zonaMarcador() {
@@ -269,6 +364,15 @@ export function panelImportarWeb() {
               pintarEn(zonaAviso, el('.nota', { style: { marginTop: '16px' } }, [
                 el('strong', { texto: 'Guardada. ' }),
                 'Está en la biblioteca al recargar, marcada como clonada. Ábrela para revisar los campos de credenciales y editar el texto en vivo, directamente sobre la preview.',
+                colaExtension.length > 0
+                  ? el('div', { style: { marginTop: '10px' } }, [
+                      el('button.btn.btn-mini', {
+                        type: 'button',
+                        texto: `Revisar el siguiente paso capturado (quedan ${colaExtension.length})`,
+                        onclick: () => { resultado = colaExtension.shift(); ir(2); },
+                      }),
+                    ])
+                  : null,
               ]));
             } catch (e) {
               brindis(`No se pudo guardar: ${e.message}`);
