@@ -9,21 +9,35 @@
  * cross-origin, sin CORS). Un shadow root cerrado no es alcanzable desde
  * ningún script de página — se marca con una heurística, nunca en silencio,
  * igual que `tools/sanearWeb.js` anota lo que no puede incrustar.
+ *
+ * Cada recurso detectado (imagen, hoja de estilo, `url(...)` de CSS) se
+ * sustituye en el HTML devuelto por un marcador único
+ * (`phishlab-recurso-N-xxxxxx`), nunca por la URL original tal cual.
+ * `background.js` incrusta cada marcador por su cuenta después. La primera
+ * versión de esto dejaba la URL original en el HTML y hacía
+ * `html.split(url).join(dataUri)` sobre el documento entero — si dos
+ * recursos distintos de la misma página comparten una subcadena (un bundle
+ * de CSS compartido entre pasos, o simplemente "style.css" siendo subcadena
+ * de "old-style.css"), esa sustitución global corrompía el que no tocaba.
+ * Un marcador generado aquí es tan improbable de aparecer por accidente en
+ * el resto de la página que ese cruce deja de ser posible.
  */
 (function () {
-  const recursos = [];
+  let contador = 0;
+  const mapaRecursos = []; // { marcador, url }
 
-  function verRecurso(url) {
-    if (!url || /^data:/i.test(url)) return;
-    recursos.push(url);
+  function marcarRecurso(url) {
+    if (!url || /^data:/i.test(url)) return url;
+    const marcador = `phishlab-recurso-${contador++}-${Math.random().toString(36).slice(2, 8)}`;
+    mapaRecursos.push({ marcador, url });
+    return marcador;
   }
 
-  function extraerUrlsCss(texto) {
-    const encontradas = [];
-    const patron = /url\((['"]?)([^'")]+)\1\)/gi;
-    let m;
-    while ((m = patron.exec(texto ?? ''))) encontradas.push(m[2]);
-    return encontradas;
+  function sustituirUrlsCss(texto) {
+    return (texto ?? '').replace(/url\((['"]?)([^'")]+)\1\)/gi, (m, comillas, url) => {
+      const marcador = marcarRecurso(url);
+      return marcador === url ? m : `url(${comillas}${marcador}${comillas})`;
+    });
   }
 
   function serializarNodo(nodo) {
@@ -43,19 +57,25 @@
       clon.appendChild(plantilla);
     }
 
-    if (nodo.tagName === 'IMG' && nodo.getAttribute('src')) verRecurso(nodo.getAttribute('src'));
-    if (nodo.tagName === 'LINK' && (nodo.getAttribute('rel') || '').includes('stylesheet')) {
-      verRecurso(nodo.getAttribute('href'));
+    if (nodo.tagName === 'IMG' && nodo.getAttribute('src')) {
+      clon.setAttribute('src', marcarRecurso(nodo.getAttribute('src')));
     }
-    if (nodo.tagName === 'STYLE') {
-      for (const url of extraerUrlsCss(nodo.textContent)) verRecurso(url);
+    if (nodo.tagName === 'LINK' && (nodo.getAttribute('rel') || '').includes('stylesheet') && nodo.getAttribute('href')) {
+      clon.setAttribute('href', marcarRecurso(nodo.getAttribute('href')));
     }
     if (nodo.hasAttribute('style')) {
-      for (const url of extraerUrlsCss(nodo.getAttribute('style'))) verRecurso(url);
+      clon.setAttribute('style', sustituirUrlsCss(nodo.getAttribute('style')));
     }
 
-    for (const hijo of nodo.childNodes) {
-      clon.appendChild(serializarNodo(hijo));
+    if (nodo.tagName === 'STYLE') {
+      // El texto se sustituye aquí directamente: el recorrido genérico de
+      // hijos de más abajo clonaría el nodo de texto tal cual, sin pasar
+      // sus url(...) por el marcador.
+      clon.textContent = sustituirUrlsCss(nodo.textContent);
+    } else {
+      for (const hijo of nodo.childNodes) {
+        clon.appendChild(serializarNodo(hijo));
+      }
     }
 
     return clon;
@@ -78,7 +98,7 @@
 
   return {
     html: '<!doctype html>' + raizClonada.outerHTML,
-    recursos: [...new Set(recursos)],
+    recursos: mapaRecursos,
     huboPosibleShadowCerrado,
   };
 })();

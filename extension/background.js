@@ -97,10 +97,17 @@ async function capturarPasoDe(pestana) {
   const result = inyeccion?.[0]?.result;
   if (!result?.html) throw new Error('la captura no devolvió HTML — recarga la pestaña e inténtalo de nuevo');
 
-  const recursosInlinados = await incrustarRecursos(result.recursos, pestana.url);
+  // `result.recursos` es `[{ marcador, url }]` — content.js ya sustituyó cada
+  // URL de recurso por un marcador único en el HTML, así que aquí solo hay
+  // que sustituir cada marcador por su dato incrustado (o, si no se pudo
+  // alcanzar, por la URL original: se pierde el incrustado de ese recurso
+  // concreto, pero no la referencia — un navegador normal aún podría cargarlo
+  // en directo, y así se comporta igual que antes de tener esta extensión).
+  const mapaRecursos = result.recursos ?? [];
+  const incrustados = await incrustarRecursos(mapaRecursos, pestana.url);
   let html = result.html;
-  for (const [url, dataUri] of Object.entries(recursosInlinados)) {
-    html = html.split(url).join(dataUri);
+  for (const { marcador, url } of mapaRecursos) {
+    html = html.split(marcador).join(incrustados.get(marcador) ?? url);
   }
 
   return { url: pestana.url, html, timestamp: Date.now() };
@@ -193,29 +200,42 @@ function esperar(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function incrustarRecursos(urls, urlPestana) {
-  const resultado = {};
-  const unicas = [...new Set(urls)].slice(0, MAX_RECURSOS_POR_PASO);
+/**
+ * @param {{marcador: string, url: string}[]} mapaRecursos
+ * @returns {Promise<Map<string, string>>} marcador -> data: URI (solo los que se lograron incrustar)
+ */
+async function incrustarRecursos(mapaRecursos, urlPestana) {
+  const limitado = mapaRecursos.slice(0, MAX_RECURSOS_POR_PASO);
+  const resultado = new Map();
+  // Varios marcadores distintos pueden apuntar a la misma URL absoluta (el
+  // mismo icono referenciado dos veces, por ejemplo) — se cachea por URL para
+  // no pedirla dos veces por red.
+  const cachePorUrl = new Map();
 
-  // En paralelo con un tope de concurrencia: uno a uno tardaría demasiado en
-  // una página con decenas de recursos, y todos a la vez podría disparar
-  // cientos de conexiones simultáneas contra el mismo servidor.
   let cursor = 0;
   async function trabajador() {
-    while (cursor < unicas.length) {
-      const url = unicas[cursor++];
-      const incrustado = await incrustarUno(url, urlPestana);
-      if (incrustado) resultado[url] = incrustado;
+    while (cursor < limitado.length) {
+      const { marcador, url } = limitado[cursor++];
+      let absoluta;
+      try {
+        absoluta = new URL(url, urlPestana).href;
+      } catch {
+        continue;
+      }
+      if (!cachePorUrl.has(absoluta)) {
+        cachePorUrl.set(absoluta, await incrustarUno(absoluta));
+      }
+      const dataUri = cachePorUrl.get(absoluta);
+      if (dataUri) resultado.set(marcador, dataUri);
     }
   }
-  await Promise.all(Array.from({ length: Math.min(CONCURRENCIA_RECURSOS, unicas.length) }, trabajador));
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCIA_RECURSOS, limitado.length) }, trabajador));
 
   return resultado;
 }
 
-async function incrustarUno(url, urlPestana) {
+async function incrustarUno(absoluta) {
   try {
-    const absoluta = new URL(url, urlPestana).href;
     const controlador = new AbortController();
     const tope = setTimeout(() => controlador.abort(), TIMEOUT_RECURSO_MS);
     let res;
