@@ -76,3 +76,69 @@ test('POST /api/emparejar genera un código y lo persiste', async () => {
   const datosOtraVez = await otraVez.json();
   assert.equal(datosOtraVez.codigo, datos.codigo);
 });
+
+// ------------------------------------------------------------ clonar-flujo ---
+
+test('/api/extension/clonar-flujo sin código de emparejamiento da 401', async () => {
+  const res = await fetch(`${BASE}/api/extension/clonar-flujo`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ pasos: [{ url: 'https://ejemplo.example', html: '<html></html>' }] }),
+  });
+  assert.equal(res.status, 401);
+});
+
+test('/api/extension/clonar-flujo con código incorrecto da 401', async () => {
+  const res = await fetch(`${BASE}/api/extension/clonar-flujo`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-PhishLab-Pair': 'codigo-incorrecto' },
+    body: JSON.stringify({ pasos: [{ url: 'https://ejemplo.example', html: '<html></html>' }] }),
+  });
+  assert.equal(res.status, 401);
+});
+
+test('/api/extension/clonar-flujo con código correcto sanea cada paso y los deja pendientes', async () => {
+  const generado = await (await fetch(`${BASE}/api/emparejar`, { method: 'POST' })).json();
+
+  const res = await fetch(`${BASE}/api/extension/clonar-flujo`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-PhishLab-Pair': generado.codigo },
+    body: JSON.stringify({
+      pasos: [
+        { url: 'https://ejemplo.example/paso1', html: '<html><body><form><input type="email" name="correo"><input type="password" name="clave"></form></body></html>' },
+        { url: 'https://ejemplo.example/paso2', html: '<html><body>segundo paso</body></html>' },
+      ],
+    }),
+  });
+  const datos = await res.json();
+  assert.equal(res.status, 200);
+  assert.equal(datos.recibidos, 2);
+
+  const pendientes = await (await fetch(`${BASE}/api/extension/pendientes`)).json();
+  assert.equal(pendientes.pasos.length, 2);
+  assert.equal(pendientes.pasos[0].urlOrigen, 'https://ejemplo.example/paso1');
+  assert.match(pendientes.pasos[0].html, /name="email"/);
+
+  // La cola se vacía al leerla: una segunda lectura no repite lo mismo.
+  const segundaLectura = await (await fetch(`${BASE}/api/extension/pendientes`)).json();
+  assert.equal(segundaLectura.pasos.length, 0);
+});
+
+test('/api/extension/clonar-flujo con más de 8 pasos da 400', async () => {
+  const generado = await (await fetch(`${BASE}/api/emparejar`, { method: 'POST' })).json();
+  const pasos = Array.from({ length: 9 }, (_, i) => ({ url: `https://ejemplo.example/${i}`, html: '<html></html>' }));
+
+  const res = await fetch(`${BASE}/api/extension/clonar-flujo`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-PhishLab-Pair': generado.codigo },
+    body: JSON.stringify({ pasos }),
+  });
+  assert.equal(res.status, 400);
+});
+
+test('/api/extension/pendientes exige origen local, no código de emparejamiento', async () => {
+  const res = await fetch(`${BASE}/api/extension/pendientes`, {
+    headers: { Origin: 'https://ejemplo-ajeno.example' },
+  });
+  assert.equal(res.status, 403);
+});
