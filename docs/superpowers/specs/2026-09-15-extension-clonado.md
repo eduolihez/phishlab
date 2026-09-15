@@ -233,3 +233,17 @@ demasiado grande`, con su traza completa) en vez de una suposición:
   una contraseña inventada contra el sitio real no aporta nada a la captura y
   cruza una línea innecesaria. Ahora, en cuanto la pantalla recién capturada
   ya trae un campo de contraseña visible, el bucle para ahí sin rellenarlo.
+
+## Addendum 3 — el CSS se capturaba bien y se tiraba después
+
+D4 decía "`resolver: null` porque los recursos ya llegan incrustados: si un
+recurso no llegó incrustado, `sanearWeb` ya lo anota como no incrustado" —
+cierto para imágenes, falso para hojas de estilo. `sanearWeb.js` saneaba
+`<link rel="stylesheet">` intentando resolverlo contra `resolver` sin
+comprobar antes si el `href` ya era un `data:` URI (la rama de imágenes sí
+hacía esa comprobación); con `resolver: null`, la resolución nunca podía
+tener éxito, así que la etiqueta se borraba entera — un CSS que la extensión
+había incrustado correctamente con las cookies de la pestaña acababa tirado
+en el propio saneado del servidor. Arreglado con la misma comprobación que ya
+tenía la rama de imágenes: si el `href` ya es `data:`, se deja la etiqueta
+tal cual.
