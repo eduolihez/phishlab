@@ -61,11 +61,20 @@ const servidor = createServer(async (peticion, respuesta) => {
 
     // Preflight de CORS: solo para /api/clonar, que es la única ruta pensada
     // para que la llame una pestaña de otro origen (ver TOKEN_CLONADO).
+    //
+    // Hace falta además Access-Control-Allow-Private-Network: true. El
+    // marcador llama desde la web real (origen público, típicamente HTTPS) a
+    // 127.0.0.1 (dirección local): Chrome trata ese salto como Private
+    // Network Access, un permiso aparte del CORS normal, y sin esta cabecera
+    // en el preflight bloquea la petición con un fallo de red genérico —
+    // exactamente "no se pudo contactar con el servidor local", aunque el
+    // servidor esté arrancado y respondiendo.
     if (peticion.method === 'OPTIONS' && url.pathname === '/api/clonar') {
       respuesta.writeHead(204, {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST',
         'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Private-Network': 'true',
       });
       return respuesta.end();
     }
