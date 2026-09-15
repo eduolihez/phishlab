@@ -10,6 +10,7 @@
     "test": "node --test tests/*.test.js",
     "lint": "node tools/lint.js",
     "lint:propias": "node tools/lint.js --propias",
-    "build:demo": "node tools/build-demo.js"
+    "build:demo": "node tools/build-demo.js",
+    "build:lab": "node tools/build-lab.js"
   }
 }

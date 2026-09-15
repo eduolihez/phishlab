@@ -10,6 +10,10 @@ templates/propias/
 # Salida del generador de la demo publica.
 demo/
 
+# Salida del generador del build "lab" (herramienta completa, marca real).
+# Nunca se publica sin el muro de acceso delante -- ver CLOUDFLARE.md.
+lab/
+
 # Clave real de telemetria hacia eduolihez.com. La de ejemplo (.example.json)
 # si se versiona; esta no, porque lleva la clave de verdad.
 assets/telemetry.config.json

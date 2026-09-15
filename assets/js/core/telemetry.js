@@ -45,8 +45,15 @@ async function cargarConfig() {
   return configCargada;
 }
 
+/**
+ * "demo" (marcas ficticias, público) y "lab" (marca real, detrás de un muro
+ * de acceso — ver tools/build-lab.js) comparten el mismo tratamiento de
+ * telemetría: ambos son builds estáticos servidos desde eduolihez.com, sin
+ * datos de cliente/expediente reales que proteger en el payload.
+ */
 function esDemo() {
-  return document.documentElement.dataset.modo === 'demo';
+  const modo = document.documentElement.dataset.modo;
+  return modo === 'demo' || modo === 'lab';
 }
 
 function activaEnLocal() {

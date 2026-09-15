@@ -38,9 +38,14 @@ arrancar().catch((e) => {
 });
 
 async function arrancar() {
-  // El modo demo lo marca el generador del estático público. En la herramienta
-  // local nunca está puesto.
+  // El modo demo/lab lo marca el generador del estático público
+  // correspondiente (tools/build-demo.js / tools/build-lab.js). En la
+  // herramienta local nunca está puesto. "lab" es la herramienta completa
+  // (marca real) detrás de un muro de acceso — comparte con "demo" la falta
+  // de servidor Node (sin importar ni guardar plantillas propias), pero no
+  // su mensaje de "marcas ficticias", que en lab sería falso.
   estado.modoDemo = document.documentElement.dataset.modo === 'demo';
+  estado.sinServidorEstatico = estado.modoDemo || document.documentElement.dataset.modo === 'lab';
 
   const [catalogo] = await Promise.all([cargarCatalogo(), detectarServidor()]);
 
@@ -135,14 +140,14 @@ function conectarRutas() {
   registrar('/biblioteca', () => vistaBiblioteca());
   registrar('/plantilla/:tipo/:id', (params) => vistaDetalle(params));
 
-  if (estado.modoDemo) {
+  if (estado.sinServidorEstatico) {
     registrar('/importar', () => el('.pagina.columna-estrecha', [
       el('.cabecera-pagina', [
         el('.rotulo', { texto: '03 / Entrada' }),
         el('h1', { texto: 'Importar' }),
       ]),
       el('.nota.alerta', [
-        el('strong', { texto: 'Desactivado en la demo. ' }),
+        el('strong', { texto: 'Desactivado aquí. ' }),
         'La importación escribe en el disco del equipo que ejecuta la herramienta, así que solo existe en la instalación local.',
       ]),
     ]));

@@ -18,10 +18,12 @@ concienciación contratados por el cliente. Cada paquete que se genera incluye u
 `AUTORIZACION.md` con el checklist previo: contrato firmado, alcance, ventana de
 ejecución, contacto de escalado, aviso al SOC y acuerdo de tratamiento de datos.
 
-**No publiques la herramienta completa en internet.** No guarda nada sensible,
-pero genera material de phishing con la marca de tus clientes dentro. Para
-enseñarla hay una demo pública aparte, con marcas inventadas y sin exportación:
-ver «La demo pública» más abajo.
+**No publiques la herramienta completa sin ningún gate delante.** No guarda
+nada sensible, pero genera material de phishing con marca real. Hay dos
+formas de enseñarla sin eso: una demo pública con marcas inventadas y sin
+exportación (ver «La demo pública» más abajo), y un «lab» con la herramienta
+completa detrás de HTTP Basic Auth para quien tenga la contraseña (ver
+`docs/EDUOLIHEZ.md`).
 
 **No la alojes en el mismo host que sirve las landings de campaña.** Ese host lo
 visita gente ajena a tu organización.
@@ -55,6 +57,7 @@ Para desarrollar:
 npm test             # 339 pruebas, sin dependencias
 npm run lint         # revisión del catálogo
 npm run build:demo   # genera la demo pública en demo/
+npm run build:lab     # genera el lab (herramienta completa) en lab/
 ```
 
 No hay build ni `node_modules`: la aplicación son módulos ES que el navegador
@@ -273,7 +276,21 @@ registra cuerpos de petición, y purga los resultados al entregar el informe.
   credenciales no envían a ninguna parte.
 
 Es lo que se puede enseñar en un portfolio sin publicar un kit de phishing
-alojado. La herramienta completa se queda en local.
+alojado en abierto. Enlazada desde la ficha del proyecto, indexable.
+
+---
+
+## El lab (herramienta completa, con gate)
+
+`npm run build:lab` genera en `lab/` la herramienta completa: catálogo
+entero, marca real, formularios y exportación funcionando. A diferencia de la
+demo, **no** comprueba ausencia de marcas ni desactiva nada — el propósito es
+justo enseñar la herramienta de verdad.
+
+Por eso nunca se publica sin un gate delante. El despliegue de referencia
+(`lab.eduolihez.com`, HTTP Basic Auth) está documentado en
+`docs/EDUOLIHEZ.md`. Sin enlace público desde ningún sitio: la contraseña se
+comparte directamente con quien la pida.
 
 ---
 
@@ -302,6 +319,7 @@ tools/sanearWeb.js         Saneado de una web clonada entera (incrusta recursos,
 tools/lint.js              Linter del catálogo
 tools/nueva-plantilla.js   Alta de plantillas desde un JSON
 tools/build-demo.js        Generador de la demo pública
+tools/build-lab.js         Generador del lab (herramienta completa, con gate)
 tools/migrar-v2.js         Migración de plantillas v1 a v2
 docs/                      GOPHISH.md · PLANTILLAS.md
 docs/superpowers/specs/    Specs de diseño (v2: modelo de datos · v3: workspace, editor en vivo, clonado)
