@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PhishLab</title>
+<style>
+  body { width: 260px; font: 13px system-ui, sans-serif; margin: 0; padding: 14px; background: #14171C; color: #EDEEF0; }
+  h1 { font-size: 14px; margin: 0 0 10px; }
+  .estado { margin-bottom: 12px; color: #9AA3AF; }
+  button { width: 100%; padding: 8px; margin-bottom: 8px; border: none; border-radius: 6px; font: inherit; cursor: pointer; }
+  .primario { background: #1E8A3B; color: #fff; }
+  .secundario { background: #262B33; color: #EDEEF0; }
+  .aviso { color: #E5484D; font-size: 12px; margin-top: 8px; min-height: 14px; }
+</style>
+</head>
+<body>
+  <h1>PhishLab — captura</h1>
+  <div class="estado" id="estado">Comprobando…</div>
+  <button class="primario" id="btn-capturar">Capturar paso</button>
+  <button class="secundario" id="btn-enviar">Enviar a PhishLab</button>
+  <button class="secundario" id="btn-descartar">Descartar</button>
+  <div class="aviso" id="aviso"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
