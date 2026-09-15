@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "PhishLab — Captura de clonado",
+  "version": "1.0.0",
+  "description": "Captura páginas reales, incluida su sesión autenticada, y las envía directo al PhishLab local para convertirlas en landing.",
+  "permissions": ["scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "PhishLab" },
+  "options_page": "options.html"
+}
