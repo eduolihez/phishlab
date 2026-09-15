@@ -207,3 +207,29 @@ De paso, dos mejoras que no estaban en el diseño original:
   pasos, se marca cuál trae el campo de contraseña detectado — GoPhish solo
   admite una página por landing (D2 ya lo decía, pero no lo reflejaba en la
   UI), así que el resto de pasos son solo de referencia.
+
+## Addendum 2 — primer uso real contra un login de verdad
+
+Tres correcciones más, esta vez a partir de un error real (`Error: cuerpo
+demasiado grande`, con su traza completa) en vez de una suposición:
+
+- **`CUERPO_MAXIMO` se quedaba corto de verdad.** 25MB bastaba para un `.eml`
+  o un HTML pegado a mano, pero un envío de `/api/extension/clonar-flujo`
+  puede traer varios pasos con recursos incrustados en base64 cada uno — un
+  login real con un par de imágenes de fondo ya lo superaba. Sube a 200MB
+  para ese canal, que es máquina-a-máquina en local y no tiene el mismo coste
+  que aceptar cuerpos grandes de la red pública.
+- **El autopiloto no se podía parar.** `capturarFlujoAutomatico()` corría de
+  un tirón dentro de un único mensaje; no había forma de interrumpirlo desde
+  el popup una vez lanzado. Se añade una bandera de módulo
+  (`autopilotoEnMarcha`) que un mensaje corto y aparte
+  (`detener-flujo-automatico`) puede apagar, comprobada entre cada paso del
+  bucle — el popup añade un botón "Detener" con polling cada segundo para ver
+  cuántos pasos lleva capturados mientras decide si parar.
+- **El autopiloto debía parar en la contraseña, no seguir de largo.** Antes
+  intentaba rellenar y enviar cualquier formulario que encontrara, incluida
+  la pantalla de contraseña — pero esa es la última captura útil: en una
+  campaña real, de ahí el flujo pasa a la página de concienciación. Enviar
+  una contraseña inventada contra el sitio real no aporta nada a la captura y
+  cruza una línea innecesaria. Ahora, en cuanto la pantalla recién capturada
+  ya trae un campo de contraseña visible, el bucle para ahí sin rellenarlo.

@@ -179,7 +179,12 @@ página real —típicamente un login— en landing, con dos formas de traerla:
   automático": rellena con datos genéricos (`test@dominio.com` /
   `Test1234!`) cualquier campo de email/contraseña que detecte, envía el
   formulario y repite — para no ir pulsando "Capturar paso" a mano en cada
-  pantalla de un login de varios pasos. Cuando llegan varios pasos capturados
+  pantalla de un login de varios pasos. Se puede parar a mano en cualquier
+  momento con "Detener flujo automático", y para solo por sí mismo en cuanto
+  la pantalla capturada ya trae un campo de contraseña visible: esa es la
+  última captura útil (de ahí pasaría a la página de concienciación en una
+  campaña real), así que no llega a rellenarla ni enviarla. Cuando llegan
+  varios pasos capturados
   a la vez, la revisión marca cuál trae el campo de contraseña detectado
   como el recomendado para exportar: GoPhish solo admite una página por
   landing, así que el resto quedan solo de referencia.
