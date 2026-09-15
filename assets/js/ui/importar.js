@@ -13,21 +13,31 @@
  * abre el mensaje.
  */
 
-import { el, pintarEn, brindis, comoId, pasos, icono } from './dom.js';
+import { el, pintarEn, brindis, comoId, pasos, icono, informeSaneado } from './dom.js';
 import { estado } from '../core/estado.js';
 import { importarEml, importarHtml, guardarPlantilla, hayServidor } from '../core/importar.js';
+import { panelImportarWeb } from './importarWeb.js';
 
+const PESTANAS = [
+  { id: 'correo', etiqueta: 'Correo' },
+  { id: 'web', etiqueta: 'Web' },
+];
+
+/**
+ * Contenedor con dos modos: Correo (`.eml` o HTML pegado, de toda la vida) y
+ * Web (clonar una página real como landing — ver `importarWeb.js`). Los dos
+ * necesitan el servidor local, así que el aviso de "arranca el servidor" es
+ * compartido y sale antes de elegir pestaña.
+ */
 export function vistaImportar() {
   const raiz = el('.pagina.columna-estrecha');
-  const barraPasos = el('div');
   const cuerpo = el('div');
 
   raiz.append(
-    barraPasos,
     el('.cabecera-pagina', [
-      el('.rotulo', { texto: '03 / Entrada' }),
-      el('h1', { texto: 'Importar un correo o una página' }),
-      el('p', { texto: 'Trae material real y conviértelo en plantilla reutilizable. El HTML se limpia, los enlaces se reescriben a {{.URL}} y las imágenes se incrustan.' }),
+      el('.rotulo', { texto: '02 / Entrada' }),
+      el('h1', { texto: 'Importar' }),
+      el('p', { texto: 'Trae material real y conviértelo en plantilla reutilizable: un correo (.eml o HTML pegado) o una web entera clonada como landing.' }),
     ]),
     cuerpo
   );
@@ -36,13 +46,38 @@ export function vistaImportar() {
     raiz.append(
       el('.nota.alerta', [
         el('strong', { texto: 'Hace falta el servidor local. ' }),
-        'Parsear un .eml y escribir en templates/ no se puede hacer desde el navegador. ',
+        'Ni parsear un .eml, ni clonar una web, ni escribir en templates/ se puede hacer desde el navegador solo. ',
         'Arranca con ', el('code', { texto: 'abrir-phishlab.bat' }), ' o ', el('code', { texto: 'npm run dev' }),
         ' y vuelve a esta pantalla.',
       ])
     );
     return raiz;
   }
+
+  let pestanaActual = 'correo';
+  const barraPestanas = el('div');
+  raiz.insertBefore(barraPestanas, cuerpo);
+
+  pintarPestanas();
+  return raiz;
+
+  function pintarPestanas() {
+    pintarEn(barraPestanas, el('.pestanas.pestanas-panel', PESTANAS.map((p) =>
+      el(`button.pestana${pestanaActual === p.id ? '.activa' : ''}`, {
+        type: 'button',
+        texto: p.etiqueta,
+        onclick: () => { pestanaActual = p.id; pintarPestanas(); },
+      })
+    )));
+    pintarEn(cuerpo, pestanaActual === 'correo' ? panelImportarCorreo() : panelImportarWeb());
+  }
+}
+
+function panelImportarCorreo() {
+  const raiz = el('div');
+  const barraPasos = el('div');
+  const cuerpo = el('div');
+  raiz.append(barraPasos, cuerpo);
 
   // Estado propio de este wizard: qué se ha importado y en qué paso está.
   // No vive en `estado` global porque es un borrador de un solo uso, no
@@ -180,7 +215,7 @@ export function vistaImportar() {
         : null,
 
       el('h2.titulo-bloque', { texto: 'Qué se ha tocado' }),
-      informe(r.informe ?? []),
+      informeSaneado(r.informe ?? []),
 
       el('h2.titulo-bloque', { style: { marginTop: '22px' }, texto: 'Cómo queda' }),
       marco,
@@ -190,17 +225,6 @@ export function vistaImportar() {
         el('button.btn.btn-primario.btn-mini', { type: 'button', onclick: () => ir(3) }, ['Siguiente']),
       ]),
     ]);
-  }
-
-  function informe(lineas) {
-    if (!lineas.length) return el('p.ayuda', { texto: 'No hizo falta tocar nada.' });
-
-    return el('.informe-saneado', lineas.map((l) =>
-      el(`.linea-informe.${l.clase ?? 'quitado'}`, [
-        el('span.marca', { texto: l.clase ?? 'quitado' }),
-        el('span', { texto: l.texto }),
-      ])
-    ));
   }
 
   // ------------------------------------------------------------- paso 3 ---

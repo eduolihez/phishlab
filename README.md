@@ -147,6 +147,63 @@ sin ella.
 Lo importado se guarda en `templates/propias/`, que está fuera de git: lleva
 dentro material de un encargo concreto.
 
+### Clonar una web entera (pestaña "Web")
+
+La misma pantalla de Importar tiene una segunda pestaña para convertir una
+página real —típicamente un login— en landing, con dos formas de traerla:
+
+- **Marcador Ctrl+S.** Lo arrastras a la barra de marcadores una vez; en la
+  web real, ya cargada y logueada si hace falta, lo pulsas o usas Ctrl+S en
+  cualquier momento — sirve incluso para una pantalla que solo aparece tras
+  interactuar con la página, como el segundo paso de un login. Es la opción
+  con más fidelidad: captura la página tal como la renderizó el navegador,
+  JavaScript incluido.
+- **Pegar una URL.** El servidor local hace el fetch él mismo. Más simple,
+  pero no sirve para logins que se pintan por JavaScript.
+
+Las dos pasan por `tools/sanearWeb.js`, que se parece al saneado de correo en
+lo esencial (fuera scripts y manejadores, enlaces a `{{.URL}}`) pero difiere en
+las imágenes: en vez de cortarlas, **intenta incrustarlas** como data URI —son
+el logo y el fondo de la propia página que se clona, no un píxel de un
+tercero— y lo que no consigue leer lo deja dicho en el informe, marcado para
+corregir a mano, nunca en silencio. También detecta por heurística los campos
+de email y contraseña del formulario y los renombra a `email`/`password`
+exactamente así, con un nivel de confianza (alta/baja/no detectado) que se
+enseña antes de guardar: el linter no deja pasar una landing de credenciales
+si esos dos campos no están.
+
+Los logins de varios pasos (Google, Microsoft) quedan fuera de una sola
+captura: cada Ctrl+S trae una pantalla, y combinar dos capturas en una misma
+landing es trabajo manual en el editor en vivo después.
+
+---
+
+## Editor en vivo
+
+Cada plantilla se edita directamente sobre su propia preview, sin una lista de
+campos aparte: el texto y las imágenes que se ven en el workspace son
+clicables. Un clic vuelve editable ese texto; al salir del campo, el cambio se
+ve al momento en la misma preview.
+
+Por debajo hay dos rutas distintas según de qué texto se trate:
+
+- **Fragmento de copy** (`{{entradilla}}`, `{{saludo}}`...): el cambio se
+  escribe en la variante de la señal que estuviera activa en ese momento — si
+  editas con "urgencia" encendida, cambias esa variante, no la de "difícil".
+  El resto de variantes y del sistema de señales sigue intacto debajo.
+- **Cualquier otro texto o imagen** (una etiqueta escrita a mano en el layout,
+  o el cuerpo entero de una plantilla importada/clonada): el cambio se guarda
+  como un parche literal sobre esa plantilla, sin pasar por el sistema de
+  variantes.
+
+Editar así **no modifica la plantilla de fábrica**: es un borrador de sesión,
+igual que siempre. Para conservarlo hace falta "Guardar como plantilla
+propia", que aparece en cuanto tocas algo. Si el cambio incluye texto o
+imágenes sueltas (no solo fragmentos de copy), la plantilla guardada queda con
+el idioma y la marca de ese momento fijados — deja de recomponerse con otra
+marca o preset, porque ya no hay forma de deshacer un texto suelto de vuelta a
+una variable.
+
 ---
 
 ## Captura de credenciales
@@ -195,28 +252,37 @@ alojado. La herramienta completa se queda en local.
 ## Estructura
 
 ```
-index.html                 Shell de la aplicación
+index.html                 Shell de la aplicación (nav: Biblioteca · Importar)
 assets/css/                Estilos, sin CDN
-assets/js/core/            engine · senales · catalog · componer · brand · zip · gophish · importar · estado
-assets/js/ui/              router · biblioteca · detalle · campana · importar · editor · marca · senales · fields · preview · dom
+assets/js/core/            engine · senales · catalog · componer · edicionInline · brand · zip · gophish · importar · estado
+assets/js/ui/              router · biblioteca · detalle · exportar · editorEnVivo · importar · importarWeb · marca · fields · preview · dom
+assets/js/bookmarklet/     capturar.js — fuente del marcador Ctrl+S de clonado
 templates/senales.json     Las seis señales
 templates/presets.json     facil / medio / dificil como combinaciones de señales
 templates/index.json       Índice del catálogo
 templates/layouts/         Layouts compartidos (aviso, login)
 templates/emails/<id>/     meta.json + copy/{es,ca,en}.json  (+ layout.html propio si no comparte)
 templates/landings/<id>/   Igual
-templates/propias/         Importadas y variantes propias. Fuera de git.
+templates/propias/         Importadas, clonadas y variantes propias. Fuera de git.
 catalogo/                  Ficheros de alta de plantillas para tools/nueva-plantilla.js
-tests/                     259 pruebas (node --test)
-tools/servidor.js          Servidor local + API de importación
+tests/                     325 pruebas (node --test)
+tools/servidor.js          Servidor local + API de importación y clonado
 tools/eml.js               Parser de .eml sin dependencias
 tools/sanear.js            Saneado del HTML importado
+tools/sanearWeb.js         Saneado de una web clonada entera (incrusta recursos, detecta login)
 tools/lint.js              Linter del catálogo
 tools/nueva-plantilla.js   Alta de plantillas desde un JSON
 tools/build-demo.js        Generador de la demo pública
 tools/migrar-v2.js         Migración de plantillas v1 a v2
 docs/                      GOPHISH.md · PLANTILLAS.md
+docs/superpowers/specs/    Specs de diseño (v2: modelo de datos · v3: workspace, editor en vivo, clonado)
 ```
+
+La app tiene dos secciones en el nav: **Biblioteca** (portada — explorar, calibrar,
+editar en vivo y exportar cada plantilla desde un único workspace) e **Importar**
+(traer material real, en correo o en web entera). Montar una campaña ya no es una
+pantalla aparte: se hace desde la pestaña "Exportar" del workspace de la propia
+plantilla.
 
 Todo lo que hay en `templates/` son datos: añadir una plantilla no toca ni una
 línea de la aplicación. Ver `docs/PLANTILLAS.md`.

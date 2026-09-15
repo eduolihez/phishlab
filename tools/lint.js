@@ -90,8 +90,8 @@ function revisar(plantilla) {
 
   if (!meta.origen?.tipo) {
     error(id, 'sin "origen.tipo": hay que poder saber de dónde salió cada plantilla');
-  } else if (meta.origen.tipo.startsWith('importado') && !meta.origen.autorizacion) {
-    error(id, 'importada sin "origen.autorizacion": una copia de material real necesita constar bajo qué encargo se hizo');
+  } else if ((meta.origen.tipo.startsWith('importado') || meta.origen.tipo === 'clonado-web') && !meta.origen.autorizacion) {
+    error(id, 'importada o clonada sin "origen.autorizacion": una copia de material real necesita constar bajo qué encargo se hizo');
   }
 
   if (!Array.isArray(meta.idiomas) || !meta.idiomas.length) return error(id, 'sin "idiomas"');
@@ -138,9 +138,9 @@ function revisar(plantilla) {
     if (b.senal && !SENALES.has(b.senal.replace(/^!/, ''))) {
       error(id, `el bloque "${b.id}" cuelga de la señal desconocida "${b.senal}"`);
     }
-    // El bloque `cuerpo` de una importada es siempre así: entra de una pieza
-    // y se trocea después. Avisarlo cada vez sería ruido garantizado.
-    const esCuerpoImportado = b.id === 'cuerpo' && meta.origen?.tipo?.startsWith('importado');
+    // El bloque `cuerpo` de una importada o clonada es siempre así: entra de
+    // una pieza y se trocea después. Avisarlo cada vez sería ruido garantizado.
+    const esCuerpoImportado = b.id === 'cuerpo' && (meta.origen?.tipo?.startsWith('importado') || meta.origen?.tipo === 'clonado-web');
     if (!b.senal && !b.opcional && !esCuerpoImportado) {
       aviso(id, `el bloque "${b.id}" no es opcional ni depende de una señal: está siempre, así que marcarlo no aporta`);
     }

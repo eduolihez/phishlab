@@ -58,6 +58,31 @@ mirase el código fuente.
 
 ---
 
+## El marcador de clonado y por qué tiene su propia puerta
+
+El servidor local rechaza cualquier petición a `/api/*` cuyo `Origin` no sea
+local — así una pestaña abierta en cualquier otra web no puede hablar con él
+mientras lo tienes arrancado. El marcador Ctrl+S rompe esa regla a propósito:
+postea la captura desde la pestaña de la **web real** que estás clonando, así
+que su `Origin` nunca va a ser local.
+
+Para esa única ruta (`/api/clonar`) la protección deja de ser el origen y pasa
+a ser un token aleatorio de 16 bytes que genera el servidor en cada arranque y
+que el marcador lleva incrustado desde el momento en que lo generas en
+Importar → Web. Sin el token, una web cualquiera que abrieras mientras el
+servidor está arrancado podría intentar postear a ciegas — con él, tendría que
+adivinarlo. El resto de la API (guardar plantillas, importar `.eml`, clonar
+por URL) sigue exigiendo origen local sin excepción: lo único que puede llegar
+desde fuera es el HTML ya capturado de la página que tú misma decidiste
+clonar, nunca una escritura en disco.
+
+`/api/clonar` tampoco guarda nada por sí sola: deja el resultado saneado en
+memoria, a la espera de que lo revises en Importar → Web y decidas guardarlo
+como plantilla propia — con su nota de autorización, igual que cualquier otra
+importación.
+
+---
+
 ## Qué no sale de la máquina
 
 `templates/propias/` está en `.gitignore`. Ahí viven las plantillas importadas y

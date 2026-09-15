@@ -35,6 +35,15 @@ export const estado = {
   campos: {},
   marca: { ...MARCA_VACIA },
 
+  /**
+   * Parches del editor en línea sobre texto/imágenes que no son un fragmento
+   * de copy: `{ [metaId]: { 'raw:3': 'texto nuevo', 'img:0': 'data:...' } }`.
+   * A propósito NO se persiste (no entra en `persistir()`): es un borrador de
+   * sesión, igual que la edición de copy de toda la vida — se pierde al
+   * recargar si no se guarda como plantilla propia.
+   */
+  edicionesCrudas: {},
+
   cliente: '',
   expediente: '',
   incluirFormativa: true,

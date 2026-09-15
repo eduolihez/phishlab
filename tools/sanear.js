@@ -17,7 +17,7 @@
  * tocado, así que nada de esto ocurre a espaldas de quien importa.
  */
 
-const ENTIDADES_PELIGROSAS = /^(javascript|vbscript|data:text\/html)/i;
+export const ENTIDADES_PELIGROSAS = /^(javascript|vbscript|data:text\/html)/i;
 
 /**
  * @param {string} html
@@ -118,7 +118,7 @@ export function sanear(html, { tipo = 'emails', imagenes = new Map() } = {}) {
 }
 
 /** Quita una etiqueta y su contenido (o solo la etiqueta, si se pide). */
-function quitarEtiqueta(html, etiqueta, alQuitar, { soloEtiqueta = false, cuando = true } = {}) {
+export function quitarEtiqueta(html, etiqueta, alQuitar, { soloEtiqueta = false, cuando = true } = {}) {
   if (!cuando) return html;
 
   if (soloEtiqueta) {
@@ -143,9 +143,10 @@ function quitarEtiqueta(html, etiqueta, alQuitar, { soloEtiqueta = false, cuando
  * Un correo importado entra de una pieza y funciona desde el primer momento.
  * Trocearlo en bloques con sentido es un trabajo manual que se hace después,
  * cuando esa plantilla merezca la pena; obligarlo al importar haría que
- * importar dejara de ser útil.
+ * importar dejara de ser útil. La usa también `tools/sanearWeb.js`, por el
+ * mismo motivo, para una web clonada entera.
  */
-function envolverEnBloque(html) {
+export function envolverEnBloque(html) {
   if (html.includes('<!--@bloque:')) return html;
 
   const cuerpo = html.match(/<body\b[^>]*>([\s\S]*)<\/body>/i);

@@ -532,6 +532,8 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 
 .campo input[type='text'],
 .campo input[type='number'],
+.campo input[type='search'],
+.campo input[type='url'],
 .campo select,
 .campo textarea {
   width: 100%;
@@ -991,7 +993,20 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
   color: var(--acento);
 }
 
-.panel-exportar { grid-column: 1 / -1; max-width: 640px; margin: 0 auto; border-right: 0 !important; }
+.pestanas-panel { margin: 4px 0 18px; }
+
+.pieza-emparejada {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  border: 1px solid var(--borde);
+  border-radius: var(--r-s);
+  background: var(--elevado);
+  font-size: 12.5px;
+}
+
+.linea-informe.no-incrustado .marca { color: var(--peligro); background: var(--peligro-fondo); }
 
 .soltar-logo {
   border: 1.5px dashed var(--borde);

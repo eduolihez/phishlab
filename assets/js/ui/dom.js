@@ -149,6 +149,22 @@ export function brindis(texto) {
   temporizadorBrindis = setTimeout(() => caja.classList.remove('visible'), 3000);
 }
 
+/**
+ * Lista de lo que ha tocado un saneado (de `.eml`, de HTML pegado o de una
+ * web clonada). La usan `importar.js` e `importarWeb.js` — es el mismo
+ * informe tanto si lo que entra es un correo como una página.
+ */
+export function informeSaneado(lineas) {
+  if (!lineas.length) return el('p.ayuda', { texto: 'No hizo falta tocar nada.' });
+
+  return el('.informe-saneado', lineas.map((l) =>
+    el(`.linea-informe.${l.clase ?? 'quitado'}`, [
+      el('span.marca', { texto: l.clase ?? 'quitado' }),
+      el('span', { texto: l.texto }),
+    ])
+  ));
+}
+
 /** Formatea bytes de forma legible. */
 export function peso(texto) {
   const bytes = new Blob([texto]).size;

@@ -62,6 +62,33 @@
         ],
         "createdAt": "2026-09-14T13:04:04.977Z",
         "reason": "Mismo caso: recreacion fiel del login real de Adobe, jerarquia plana intencional propia de un formulario de acceso real."
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "assets/js/core/edicionInline.js"
+        ],
+        "createdAt": "2026-09-15T06:49:15.345Z",
+        "reason": "falso positivo: <img> aparece solo en un comentario dentro de la plantilla de texto del script inyectado, no es una etiqueta real"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "tools/sanear.js"
+        ],
+        "createdAt": "2026-09-15T06:56:58.665Z",
+        "reason": "falso positivo: la linea es una regex que detecta etiquetas <img> en HTML importado, no una imagen real"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "tools/sanearWeb.js"
+        ],
+        "createdAt": "2026-09-15T06:58:23.027Z",
+        "reason": "falso positivo: regex sobre <img> en HTML clonado dentro de una herramienta de Node, no una imagen real"
       }
     ]
   }

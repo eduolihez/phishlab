@@ -20,9 +20,7 @@ import { registrarVisita, activarTelemetriaLocal } from './core/telemetry.js';
 
 import { vistaBiblioteca } from './ui/biblioteca.js';
 import { vistaDetalle } from './ui/detalle.js';
-import { vistaNuevaCampana } from './ui/nuevaCampana.js';
 import { vistaImportar } from './ui/importar.js';
-import { vistaSenales } from './ui/senales.js';
 
 arrancar().catch((e) => {
   console.error(e);
@@ -57,7 +55,7 @@ async function arrancar() {
   registrarVisita();
 
   alNavegar(marcarNavegacion);
-  await arrancarRouter($('#vista-principal'), '/nueva');
+  await arrancarRouter($('#vista-principal'), '/biblioteca');
 }
 
 const CLAVE_AVISO = 'phishlab_aviso_aceptado_v1';
@@ -134,10 +132,8 @@ function sanearSeleccion() {
 }
 
 function conectarRutas() {
-  registrar('/nueva', () => vistaNuevaCampana());
   registrar('/biblioteca', () => vistaBiblioteca());
   registrar('/plantilla/:tipo/:id', (params) => vistaDetalle(params));
-  registrar('/senales', () => vistaSenales());
 
   if (estado.modoDemo) {
     registrar('/importar', () => el('.pagina.columna-estrecha', [
@@ -178,8 +174,7 @@ function pintarCronica() {
         : 'Sin servidor local: se puede componer y exportar, pero no importar ni guardar en disco.',
       texto: hayServidor() ? 'servidor local' : 'solo lectura',
       class: hayServidor() ? 'pildora pildora-acento' : 'pildora pildora-alerta',
-    }),
-    el('a.btn.btn-primario.btn-mini', { href: '#/nueva', texto: 'Montar campaña' })
+    })
   );
 }
 

@@ -30,9 +30,17 @@ const MAX_PASADAS = 6;
  *
  * @param {string} html
  * @param {Record<string, unknown>} ctx
+ * @param {{ marcar?: (clave: string) => boolean }} [opciones]
+ *   `marcar`: si una clave sustituida devuelve true, su valor se envuelve en
+ *   `<span data-pl-copy="clave">` para que el editor en vivo sepa a qué
+ *   fragmento escribir de vuelta. Solo se envuelve si la sustitución cae en
+ *   texto de verdad, nunca dentro de una etiqueta — envolver el valor de un
+ *   atributo (`alt="{{empresa}}"`) rompería el HTML. Sin `marcar`, el
+ *   comportamiento es idéntico al de siempre: es opcional a propósito, para
+ *   no tocar ni un byte de lo que ya componen el linter y `tools/render.js`.
  * @returns {{ html: string, faltantes: string[] }}
  */
-export function render(html, ctx = {}) {
+export function render(html, ctx = {}, { marcar } = {}) {
   if (typeof html !== 'string') throw new TypeError('render() espera una cadena');
 
   // 1. Aparta las de GoPhish para que ningún paso posterior las toque.
@@ -48,18 +56,26 @@ export function render(html, ctx = {}) {
   // plantillas: {{entradilla}} se resuelve a "Por tus {{anios}} años en
   // {{empresa}}...", y esas dos variables solo existen una vez insertado el
   // fragmento. Con una única pasada saldrían literales en el correo enviado.
+  //
+  // El marcado (paso 2b) se hace en la MISMA pasada que la sustitución y no
+  // después sobre el resultado final: una vez mezclado el fragmento con el
+  // texto que lo rodea no hay forma fiable de saber dónde empezaba.
   let pases = 0;
   let hubocambio = true;
   while (hubocambio && pases < MAX_PASADAS) {
     hubocambio = false;
-    texto = texto.replace(PROPIAS, (match, clave) => {
+    texto = texto.replace(PROPIAS, (match, clave, offset, cadena) => {
       const valor = leer(ctx, clave);
       // undefined/null es "no existe": se deja el hueco visible.
       // Cadena vacía es un valor deliberado (p. ej. el aviso del nivel
       // difícil, que no lleva ninguno) y sí se sustituye.
       if (valor === undefined || valor === null) return match;
       hubocambio = true;
-      return String(valor);
+      const salida = String(valor);
+      if (marcar?.(clave) && !dentroDeEtiqueta(cadena, offset)) {
+        return `<span data-pl-copy="${escaparAtributo(clave)}">${salida}</span>`;
+      }
+      return salida;
     });
     pases++;
   }
@@ -80,6 +96,22 @@ export function render(html, ctx = {}) {
 /** Lee "a.b.c" dentro de un objeto anidado. */
 function leer(obj, ruta) {
   return ruta.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
+}
+
+/**
+ * ¿La posición `offset` de `cadena` cae dentro de una etiqueta (entre `<` y
+ * `>`), en vez de en texto normal? No es un parser de HTML de verdad — mira
+ * el último `<` y el último `>` antes de la posición — pero con el HTML de
+ * tablas y atributos en línea que usan las plantillas es suficiente, y es la
+ * misma clase de heurística por texto que ya usa `tools/sanear.js`.
+ */
+function dentroDeEtiqueta(cadena, offset) {
+  const antes = cadena.slice(0, offset);
+  return antes.lastIndexOf('<') > antes.lastIndexOf('>');
+}
+
+function escaparAtributo(s) {
+  return String(s).replace(/[&"<>]/g, (c) => ({ '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' }[c]));
 }
 
 /**

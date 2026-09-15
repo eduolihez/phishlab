@@ -96,7 +96,10 @@ export async function componer(meta, estado) {
     fragmentos: copy,
   });
 
-  const salida = render(podado.html, ctx);
+  // Se marca siempre, no solo en el workspace: el marcado es un <span> inerte
+  // sin estilo propio, así que no cambia nada de lo que ve una miniatura o el
+  // HTML exportado (que pasa por `edicionInline.finalizar` antes de salir).
+  const salida = render(podado.html, ctx, { marcar: (clave) => clave in copy });
 
   return {
     html: salida.html,
