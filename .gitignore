@@ -17,3 +17,7 @@ assets/telemetry.config.json
 # Cache de sesion del hook de diseno (impeccable): rutas absolutas locales,
 # no aporta nada fuera de esta maquina. La config de reglas si se versiona.
 .impeccable/hook.cache.json
+
+# Codigo de emparejamiento con la extension de captura. Es un secreto local
+# de esta maquina, no algo que compartir en el repositorio.
+.pareado
