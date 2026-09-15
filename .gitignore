@@ -13,6 +13,7 @@ demo/
 # Clave real de telemetria hacia eduolihez.com. La de ejemplo (.example.json)
 # si se versiona; esta no, porque lleva la clave de verdad.
 assets/telemetry.config.json
+extension/telemetry.config.json
 
 # Cache de sesion del hook de diseno (impeccable): rutas absolutas locales,
 # no aporta nada fuera de esta maquina. La config de reglas si se versiona.

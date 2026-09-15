@@ -21,6 +21,8 @@
  * `chrome.runtime.onStartup`.
  */
 
+import { registrarEvento } from './telemetry.js';
+
 const LIMITE_BYTES_RECURSO = 5 * 1024 * 1024;
 const MAX_RECURSOS_POR_PASO = 60;
 const MAX_PASOS = 8;
@@ -33,6 +35,9 @@ const ESPERA_TRAS_AVANZAR_MS = 1600;
  * ("Capturar flujo automático"); no hay otra forma de comunicar dos
  * invocaciones distintas del listener entre sí. */
 let autopilotoEnMarcha = false;
+
+/** Cómo se capturó la sesión actual, solo para el payload de telemetría (nunca URL ni dominio). */
+let modoSesion = 'manual';
 
 chrome.runtime.onStartup.addListener(() => {
   chrome.storage.local.remove('pasos');
@@ -139,6 +144,7 @@ async function capturarPasoDe(pestana) {
 async function capturarFlujoAutomatico() {
   await descartarSesion();
   autopilotoEnMarcha = true;
+  modoSesion = 'autopiloto';
   const pasos = [];
 
   try {
@@ -276,6 +282,7 @@ async function leerSesion() {
 async function descartarSesion() {
   await chrome.storage.local.set({ pasos: [] });
   await actualizarBadge(0);
+  modoSesion = 'manual';
   return { ok: true };
 }
 
@@ -295,6 +302,7 @@ async function enviarSesion() {
   const datos = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(datos.error ?? `el servidor respondió ${res.status}`);
 
+  registrarEvento('extension_flujo_enviado', { pasos: sesion.pasos.length, modo: modoSesion });
   await descartarSesion();
   return { ok: true, recibidos: datos.recibidos };
 }

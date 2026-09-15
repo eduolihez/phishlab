@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
   "name": "PhishLab — Captura de clonado",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Captura páginas reales, incluida su sesión autenticada, y las envía directo al PhishLab local para convertirlas en landing.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkZ/3OC2EXwWh7WmAJqQ8OCZuKMRAl1rfGZIbyN3bSUwXPDedp11Nzn5Ks6m9GR+I99TlUiEEm3D1ChojQtCnLtPaTt8VpEzllXGZ1pufKB4Z/NphXDOEiUtAEQn6YhlQ9RsFyaRVV2T3AVPmc1/PsRrrQ8ap9uDep8Vbwf4LIUtPcUC5K3lW5FQPPiL03e3yveOzScmyK85pQfBu5zEGXu74IFcQS8lK2ErxR/fIhAv4LPoCHvfKJiFkn4qMWa0cIBXPBsfgvV2ztD1IbW5MkCQvNCE4ywpVmvgvnKz/zd3oLQK+CP4hjOg1BjHRR5gbVO3EdsPzLCq4N5QIt2HH1QIDAQAB",
   "permissions": ["scripting", "storage", "unlimitedStorage", "tabs"],
   "host_permissions": ["<all_urls>"],
-  "background": { "service_worker": "background.js" },
+  "background": { "service_worker": "background.js", "type": "module" },
   "action": { "default_popup": "popup.html", "default_title": "PhishLab" },
   "options_page": "options.html"
 }

@@ -1,0 +1,4 @@
+{
+  "_comentario": "Copia este fichero a telemetry.config.json (sin '.example') y pon la misma clave real de assets/telemetry.config.json (misma app 'phishlab' en admin.eduolihez.com). Sin ese fichero, la telemetría es un no-op: no rompe nada, simplemente no manda eventos.",
+  "apiKey": "PEGA_AQUI_LA_MISMA_CLAVE_QUE_ASSETS_TELEMETRY_CONFIG_JSON"
+}

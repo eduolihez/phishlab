@@ -7,6 +7,8 @@
   body { font: 14px system-ui, sans-serif; max-width: 420px; margin: 24px auto; padding: 0 16px; }
   label { display: block; margin-top: 14px; font-weight: 600; }
   input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+  label.casilla { display: flex; align-items: center; gap: 8px; font-weight: 400; }
+  label.casilla input { width: auto; margin-top: 0; }
   button { margin-top: 16px; padding: 8px 16px; }
   p.ayuda { color: #666; font-size: 12px; }
   .guardado { color: #1E8A3B; font-size: 12px; margin-top: 8px; min-height: 14px; }
@@ -19,8 +21,12 @@
   <input id="codigo" type="text" autocomplete="off">
   <label for="puerto">Puerto del servidor local</label>
   <input id="puerto" type="number" value="8080">
+  <label class="casilla" for="telemetria">
+    <input id="telemetria" type="checkbox">
+    Enviar estadísticas de uso anónimas (nº de pasos capturados, nada de URLs ni dominios)
+  </label>
   <button id="guardar">Guardar</button>
   <div class="guardado" id="guardado"></div>
-  <script src="options.js"></script>
+  <script src="options.js" type="module"></script>
 </body>
 </html>
