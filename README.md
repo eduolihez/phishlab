@@ -173,8 +173,16 @@ página real —típicamente un login— en landing, con dos formas de traerla:
   puede obtener (ver `SECURITY.md`). También soporta capturar varios pasos de
   un login antes de enviarlos juntos, y su incrustado de recursos es más fiel
   que el del servidor: corre con las cookies de la propia pestaña y sin las
-  restricciones de CORS de un fetch normal. Requiere emparejarse una vez con
-  un código que se genera desde esta misma pantalla.
+  restricciones de CORS de un fetch normal. Requiere emparejarse una vez
+  pegando en el popup de la extensión el código que se genera desde esta
+  misma pantalla. El popup también tiene un botón "Capturar flujo
+  automático": rellena con datos genéricos (`test@dominio.com` /
+  `Test1234!`) cualquier campo de email/contraseña que detecte, envía el
+  formulario y repite — para no ir pulsando "Capturar paso" a mano en cada
+  pantalla de un login de varios pasos. Cuando llegan varios pasos capturados
+  a la vez, la revisión marca cuál trae el campo de contraseña detectado
+  como el recomendado para exportar: GoPhish solo admite una página por
+  landing, así que el resto quedan solo de referencia.
 
 Las tres pasan por `tools/sanearWeb.js`, que se parece al saneado de correo en
 lo esencial (fuera scripts y manejadores, enlaces a `{{.URL}}`) pero difiere en

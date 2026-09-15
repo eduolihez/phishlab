@@ -1,7 +1,7 @@
 # Extensión de captura — sustituye al marcador Ctrl+S
 
 Fecha: 2026-09-15
-Estado: propuesto
+Estado: implementado, con una revisión sobre la marcha (ver Addendum al final)
 Revisa: [2026-09-15-workspace-editor-clonado-design.md](2026-09-15-workspace-editor-clonado-design.md) (introduce el marcador Ctrl+S y `sanearWeb.js`, ver ahí el porqué del salto portapapeles → red y las limitaciones de fidelidad del resolver del servidor).
 
 ## Problema
@@ -171,3 +171,39 @@ incluyendo el rechazo con código ausente/incorrecto) y para el cambio de
 extensión en sí no tiene un arnés de test equivalente — se valida a mano
 contra un par de logins reales multi-paso durante la implementación; esa
 validación manual queda como paso explícito del plan, no implícita.
+
+## Addendum — primera prueba real y tres correcciones
+
+La primera prueba en un Chrome real reventó al primer "Capturar paso" con
+`Session storage quota bytes exceeded`. La causa no era un caso límite: D2
+proponía `chrome.storage.session` para la sesión de captura, y esa API tiene
+un tope duro de 10MB que **ningún permiso puede levantar** —
+`unlimitedStorage` (que sí quita el tope de `storage.local`) no se aplica a
+`storage.session`, algo que esta spec no verificó antes de proponerlo. Una
+sola página con una imagen de fondo incrustada en base64 ya se come ese
+tope. Corrección: la sesión pasa a `chrome.storage.local` +
+`unlimitedStorage` en el manifest, vaciándose a mano en
+`chrome.runtime.onStartup` para conservar la intención original (no
+sobrevive a un reinicio del navegador).
+
+De paso, dos mejoras que no estaban en el diseño original:
+
+- **Incrustado de recursos en paralelo** (tope de 6 a la vez, timeout de 8s
+  por recurso) en vez de uno a uno sin límite — un solo recurso lento podía
+  colgar toda la captura antes.
+- **Autopiloto de flujo** (`extension/avanzar.js` + `capturarFlujoAutomatico`
+  en `background.js`): rellena con datos genéricos (`test@dominio.com` /
+  `Test1234!`) los campos de email/contraseña que detecta con la misma
+  heurística que usa `tools/sanearWeb.js`, envía el formulario, espera, y
+  repite — pensado para no tener que ir pulsando "Capturar paso" a mano en
+  cada pantalla de un login de Google/Microsoft. No autentica de verdad: si
+  el sitio valida la cuenta contra su base de datos y no avanza, el
+  autopiloto simplemente para ahí y entrega lo que ya haya capturado.
+- **Código de emparejamiento editable desde el popup**, no solo desde la
+  página de Opciones — D6 lo daba por hecho en Opciones sin más
+  justificación; en la práctica hacía falta un salto extra para algo que se
+  usa en el arranque de cada sesión de captura.
+- **Recomendación de exportación en la revisión**: cuando llegan varios
+  pasos, se marca cuál trae el campo de contraseña detectado — GoPhish solo
+  admite una página por landing (D2 ya lo decía, pero no lo reflejaba en la
+  UI), así que el resto de pasos son solo de referencia.
