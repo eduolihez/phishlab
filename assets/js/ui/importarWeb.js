@@ -71,7 +71,20 @@ export function panelImportarWeb() {
         colaExtension = pendientes.map((p, i) => ({
           r: p,
           procedencia: p.urlOrigen || `captura de la extensión (paso ${i + 1})`,
+          // GoPhish solo admite una página por landing (ver SECURITY.md): de
+          // varios pasos capturados, el que trae el campo de contraseña
+          // detectado es normalmente el único con sentido para exportar —
+          // los anteriores suelen ser solo pantallas previas del login.
+          recomendado: (p.camposLogin?.password?.confianza ?? 'no-detectado') !== 'no-detectado',
         }));
+        // El recomendado pasa primero a revisión, aunque no sea el primero
+        // capturado — es el que de verdad interesa guardar en la mayoría de
+        // los casos.
+        const indiceRecomendado = colaExtension.findIndex((p) => p.recomendado);
+        if (indiceRecomendado > 0) {
+          const [preferido] = colaExtension.splice(indiceRecomendado, 1);
+          colaExtension.unshift(preferido);
+        }
         resultado = colaExtension.shift();
         ir(2);
       } catch {
@@ -247,6 +260,8 @@ export function panelImportarWeb() {
     return el('div', [
       r.urlOrigen ? el('.campo', [el('span.etiqueta', { texto: 'Origen' }), el('output.salida-mono', { texto: r.urlOrigen })]) : null,
 
+      colaExtension.length > 0 ? avisoColaExtension() : null,
+
       el('h2.titulo-bloque', { texto: 'Qué se ha tocado' }),
       informeSaneado(r.informe ?? []),
 
@@ -257,9 +272,18 @@ export function panelImportarWeb() {
       marco,
 
       el('.pie-paso', [
-        el('button.btn.btn-mini', { type: 'button', onclick: () => { resultado = null; ir(1); } }, ['Empezar de nuevo']),
+        el('button.btn.btn-mini', { type: 'button', onclick: () => { resultado = null; colaExtension = []; ir(1); } }, ['Empezar de nuevo']),
         el('button.btn.btn-primario.btn-mini', { type: 'button', onclick: () => ir(3) }, ['Siguiente']),
       ]),
+    ]);
+  }
+
+  function avisoColaExtension() {
+    return el('.nota', { style: { marginBottom: '20px' } }, [
+      el('strong', { texto: resultado.recomendado ? 'Paso recomendado para exportar. ' : 'Paso de referencia, no el recomendado. ' }),
+      resultado.recomendado
+        ? `GoPhish solo admite una página por landing. Este paso trae el campo de contraseña detectado, así que es el que normalmente interesa guardar — quedan ${colaExtension.length} paso(s) más en la cola, solo para consultar.`
+        : `GoPhish solo admite una página por landing, y este paso no trae contraseña detectada — probablemente sea una pantalla previa del login (el campo de email, por ejemplo). Quedan ${colaExtension.length} paso(s) más en la cola; revisa si alguno trae el campo de contraseña antes de decidir cuál guardar.`,
     ]);
   }
 

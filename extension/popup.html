@@ -4,22 +4,42 @@
 <meta charset="utf-8">
 <title>PhishLab</title>
 <style>
-  body { width: 260px; font: 13px system-ui, sans-serif; margin: 0; padding: 14px; background: #14171C; color: #EDEEF0; }
+  body { width: 280px; font: 13px system-ui, sans-serif; margin: 0; padding: 14px; background: #14171C; color: #EDEEF0; }
   h1 { font-size: 14px; margin: 0 0 10px; }
   .estado { margin-bottom: 12px; color: #9AA3AF; }
   button { width: 100%; padding: 8px; margin-bottom: 8px; border: none; border-radius: 6px; font: inherit; cursor: pointer; }
   .primario { background: #1E8A3B; color: #fff; }
   .secundario { background: #262B33; color: #EDEEF0; }
-  .aviso { color: #E5484D; font-size: 12px; margin-top: 8px; min-height: 14px; }
+  .aviso { color: #E5484D; font-size: 12px; margin-top: 4px; margin-bottom: 8px; min-height: 14px; }
+  .separador { border: none; border-top: 1px solid #262B33; margin: 10px 0; }
+  details { margin-bottom: 8px; }
+  summary { cursor: pointer; color: #9BA1AC; font-size: 12px; margin-bottom: 8px; }
+  label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: #6B7280; margin-bottom: 3px; margin-top: 8px; }
+  input { width: 100%; padding: 6px 8px; box-sizing: border-box; background: #1B1F26; border: 1px solid #262B33; border-radius: 6px; color: #EDEEF0; font: inherit; }
+  .guardado { color: #3FB950; font-size: 11px; margin-top: 4px; min-height: 14px; }
 </style>
 </head>
 <body>
   <h1>PhishLab — captura</h1>
   <div class="estado" id="estado">Comprobando…</div>
+
   <button class="primario" id="btn-capturar">Capturar paso</button>
+  <button class="secundario" id="btn-auto">Capturar flujo automático</button>
   <button class="secundario" id="btn-enviar">Enviar a PhishLab</button>
   <button class="secundario" id="btn-descartar">Descartar</button>
   <div class="aviso" id="aviso"></div>
+
+  <hr class="separador">
+  <details id="ajustes">
+    <summary>Ajustes de conexión</summary>
+    <label for="codigo">Código de emparejamiento</label>
+    <input id="codigo" type="text" autocomplete="off" placeholder="Generado en PhishLab → Importar → Web">
+    <label for="puerto">Puerto del servidor local</label>
+    <input id="puerto" type="number" value="8080">
+    <button class="secundario" id="btn-guardar-ajustes" style="margin-top:8px">Guardar</button>
+    <div class="guardado" id="guardado"></div>
+  </details>
+
   <script src="popup.js"></script>
 </body>
 </html>
