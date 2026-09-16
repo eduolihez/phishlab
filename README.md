@@ -22,8 +22,8 @@ ejecución, contacto de escalado, aviso al SOC y acuerdo de tratamiento de datos
 nada sensible, pero genera material de phishing con marca real. Hay dos
 formas de enseñarla sin eso: una demo pública con marcas inventadas y sin
 exportación (ver «La demo pública» más abajo), y un «lab» con la herramienta
-completa detrás de HTTP Basic Auth para quien tenga la contraseña (ver
-`docs/EDUOLIHEZ.md`).
+completa detrás de un login con cuentas individuales, gestionadas desde
+`admin.eduolihez.com` (ver `docs/EDUOLIHEZ.md`).
 
 **No la alojes en el mismo host que sirve las landings de campaña.** Ese host lo
 visita gente ajena a tu organización.
@@ -288,9 +288,10 @@ demo, **no** comprueba ausencia de marcas ni desactiva nada — el propósito es
 justo enseñar la herramienta de verdad.
 
 Por eso nunca se publica sin un gate delante. El despliegue de referencia
-(`lab.eduolihez.com`, HTTP Basic Auth) está documentado en
-`docs/EDUOLIHEZ.md`. Sin enlace público desde ningún sitio: la contraseña se
-comparte directamente con quien la pida.
+(`lab.eduolihez.com`, login con cuentas individuales gestionadas desde
+`admin.eduolihez.com`) está documentado en `docs/EDUOLIHEZ.md`. Sin enlace
+público desde ningún sitio: las credenciales se comparten directamente con
+quien las pida.
 
 ---
 
