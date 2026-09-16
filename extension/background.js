@@ -82,6 +82,47 @@ async function capturarPaso() {
   return { ok: true, pasos: nuevaLista.length };
 }
 
+const REINTENTOS_INYECCION = 2;
+const ESPERA_ENTRE_REINTENTOS_MS = 400;
+
+/**
+ * Inyecta content.js y devuelve su resultado, reintentando si hace falta.
+ *
+ * Páginas de login reales (Google, Microsoft, PayPal...) suelen redirigir o
+ * hidratarse por JS justo después de la carga inicial. Si "Capturar paso" se
+ * pulsa en ese instante, el content script puede inyectarse en un documento
+ * que está siendo destruido a mitad — Chrome no siempre lo reporta como un
+ * error que se pueda atrapar: a veces `executeScript` simplemente resuelve
+ * con un resultado vacío, sin lanzar nada. Un reintento corto después de una
+ * espera breve (tiempo de sobra para que la navegación/hidratación termine)
+ * arregla la inmensa mayoría de estos casos sin que quien está capturando
+ * tenga que darse cuenta de nada.
+ */
+async function inyectarContentScript(tabId) {
+  let ultimoError = null;
+
+  for (let intento = 0; intento <= REINTENTOS_INYECCION; intento++) {
+    if (intento > 0) await esperar(ESPERA_ENTRE_REINTENTOS_MS);
+
+    try {
+      const inyeccion = await chrome.scripting.executeScript({
+        target: { tabId },
+        files: ['content.js'],
+      });
+      const result = inyeccion?.[0]?.result;
+      if (result?.html) return result;
+      ultimoError = null; // resultado vacío sin excepción: reintentar en silencio
+    } catch (e) {
+      ultimoError = e;
+    }
+  }
+
+  if (ultimoError) {
+    throw new Error(`no se pudo inyectar el script de captura en esta pestaña: ${ultimoError.message}`);
+  }
+  throw new Error('la captura no devolvió HTML tras varios intentos — recarga la pestaña e inténtalo de nuevo');
+}
+
 /**
  * Inyecta el content script, incrusta sus recursos y devuelve el paso listo
  * para guardar — sin tocar el storage. Aparte de `capturarPaso()` porque el
@@ -89,18 +130,7 @@ async function capturarPaso() {
  * relanzar la comprobación de tope en cada vuelta.
  */
 async function capturarPasoDe(pestana) {
-  let inyeccion;
-  try {
-    inyeccion = await chrome.scripting.executeScript({
-      target: { tabId: pestana.id },
-      files: ['content.js'],
-    });
-  } catch (e) {
-    throw new Error(`no se pudo inyectar el script de captura en esta pestaña: ${e.message}`);
-  }
-
-  const result = inyeccion?.[0]?.result;
-  if (!result?.html) throw new Error('la captura no devolvió HTML — recarga la pestaña e inténtalo de nuevo');
+  const result = await inyectarContentScript(pestana.id);
 
   // `result.recursos` es `[{ marcador, url }]` — content.js ya sustituyó cada
   // URL de recurso por un marcador único en el HTML, así que aquí solo hay
