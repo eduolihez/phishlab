@@ -96,9 +96,25 @@
 
   const raizClonada = serializarElemento(document.documentElement);
 
-  return {
+  const resultado = {
     html: '<!doctype html>' + raizClonada.outerHTML,
     recursos: mapaRecursos,
     huboPosibleShadowCerrado,
   };
+
+  // El VALOR DE RETORNO de este script es lo que background.js lee primero
+  // (`inyeccion[0].result`), pero en páginas que redirigen o se hidratan por
+  // JS justo tras la carga (Google, Microsoft, PayPal...) Chrome a veces no
+  // entrega ese valor aunque el script termine bien — un fallo conocido de
+  // `chrome.scripting.executeScript` en el mundo aislado, no de este código.
+  // Mandarlo TAMBIÉN por mensaje es la red de seguridad: background.js
+  // escucha este mensaje como respaldo si el valor de retorno no llega.
+  try {
+    chrome.runtime.sendMessage({ tipo: 'phishlab-captura-resultado', datos: resultado });
+  } catch (e) {
+    // Sin chrome.runtime (contexto ya invalidado) el valor de retorno sigue
+    // siendo el único camino — nada que hacer aquí salvo no reventar.
+  }
+
+  return resultado;
 })();

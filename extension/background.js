@@ -82,8 +82,36 @@ async function capturarPaso() {
   return { ok: true, pasos: nuevaLista.length };
 }
 
+/**
+ * Espera el mensaje de respaldo que manda content.js al terminar (ver ese
+ * archivo). Es la red de seguridad para cuando `executeScript` no entrega su
+ * valor de retorno aunque el script haya terminado bien — un fallo conocido
+ * de Chrome en el mundo aislado, no de este código; confirmado en vivo
+ * contra Google, Microsoft y PayPal, donde `chrome.scripting.executeScript`
+ * resolvía sin excepción pero con `result` vacío.
+ */
+function esperarMensajeDeRespaldo(tabId, timeoutMs) {
+  return new Promise((resolve) => {
+    let resuelto = false;
+    const terminar = (valor) => {
+      if (resuelto) return;
+      resuelto = true;
+      chrome.runtime.onMessage.removeListener(listener);
+      resolve(valor);
+    };
+    const listener = (mensaje, remitente) => {
+      if (mensaje?.tipo === 'phishlab-captura-resultado' && remitente?.tab?.id === tabId) {
+        terminar(mensaje.datos ?? null);
+      }
+    };
+    chrome.runtime.onMessage.addListener(listener);
+    setTimeout(() => terminar(null), timeoutMs);
+  });
+}
+
 const REINTENTOS_INYECCION = 2;
 const ESPERA_ENTRE_REINTENTOS_MS = 400;
+const TIMEOUT_MENSAJE_RESPALDO_MS = 4000;
 
 /**
  * Inyecta content.js y devuelve su resultado, reintentando si hace falta.
@@ -93,10 +121,9 @@ const ESPERA_ENTRE_REINTENTOS_MS = 400;
  * pulsa en ese instante, el content script puede inyectarse en un documento
  * que está siendo destruido a mitad — Chrome no siempre lo reporta como un
  * error que se pueda atrapar: a veces `executeScript` simplemente resuelve
- * con un resultado vacío, sin lanzar nada. Un reintento corto después de una
- * espera breve (tiempo de sobra para que la navegación/hidratación termine)
- * arregla la inmensa mayoría de estos casos sin que quien está capturando
- * tenga que darse cuenta de nada.
+ * con un resultado vacío, sin lanzar nada. Se escucha primero el mensaje de
+ * respaldo que manda el propio content.js (más fiable que el valor de
+ * retorno); si ni eso llega, se reintenta tras una espera breve.
  */
 async function inyectarContentScript(tabId) {
   let ultimoError = null;
@@ -105,13 +132,17 @@ async function inyectarContentScript(tabId) {
     if (intento > 0) await esperar(ESPERA_ENTRE_REINTENTOS_MS);
 
     try {
+      const respaldo = esperarMensajeDeRespaldo(tabId, TIMEOUT_MENSAJE_RESPALDO_MS);
       const inyeccion = await chrome.scripting.executeScript({
         target: { tabId },
         files: ['content.js'],
       });
-      const result = inyeccion?.[0]?.result;
-      if (result?.html) return result;
-      ultimoError = null; // resultado vacío sin excepción: reintentar en silencio
+      const resultDirecto = inyeccion?.[0]?.result;
+      if (resultDirecto?.html) return resultDirecto;
+
+      const resultRespaldo = await respaldo;
+      if (resultRespaldo?.html) return resultRespaldo;
+      ultimoError = null; // sin resultado por ningún camino, pero sin excepción: reintentar en silencio
     } catch (e) {
       ultimoError = e;
     }
