@@ -16,6 +16,12 @@ import { bloquesDeclarados, variablesGophish } from '../assets/js/core/engine.js
 import { listarPlantillas, componer, senalesCatalogo, presetsCatalogo, leerLayout, leerCopy, TEMPLATES } from './render.js';
 
 const TAMANO_MAXIMO = 400 * 1024;
+// Una plantilla clonado-web incrusta el CSS/fuentes/imágenes del sitio real
+// tal cual, sin el margen que da escribir el markup a mano — puede llegar a
+// varios MB (confirmado con Google/Microsoft/GitHub/LinkedIn/Netflix en
+// septiembre de 2026). El límite normal sigue protegiendo el resto del
+// catálogo; este solo se relaja para el origen que de verdad lo necesita.
+const TAMANO_MAXIMO_CLONADO_WEB = 8 * 1024 * 1024;
 const IDIOMAS_ESPERADOS = ['es', 'ca', 'en'];
 
 /**
@@ -205,9 +211,10 @@ function revisar(plantilla) {
 function revisarHtml(plantilla, donde, html) {
   const { tipo, meta } = plantilla;
   const bytes = Buffer.byteLength(html);
+  const tope = meta.origen?.tipo === 'clonado-web' ? TAMANO_MAXIMO_CLONADO_WEB : TAMANO_MAXIMO;
 
-  if (bytes > TAMANO_MAXIMO) {
-    error(donde, `${(bytes / 1024).toFixed(0)} KB — demasiado para un correo; revisa las imágenes incrustadas`);
+  if (bytes > tope) {
+    error(donde, `${(bytes / 1024).toFixed(0)} KB — demasiado incluso para clonado-web; revisa las imágenes incrustadas`);
   }
 
   // Un recurso por http:// se rompe o, peor, avisa al dominio real de que

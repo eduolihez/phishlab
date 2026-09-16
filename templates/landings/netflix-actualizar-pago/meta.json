@@ -12,41 +12,22 @@
     "personal"
   ],
   "idiomas": [
-    "es",
-    "ca",
     "en"
   ],
   "demo": false,
   "origen": {
-    "tipo": "escrito-a-mano",
-    "fecha": "2026-09-10",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "tipo": "clonado-web",
+    "fecha": "2026-09-16",
+    "notas": "Volcado real de netflix.com/login, saneado con tools/sanearWeb.js (formulario reescrito a method=\"post\" action=\"\", campos renombrados a email/password, scripts e iframes fuera, recursos incrustados). Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout, solo activar/desactivar el clonado entero.",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
   },
   "captura": "credenciales",
-  "campos": [
-    {
-      "clave": "cuentaEmail",
-      "etiqueta": "Correo de la cuenta (se muestra pre-rellenado)",
-      "tipo": "texto",
-      "defecto": "empleado@ejemplo.com"
-    }
-  ],
+  "campos": [],
   "bloques": [
     {
-      "id": "marca",
-      "etiqueta": "marca",
-      "opcional": true,
-      "defecto": true
-    },
-    {
-      "id": "aviso-pago",
-      "etiqueta": "aviso-pago",
-      "senal": "urgencia"
-    },
-    {
-      "id": "pie-legal",
-      "etiqueta": "Pie legal completo",
-      "senal": "!incoherencia-marca"
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
     }
   ]
 }
