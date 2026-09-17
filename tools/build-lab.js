@@ -89,6 +89,21 @@ writeFileSync(join(DESTINO, 'index.html'), html, 'utf8');
 writeFileSync(join(DESTINO, 'robots.txt'), 'User-agent: *\nDisallow: /\n', 'utf8');
 writeFileSync(join(DESTINO, '.nojekyll'), '', 'utf8');
 
+// Bloquea cualquier acceso HTTP directo a este contenido cuando se sincroniza
+// dentro de public/lab-app/_content/ en el repo de eduolihez.com: solo
+// index.php (el gate de sesión, en el directorio padre) puede leerlo, vía
+// filesystem PHP. Sin este fichero, un sync (`rm -rf _content && cp -r lab/.
+// _content/`, ver docs/EDUOLIHEZ.md) publicaría el catálogo completo con
+// marca real sin ningún gate delante — justo lo que ese muro existe para
+// evitar. Se genera aquí, no se copia a mano, para que ningún sync futuro
+// pueda volver a perderlo por accidente.
+writeFileSync(join(DESTINO, '.htaccess'),
+  '# Bloquea CUALQUIER acceso HTTP directo a este contenido. Solo index.php\n' +
+  '# (en el directorio padre) puede leerlo, vía filesystem PHP -- eso sí pasa\n' +
+  '# por el gate de sesión. Ver ../index.php y server/lab/auth.php.\n' +
+  'Require all denied\n',
+  'utf8');
+
 console.log(`\nBuild lab generado en ${DESTINO}`);
 console.log(`  ${indice.emails.length} correos, ${indice.landings.length} landings, ${indice.sms.length} sms, ${layoutsUsados.size} layouts — catálogo completo, marca real.`);
 console.log('\nNO lo publiques sin el muro de acceso delante (ver CLOUDFLARE.md, lab.eduolihez.com).');
