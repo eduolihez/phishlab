@@ -1,0 +1,42 @@
+{
+  "schema": 2,
+  "nombre": "Glovo · Incidencia con el pedido (SMS)",
+  "descripcion": "SMS corto avisando de una incidencia con un pedido de comida a domicilio, pidiendo confirmar dirección y método de pago. Pretexto personal, no corporativo.",
+  "familia": "entretenimiento",
+  "categoria": "suscripciones-personales",
+  "empresa": "Glovo",
+  "tags": [
+    "glovo",
+    "smishing",
+    "sms",
+    "reparto"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "caracteres": 160,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Pretexto escrito a mano. No es copia de ningún mensaje real."
+  },
+  "campos": [
+    {
+      "clave": "pedido",
+      "etiqueta": "Número de pedido",
+      "tipo": "texto",
+      "defecto": "48213"
+    },
+    {
+      "clave": "enlace",
+      "etiqueta": "Enlace a la landing",
+      "tipo": "texto",
+      "defecto": "https://tu-landing.ejemplo.com",
+      "ayuda": "GoPhish no envía SMS, así que no hay {{.URL}} que resolver: pega aquí la URL de tu landing una vez publicada."
+    }
+  ],
+  "bloques": []
+}

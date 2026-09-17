@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "BBVA: we've detected unusual access to your account. Verify your identity here: {{enlace}}",
+    "urgencia": "BBVA: your account will be locked in 30 min unless you verify this access: {{enlace}}"
+  }
+}

@@ -127,6 +127,25 @@ Un bloque puede depender de que una señal esté **apagada**, con `!` delante. E
 pie legal completo es justo lo que un phishing no se molesta en copiar, así que
 vive con `@senal:!incoherencia-marca`.
 
+### Plantillas de SMS (smishing)
+
+Un tercer tipo, `templates/sms/<id>/`, junto a `emails/` y `landings/`. Un SMS
+es texto plano: sin `layout.html` ni bloques que trocear, solo
+`meta.json` + `copy/{es,ca,en}.json` con un único fragmento `cuerpo` que varía
+por señal, igual que el resto del copy.
+
+GoPhish autoalojado no envía SMS — solo email por SMTP — así que no hay
+`{{.URL}}` que resolver: en su lugar, un campo `{{enlace}}` de texto libre
+que se rellena a mano con la URL de la landing ya publicada. El workspace
+enseña el texto compuesto como una burbuja de móvil en vez de un iframe, y la
+pestaña Exportar ofrece copiar el texto o descargarlo como `.txt` para
+pegarlo en la pasarela SMS que use el equipo.
+
+No hay quishing (QR) por una razón parecida y ya evaluada a propósito: un
+código QR solo enseña algo si codifica la URL final con tracking, y esa URL
+la resuelve GoPhish en el momento del envío — PhishLab no la conoce en
+tiempo de composición. Ver `SECURITY.md`.
+
 ---
 
 ## Importar material real
@@ -264,6 +283,35 @@ registra cuerpos de petición, y purga los resultados al entregar el informe.
 
 ---
 
+## Autorización antes de exportar
+
+La pestaña Exportar trae un checklist interactivo con las seis casillas de
+`AUTORIZACION.md` (contrato, alcance, ventana, contacto de escalado, SOC
+avisado, tratamiento de datos). El botón **Descargar campaña (.zip)** queda
+desactivado hasta que las seis estén marcadas — antes era papel: se podía
+descargar el ZIP sin haber comprobado nada de verdad. El `AUTORIZACION.md`
+que viaja en el ZIP sale con esas mismas casillas ya tildadas.
+
+---
+
+## Informe de resultados
+
+`#/informe` — acceso desde el botón de la pestaña Exportar o desde la
+Biblioteca, sin un tercer enlace en la barra (la navegación se redujo a
+Biblioteca/Importar a propósito, ver `DESIGN.md`).
+
+El ZIP exportado trae, junto al `INSTRUCCIONES.md` de siempre, un
+`campana.json` con qué plantilla, preset y señales llevaba. Sube ese fichero
+junto al CSV de resultados que exporta GoPhish y PhishLab calcula, en el
+navegador, las tasas de apertura, clic, envío de datos y reporte — cruzadas
+con la tabla de señales de esa campaña concreta, para poder decir "el 34% que
+envió datos había dejado pasar la urgencia y el dominio ajeno" en vez de solo
+"picó el 34%". Nada sube a ningún servidor y ningún destinatario individual
+se guarda en ningún sitio, solo los agregados; el informe se puede descargar
+como Markdown.
+
+---
+
 ## La demo pública
 
 `npm run build:demo` genera en `demo/` un estático publicable:
@@ -300,18 +348,19 @@ quien las pida.
 ```
 index.html                 Shell de la aplicación (nav: Biblioteca · Importar)
 assets/css/                Estilos, sin CDN
-assets/js/core/            engine · senales · catalog · componer · edicionInline · brand · zip · gophish · importar · estado
-assets/js/ui/              router · biblioteca · detalle · exportar · editorEnVivo · importar · importarWeb · marca · fields · dom
+assets/js/core/            engine · senales · catalog · componer · edicionInline · brand · zip · gophish · informe · importar · estado
+assets/js/ui/              router · biblioteca · detalle · exportar · editorEnVivo · importar · importarWeb · informe · bandejaPreview · marca · fields · dom
 assets/js/bookmarklet/     capturar.js — fuente del marcador Ctrl+S de clonado
 templates/senales.json     Las seis señales
 templates/presets.json     facil / medio / dificil como combinaciones de señales
 templates/index.json       Índice del catálogo
-templates/layouts/         Layouts compartidos (aviso, login)
+templates/layouts/         Layouts compartidos (aviso, login) — sin uso todavía por ninguna plantilla de fábrica
 templates/emails/<id>/     meta.json + copy/{es,ca,en}.json  (+ layout.html propio si no comparte)
 templates/landings/<id>/   Igual
+templates/sms/<id>/        meta.json + copy/{es,ca,en}.json — sin layout.html, un sms es texto plano
 templates/propias/         Importadas, clonadas y variantes propias. Fuera de git.
 catalogo/                  Ficheros de alta de plantillas para tools/nueva-plantilla.js
-tests/                     346 pruebas (node --test)
+tests/                     node --test (ver npm test para la cifra actual)
 extension/                 Extensión de captura MV3 (sustituye al marcador para clonar webs)
 tools/servidor.js          Servidor local + API de importación y clonado
 tools/eml.js               Parser de .eml sin dependencias
@@ -339,22 +388,36 @@ línea de la aplicación. Ver `docs/PLANTILLAS.md`.
 
 ## Catálogo actual
 
-22 plantillas (11 correos + 11 landings), todas de marca real salvo la página
-formativa, las tres en castellano, catalán e inglés.
+40 plantillas de fábrica (24 correos + 11 landings + 5 sms), todas de marca
+real salvo la página formativa, en castellano, catalán e inglés.
 
-**Correos** — Adobe (documento para firmar), DHL (paquete en aduana), DocuSign
-(documento por firmar), Dropbox (documento compartido), GitHub (nuevo inicio de
-sesión), Google (verificación de actividad), Jira (restablecer contraseña),
-LinkedIn (mensaje pendiente), Microsoft 365 (caducidad de contraseña), Netflix
-(problema de pago), PayPal (actividad sospechosa).
+**Correos** — Adobe (documento para firmar), Agencia Tributaria (devolución
+pendiente), Amazon (reembolso pendiente), BBVA (acceso sospechoso), Bizum
+(dinero pendiente), Correos (paquete retenido), El Corte Inglés (tarjeta
+regalo para empleados), DHL (paquete en aduana), DocuSign (documento por
+firmar), Dropbox (documento compartido), Endesa (corte de suministro),
+Fortinet (licencia de seguridad caducada), GitHub (nuevo inicio de sesión),
+Google (verificación de actividad), iCloud (copia de seguridad llena),
+Instagram (cuenta marcada por infracción), Jira (restablecer contraseña),
+LinkedIn (mensaje pendiente), Microsoft 365 (caducidad de contraseña),
+Movistar (factura impagada), Netflix (problema de pago), PayPal (actividad
+sospechosa), Seguridad Social (notificación pendiente), Spotify (pago
+rechazado).
 
 **Landings** — la misma marca, en login o verificación: Adobe, DocuSign,
 Dropbox, GitHub, Google, Jira (vía Atlassian), LinkedIn, Microsoft, Netflix,
-PayPal.
+PayPal. Las 12 plantillas de correo añadidas en la ampliación española no
+traen landing propia todavía — usa la landing genérica más cercana
+(Microsoft, PayPal…) mientras no se escriba una a medida.
+
+**SMS (smishing)** — WhatsApp (verificación de acceso), Bizum (dinero
+recibido), Correos (paquete retenido), Glovo (incidencia con el pedido),
+banco genérico estilo BBVA (alerta de acceso).
 
 **Formación** — página formativa post-clic, sin marca.
 
-El logo de cada marca vive en `assets/img/marcas/` (SVG real, descargado de
-fuentes libres de derechos — ver `SECURITY.md`). `{{logoHtml}}` sigue siendo
-aparte: es el logo del **cliente** (tenant), que se sube al montar la campaña,
-no el de la marca suplantada.
+El logo de cada marca vive incrustado como `<svg>` inline en el propio
+`layout.html` de cada plantilla — ver `SECURITY.md` para de dónde sale y por
+qué ya no es un `<img>` en base64. `{{logoHtml}}` sigue siendo aparte: es el
+logo del **cliente** (tenant), que se sube al montar la campaña, no el de la
+marca suplantada.

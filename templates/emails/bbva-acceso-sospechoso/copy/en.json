@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "We detected unusual activity on your BBVA account"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, we've blocked a suspicious sign-in"
+  },
+  "entradilla": {
+    "base": "Someone tried to access your BBVA online banking from a device we don't recognize."
+  },
+  "detalle": {
+    "base": "Verify your identity to confirm it was you."
+  },
+  "urgencia": {
+    "base": "If you don't verify your identity within 30 minutes, we'll restrict access to your account."
+  },
+  "cta": {
+    "base": "Verify my identity"
+  },
+  "cierre": {
+    "base": "The BBVA security team"
+  },
+  "fichaEtiqueta1": "Device",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Location",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Unverified access"
+}

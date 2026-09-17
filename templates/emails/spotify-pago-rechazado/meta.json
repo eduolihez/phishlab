@@ -1,0 +1,99 @@
+{
+  "schema": 2,
+  "nombre": "Spotify · Pago rechazado",
+  "descripcion": "Aviso de pago rechazado con la suscripción Premium en riesgo. Mismo patrón que la plantilla de Netflix ya existente, con otra marca de entretenimiento.",
+  "familia": "entretenimiento",
+  "categoria": "suscripciones-personales",
+  "empresa": "Spotify",
+  "tags": [
+    "spotify",
+    "suscripcion",
+    "pago"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+  },
+  "captura": "datos",
+  "remitente": {
+    "nombre": "Spotify",
+    "buzon": "facturacion"
+  },
+  "campos": [
+    {
+      "clave": "importe",
+      "etiqueta": "Importe de la suscripción",
+      "tipo": "texto",
+      "defecto": "10,99 €"
+    },
+    {
+      "clave": "plazo",
+      "etiqueta": "Plazo antes de suspender",
+      "tipo": "texto",
+      "defecto": "5 días"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con logo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "marca-servicio",
+      "etiqueta": "Marca del servicio",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparece al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "ficha",
+      "etiqueta": "Ficha de datos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Las tres filas de dato concreto. Es de donde sale casi toda la credibilidad del pretexto."
+    },
+    {
+      "id": "urgencia",
+      "etiqueta": "Bloque de urgencia",
+      "senal": "urgencia"
+    },
+    {
+      "id": "enlace-visible",
+      "etiqueta": "URL en crudo bajo el botón",
+      "senal": "enlace-visible"
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie de firma",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pie-legal",
+      "etiqueta": "Pie legal completo",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe."
+    }
+  ]
+}

@@ -21,12 +21,18 @@ export const leerJson = (ruta) => JSON.parse(readFileSync(ruta, 'utf8'));
 export const senalesCatalogo = () => leerJson(join(TEMPLATES, 'senales.json')).senales;
 export const presetsCatalogo = () => leerJson(join(TEMPLATES, 'presets.json')).presets;
 
+/**
+ * Los tres tipos de plantilla. `sms` no lleva `layout.html`: un SMS es texto
+ * plano, no hay bloques HTML que trocear — ver `componerSms()` más abajo.
+ */
+export const TIPOS_PLANTILLA = ['emails', 'landings', 'sms'];
+
 /** Todas las plantillas del índice, con su meta y su ruta en disco. */
 export function listarPlantillas({ incluirPropias = false } = {}) {
   const indice = leerJson(join(TEMPLATES, 'index.json'));
   const salida = [];
 
-  for (const tipo of ['emails', 'landings']) {
+  for (const tipo of TIPOS_PLANTILLA) {
     for (const id of indice[tipo] ?? []) {
       const carpeta = join(TEMPLATES, tipo, id);
       salida.push({ id, tipo, carpeta, meta: leerJson(join(carpeta, 'meta.json')), propia: false });
@@ -35,7 +41,7 @@ export function listarPlantillas({ incluirPropias = false } = {}) {
 
   const carpetaPropias = join(TEMPLATES, 'propias');
   if (incluirPropias && existsSync(carpetaPropias)) {
-    for (const tipo of ['emails', 'landings']) {
+    for (const tipo of TIPOS_PLANTILLA) {
       const dir = join(carpetaPropias, tipo);
       if (!existsSync(dir)) continue;
       for (const id of readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
@@ -108,6 +114,39 @@ export function componer(plantilla, { idioma = 'es', preset = 'medio', overrides
     asunto,
     faltantes: salida.faltantes,
     eliminados: podado.eliminados,
+    senales,
+  };
+}
+
+/**
+ * Compone una plantilla de tipo `sms`: solo elige copy por señales y
+ * sustituye variables sobre `copy.cuerpo` — sin `podar()` porque no hay
+ * bloques HTML que trocear, un SMS es texto plano de una sola pieza.
+ *
+ * @returns {{ texto: string, faltantes: string[], senales: Record<string,boolean> }}
+ */
+export function componerSms(plantilla, { idioma = 'es', preset = 'medio', overridesSenales = {}, marca = MARCA_PRUEBA, campos } = {}) {
+  const presets = presetsCatalogo();
+  const senales = resolverSenales(presets, preset, overridesSenales);
+  const activasSet = activas(senales);
+
+  const copy = resolverCopy(leerCopy(plantilla.carpeta, idioma), activasSet);
+
+  const valores = campos ?? Object.fromEntries(
+    (plantilla.meta.campos ?? []).map((c) => [c.clave, c.defecto ?? ''])
+  );
+
+  const ctx = construirContexto({
+    marca: { ...marca, idioma },
+    campos: valores,
+    fragmentos: copy,
+  });
+
+  const salida = render(copy.cuerpo ?? '', ctx);
+
+  return {
+    texto: salida.html,
+    faltantes: salida.faltantes,
     senales,
   };
 }

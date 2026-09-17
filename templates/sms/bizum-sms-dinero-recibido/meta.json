@@ -1,0 +1,48 @@
+{
+  "schema": 2,
+  "nombre": "Bizum · Dinero recibido (SMS)",
+  "descripcion": "SMS corto avisando de un envío de Bizum pendiente de aceptar, con enlace a una landing de credenciales bancarias. Variante en SMS del pretexto de «dinero pendiente», uno de los smishing más extendidos en España.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "empresa": "Bizum",
+  "tags": [
+    "bizum",
+    "smishing",
+    "sms",
+    "banca"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "caracteres": 160,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Pretexto escrito a mano sobre el patrón real de smishing de Bizum («tienes un envío pendiente de aceptar»). No es copia de ningún mensaje real."
+  },
+  "campos": [
+    {
+      "clave": "importe",
+      "etiqueta": "Importe recibido",
+      "tipo": "texto",
+      "defecto": "45 €"
+    },
+    {
+      "clave": "remitente",
+      "etiqueta": "Quién lo envía",
+      "tipo": "texto",
+      "defecto": "un contacto"
+    },
+    {
+      "clave": "enlace",
+      "etiqueta": "Enlace a la landing",
+      "tipo": "texto",
+      "defecto": "https://tu-landing.ejemplo.com",
+      "ayuda": "GoPhish no envía SMS, así que no hay {{.URL}} que resolver: pega aquí la URL de tu landing una vez publicada."
+    }
+  ],
+  "bloques": []
+}

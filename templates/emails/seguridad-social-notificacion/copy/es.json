@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tiene una notificación pendiente en su sede electrónica",
+    "urgencia": "Su notificación caduca en 10 días naturales"
+  },
+  "preheader": {
+    "base": "Notificación {{referencia}} pendiente de lectura"
+  },
+  "saludo": {
+    "base": "Estimado/a ciudadano/a"
+  },
+  "titular": {
+    "base": "{{saludo}}, tiene una notificación pendiente"
+  },
+  "entradilla": {
+    "base": "Tiene una notificación disponible en su sede electrónica de la Seguridad Social. Acceda con su usuario Cl@ve para consultarla."
+  },
+  "detalle": {
+    "base": "Las notificaciones se consideran leídas a los 10 días naturales, aunque no se hayan consultado."
+  },
+  "urgencia": {
+    "base": "Le quedan 10 días naturales para consultar esta notificación antes de que se considere rechazada."
+  },
+  "cta": {
+    "base": "Consultar notificación"
+  },
+  "cierre": {
+    "base": "Sede electrónica de la Seguridad Social"
+  },
+  "fichaEtiqueta1": "Referencia",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Tipo",
+  "fichaValor2": "Notificación oficial",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Pendiente de lectura"
+}

@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "El teu enviament {{referencia}} està retingut"
+  },
+  "preheader": {
+    "base": "Despesa de gestió pendent: {{importe}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, el teu paquet està retingut"
+  },
+  "entradilla": {
+    "base": "El teu enviament {{referencia}} està retingut per una despesa de gestió pendent de {{importe}}."
+  },
+  "detalle": {
+    "base": "Paga l'import pendent perquè puguem continuar amb el lliurament."
+  },
+  "urgencia": {
+    "base": "Si no pagues l'import en 24 hores, el paquet serà retornat."
+  },
+  "cta": {
+    "base": "Pagar i alliberar el meu enviament"
+  },
+  "cierre": {
+    "base": "L'equip de Correos"
+  },
+  "fichaEtiqueta1": "Referència",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Despesa de gestió",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Retingut"
+}

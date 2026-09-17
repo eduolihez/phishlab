@@ -46,7 +46,7 @@ cpSync(join(RAIZ, 'assets'), join(DESTINO, 'assets'), { recursive: true });
 cpSync(join(TEMPLATES, 'senales.json'), join(DESTINO, 'templates', 'senales.json'), { recursive: true });
 cpSync(join(TEMPLATES, 'presets.json'), join(DESTINO, 'templates', 'presets.json'));
 
-const indice = { _comentario: 'Índice del build lab (acceso restringido). Generado por tools/build-lab.js.', emails: [], landings: [] };
+const indice = { _comentario: 'Índice del build lab (acceso restringido). Generado por tools/build-lab.js.', emails: [], landings: [], sms: [] };
 const layoutsUsados = new Set();
 
 for (const p of plantillas) {
@@ -63,12 +63,15 @@ for (const p of plantillas) {
     );
   }
 
-  if (p.meta.layout) {
+  if (p.tipo === 'sms') {
+    // Sin layout.html: un sms es texto plano.
+  } else if (p.meta.layout) {
     layoutsUsados.add(p.meta.layout);
   } else {
     writeFileSync(join(destinoPlantilla, 'layout.html'), leerLayout(p.carpeta, p.meta), 'utf8');
   }
 
+  indice[p.tipo] ??= [];
   indice[p.tipo].push(p.id);
 }
 
@@ -87,5 +90,5 @@ writeFileSync(join(DESTINO, 'robots.txt'), 'User-agent: *\nDisallow: /\n', 'utf8
 writeFileSync(join(DESTINO, '.nojekyll'), '', 'utf8');
 
 console.log(`\nBuild lab generado en ${DESTINO}`);
-console.log(`  ${indice.emails.length} correos, ${indice.landings.length} landings, ${layoutsUsados.size} layouts — catálogo completo, marca real.`);
+console.log(`  ${indice.emails.length} correos, ${indice.landings.length} landings, ${indice.sms.length} sms, ${layoutsUsados.size} layouts — catálogo completo, marca real.`);
 console.log('\nNO lo publiques sin el muro de acceso delante (ver CLOUDFLARE.md, lab.eduolihez.com).');

@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "WhatsApp: hem detectat un intent d'accés al teu compte des d'un dispositiu no reconegut. Si no has estat tu, cancel·la'l aquí: {{enlace}}",
+    "urgencia": "WhatsApp: el teu compte es desactivarà en 1 hora si no cancel·les aquest accés no reconegut: {{enlace}}"
+  }
+}

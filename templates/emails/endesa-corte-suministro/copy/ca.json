@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Avís de tall de subministrament per impagament"
+  },
+  "preheader": {
+    "base": "Contracte {{cups}} · {{importe}} pendents"
+  },
+  "saludo": {
+    "base": "Benvolgut/da client/a"
+  },
+  "titular": {
+    "base": "{{saludo}}, té un pagament pendent"
+  },
+  "entradilla": {
+    "base": "No hem rebut el pagament de {{importe}} del seu últim rebut."
+  },
+  "detalle": {
+    "base": "Regularitzi el pagament per evitar la interrupció del subministrament."
+  },
+  "urgencia": {
+    "base": "Si no regularitza el pagament en 24 hores, tallarem el subministrament."
+  },
+  "cta": {
+    "base": "Regularitzar pagament"
+  },
+  "cierre": {
+    "base": "L'equip d'Endesa"
+  },
+  "fichaEtiqueta1": "Contracte",
+  "fichaValor1": "{{cups}}",
+  "fichaEtiqueta2": "Import",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Tall programat"
+}

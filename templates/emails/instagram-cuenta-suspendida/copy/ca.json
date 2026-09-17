@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "El teu compte ha estat marcat per infracció de drets d'autor"
+  },
+  "preheader": {
+    "base": "Apel·la abans de {{plazo}} per evitar la suspensió"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, el teu compte ha estat marcat"
+  },
+  "entradilla": {
+    "base": "Hem rebut un avís d'infracció de drets d'autor sobre contingut del teu compte."
+  },
+  "detalle": {
+    "base": "Si creus que és un error, pots apel·lar la decisió."
+  },
+  "urgencia": {
+    "base": "Si no apel·les en {{plazo}}, el teu compte se suspendrà de manera permanent."
+  },
+  "cta": {
+    "base": "Apel·lar la decisió"
+  },
+  "cierre": {
+    "base": "L'equip de suport d'Instagram"
+  },
+  "fichaEtiqueta1": "Motiu",
+  "fichaValor1": "Infracció de drets d'autor",
+  "fichaEtiqueta2": "Termini",
+  "fichaValor2": "{{plazo}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Compte marcat"
+}

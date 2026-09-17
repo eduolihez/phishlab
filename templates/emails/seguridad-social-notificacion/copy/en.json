@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "You have a pending notification in your electronic office"
+  },
+  "preheader": {
+    "base": "Notification {{referencia}} pending reading"
+  },
+  "saludo": {
+    "base": "Dear citizen"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a pending notification"
+  },
+  "entradilla": {
+    "base": "You have a notification available in your Social Security electronic office. Access it with your Cl@ve user."
+  },
+  "detalle": {
+    "base": "Notifications are considered read after 10 calendar days."
+  },
+  "urgencia": {
+    "base": "You have 10 calendar days left to read this notification."
+  },
+  "cta": {
+    "base": "View notification"
+  },
+  "cierre": {
+    "base": "Social Security electronic office"
+  },
+  "fichaEtiqueta1": "Reference",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Type",
+  "fichaValor2": "Official notification",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Pending reading"
+}

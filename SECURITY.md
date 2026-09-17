@@ -81,6 +81,46 @@ a cambiar. Toda la API sigue exigiendo origen local sin ninguna excepción.
 
 ---
 
+## El autopiloto de la extensión hace intentos de login reales
+
+"Capturar flujo automático" (`extension/background.js`, `extension/avanzar.js`)
+rellena con datos inventados (`test@dominio.com` / `Test1234!`) cualquier
+campo de email/contraseña que encuentre y **envía el formulario**, para poder
+avanzar a la siguiente pantalla de un login de varios pasos (Google,
+Microsoft...) sin ir pulsando "Capturar paso" a mano en cada una. Es
+imprescindible para clonar ese segundo paso con fidelidad, pero implica hacer
+peticiones de login reales, con credenciales falsas, contra sistemas de
+producción de terceros — no scraping pasivo.
+
+Consecuencias a tener en cuenta si se usa con frecuencia desde la misma IP:
+
+- Puede disparar heurísticas antifraude/antibot del proveedor (CAPTCHA,
+  bloqueo temporal, marcado de la IP como sospechosa).
+- Es tráfico de automatización contra el login de un tercero, con lo que
+  eso implica para sus términos de servicio, aunque el propósito sea
+  defensivo y las credenciales sean inventadas.
+
+El autopiloto se detiene solo en cuanto la pantalla capturada ya trae un
+campo de contraseña visible — esa es la última captura útil, así que nunca
+llega a rellenar ni enviar una contraseña de verdad ni de mentira en esa
+pantalla. Si el volumen de capturas lo justifica, prefiere "Capturar paso" a
+mano sobre el autopiloto para no generar tráfico de login repetido innecesario.
+
+---
+
+## Quishing (QR): por qué no está
+
+Se evaluó y se descartó a propósito (2026-09-14,
+`docs/superpowers/specs/2026-09-10-phishlab-biblioteca-design.md`). Un
+código QR solo enseña algo si codifica la URL final con tracking, y esa URL
+la resuelve GoPhish en el momento del envío — PhishLab no la conoce en
+tiempo de composición. Un QR generado aquí codificaría una URL de mentira: no
+sería una señal real que el empleado pudiera aprender a detectar, sino una
+falsa. Si algún día GoPhish expone la URL final antes de enviar, esto se
+puede reabrir.
+
+---
+
 ## Qué no sale de la máquina
 
 `templates/propias/` está en `.gitignore`. Ahí viven las plantillas importadas y
@@ -92,15 +132,24 @@ concreto.
 Desde la ampliación de septiembre de 2026 el catálogo dejó de ser genérico:
 cada plantilla lleva el logo real de la marca que suplanta (Adobe, DHL,
 DocuSign, Dropbox, GitHub, Google, Jira, LinkedIn, Microsoft, Netflix,
-PayPal), en `assets/img/marcas/*.svg`, incrustado en el HTML — nunca
-cargado desde el dominio real. Es una decisión deliberada: un login clonado
-con el logo de verdad se acerca mucho más a lo que un empleado recibe en un
-ataque real que una recreación con CSS.
+PayPal, y las incorporadas después: Amazon, Apple/iCloud, Spotify, Instagram,
+BBVA, Bizum, Agencia Tributaria, Seguridad Social, Movistar, Endesa, Correos,
+Fortinet), como `<svg>` inline dentro del propio `layout.html` de cada
+plantilla — nunca cargado desde el dominio real. Es una decisión deliberada:
+un login clonado con el logo de verdad se acerca mucho más a lo que un
+empleado recibe en un ataque real que una recreación con CSS.
 
-Los ficheros de `assets/img/marcas/` vienen de Wikimedia Commons (logos
-corporativos de dominio informativo/baja complejidad) y de Simple Icons
-(CC0). Ninguno se sirve desde el dominio de la marca ni hace ninguna petición
-de red al abrir la plantilla.
+`assets/img/marcas/*.svg` guarda el logo de las marcas que ya lo tenían así
+como fuente de referencia (de ahí sale el `<svg>` que se incrusta en cada
+plantilla), pero **no es lo que el navegador carga**: ninguna plantilla lo
+referencia por URL, así que editar solo ese fichero no cambia nada hasta que
+se vuelve a incrustar a mano en el `layout.html` correspondiente. Los logos
+de las marcas incorporadas después van incrustados directamente, sin pasar
+por esa carpeta.
+
+Los logos vienen de Wikimedia Commons (logos corporativos de dominio
+informativo/baja complejidad) y de Simple Icons (CC0). Ninguno se sirve desde
+el dominio de la marca ni hace ninguna petición de red al abrir la plantilla.
 
 Esto es distinto de `{{logoHtml}}`: ese sigue siendo el logo del **cliente**
 (tenant), el que se sube al montar cada campaña — nunca el de la marca

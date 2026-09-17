@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "We couldn't process your Spotify Premium payment"
+  },
+  "preheader": {
+    "base": "Amount: {{importe}}"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, there was an issue with your last payment"
+  },
+  "entradilla": {
+    "base": "We couldn't charge your Premium subscription ({{importe}}) with your saved payment method."
+  },
+  "detalle": {
+    "base": "Update your payment details to keep your ad-free access."
+  },
+  "urgencia": {
+    "base": "If you don't update your payment within {{plazo}}, your account will revert to the free plan."
+  },
+  "cta": {
+    "base": "Update payment"
+  },
+  "cierre": {
+    "base": "The Spotify team"
+  },
+  "fichaEtiqueta1": "Plan",
+  "fichaValor1": "Premium",
+  "fichaEtiqueta2": "Amount",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Payment declined"
+}

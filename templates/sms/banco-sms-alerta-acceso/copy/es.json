@@ -1,0 +1,7 @@
+{
+  "cuerpo": {
+    "base": "BBVA: hemos detectado un acceso inusual a tu cuenta. Verifica tu identidad aquí: {{enlace}}",
+    "urgencia": "BBVA: tu cuenta quedará bloqueada en 30 min si no verificas este acceso: {{enlace}}",
+    "urgencia+erratas": "BBVA: su cuenta sera bloqueada en 30 min si no verifica este aceso: {{enlace}}"
+  }
+}

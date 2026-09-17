@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your iCloud storage is almost full"
+  },
+  "preheader": {
+    "base": "Storage used: {{porcentaje}}"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, your storage is almost full"
+  },
+  "entradilla": {
+    "base": "Your iCloud account has used {{porcentaje}} of its available storage."
+  },
+  "detalle": {
+    "base": "Sign in to manage your storage."
+  },
+  "urgencia": {
+    "base": "If your storage fills up completely, your next backup will fail."
+  },
+  "cta": {
+    "base": "Manage my storage"
+  },
+  "cierre": {
+    "base": "The iCloud team"
+  },
+  "fichaEtiqueta1": "Storage used",
+  "fichaValor1": "{{porcentaje}}",
+  "fichaEtiqueta2": "Service",
+  "fichaValor2": "Automatic backup",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Almost full"
+}

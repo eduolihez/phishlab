@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "You have a {{importe}} refund pending"
+  },
+  "preheader": {
+    "base": "Order {{pedido}} · Refund pending"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a pending refund"
+  },
+  "entradilla": {
+    "base": "We processed a {{importe}} refund for your order {{pedido}}. Confirm your account details to receive it."
+  },
+  "detalle": {
+    "base": "The process is quick and only needs confirming once."
+  },
+  "urgencia": {
+    "base": "If you don't confirm your account within 48 hours, the refund will be cancelled."
+  },
+  "cta": {
+    "base": "Confirm my account"
+  },
+  "cierre": {
+    "base": "The Amazon team"
+  },
+  "fichaEtiqueta1": "Order",
+  "fichaValor1": "{{pedido}}",
+  "fichaEtiqueta2": "Refund",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Pending confirmation"
+}

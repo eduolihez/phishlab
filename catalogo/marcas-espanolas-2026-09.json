@@ -1,0 +1,719 @@
+[
+  {
+    "id": "bbva-acceso-sospechoso",
+    "tipo": "emails",
+    "nombre": "BBVA · Acceso sospechoso",
+    "descripcion": "Alerta de acceso a la banca online desde un dispositivo no reconocido. El pretexto de banca más pedido en campañas para el mercado español.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "empresa": "BBVA",
+    "captura": "credenciales",
+    "tags": ["bbva", "banca", "credenciales", "acceso"],
+    "remitente": { "nombre": "BBVA", "buzon": "alertas" },
+    "campos": [
+      { "clave": "dispositivo", "etiqueta": "Dispositivo detectado", "tipo": "texto", "defecto": "Android · Chrome" },
+      { "clave": "ubicacion", "etiqueta": "Ubicación aproximada", "tipo": "texto", "defecto": "Madrid, España" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Hemos detectado un acceso inusual a tu cuenta BBVA", "urgencia": "Tu cuenta BBVA quedará restringida si no verificas este acceso" },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}" },
+        "saludo": { "base": "Hola", "saludo-generico": "Estimado cliente" },
+        "titular": { "base": "{{saludo}}, hemos bloqueado un acceso sospechoso" },
+        "entradilla": { "base": "Alguien ha intentado acceder a tu banca online BBVA desde un dispositivo que no reconocemos." },
+        "detalle": { "base": "Verifica tu identidad para confirmar que has sido tú y mantener tu cuenta protegida." },
+        "urgencia": { "base": "Si no verificas tu identidad en los próximos 30 minutos, restringiremos el acceso a tu cuenta por seguridad." },
+        "cta": { "base": "Verificar mi identidad" },
+        "cierre": { "base": "El equipo de seguridad de BBVA" },
+        "fichaEtiqueta1": "Dispositivo", "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Ubicación", "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Acceso no verificado"
+      },
+      "ca": {
+        "asunto": { "base": "Hem detectat un accés inusual al teu compte BBVA" },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, hem bloquejat un accés sospitós" },
+        "entradilla": { "base": "Algú ha intentat accedir a la teva banca en línia BBVA des d'un dispositiu que no reconeixem." },
+        "detalle": { "base": "Verifica la teva identitat per confirmar que has estat tu." },
+        "urgencia": { "base": "Si no verifiques la teva identitat en els propers 30 minuts, restringirem l'accés al teu compte." },
+        "cta": { "base": "Verificar la meva identitat" },
+        "cierre": { "base": "L'equip de seguretat de BBVA" },
+        "fichaEtiqueta1": "Dispositiu", "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Ubicació", "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Accés no verificat"
+      },
+      "en": {
+        "asunto": { "base": "We detected unusual activity on your BBVA account" },
+        "preheader": { "base": "{{dispositivo}} · {{ubicacion}}" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, we've blocked a suspicious sign-in" },
+        "entradilla": { "base": "Someone tried to access your BBVA online banking from a device we don't recognize." },
+        "detalle": { "base": "Verify your identity to confirm it was you." },
+        "urgencia": { "base": "If you don't verify your identity within 30 minutes, we'll restrict access to your account." },
+        "cta": { "base": "Verify my identity" },
+        "cierre": { "base": "The BBVA security team" },
+        "fichaEtiqueta1": "Device", "fichaValor1": "{{dispositivo}}",
+        "fichaEtiqueta2": "Location", "fichaValor2": "{{ubicacion}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Unverified access"
+      }
+    }
+  },
+  {
+    "id": "bizum-dinero-pendiente",
+    "tipo": "emails",
+    "nombre": "Bizum · Dinero pendiente de aceptar",
+    "descripcion": "Aviso de un envío de Bizum pendiente de aceptar antes de que caduque. Muy usado como cebo porque genera curiosidad positiva, no miedo.",
+    "familia": "banca",
+    "categoria": "banca-pagos",
+    "empresa": "Bizum",
+    "captura": "credenciales",
+    "tags": ["bizum", "banca", "credenciales", "pago"],
+    "remitente": { "nombre": "Bizum", "buzon": "notificaciones" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe recibido", "tipo": "texto", "defecto": "45 €" },
+      { "clave": "remitente", "etiqueta": "Quién lo envía", "tipo": "texto", "defecto": "Un contacto" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tienes {{importe}} pendientes de aceptar", "urgencia": "Últimas horas para aceptar tus {{importe}} de Bizum" },
+        "preheader": { "base": "{{remitente}} te ha enviado {{importe}} por Bizum" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tienes un envío pendiente de aceptar" },
+        "entradilla": { "base": "{{remitente}} te ha enviado {{importe}} por Bizum. Solo tienes que confirmarlo desde tu banco para recibirlo." },
+        "detalle": { "base": "Los envíos de Bizum caducan si no se aceptan a tiempo." },
+        "urgencia": { "base": "Este envío caduca en 2 horas. Pasado ese plazo, el dinero se devolverá a quien te lo envió." },
+        "cta": { "base": "Aceptar el envío" },
+        "cierre": { "base": "El equipo de Bizum" },
+        "fichaEtiqueta1": "Importe", "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "De", "fichaValor2": "{{remitente}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Pendiente de aceptar"
+      },
+      "ca": {
+        "asunto": { "base": "Tens {{importe}} pendents d'acceptar" },
+        "preheader": { "base": "{{remitente}} t'ha enviat {{importe}} per Bizum" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tens un enviament pendent d'acceptar" },
+        "entradilla": { "base": "{{remitente}} t'ha enviat {{importe}} per Bizum. Confirma-ho des del teu banc per rebre'l." },
+        "detalle": { "base": "Els enviaments de Bizum caduquen si no s'accepten a temps." },
+        "urgencia": { "base": "Aquest enviament caduca en 2 hores." },
+        "cta": { "base": "Acceptar l'enviament" },
+        "cierre": { "base": "L'equip de Bizum" },
+        "fichaEtiqueta1": "Import", "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "De", "fichaValor2": "{{remitente}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Pendent d'acceptar"
+      },
+      "en": {
+        "asunto": { "base": "You have {{importe}} pending acceptance" },
+        "preheader": { "base": "{{remitente}} sent you {{importe}} via Bizum" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, you have a pending transfer" },
+        "entradilla": { "base": "{{remitente}} sent you {{importe}} via Bizum. Confirm it from your bank to receive it." },
+        "detalle": { "base": "Bizum transfers expire if not accepted in time." },
+        "urgencia": { "base": "This transfer expires in 2 hours." },
+        "cta": { "base": "Accept the transfer" },
+        "cierre": { "base": "The Bizum team" },
+        "fichaEtiqueta1": "Amount", "fichaValor1": "{{importe}}",
+        "fichaEtiqueta2": "From", "fichaValor2": "{{remitente}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Pending acceptance"
+      }
+    }
+  },
+  {
+    "id": "agencia-tributaria-devolucion",
+    "tipo": "emails",
+    "nombre": "Agencia Tributaria · Devolución pendiente",
+    "descripcion": "Aviso institucional de una devolución de la renta pendiente de confirmar cuenta bancaria. Pretexto de máxima autoridad percibida, muy usado en campañas reales especialmente en temporada de la renta.",
+    "familia": "administracion",
+    "categoria": "logistica-administracion",
+    "empresa": "Agencia Tributaria",
+    "captura": "datos",
+    "tags": ["agencia-tributaria", "hacienda", "administracion", "devolucion"],
+    "remitente": { "nombre": "Agencia Tributaria", "buzon": "notificaciones" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe de la devolución", "tipo": "texto", "defecto": "342,18 €" },
+      { "clave": "referencia", "etiqueta": "Referencia del expediente", "tipo": "texto", "defecto": "REF-2026-889231" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tienes una devolución de {{importe}} pendiente", "urgencia": "Última semana para confirmar tu devolución de {{importe}}" },
+        "preheader": { "base": "Expediente {{referencia}} · Devolución pendiente de confirmar" },
+        "saludo": { "base": "Estimado/a contribuyente" },
+        "titular": { "base": "{{saludo}}, tiene una devolución pendiente" },
+        "entradilla": { "base": "Hemos revisado su declaración y le corresponde una devolución de {{importe}}. Para procesarla necesitamos que confirme sus datos bancarios." },
+        "detalle": { "base": "El trámite es gratuito y solo lleva un minuto." },
+        "urgencia": { "base": "Si no confirma sus datos antes de fin de mes, la devolución quedará retenida y deberá solicitarla de nuevo el próximo ejercicio." },
+        "cta": { "base": "Confirmar mis datos" },
+        "cierre": { "base": "Agencia Estatal de Administración Tributaria" },
+        "fichaEtiqueta1": "Expediente", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Importe", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Pendiente de confirmar"
+      },
+      "ca": {
+        "asunto": { "base": "Té una devolució de {{importe}} pendent" },
+        "preheader": { "base": "Expedient {{referencia}} · Devolució pendent de confirmar" },
+        "saludo": { "base": "Benvolgut/da contribuent" },
+        "titular": { "base": "{{saludo}}, té una devolució pendent" },
+        "entradilla": { "base": "Hem revisat la seva declaració i li correspon una devolució de {{importe}}. Confirmi les seves dades bancàries per processar-la." },
+        "detalle": { "base": "El tràmit és gratuït i només porta un minut." },
+        "urgencia": { "base": "Si no confirma les dades abans de final de mes, la devolució quedarà retinguda." },
+        "cta": { "base": "Confirmar les meves dades" },
+        "cierre": { "base": "Agència Estatal d'Administració Tributària" },
+        "fichaEtiqueta1": "Expedient", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Import", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Pendent de confirmar"
+      },
+      "en": {
+        "asunto": { "base": "You have a {{importe}} tax refund pending" },
+        "preheader": { "base": "Case {{referencia}} · Refund pending confirmation" },
+        "saludo": { "base": "Dear taxpayer" },
+        "titular": { "base": "{{saludo}}, you have a pending refund" },
+        "entradilla": { "base": "We reviewed your tax return and you're due a refund of {{importe}}. Please confirm your bank details to process it." },
+        "detalle": { "base": "The process is free and takes only a minute." },
+        "urgencia": { "base": "If you don't confirm your details by the end of the month, the refund will be withheld." },
+        "cta": { "base": "Confirm my details" },
+        "cierre": { "base": "Spanish Tax Agency" },
+        "fichaEtiqueta1": "Case", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Amount", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Pending confirmation"
+      }
+    }
+  },
+  {
+    "id": "seguridad-social-notificacion",
+    "tipo": "emails",
+    "nombre": "Seguridad Social · Notificación pendiente",
+    "descripcion": "Aviso institucional de una notificación pendiente en la sede electrónica, con acceso vía Cl@ve. Pretexto institucional de alta autoridad percibida.",
+    "familia": "administracion",
+    "categoria": "logistica-administracion",
+    "empresa": "Seguridad Social",
+    "captura": "credenciales",
+    "tags": ["seguridad-social", "administracion", "notificacion", "clave"],
+    "remitente": { "nombre": "Seguridad Social", "buzon": "sede-electronica" },
+    "campos": [
+      { "clave": "referencia", "etiqueta": "Referencia de la notificación", "tipo": "texto", "defecto": "NOT-2026-004471" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tiene una notificación pendiente en su sede electrónica", "urgencia": "Su notificación caduca en 10 días naturales" },
+        "preheader": { "base": "Notificación {{referencia}} pendiente de lectura" },
+        "saludo": { "base": "Estimado/a ciudadano/a" },
+        "titular": { "base": "{{saludo}}, tiene una notificación pendiente" },
+        "entradilla": { "base": "Tiene una notificación disponible en su sede electrónica de la Seguridad Social. Acceda con su usuario Cl@ve para consultarla." },
+        "detalle": { "base": "Las notificaciones se consideran leídas a los 10 días naturales, aunque no se hayan consultado." },
+        "urgencia": { "base": "Le quedan 10 días naturales para consultar esta notificación antes de que se considere rechazada." },
+        "cta": { "base": "Consultar notificación" },
+        "cierre": { "base": "Sede electrónica de la Seguridad Social" },
+        "fichaEtiqueta1": "Referencia", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Tipo", "fichaValor2": "Notificación oficial",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Pendiente de lectura"
+      },
+      "ca": {
+        "asunto": { "base": "Té una notificació pendent a la seva seu electrònica" },
+        "preheader": { "base": "Notificació {{referencia}} pendent de lectura" },
+        "saludo": { "base": "Benvolgut/da ciutadà/na" },
+        "titular": { "base": "{{saludo}}, té una notificació pendent" },
+        "entradilla": { "base": "Té una notificació disponible a la seva seu electrònica de la Seguretat Social. Accedeixi amb el seu usuari Cl@ve." },
+        "detalle": { "base": "Les notificacions es consideren llegides als 10 dies naturals." },
+        "urgencia": { "base": "Li queden 10 dies naturals per consultar-la." },
+        "cta": { "base": "Consultar notificació" },
+        "cierre": { "base": "Seu electrònica de la Seguretat Social" },
+        "fichaEtiqueta1": "Referència", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Tipus", "fichaValor2": "Notificació oficial",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Pendent de lectura"
+      },
+      "en": {
+        "asunto": { "base": "You have a pending notification in your electronic office" },
+        "preheader": { "base": "Notification {{referencia}} pending reading" },
+        "saludo": { "base": "Dear citizen" },
+        "titular": { "base": "{{saludo}}, you have a pending notification" },
+        "entradilla": { "base": "You have a notification available in your Social Security electronic office. Access it with your Cl@ve user." },
+        "detalle": { "base": "Notifications are considered read after 10 calendar days." },
+        "urgencia": { "base": "You have 10 calendar days left to read this notification." },
+        "cta": { "base": "View notification" },
+        "cierre": { "base": "Social Security electronic office" },
+        "fichaEtiqueta1": "Reference", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Type", "fichaValor2": "Official notification",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Pending reading"
+      }
+    }
+  },
+  {
+    "id": "movistar-factura-impagada",
+    "tipo": "emails",
+    "nombre": "Movistar · Factura impagada",
+    "descripcion": "Aviso de factura impagada con corte de línea inminente. Pretexto de operadora, clásico de facturación falsa.",
+    "familia": "actualidad",
+    "categoria": "avisos-generales",
+    "empresa": "Movistar",
+    "captura": "datos",
+    "tags": ["movistar", "telecomunicaciones", "factura", "pago"],
+    "remitente": { "nombre": "Movistar", "buzon": "facturacion" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe de la factura", "tipo": "texto", "defecto": "38,90 €" },
+      { "clave": "referencia", "etiqueta": "Nº de factura", "tipo": "texto", "defecto": "F-2026-771102" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tu factura de {{importe}} está pendiente de pago", "urgencia": "Tu línea se suspenderá si no regularizas el pago" },
+        "preheader": { "base": "Factura {{referencia}} · {{importe}} pendientes" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tu factura está pendiente de pago" },
+        "entradilla": { "base": "No hemos podido cobrar tu factura de {{importe}} con el método de pago que tenemos registrado." },
+        "detalle": { "base": "Regulariza el pago para evitar la suspensión del servicio." },
+        "urgencia": { "base": "Si no regularizas el pago en 48 horas, suspenderemos tu línea." },
+        "cta": { "base": "Pagar factura" },
+        "cierre": { "base": "El equipo de Movistar" },
+        "fichaEtiqueta1": "Nº factura", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Importe", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Pago pendiente"
+      },
+      "ca": {
+        "asunto": { "base": "La teva factura de {{importe}} està pendent de pagament" },
+        "preheader": { "base": "Factura {{referencia}} · {{importe}} pendents" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, la teva factura està pendent" },
+        "entradilla": { "base": "No hem pogut cobrar la teva factura de {{importe}}." },
+        "detalle": { "base": "Regularitza el pagament per evitar la suspensió del servei." },
+        "urgencia": { "base": "Si no regularitzes el pagament en 48 hores, suspendrem la teva línia." },
+        "cta": { "base": "Pagar factura" },
+        "cierre": { "base": "L'equip de Movistar" },
+        "fichaEtiqueta1": "Nº factura", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Import", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Pagament pendent"
+      },
+      "en": {
+        "asunto": { "base": "Your {{importe}} invoice is pending payment" },
+        "preheader": { "base": "Invoice {{referencia}} · {{importe}} due" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, your invoice is pending payment" },
+        "entradilla": { "base": "We couldn't charge your {{importe}} invoice with your payment method on file." },
+        "detalle": { "base": "Settle the payment to avoid service suspension." },
+        "urgencia": { "base": "If you don't settle the payment within 48 hours, we'll suspend your line." },
+        "cta": { "base": "Pay invoice" },
+        "cierre": { "base": "The Movistar team" },
+        "fichaEtiqueta1": "Invoice no.", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Amount", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Payment pending"
+      }
+    }
+  },
+  {
+    "id": "endesa-corte-suministro",
+    "tipo": "emails",
+    "nombre": "Endesa · Corte de suministro por impago",
+    "descripcion": "Aviso de corte de suministro eléctrico inminente por impago. Pretexto de energética, muy efectivo por el miedo a quedarse sin luz.",
+    "familia": "actualidad",
+    "categoria": "avisos-generales",
+    "empresa": "Endesa",
+    "captura": "datos",
+    "tags": ["endesa", "energia", "factura", "pago"],
+    "remitente": { "nombre": "Endesa", "buzon": "avisos" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe pendiente", "tipo": "texto", "defecto": "64,32 €" },
+      { "clave": "cups", "etiqueta": "Código CUPS / contrato", "tipo": "texto", "defecto": "ES0031XXXXXXXXXXXX" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Aviso de corte de suministro por impago", "urgencia": "Tu suministro se cortará en 24 horas" },
+        "preheader": { "base": "Contrato {{cups}} · {{importe}} pendientes" },
+        "saludo": { "base": "Estimado/a cliente" },
+        "titular": { "base": "{{saludo}}, tiene un pago pendiente" },
+        "entradilla": { "base": "No hemos recibido el pago de {{importe}} correspondiente a su último recibo." },
+        "detalle": { "base": "Regularice el pago para evitar la interrupción del suministro." },
+        "urgencia": { "base": "Si no regulariza el pago en 24 horas, procederemos al corte del suministro." },
+        "cta": { "base": "Regularizar pago" },
+        "cierre": { "base": "El equipo de Endesa" },
+        "fichaEtiqueta1": "Contrato", "fichaValor1": "{{cups}}",
+        "fichaEtiqueta2": "Importe", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Corte programado"
+      },
+      "ca": {
+        "asunto": { "base": "Avís de tall de subministrament per impagament" },
+        "preheader": { "base": "Contracte {{cups}} · {{importe}} pendents" },
+        "saludo": { "base": "Benvolgut/da client/a" },
+        "titular": { "base": "{{saludo}}, té un pagament pendent" },
+        "entradilla": { "base": "No hem rebut el pagament de {{importe}} del seu últim rebut." },
+        "detalle": { "base": "Regularitzi el pagament per evitar la interrupció del subministrament." },
+        "urgencia": { "base": "Si no regularitza el pagament en 24 hores, tallarem el subministrament." },
+        "cta": { "base": "Regularitzar pagament" },
+        "cierre": { "base": "L'equip d'Endesa" },
+        "fichaEtiqueta1": "Contracte", "fichaValor1": "{{cups}}",
+        "fichaEtiqueta2": "Import", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Tall programat"
+      },
+      "en": {
+        "asunto": { "base": "Supply disconnection notice for non-payment" },
+        "preheader": { "base": "Contract {{cups}} · {{importe}} due" },
+        "saludo": { "base": "Dear customer" },
+        "titular": { "base": "{{saludo}}, you have a pending payment" },
+        "entradilla": { "base": "We haven't received the {{importe}} payment for your last bill." },
+        "detalle": { "base": "Settle the payment to avoid service interruption." },
+        "urgencia": { "base": "If you don't settle the payment within 24 hours, we'll disconnect your supply." },
+        "cta": { "base": "Settle payment" },
+        "cierre": { "base": "The Endesa team" },
+        "fichaEtiqueta1": "Contract", "fichaValor1": "{{cups}}",
+        "fichaEtiqueta2": "Amount", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Disconnection scheduled"
+      }
+    }
+  },
+  {
+    "id": "correos-paquete-retenido",
+    "tipo": "emails",
+    "nombre": "Correos · Paquete retenido",
+    "descripcion": "El pretexto de paquetería más denunciado en España: aviso de un pequeño gasto de gestión/aduana pendiente para liberar un envío retenido.",
+    "familia": "logistica",
+    "categoria": "logistica-administracion",
+    "empresa": "Correos",
+    "captura": "datos",
+    "tags": ["correos", "paqueteria", "aduana", "pago"],
+    "remitente": { "nombre": "Correos", "buzon": "envios" },
+    "campos": [
+      { "clave": "referencia", "etiqueta": "Referencia del envío", "tipo": "texto", "defecto": "ES4471820" },
+      { "clave": "importe", "etiqueta": "Gasto de gestión", "tipo": "texto", "defecto": "2,99 €" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tu envío {{referencia}} está retenido", "urgencia": "Tu paquete será devuelto al remitente en 24h" },
+        "preheader": { "base": "Gasto de gestión pendiente: {{importe}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tu paquete está retenido" },
+        "entradilla": { "base": "Tu envío {{referencia}} está retenido en nuestras instalaciones por un gasto de gestión pendiente de {{importe}}." },
+        "detalle": { "base": "Abona el importe pendiente para que podamos continuar con la entrega." },
+        "urgencia": { "base": "Si no abonas el importe en 24 horas, el paquete será devuelto al remitente." },
+        "cta": { "base": "Pagar y liberar mi envío" },
+        "cierre": { "base": "El equipo de Correos" },
+        "fichaEtiqueta1": "Referencia", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Gasto de gestión", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Retenido"
+      },
+      "ca": {
+        "asunto": { "base": "El teu enviament {{referencia}} està retingut" },
+        "preheader": { "base": "Despesa de gestió pendent: {{importe}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, el teu paquet està retingut" },
+        "entradilla": { "base": "El teu enviament {{referencia}} està retingut per una despesa de gestió pendent de {{importe}}." },
+        "detalle": { "base": "Paga l'import pendent perquè puguem continuar amb el lliurament." },
+        "urgencia": { "base": "Si no pagues l'import en 24 hores, el paquet serà retornat." },
+        "cta": { "base": "Pagar i alliberar el meu enviament" },
+        "cierre": { "base": "L'equip de Correos" },
+        "fichaEtiqueta1": "Referència", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Despesa de gestió", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Retingut"
+      },
+      "en": {
+        "asunto": { "base": "Your shipment {{referencia}} is on hold" },
+        "preheader": { "base": "Pending handling fee: {{importe}}" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, your parcel is on hold" },
+        "entradilla": { "base": "Your shipment {{referencia}} is on hold for a pending handling fee of {{importe}}." },
+        "detalle": { "base": "Pay the pending amount so we can continue delivery." },
+        "urgencia": { "base": "If you don't pay within 24 hours, the parcel will be returned to sender." },
+        "cta": { "base": "Pay and release my shipment" },
+        "cierre": { "base": "The Correos team" },
+        "fichaEtiqueta1": "Reference", "fichaValor1": "{{referencia}}",
+        "fichaEtiqueta2": "Handling fee", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "On hold"
+      }
+    }
+  },
+  {
+    "id": "amazon-pedido-reembolso",
+    "tipo": "emails",
+    "nombre": "Amazon · Reembolso pendiente",
+    "descripcion": "Aviso de un reembolso pendiente de un pedido, pidiendo confirmar la cuenta para recibirlo. Amazon es la marca de comercio electrónico más suplantada en España.",
+    "familia": "saas",
+    "categoria": "suscripciones-personales",
+    "empresa": "Amazon",
+    "captura": "credenciales",
+    "tags": ["amazon", "ecommerce", "reembolso", "credenciales"],
+    "remitente": { "nombre": "Amazon", "buzon": "pedidos" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe del reembolso", "tipo": "texto", "defecto": "89,99 €" },
+      { "clave": "pedido", "etiqueta": "Número de pedido", "tipo": "texto", "defecto": "402-1195774-8802341" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tienes un reembolso de {{importe}} pendiente", "urgencia": "Confirma tu cuenta para no perder tu reembolso de {{importe}}" },
+        "preheader": { "base": "Pedido {{pedido}} · Reembolso pendiente" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tienes un reembolso pendiente" },
+        "entradilla": { "base": "Hemos procesado un reembolso de {{importe}} por tu pedido {{pedido}}. Para recibirlo, confirma los datos de tu cuenta." },
+        "detalle": { "base": "El proceso es rápido y solo hace falta confirmarlo una vez." },
+        "urgencia": { "base": "Si no confirmas tu cuenta en 48 horas, el reembolso se cancelará." },
+        "cta": { "base": "Confirmar mi cuenta" },
+        "cierre": { "base": "El equipo de Amazon" },
+        "fichaEtiqueta1": "Pedido", "fichaValor1": "{{pedido}}",
+        "fichaEtiqueta2": "Reembolso", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Pendiente de confirmar"
+      },
+      "ca": {
+        "asunto": { "base": "Tens un reemborsament de {{importe}} pendent" },
+        "preheader": { "base": "Comanda {{pedido}} · Reemborsament pendent" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tens un reemborsament pendent" },
+        "entradilla": { "base": "Hem processat un reemborsament de {{importe}} per la teva comanda {{pedido}}. Confirma les dades del teu compte per rebre'l." },
+        "detalle": { "base": "El procés és ràpid i només cal confirmar-lo una vegada." },
+        "urgencia": { "base": "Si no confirmes el teu compte en 48 hores, el reemborsament es cancel·larà." },
+        "cta": { "base": "Confirmar el meu compte" },
+        "cierre": { "base": "L'equip d'Amazon" },
+        "fichaEtiqueta1": "Comanda", "fichaValor1": "{{pedido}}",
+        "fichaEtiqueta2": "Reemborsament", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Pendent de confirmar"
+      },
+      "en": {
+        "asunto": { "base": "You have a {{importe}} refund pending" },
+        "preheader": { "base": "Order {{pedido}} · Refund pending" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, you have a pending refund" },
+        "entradilla": { "base": "We processed a {{importe}} refund for your order {{pedido}}. Confirm your account details to receive it." },
+        "detalle": { "base": "The process is quick and only needs confirming once." },
+        "urgencia": { "base": "If you don't confirm your account within 48 hours, the refund will be cancelled." },
+        "cta": { "base": "Confirm my account" },
+        "cierre": { "base": "The Amazon team" },
+        "fichaEtiqueta1": "Order", "fichaValor1": "{{pedido}}",
+        "fichaEtiqueta2": "Refund", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Pending confirmation"
+      }
+    }
+  },
+  {
+    "id": "icloud-copia-seguridad-llena",
+    "tipo": "emails",
+    "nombre": "iCloud · Copia de seguridad llena",
+    "descripcion": "Aviso de espacio de iCloud casi lleno con riesgo de perder la copia de seguridad del dispositivo. Pretexto personal, apela al miedo a perder fotos y datos.",
+    "familia": "saas",
+    "categoria": "suscripciones-personales",
+    "empresa": "iCloud",
+    "captura": "credenciales",
+    "tags": ["icloud", "apple", "almacenamiento", "credenciales"],
+    "remitente": { "nombre": "iCloud", "buzon": "no-reply" },
+    "campos": [
+      { "clave": "porcentaje", "etiqueta": "Porcentaje de espacio usado", "tipo": "texto", "defecto": "98%" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tu almacenamiento de iCloud está casi lleno", "urgencia": "Tu copia de seguridad dejará de hacerse en 24 horas" },
+        "preheader": { "base": "Espacio usado: {{porcentaje}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tu almacenamiento está casi lleno" },
+        "entradilla": { "base": "Tu cuenta de iCloud ha usado el {{porcentaje}} de su espacio disponible. Tu dispositivo podría dejar de hacer copias de seguridad." },
+        "detalle": { "base": "Inicia sesión para gestionar tu almacenamiento y no perder tus fotos y datos." },
+        "urgencia": { "base": "Si tu almacenamiento se llena por completo, tu próxima copia de seguridad fallará." },
+        "cta": { "base": "Gestionar mi almacenamiento" },
+        "cierre": { "base": "El equipo de iCloud" },
+        "fichaEtiqueta1": "Espacio usado", "fichaValor1": "{{porcentaje}}",
+        "fichaEtiqueta2": "Servicio", "fichaValor2": "Copia de seguridad automática",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Casi lleno"
+      },
+      "ca": {
+        "asunto": { "base": "El teu emmagatzematge d'iCloud està gairebé ple" },
+        "preheader": { "base": "Espai usat: {{porcentaje}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, el teu emmagatzematge està gairebé ple" },
+        "entradilla": { "base": "El teu compte d'iCloud ha usat el {{porcentaje}} de l'espai disponible." },
+        "detalle": { "base": "Inicia sessió per gestionar el teu emmagatzematge." },
+        "urgencia": { "base": "Si l'emmagatzematge s'omple del tot, la propera còpia de seguretat fallarà." },
+        "cta": { "base": "Gestionar el meu emmagatzematge" },
+        "cierre": { "base": "L'equip d'iCloud" },
+        "fichaEtiqueta1": "Espai usat", "fichaValor1": "{{porcentaje}}",
+        "fichaEtiqueta2": "Servei", "fichaValor2": "Còpia de seguretat automàtica",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Gairebé ple"
+      },
+      "en": {
+        "asunto": { "base": "Your iCloud storage is almost full" },
+        "preheader": { "base": "Storage used: {{porcentaje}}" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, your storage is almost full" },
+        "entradilla": { "base": "Your iCloud account has used {{porcentaje}} of its available storage." },
+        "detalle": { "base": "Sign in to manage your storage." },
+        "urgencia": { "base": "If your storage fills up completely, your next backup will fail." },
+        "cta": { "base": "Manage my storage" },
+        "cierre": { "base": "The iCloud team" },
+        "fichaEtiqueta1": "Storage used", "fichaValor1": "{{porcentaje}}",
+        "fichaEtiqueta2": "Service", "fichaValor2": "Automatic backup",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Almost full"
+      }
+    }
+  },
+  {
+    "id": "spotify-pago-rechazado",
+    "tipo": "emails",
+    "nombre": "Spotify · Pago rechazado",
+    "descripcion": "Aviso de pago rechazado con la suscripción Premium en riesgo. Mismo patrón que la plantilla de Netflix ya existente, con otra marca de entretenimiento.",
+    "familia": "entretenimiento",
+    "categoria": "suscripciones-personales",
+    "empresa": "Spotify",
+    "captura": "datos",
+    "tags": ["spotify", "suscripcion", "pago"],
+    "remitente": { "nombre": "Spotify", "buzon": "facturacion" },
+    "campos": [
+      { "clave": "importe", "etiqueta": "Importe de la suscripción", "tipo": "texto", "defecto": "10,99 €" },
+      { "clave": "plazo", "etiqueta": "Plazo antes de suspender", "tipo": "texto", "defecto": "5 días" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "No hemos podido procesar tu pago de Spotify Premium", "urgencia": "Tu Premium se cancelará en {{plazo}}" },
+        "preheader": { "base": "Importe: {{importe}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, hubo un problema con tu último pago" },
+        "entradilla": { "base": "No hemos podido cobrar tu suscripción Premium ({{importe}}) con el método de pago guardado." },
+        "detalle": { "base": "Actualiza tus datos de pago para no perder el acceso sin anuncios." },
+        "urgencia": { "base": "Si no actualizas el pago en {{plazo}}, tu cuenta volverá al plan gratuito con anuncios." },
+        "cta": { "base": "Actualizar pago" },
+        "cierre": { "base": "El equipo de Spotify" },
+        "fichaEtiqueta1": "Plan", "fichaValor1": "Premium",
+        "fichaEtiqueta2": "Importe", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Pago rechazado"
+      },
+      "ca": {
+        "asunto": { "base": "No hem pogut processar el teu pagament de Spotify Premium" },
+        "preheader": { "base": "Import: {{importe}}" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, hi ha hagut un problema amb el teu últim pagament" },
+        "entradilla": { "base": "No hem pogut cobrar la teva subscripció Premium ({{importe}})." },
+        "detalle": { "base": "Actualitza les teves dades de pagament." },
+        "urgencia": { "base": "Si no actualitzes el pagament en {{plazo}}, tornaràs al pla gratuït." },
+        "cta": { "base": "Actualitzar pagament" },
+        "cierre": { "base": "L'equip de Spotify" },
+        "fichaEtiqueta1": "Pla", "fichaValor1": "Premium",
+        "fichaEtiqueta2": "Import", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Pagament rebutjat"
+      },
+      "en": {
+        "asunto": { "base": "We couldn't process your Spotify Premium payment" },
+        "preheader": { "base": "Amount: {{importe}}" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, there was an issue with your last payment" },
+        "entradilla": { "base": "We couldn't charge your Premium subscription ({{importe}}) with your saved payment method." },
+        "detalle": { "base": "Update your payment details to keep your ad-free access." },
+        "urgencia": { "base": "If you don't update your payment within {{plazo}}, your account will revert to the free plan." },
+        "cta": { "base": "Update payment" },
+        "cierre": { "base": "The Spotify team" },
+        "fichaEtiqueta1": "Plan", "fichaValor1": "Premium",
+        "fichaEtiqueta2": "Amount", "fichaValor2": "{{importe}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Payment declined"
+      }
+    }
+  },
+  {
+    "id": "instagram-cuenta-suspendida",
+    "tipo": "emails",
+    "nombre": "Instagram · Cuenta marcada por infracción",
+    "descripcion": "Aviso de cuenta marcada por una supuesta infracción de derechos de autor, con apelación urgente antes de la suspensión definitiva. Muy usado contra perfiles de empresa/marketing.",
+    "familia": "externos",
+    "categoria": "redes-profesionales",
+    "empresa": "Instagram",
+    "captura": "credenciales",
+    "tags": ["instagram", "redes-sociales", "credenciales", "suspension"],
+    "remitente": { "nombre": "Instagram", "buzon": "soporte" },
+    "campos": [
+      { "clave": "plazo", "etiqueta": "Plazo para apelar", "tipo": "texto", "defecto": "24 horas" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "Tu cuenta ha sido marcada por infracción de derechos de autor", "urgencia": "Tu cuenta se suspenderá en {{plazo}}" },
+        "preheader": { "base": "Apela antes de {{plazo}} para evitar la suspensión" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, tu cuenta ha sido marcada" },
+        "entradilla": { "base": "Hemos recibido un aviso de infracción de derechos de autor sobre contenido de tu cuenta." },
+        "detalle": { "base": "Si crees que se trata de un error, puedes apelar la decisión desde el formulario." },
+        "urgencia": { "base": "Si no apelas en {{plazo}}, tu cuenta se suspenderá de forma permanente." },
+        "cta": { "base": "Apelar la decisión" },
+        "cierre": { "base": "El equipo de soporte de Instagram" },
+        "fichaEtiqueta1": "Motivo", "fichaValor1": "Infracción de derechos de autor",
+        "fichaEtiqueta2": "Plazo", "fichaValor2": "{{plazo}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Cuenta marcada"
+      },
+      "ca": {
+        "asunto": { "base": "El teu compte ha estat marcat per infracció de drets d'autor" },
+        "preheader": { "base": "Apel·la abans de {{plazo}} per evitar la suspensió" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, el teu compte ha estat marcat" },
+        "entradilla": { "base": "Hem rebut un avís d'infracció de drets d'autor sobre contingut del teu compte." },
+        "detalle": { "base": "Si creus que és un error, pots apel·lar la decisió." },
+        "urgencia": { "base": "Si no apel·les en {{plazo}}, el teu compte se suspendrà de manera permanent." },
+        "cta": { "base": "Apel·lar la decisió" },
+        "cierre": { "base": "L'equip de suport d'Instagram" },
+        "fichaEtiqueta1": "Motiu", "fichaValor1": "Infracció de drets d'autor",
+        "fichaEtiqueta2": "Termini", "fichaValor2": "{{plazo}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Compte marcat"
+      },
+      "en": {
+        "asunto": { "base": "Your account has been flagged for copyright infringement" },
+        "preheader": { "base": "Appeal within {{plazo}} to avoid suspension" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, your account has been flagged" },
+        "entradilla": { "base": "We received a copyright infringement report about content on your account." },
+        "detalle": { "base": "If you believe this is a mistake, you can appeal the decision." },
+        "urgencia": { "base": "If you don't appeal within {{plazo}}, your account will be permanently suspended." },
+        "cta": { "base": "Appeal the decision" },
+        "cierre": { "base": "The Instagram support team" },
+        "fichaEtiqueta1": "Reason", "fichaValor1": "Copyright infringement",
+        "fichaEtiqueta2": "Deadline", "fichaValor2": "{{plazo}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "Account flagged"
+      }
+    }
+  },
+  {
+    "id": "fortinet-licencia-antivirus",
+    "tipo": "emails",
+    "nombre": "Fortinet · Licencia de seguridad caducada",
+    "descripcion": "Aviso de caducidad de la licencia de antivirus/EDR corporativo, dirigido al empleado. Ángulo IT interno: quien lo recibe cree que es cosa del departamento de sistemas, no de un tercero.",
+    "familia": "it",
+    "categoria": "soporte-it",
+    "empresa": "Fortinet",
+    "captura": "credenciales",
+    "tags": ["fortinet", "it", "antivirus", "licencia", "credenciales"],
+    "remitente": { "nombre": "Soporte TI", "buzon": "soporte-ti" },
+    "campos": [
+      { "clave": "dias", "etiqueta": "Días hasta la caducidad", "tipo": "numero", "defecto": "3" },
+      { "clave": "equipo", "etiqueta": "Nombre del equipo protegido", "tipo": "texto", "defecto": "tu equipo corporativo" }
+    ],
+    "copy": {
+      "es": {
+        "asunto": { "base": "La licencia de seguridad de tu equipo caduca en {{dias}} días", "urgencia": "Tu equipo se quedará sin protección en {{dias}} días" },
+        "preheader": { "base": "Renueva la licencia de FortiClient antes de que caduque" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, la licencia de seguridad de tu equipo caduca pronto" },
+        "entradilla": { "base": "La licencia de FortiClient que protege {{equipo}} caduca en {{dias}} días. Es necesario renovarla con tus credenciales corporativas." },
+        "detalle": { "base": "Sin la licencia activa, tu equipo dejará de estar protegido frente a amenazas." },
+        "urgencia": { "base": "Pasados {{dias}} días sin renovar, el antivirus dejará de actualizarse y tu equipo quedará expuesto." },
+        "cta": { "base": "Renovar licencia" },
+        "cierre": { "base": "Soporte TI" },
+        "fichaEtiqueta1": "Equipo protegido", "fichaValor1": "{{equipo}}",
+        "fichaEtiqueta2": "Días restantes", "fichaValor2": "{{dias}}",
+        "fichaEtiqueta3": "Estado", "fichaValor3": "Licencia por caducar"
+      },
+      "ca": {
+        "asunto": { "base": "La llicència de seguretat del teu equip caduca en {{dias}} dies" },
+        "preheader": { "base": "Renova la llicència de FortiClient abans que caduqui" },
+        "saludo": { "base": "Hola" },
+        "titular": { "base": "{{saludo}}, la llicència de seguretat del teu equip caduca aviat" },
+        "entradilla": { "base": "La llicència de FortiClient que protegeix {{equipo}} caduca en {{dias}} dies." },
+        "detalle": { "base": "Sense la llicència activa, el teu equip deixarà d'estar protegit." },
+        "urgencia": { "base": "Passats {{dias}} dies sense renovar, l'antivirus deixarà d'actualitzar-se." },
+        "cta": { "base": "Renovar llicència" },
+        "cierre": { "base": "Suport TI" },
+        "fichaEtiqueta1": "Equip protegit", "fichaValor1": "{{equipo}}",
+        "fichaEtiqueta2": "Dies restants", "fichaValor2": "{{dias}}",
+        "fichaEtiqueta3": "Estat", "fichaValor3": "Llicència a punt de caducar"
+      },
+      "en": {
+        "asunto": { "base": "Your device's security license expires in {{dias}} days" },
+        "preheader": { "base": "Renew your FortiClient license before it expires" },
+        "saludo": { "base": "Hello" },
+        "titular": { "base": "{{saludo}}, your device's security license is expiring soon" },
+        "entradilla": { "base": "The FortiClient license protecting {{equipo}} expires in {{dias}} days." },
+        "detalle": { "base": "Without an active license, your device will no longer be protected." },
+        "urgencia": { "base": "After {{dias}} days without renewal, the antivirus will stop updating." },
+        "cta": { "base": "Renew license" },
+        "cierre": { "base": "IT Support" },
+        "fichaEtiqueta1": "Protected device", "fichaValor1": "{{equipo}}",
+        "fichaEtiqueta2": "Days remaining", "fichaValor2": "{{dias}}",
+        "fichaEtiqueta3": "Status", "fichaValor3": "License expiring"
+      }
+    }
+  }
+]

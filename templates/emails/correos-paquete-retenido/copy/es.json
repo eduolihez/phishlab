@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tu envío {{referencia}} está retenido",
+    "urgencia": "Tu paquete será devuelto al remitente en 24h"
+  },
+  "preheader": {
+    "base": "Gasto de gestión pendiente: {{importe}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tu paquete está retenido"
+  },
+  "entradilla": {
+    "base": "Tu envío {{referencia}} está retenido en nuestras instalaciones por un gasto de gestión pendiente de {{importe}}."
+  },
+  "detalle": {
+    "base": "Abona el importe pendiente para que podamos continuar con la entrega."
+  },
+  "urgencia": {
+    "base": "Si no abonas el importe en 24 horas, el paquete será devuelto al remitente."
+  },
+  "cta": {
+    "base": "Pagar y liberar mi envío"
+  },
+  "cierre": {
+    "base": "El equipo de Correos"
+  },
+  "fichaEtiqueta1": "Referencia",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Gasto de gestión",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Retenido"
+}

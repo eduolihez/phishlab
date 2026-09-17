@@ -1,0 +1,11 @@
+{
+  "asunto": {
+    "base": "Your {{importe}} Gift Card at El Corte Inglés",
+    "urgencia": "Last days: your {{importe}} Gift Card at El Corte Inglés expires soon",
+    "urgencia+erratas": "URGENT: claim your {{importe}} Gift Card at El Corte Ingles now"
+  },
+  "preheader": {
+    "base": "{{empresa}} and El Corte Inglés are gifting you a {{importe}} Gift Card. Request it with your corporate credentials before {{fecha}}.",
+    "urgencia": "Last days to request your {{importe}} Gift Card. Access before {{fecha}}."
+  }
+}

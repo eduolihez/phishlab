@@ -51,3 +51,9 @@ jobs:
             exit 1
           fi
           echo "Demo generada sin exportación."
+
+      - name: Generar el lab
+        # Solo para detectar que el build se rompe, no para publicarlo: el
+        # lab nunca sale de aquí sin el muro de acceso delante (ver
+        # tools/build-lab.js y docs/EDUOLIHEZ.md).
+        run: npm run build:lab

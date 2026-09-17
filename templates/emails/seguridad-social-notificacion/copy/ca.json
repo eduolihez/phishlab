@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Té una notificació pendent a la seva seu electrònica"
+  },
+  "preheader": {
+    "base": "Notificació {{referencia}} pendent de lectura"
+  },
+  "saludo": {
+    "base": "Benvolgut/da ciutadà/na"
+  },
+  "titular": {
+    "base": "{{saludo}}, té una notificació pendent"
+  },
+  "entradilla": {
+    "base": "Té una notificació disponible a la seva seu electrònica de la Seguretat Social. Accedeixi amb el seu usuari Cl@ve."
+  },
+  "detalle": {
+    "base": "Les notificacions es consideren llegides als 10 dies naturals."
+  },
+  "urgencia": {
+    "base": "Li queden 10 dies naturals per consultar-la."
+  },
+  "cta": {
+    "base": "Consultar notificació"
+  },
+  "cierre": {
+    "base": "Seu electrònica de la Seguretat Social"
+  },
+  "fichaEtiqueta1": "Referència",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Tipus",
+  "fichaValor2": "Notificació oficial",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Pendent de lectura"
+}

@@ -196,9 +196,40 @@ function seccionSenales(catalogo, senales, bloquesQuitados) {
   return l;
 }
 
-/** Checklist de autorización que viaja en el ZIP. */
-export function autorizacion({ cliente, expediente }) {
+/**
+ * Las seis casillas obligatorias antes de lanzar una campaña, y las cuatro
+ * de cierre. Es la fuente única: de aquí sale tanto el checklist interactivo
+ * de la pestaña Exportar (ver `ui/exportar.js`) como el `AUTORIZACION.md` que
+ * viaja en el ZIP, para que no puedan desincronizarse.
+ */
+export const CASILLAS_AUTORIZACION = [
+  { id: 'contrato', texto: 'Contrato o adenda firmada que cubre expresamente la simulación de phishing.' },
+  { id: 'alcance', texto: 'Alcance cerrado: dominios, número de destinatarios y departamentos incluidos.' },
+  { id: 'ventana', texto: 'Ventana de ejecución acordada por escrito (fechas y franja horaria).' },
+  { id: 'contacto', texto: 'Contacto de escalado del cliente, localizable durante toda la ventana.' },
+  { id: 'soc', texto: 'SOC o proveedor de seguridad avisado, para no generar un incidente real.' },
+  { id: 'datos', texto: 'Tratamiento de datos acordado: qué se captura, dónde se guarda y cuándo se borra.' },
+];
+
+export const CASILLAS_CIERRE = [
+  { id: 'resultados', texto: 'Resultados exportados para el informe.' },
+  { id: 'purga', texto: 'Datos de destinatarios y credenciales purgados de GoPhish.' },
+  { id: 'landing-retirada', texto: 'Landing retirada del servidor público.' },
+  { id: 'formativa-comunicada', texto: 'Página formativa comunicada a todo el personal incluido en el alcance.' },
+];
+
+/**
+ * Checklist de autorización que viaja en el ZIP.
+ * @param {{cliente: string, expediente: string, marcadas?: string[]}} datos
+ *   `marcadas`: ids de `CASILLAS_AUTORIZACION`/`CASILLAS_CIERRE` que ya
+ *   estaban marcados en el checklist interactivo al exportar — el Markdown
+ *   sale con esas casillas ya tildadas en vez de las 10 en blanco de siempre.
+ */
+export function autorizacion({ cliente, expediente, marcadas = [] }) {
   const hoy = new Date().toISOString().slice(0, 10);
+  const marcado = new Set(marcadas);
+  const casilla = (c) => `- [${marcado.has(c.id) ? 'x' : ' '}] ${c.texto}`;
+
   return `# Autorización de la simulación
 
 | | |
@@ -210,18 +241,10 @@ export function autorizacion({ cliente, expediente }) {
 Este material es para una simulación de phishing **autorizada por contrato**.
 No se lanza nada hasta que estas seis casillas estén marcadas.
 
-- [ ] Contrato o adenda firmada que cubre expresamente la simulación de phishing.
-- [ ] Alcance cerrado: dominios, número de destinatarios y departamentos incluidos.
-- [ ] Ventana de ejecución acordada por escrito (fechas y franja horaria).
-- [ ] Contacto de escalado del cliente, localizable durante toda la ventana.
-- [ ] SOC o proveedor de seguridad avisado, para no generar un incidente real.
-- [ ] Tratamiento de datos acordado: qué se captura, dónde se guarda y cuándo se borra.
+${CASILLAS_AUTORIZACION.map(casilla).join('\n')}
 
 ## Al cerrar la campaña
 
-- [ ] Resultados exportados para el informe.
-- [ ] Datos de destinatarios y credenciales purgados de GoPhish.
-- [ ] Landing retirada del servidor público.
-- [ ] Página formativa comunicada a todo el personal incluido en el alcance.
+${CASILLAS_CIERRE.map(casilla).join('\n')}
 `;
 }

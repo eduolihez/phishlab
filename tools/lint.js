@@ -9,11 +9,14 @@
  *   node tools/lint.js --propias    también las de templates/propias/
  */
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { bloquesDeclarados, variablesGophish } from '../assets/js/core/engine.js';
-import { listarPlantillas, componer, senalesCatalogo, presetsCatalogo, leerLayout, leerCopy, TEMPLATES } from './render.js';
+import { listarPlantillas, componer, componerSms, senalesCatalogo, presetsCatalogo, leerLayout, leerCopy, leerJson, TIPOS_PLANTILLA, TEMPLATES } from './render.js';
+
+/** Un SMS suelto tradicional cabe en un mensaje; por encima se parte en varios. */
+const CARACTERES_SMS = 160;
 
 const TAMANO_MAXIMO = 400 * 1024;
 // Una plantilla clonado-web incrusta el CSS/fuentes/imágenes del sitio real
@@ -67,6 +70,8 @@ const PRESETS = presetsCatalogo().map((p) => p.id);
 
 const plantillas = listarPlantillas({ incluirPropias: process.argv.includes('--propias') });
 
+revisarIndice();
+
 for (const plantilla of plantillas) {
   console.log(`\n${plantilla.tipo}/${plantilla.id}${plantilla.propia ? '  (propia)' : ''}`);
   try {
@@ -104,6 +109,8 @@ function revisar(plantilla) {
   for (const lang of IDIOMAS_ESPERADOS) {
     if (!meta.idiomas.includes(lang)) aviso(id, `sin versión en "${lang}"`);
   }
+
+  if (tipo === 'sms') return revisarSms(plantilla);
 
   // --- ficheros ---
 
@@ -208,6 +215,77 @@ function revisar(plantilla) {
   console.log(`  ok     ${enLayout.length} bloques · ${meta.idiomas.join('/')} · ${(Buffer.byteLength(layout) / 1024).toFixed(1)} KB de layout`);
 }
 
+/**
+ * Una plantilla `sms` es texto plano: nada de layout.html, bloques ni
+ * comprobaciones de maquetación. Mismo espíritu que `revisar()` (metadatos,
+ * copy, render en todas las combinaciones) adaptado a lo que de verdad
+ * existe en este tipo.
+ */
+function revisarSms(plantilla) {
+  const { id, carpeta, meta } = plantilla;
+
+  for (const lang of meta.idiomas) {
+    if (!existsSync(join(carpeta, 'copy', `${lang}.json`))) return error(id, `falta copy/${lang}.json`);
+  }
+
+  if (meta.bloques?.length) {
+    error(id, 'declara "bloques": un sms es texto plano, no hay HTML que trocear');
+  }
+  if (existsSync(join(carpeta, 'layout.html'))) {
+    aviso(id, 'tiene layout.html: un sms no lo usa, no hace falta');
+  }
+
+  const propiosDeMarca = new Set([
+    'empresa', 'sector', 'dominio', 'firma', 'color', 'colorOscuro', 'colorTexto',
+    'logo', 'logoHtml', 'anio', 'idioma',
+  ]);
+  const claveDeCampo = new Set((meta.campos ?? []).map((c) => c.clave));
+
+  for (const lang of meta.idiomas) {
+    const copy = leerCopy(carpeta, lang);
+
+    if (copy.cuerpo === undefined) {
+      error(`${id}/copy/${lang}`, 'sin "cuerpo": no hay texto que componer');
+      continue;
+    }
+
+    for (const variantes of Object.values(copy)) {
+      if (typeof variantes !== 'object' || variantes === null) continue;
+      for (const clave of Object.keys(variantes)) {
+        if (clave === 'base' || clave.startsWith('_')) continue;
+        for (const s of clave.split('+')) {
+          if (!SENALES.has(s.trim())) error(`${id}/copy/${lang}`, `variante "${clave}" con señal desconocida "${s.trim()}"`);
+        }
+      }
+    }
+
+    const huecos = [...JSON.stringify(copy.cuerpo).matchAll(/\{\{\s*([a-zA-Z_][\w.]*)\s*\}\}/g)].map((m) => m[1]);
+    for (const hueco of new Set(huecos)) {
+      if (propiosDeMarca.has(hueco) || claveDeCampo.has(hueco) || hueco === 'cuerpo') continue;
+      if (copy[hueco] === undefined) {
+        error(`${id}/copy/${lang}`, `el cuerpo usa {{${hueco}}} y este idioma no lo tiene`);
+      }
+    }
+  }
+
+  for (const lang of meta.idiomas) {
+    for (const preset of PRESETS) {
+      const r = componerSms(plantilla, { idioma: lang, preset });
+      if (r.faltantes.length) {
+        error(`${id} ${lang}/${preset}`, `variables sin valor, saldrían literales: ${r.faltantes.join(', ')}`);
+      }
+      const tope = meta.caracteres || CARACTERES_SMS;
+      if (r.texto.length > tope) {
+        aviso(`${id} ${lang}/${preset}`, `${r.texto.length} caracteres, por encima de ${tope}: se partirá en varios SMS`);
+      }
+    }
+  }
+
+  if (meta.demo) revisarDemo(plantilla);
+
+  console.log(`  ok     sms · ${meta.idiomas.join('/')}`);
+}
+
 function revisarHtml(plantilla, donde, html) {
   const { tipo, meta } = plantilla;
   const bytes = Buffer.byteLength(html);
@@ -267,14 +345,15 @@ function revisarHtml(plantilla, donde, html) {
  * Es la regla que impide que un despiste acabe publicado en internet.
  */
 function revisarDemo(plantilla) {
-  const { id, carpeta, meta } = plantilla;
+  const { id, tipo, carpeta, meta } = plantilla;
 
   // Solo se mira lo que un visitante llegaría a leer. El andamiaje técnico de
   // un layout de correo (el xmlns de VML, los comentarios condicionales de
   // Outlook, `-apple-system` en la pila de fuentes) menciona marcas por
-  // motivos que no tienen nada que ver con suplantar a nadie.
+  // motivos que no tienen nada que ver con suplantar a nadie. Un sms no tiene
+  // layout que leer: es texto plano de por sí.
   const textos = [
-    textoVisible(leerLayout(carpeta, meta)),
+    tipo === 'sms' ? '' : textoVisible(leerLayout(carpeta, meta)),
     [meta.nombre, meta.descripcion, ...(meta.tags ?? []), ...(meta.campos ?? []).map((c) => `${c.etiqueta} ${c.defecto ?? ''}`)].join(' '),
     ...meta.idiomas.map((l) => Object.values(leerCopy(carpeta, l)).map(aplanar).join(' ')),
   ].join(' \n ');
@@ -293,6 +372,38 @@ function revisarDemo(plantilla) {
 
   if (meta.captura === 'credenciales') {
     aviso(`${id} (demo)`, 'landing de credenciales en la demo pública: comprueba que el formulario no envía a ningún sitio');
+  }
+}
+
+/**
+ * El navegador no puede listar directorios (ver comentario en
+ * `templates/index.json`), así que una carpeta con `meta.json` que nadie haya
+ * añadido al índice existe en disco pero es invisible en la biblioteca — y al
+ * revés, un id que quedó en el índice tras borrar su carpeta rompe la carga
+ * del catálogo entero. Ninguno de los dos lo detectaba nada hasta ahora.
+ */
+function revisarIndice() {
+  const indice = leerJson(join(TEMPLATES, 'index.json'));
+
+  for (const tipo of TIPOS_PLANTILLA) {
+    const dir = join(TEMPLATES, tipo);
+    const enDisco = existsSync(dir)
+      ? readdirSync(dir, { withFileTypes: true })
+          .filter((d) => d.isDirectory() && existsSync(join(dir, d.name, 'meta.json')))
+          .map((d) => d.name)
+      : [];
+    const enIndice = indice[tipo] ?? [];
+
+    for (const id of enDisco) {
+      if (!enIndice.includes(id)) {
+        error(`índice/${tipo}`, `"${id}" tiene carpeta y meta.json en disco pero no está en templates/index.json — invisible en la biblioteca`);
+      }
+    }
+    for (const id of enIndice) {
+      if (!enDisco.includes(id)) {
+        error(`índice/${tipo}`, `"${id}" está en templates/index.json pero no existe su carpeta (o le falta meta.json) en disco`);
+      }
+    }
   }
 }
 

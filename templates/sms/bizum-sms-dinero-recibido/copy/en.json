@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "Bizum: you've received {{importe}} from {{remitente}}. Accept it here before it expires: {{enlace}}",
+    "urgencia": "Bizum: you have {{importe}} pending acceptance. It expires in 2 hours: {{enlace}}"
+  }
+}

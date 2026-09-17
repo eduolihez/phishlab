@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Tens {{importe}} pendents d'acceptar"
+  },
+  "preheader": {
+    "base": "{{remitente}} t'ha enviat {{importe}} per Bizum"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens un enviament pendent d'acceptar"
+  },
+  "entradilla": {
+    "base": "{{remitente}} t'ha enviat {{importe}} per Bizum. Confirma-ho des del teu banc per rebre'l."
+  },
+  "detalle": {
+    "base": "Els enviaments de Bizum caduquen si no s'accepten a temps."
+  },
+  "urgencia": {
+    "base": "Aquest enviament caduca en 2 hores."
+  },
+  "cta": {
+    "base": "Acceptar l'enviament"
+  },
+  "cierre": {
+    "base": "L'equip de Bizum"
+  },
+  "fichaEtiqueta1": "Import",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "De",
+  "fichaValor2": "{{remitente}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Pendent d'acceptar"
+}

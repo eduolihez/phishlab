@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "WhatsApp: we detected a login attempt to your account from an unrecognized device. If this wasn't you, cancel it here: {{enlace}}",
+    "urgencia": "WhatsApp: your account will be deactivated in 1 hour unless you cancel this unrecognized login: {{enlace}}"
+  }
+}

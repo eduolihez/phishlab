@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "Correos: el teu enviament {{referencia}} està retingut per una despesa de gestió pendent de {{importe}}. Gestiona-ho aquí: {{enlace}}",
+    "urgencia": "Correos: el teu paquet {{referencia}} es retornarà al remitent en 24h si no pagues {{importe}} de gestió: {{enlace}}"
+  }
+}

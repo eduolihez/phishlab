@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "No hemos podido procesar tu pago de Spotify Premium",
+    "urgencia": "Tu Premium se cancelará en {{plazo}}"
+  },
+  "preheader": {
+    "base": "Importe: {{importe}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hubo un problema con tu último pago"
+  },
+  "entradilla": {
+    "base": "No hemos podido cobrar tu suscripción Premium ({{importe}}) con el método de pago guardado."
+  },
+  "detalle": {
+    "base": "Actualiza tus datos de pago para no perder el acceso sin anuncios."
+  },
+  "urgencia": {
+    "base": "Si no actualizas el pago en {{plazo}}, tu cuenta volverá al plan gratuito con anuncios."
+  },
+  "cta": {
+    "base": "Actualizar pago"
+  },
+  "cierre": {
+    "base": "El equipo de Spotify"
+  },
+  "fichaEtiqueta1": "Plan",
+  "fichaValor1": "Premium",
+  "fichaEtiqueta2": "Importe",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Pago rechazado"
+}

@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "La licencia de seguridad de tu equipo caduca en {{dias}} días",
+    "urgencia": "Tu equipo se quedará sin protección en {{dias}} días"
+  },
+  "preheader": {
+    "base": "Renueva la licencia de FortiClient antes de que caduque"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, la licencia de seguridad de tu equipo caduca pronto"
+  },
+  "entradilla": {
+    "base": "La licencia de FortiClient que protege {{equipo}} caduca en {{dias}} días. Es necesario renovarla con tus credenciales corporativas."
+  },
+  "detalle": {
+    "base": "Sin la licencia activa, tu equipo dejará de estar protegido frente a amenazas."
+  },
+  "urgencia": {
+    "base": "Pasados {{dias}} días sin renovar, el antivirus dejará de actualizarse y tu equipo quedará expuesto."
+  },
+  "cta": {
+    "base": "Renovar licencia"
+  },
+  "cierre": {
+    "base": "Soporte TI"
+  },
+  "fichaEtiqueta1": "Equipo protegido",
+  "fichaValor1": "{{equipo}}",
+  "fichaEtiqueta2": "Días restantes",
+  "fichaValor2": "{{dias}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Licencia por caducar"
+}

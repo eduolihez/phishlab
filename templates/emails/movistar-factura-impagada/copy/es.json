@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tu factura de {{importe}} está pendiente de pago",
+    "urgencia": "Tu línea se suspenderá si no regularizas el pago"
+  },
+  "preheader": {
+    "base": "Factura {{referencia}} · {{importe}} pendientes"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tu factura está pendiente de pago"
+  },
+  "entradilla": {
+    "base": "No hemos podido cobrar tu factura de {{importe}} con el método de pago que tenemos registrado."
+  },
+  "detalle": {
+    "base": "Regulariza el pago para evitar la suspensión del servicio."
+  },
+  "urgencia": {
+    "base": "Si no regularizas el pago en 48 horas, suspenderemos tu línea."
+  },
+  "cta": {
+    "base": "Pagar factura"
+  },
+  "cierre": {
+    "base": "El equipo de Movistar"
+  },
+  "fichaEtiqueta1": "Nº factura",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Importe",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Pago pendiente"
+}

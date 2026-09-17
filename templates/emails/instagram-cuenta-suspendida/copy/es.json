@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tu cuenta ha sido marcada por infracción de derechos de autor",
+    "urgencia": "Tu cuenta se suspenderá en {{plazo}}"
+  },
+  "preheader": {
+    "base": "Apela antes de {{plazo}} para evitar la suspensión"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tu cuenta ha sido marcada"
+  },
+  "entradilla": {
+    "base": "Hemos recibido un aviso de infracción de derechos de autor sobre contenido de tu cuenta."
+  },
+  "detalle": {
+    "base": "Si crees que se trata de un error, puedes apelar la decisión desde el formulario."
+  },
+  "urgencia": {
+    "base": "Si no apelas en {{plazo}}, tu cuenta se suspenderá de forma permanente."
+  },
+  "cta": {
+    "base": "Apelar la decisión"
+  },
+  "cierre": {
+    "base": "El equipo de soporte de Instagram"
+  },
+  "fichaEtiqueta1": "Motivo",
+  "fichaValor1": "Infracción de derechos de autor",
+  "fichaEtiqueta2": "Plazo",
+  "fichaValor2": "{{plazo}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Cuenta marcada"
+}

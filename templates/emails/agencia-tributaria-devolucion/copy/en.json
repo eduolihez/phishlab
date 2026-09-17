@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "You have a {{importe}} tax refund pending"
+  },
+  "preheader": {
+    "base": "Case {{referencia}} · Refund pending confirmation"
+  },
+  "saludo": {
+    "base": "Dear taxpayer"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a pending refund"
+  },
+  "entradilla": {
+    "base": "We reviewed your tax return and you're due a refund of {{importe}}. Please confirm your bank details to process it."
+  },
+  "detalle": {
+    "base": "The process is free and takes only a minute."
+  },
+  "urgencia": {
+    "base": "If you don't confirm your details by the end of the month, the refund will be withheld."
+  },
+  "cta": {
+    "base": "Confirm my details"
+  },
+  "cierre": {
+    "base": "Spanish Tax Agency"
+  },
+  "fichaEtiqueta1": "Case",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Amount",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Pending confirmation"
+}

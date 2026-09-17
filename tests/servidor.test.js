@@ -17,7 +17,7 @@ import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { request as httpRequest } from 'node:http';
-import { rm } from 'node:fs/promises';
+import { rm, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -38,11 +38,36 @@ before(async () => {
 });
 
 after(async () => {
-  proceso.kill();
   // Por si algún test de guardado falló a medias y no llegó a su propia limpieza.
+  await limpiarCarpetaPrueba();
+  proceso.kill();
+});
+
+/**
+ * Borra la carpeta de prueba y su entrada en `templates/propias/index.json`.
+ *
+ * El servidor solo regenera ese índice cuando alguien guarda una plantilla
+ * (`regenerarIndicePropias()` en servidor.js); borrar la carpeta a mano desde
+ * el test, como hace el resto de esta suite, la deja huérfana en el índice
+ * hasta el siguiente guardado — y mientras tanto la biblioteca intenta
+ * cargarla y falla con un 404 en cada arranque. Se limpia aquí también para
+ * no dejar ese rastro.
+ */
+async function limpiarCarpetaPrueba() {
   const carpeta = join(RAIZ, 'templates', 'propias', 'landings', ID_PRUEBA);
   if (existsSync(carpeta)) await rm(carpeta, { recursive: true, force: true });
-});
+
+  const rutaIndice = join(RAIZ, 'templates', 'propias', 'index.json');
+  if (!existsSync(rutaIndice)) return;
+  try {
+    const indice = JSON.parse(await readFile(rutaIndice, 'utf8'));
+    if (!indice.landings?.includes(ID_PRUEBA)) return;
+    indice.landings = indice.landings.filter((id) => id !== ID_PRUEBA);
+    await writeFile(rutaIndice, JSON.stringify(indice, null, 2) + '\n', 'utf8');
+  } catch {
+    // Índice corrupto o inesperado: no es cosa de este test arreglarlo.
+  }
+}
 
 async function esperarListo(intentos = 50) {
   for (let i = 0; i < intentos; i++) {
@@ -203,5 +228,5 @@ test('/api/plantillas guarda una plantilla válida en templates/propias', async 
   assert.equal(datos.guardada, true);
   assert.ok(existsSync(join(RAIZ, 'templates', 'propias', 'landings', ID_PRUEBA, 'meta.json')));
 
-  await rm(join(RAIZ, 'templates', 'propias', 'landings', ID_PRUEBA), { recursive: true, force: true });
+  await limpiarCarpetaPrueba();
 });

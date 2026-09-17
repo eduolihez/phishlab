@@ -51,7 +51,7 @@ cpSync(join(TEMPLATES, 'presets.json'), join(DESTINO, 'templates', 'presets.json
 
 // --- plantillas ---
 
-const indice = { _comentario: 'Índice de la demo pública. Generado por tools/build-demo.js.', emails: [], landings: [] };
+const indice = { _comentario: 'Índice de la demo pública. Generado por tools/build-demo.js.', emails: [], landings: [], sms: [] };
 const layoutsUsados = new Set();
 
 for (const p of enDemo) {
@@ -69,12 +69,15 @@ for (const p of enDemo) {
     );
   }
 
-  if (p.meta.layout) {
+  if (p.tipo === 'sms') {
+    // Sin layout.html: un sms es texto plano, no hay nada que desactivar.
+  } else if (p.meta.layout) {
     layoutsUsados.add(p.meta.layout);
   } else {
     writeFileSync(join(destinoPlantilla, 'layout.html'), desactivarFormularios(leerLayout(p.carpeta, p.meta)), 'utf8');
   }
 
+  indice[p.tipo] ??= [];
   indice[p.tipo].push(p.id);
 }
 
@@ -101,7 +104,7 @@ writeFileSync(join(DESTINO, 'robots.txt'), 'User-agent: *\nAllow: /\n', 'utf8');
 writeFileSync(join(DESTINO, '.nojekyll'), '', 'utf8');
 
 console.log(`\nDemo generada en ${DESTINO}`);
-console.log(`  ${indice.emails.length} correos, ${indice.landings.length} landings, ${layoutsUsados.size} layouts.`);
+console.log(`  ${indice.emails.length} correos, ${indice.landings.length} landings, ${indice.sms.length} sms, ${layoutsUsados.size} layouts.`);
 console.log(`  ${plantillas.length - enDemo.length} plantillas quedan fuera por no estar marcadas para la demo.`);
 console.log('\nPúblicala como estático. No la sirvas desde el mismo host que las landings de campaña.');
 
@@ -131,7 +134,8 @@ function desactivarFormularios(html) {
 function comprobarMarcas() {
   const MARCAS = [
     'microsoft', 'office 365', 'onedrive', 'sharepoint', 'azure', 'gmail', 'icloud', 'amazon',
-    'paypal', 'netflix', 'dropbox', 'docusign', 'adobe', 'linkedin', 'whatsapp', 'facebook',
+    'paypal', 'netflix', 'spotify', 'instagram', 'dropbox', 'docusign', 'adobe', 'linkedin',
+    'whatsapp', 'facebook', 'glovo', 'fortinet',
     'bbva', 'caixabank', 'bankinter', 'openbank', 'revolut', 'bizum', 'seur', 'dhl', 'fedex',
     'agencia tributaria', 'seguridad social', 'endesa', 'iberdrola', 'movistar', 'vodafone',
   ];
@@ -141,7 +145,7 @@ function comprobarMarcas() {
 
   for (const p of enDemo) {
     const visible = [
-      leerLayout(p.carpeta, p.meta).replace(/<!--[\s\S]*?-->/g, ' ').replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' '),
+      p.tipo === 'sms' ? '' : leerLayout(p.carpeta, p.meta).replace(/<!--[\s\S]*?-->/g, ' ').replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' '),
       p.meta.nombre, p.meta.descripcion, (p.meta.tags ?? []).join(' '),
       (p.meta.campos ?? []).map((c) => `${c.etiqueta} ${c.defecto ?? ''}`).join(' '),
       ...p.meta.idiomas.map((l) => JSON.stringify(leerCopy(p.carpeta, l))),

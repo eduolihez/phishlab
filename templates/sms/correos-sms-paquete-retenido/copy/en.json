@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "Correos: your shipment {{referencia}} is on hold for a pending handling fee of {{importe}}. Manage it here: {{enlace}}",
+    "urgencia": "Correos: your parcel {{referencia}} will be returned to sender in 24h unless you pay the {{importe}} handling fee: {{enlace}}"
+  }
+}

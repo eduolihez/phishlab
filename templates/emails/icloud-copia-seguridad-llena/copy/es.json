@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tu almacenamiento de iCloud está casi lleno",
+    "urgencia": "Tu copia de seguridad dejará de hacerse en 24 horas"
+  },
+  "preheader": {
+    "base": "Espacio usado: {{porcentaje}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tu almacenamiento está casi lleno"
+  },
+  "entradilla": {
+    "base": "Tu cuenta de iCloud ha usado el {{porcentaje}} de su espacio disponible. Tu dispositivo podría dejar de hacer copias de seguridad."
+  },
+  "detalle": {
+    "base": "Inicia sesión para gestionar tu almacenamiento y no perder tus fotos y datos."
+  },
+  "urgencia": {
+    "base": "Si tu almacenamiento se llena por completo, tu próxima copia de seguridad fallará."
+  },
+  "cta": {
+    "base": "Gestionar mi almacenamiento"
+  },
+  "cierre": {
+    "base": "El equipo de iCloud"
+  },
+  "fichaEtiqueta1": "Espacio usado",
+  "fichaValor1": "{{porcentaje}}",
+  "fichaEtiqueta2": "Servicio",
+  "fichaValor2": "Copia de seguridad automática",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Casi lleno"
+}

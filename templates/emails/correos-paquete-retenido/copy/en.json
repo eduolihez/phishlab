@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your shipment {{referencia}} is on hold"
+  },
+  "preheader": {
+    "base": "Pending handling fee: {{importe}}"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, your parcel is on hold"
+  },
+  "entradilla": {
+    "base": "Your shipment {{referencia}} is on hold for a pending handling fee of {{importe}}."
+  },
+  "detalle": {
+    "base": "Pay the pending amount so we can continue delivery."
+  },
+  "urgencia": {
+    "base": "If you don't pay within 24 hours, the parcel will be returned to sender."
+  },
+  "cta": {
+    "base": "Pay and release my shipment"
+  },
+  "cierre": {
+    "base": "The Correos team"
+  },
+  "fichaEtiqueta1": "Reference",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Handling fee",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "On hold"
+}

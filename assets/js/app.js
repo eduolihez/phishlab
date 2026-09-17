@@ -21,6 +21,7 @@ import { registrarVisita, activarTelemetriaLocal } from './core/telemetry.js';
 import { vistaBiblioteca } from './ui/biblioteca.js';
 import { vistaDetalle } from './ui/detalle.js';
 import { vistaImportar } from './ui/importar.js';
+import { vistaInforme } from './ui/informe.js';
 
 arrancar().catch((e) => {
   console.error(e);
@@ -139,6 +140,10 @@ function sanearSeleccion() {
 function conectarRutas() {
   registrar('/biblioteca', () => vistaBiblioteca());
   registrar('/plantilla/:tipo/:id', (params) => vistaDetalle(params));
+  // Acceso secundario a propósito: no hay tercer enlace en la barra (ver
+  // DESIGN.md, 2026-09-15). Se llega desde el botón de la pestaña Exportar
+  // o desde la biblioteca, o escribiendo la ruta a mano.
+  registrar('/informe', () => vistaInforme());
 
   if (estado.sinServidorEstatico) {
     registrar('/importar', () => el('.pagina.columna-estrecha', [
@@ -169,7 +174,7 @@ function pintarCronica() {
     return;
   }
 
-  const total = estado.catalogo.emails.length + estado.catalogo.landings.length;
+  const total = estado.catalogo.emails.length + estado.catalogo.landings.length + (estado.catalogo.sms?.length ?? 0);
 
   pintarEn(acciones,
     el('span.pildora', { texto: `${total} plantillas` }),

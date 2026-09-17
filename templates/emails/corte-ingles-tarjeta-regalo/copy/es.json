@@ -1,0 +1,11 @@
+{
+  "asunto": {
+    "base": "Tu Tarjeta Regalo de {{importe}} en El Corte Inglés",
+    "urgencia": "Últimos días: tu Tarjeta Regalo de {{importe}} en El Corte Inglés caduca pronto",
+    "urgencia+erratas": "URGENTE: reclama ya tu Tarjeta Regalo de {{importe}} en El Corte Ingles"
+  },
+  "preheader": {
+    "base": "{{empresa}} y El Corte Inglés te regalan una Tarjeta Regalo de {{importe}}. Solicítala con tus credenciales corporativas antes del {{fecha}}.",
+    "urgencia": "Últimos días para solicitar tu Tarjeta Regalo de {{importe}}. Accede antes del {{fecha}}."
+  }
+}

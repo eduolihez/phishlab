@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "El teu emmagatzematge d'iCloud està gairebé ple"
+  },
+  "preheader": {
+    "base": "Espai usat: {{porcentaje}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, el teu emmagatzematge està gairebé ple"
+  },
+  "entradilla": {
+    "base": "El teu compte d'iCloud ha usat el {{porcentaje}} de l'espai disponible."
+  },
+  "detalle": {
+    "base": "Inicia sessió per gestionar el teu emmagatzematge."
+  },
+  "urgencia": {
+    "base": "Si l'emmagatzematge s'omple del tot, la propera còpia de seguretat fallarà."
+  },
+  "cta": {
+    "base": "Gestionar el meu emmagatzematge"
+  },
+  "cierre": {
+    "base": "L'equip d'iCloud"
+  },
+  "fichaEtiqueta1": "Espai usat",
+  "fichaValor1": "{{porcentaje}}",
+  "fichaEtiqueta2": "Servei",
+  "fichaValor2": "Còpia de seguretat automàtica",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Gairebé ple"
+}

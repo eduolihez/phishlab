@@ -1,0 +1,36 @@
+{
+  "schema": 2,
+  "nombre": "BBVA · Alerta de acceso (SMS)",
+  "descripcion": "SMS corto de alerta de acceso sospechoso a la banca online, con enlace a una landing de credenciales. Pareja en SMS del pretexto de banca del correo «bbva-acceso-sospechoso» — mismo señuelo, canal distinto.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "empresa": "BBVA",
+  "tags": [
+    "bbva",
+    "banca",
+    "smishing",
+    "sms"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "caracteres": 160,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Pretexto escrito a mano. No es copia de ningún mensaje real."
+  },
+  "campos": [
+    {
+      "clave": "enlace",
+      "etiqueta": "Enlace a la landing",
+      "tipo": "texto",
+      "defecto": "https://tu-landing.ejemplo.com",
+      "ayuda": "GoPhish no envía SMS, así que no hay {{.URL}} que resolver: pega aquí la URL de tu landing una vez publicada."
+    }
+  ],
+  "bloques": []
+}

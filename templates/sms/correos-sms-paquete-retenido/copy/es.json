@@ -1,0 +1,7 @@
+{
+  "cuerpo": {
+    "base": "Correos: tu envío {{referencia}} está retenido por un gasto de gestión pendiente de {{importe}}. Gestiónalo aquí: {{enlace}}",
+    "urgencia": "Correos: tu paquete {{referencia}} se devolverá al remitente en 24h si no abonas {{importe}} de gestión: {{enlace}}",
+    "urgencia+erratas": "Correos: su paquete {{referencia}} sera devuelto en 24h si no abona {{importe}} de gestion: {{enlace}}"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "Bizum: has rebut {{importe}} de {{remitente}}. Accepta'l aquí abans que caduqui: {{enlace}}",
+    "urgencia": "Bizum: tens {{importe}} pendents d'acceptar. Caduquen en 2 hores: {{enlace}}"
+  }
+}

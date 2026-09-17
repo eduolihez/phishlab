@@ -1,0 +1,42 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Tienes {{importe}} pendientes de aceptar",
+    "urgencia": "Últimas horas para aceptar tus {{importe}} de Bizum"
+  },
+  "preheader": {
+    "base": "{{remitente}} te ha enviado {{importe}} por Bizum"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tienes un envío pendiente de aceptar"
+  },
+  "entradilla": {
+    "base": "{{remitente}} te ha enviado {{importe}} por Bizum. Solo tienes que confirmarlo desde tu banco para recibirlo."
+  },
+  "detalle": {
+    "base": "Los envíos de Bizum caducan si no se aceptan a tiempo."
+  },
+  "urgencia": {
+    "base": "Este envío caduca en 2 horas. Pasado ese plazo, el dinero se devolverá a quien te lo envió."
+  },
+  "cta": {
+    "base": "Aceptar el envío"
+  },
+  "cierre": {
+    "base": "El equipo de Bizum"
+  },
+  "fichaEtiqueta1": "Importe",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "De",
+  "fichaValor2": "{{remitente}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Pendiente de aceptar"
+}

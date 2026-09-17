@@ -16,7 +16,7 @@ import { MARCA_VACIA, guardarEstado, leerEstado } from './brand.js';
 const suscriptores = new Set();
 
 export const estado = {
-  catalogo: { emails: [], landings: [], senales: [], presets: [] },
+  catalogo: { emails: [], landings: [], sms: [], senales: [], presets: [] },
 
   // Selección de campaña
   emailId: null,
@@ -47,6 +47,14 @@ export const estado = {
   cliente: '',
   expediente: '',
   incluirFormativa: true,
+
+  /**
+   * Casillas del checklist de autorización marcadas a mano en la pestaña
+   * Exportar (ids de `CASILLAS_AUTORIZACION` en gophish.js). Se persiste
+   * porque preparar una campaña real es cosa de varias sesiones, no de una
+   * sola sentada.
+   */
+  autorizacionMarcada: [],
 
   // Preferencias de la vista
   ejemplo: true,
@@ -107,7 +115,7 @@ export function alternarFavorito(id) {
 
 /** Busca una meta por id en cualquiera de las dos listas. */
 export function plantilla(id) {
-  return [...estado.catalogo.emails, ...estado.catalogo.landings].find((m) => m.id === id) ?? null;
+  return [...estado.catalogo.emails, ...estado.catalogo.landings, ...(estado.catalogo.sms ?? [])].find((m) => m.id === id) ?? null;
 }
 
 export const emailElegido = () => plantilla(estado.emailId);
@@ -136,6 +144,7 @@ function persistir() {
     ejemplo: estado.ejemplo,
     dispositivo: estado.dispositivo,
     favoritos: estado.favoritos,
+    autorizacionMarcada: estado.autorizacionMarcada,
   });
 }
 
@@ -159,5 +168,6 @@ export function restaurar() {
     dispositivo: guardado.dispositivo ?? 'escritorio',
     favoritos: guardado.favoritos ?? [],
     marca: { ...MARCA_VACIA, ...(guardado.marca ?? {}) },
+    autorizacionMarcada: guardado.autorizacionMarcada ?? [],
   });
 }

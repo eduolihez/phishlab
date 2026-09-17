@@ -1,0 +1,48 @@
+{
+  "schema": 2,
+  "nombre": "Correos · Paquete retenido (SMS)",
+  "descripcion": "El smishing más extendido en España: aviso de paquete retenido por un pequeño gasto de gestión/aduana pendiente de pago. SMS corto con enlace a una landing de datos de pago.",
+  "familia": "logistica",
+  "categoria": "logistica-administracion",
+  "empresa": "Correos",
+  "tags": [
+    "correos",
+    "smishing",
+    "sms",
+    "paqueteria"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "caracteres": 160,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Pretexto escrito a mano sobre el patrón de smishing de paquetería más denunciado en España (gasto de gestión/aduana pendiente). No es copia de ningún mensaje real."
+  },
+  "campos": [
+    {
+      "clave": "referencia",
+      "etiqueta": "Referencia del envío",
+      "tipo": "texto",
+      "defecto": "ES4471820"
+    },
+    {
+      "clave": "importe",
+      "etiqueta": "Gasto de gestión",
+      "tipo": "texto",
+      "defecto": "2,99 €"
+    },
+    {
+      "clave": "enlace",
+      "etiqueta": "Enlace a la landing",
+      "tipo": "texto",
+      "defecto": "https://tu-landing.ejemplo.com",
+      "ayuda": "GoPhish no envía SMS, así que no hay {{.URL}} que resolver: pega aquí la URL de tu landing una vez publicada."
+    }
+  ],
+  "bloques": []
+}

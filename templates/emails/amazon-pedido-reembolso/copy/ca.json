@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Tens un reemborsament de {{importe}} pendent"
+  },
+  "preheader": {
+    "base": "Comanda {{pedido}} · Reemborsament pendent"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, tens un reemborsament pendent"
+  },
+  "entradilla": {
+    "base": "Hem processat un reemborsament de {{importe}} per la teva comanda {{pedido}}. Confirma les dades del teu compte per rebre'l."
+  },
+  "detalle": {
+    "base": "El procés és ràpid i només cal confirmar-lo una vegada."
+  },
+  "urgencia": {
+    "base": "Si no confirmes el teu compte en 48 hores, el reemborsament es cancel·larà."
+  },
+  "cta": {
+    "base": "Confirmar el meu compte"
+  },
+  "cierre": {
+    "base": "L'equip d'Amazon"
+  },
+  "fichaEtiqueta1": "Comanda",
+  "fichaValor1": "{{pedido}}",
+  "fichaEtiqueta2": "Reemborsament",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Pendent de confirmar"
+}

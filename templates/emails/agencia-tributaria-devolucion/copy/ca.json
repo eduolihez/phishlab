@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Té una devolució de {{importe}} pendent"
+  },
+  "preheader": {
+    "base": "Expedient {{referencia}} · Devolució pendent de confirmar"
+  },
+  "saludo": {
+    "base": "Benvolgut/da contribuent"
+  },
+  "titular": {
+    "base": "{{saludo}}, té una devolució pendent"
+  },
+  "entradilla": {
+    "base": "Hem revisat la seva declaració i li correspon una devolució de {{importe}}. Confirmi les seves dades bancàries per processar-la."
+  },
+  "detalle": {
+    "base": "El tràmit és gratuït i només porta un minut."
+  },
+  "urgencia": {
+    "base": "Si no confirma les dades abans de final de mes, la devolució quedarà retinguda."
+  },
+  "cta": {
+    "base": "Confirmar les meves dades"
+  },
+  "cierre": {
+    "base": "Agència Estatal d'Administració Tributària"
+  },
+  "fichaEtiqueta1": "Expedient",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Import",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Pendent de confirmar"
+}

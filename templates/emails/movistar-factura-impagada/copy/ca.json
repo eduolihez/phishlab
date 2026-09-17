@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "La teva factura de {{importe}} està pendent de pagament"
+  },
+  "preheader": {
+    "base": "Factura {{referencia}} · {{importe}} pendents"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, la teva factura està pendent"
+  },
+  "entradilla": {
+    "base": "No hem pogut cobrar la teva factura de {{importe}}."
+  },
+  "detalle": {
+    "base": "Regularitza el pagament per evitar la suspensió del servei."
+  },
+  "urgencia": {
+    "base": "Si no regularitzes el pagament en 48 hores, suspendrem la teva línia."
+  },
+  "cta": {
+    "base": "Pagar factura"
+  },
+  "cierre": {
+    "base": "L'equip de Movistar"
+  },
+  "fichaEtiqueta1": "Nº factura",
+  "fichaValor1": "{{referencia}}",
+  "fichaEtiqueta2": "Import",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Pagament pendent"
+}

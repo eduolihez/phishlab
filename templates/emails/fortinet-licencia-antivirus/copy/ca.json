@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "La llicència de seguretat del teu equip caduca en {{dias}} dies"
+  },
+  "preheader": {
+    "base": "Renova la llicència de FortiClient abans que caduqui"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, la llicència de seguretat del teu equip caduca aviat"
+  },
+  "entradilla": {
+    "base": "La llicència de FortiClient que protegeix {{equipo}} caduca en {{dias}} dies."
+  },
+  "detalle": {
+    "base": "Sense la llicència activa, el teu equip deixarà d'estar protegit."
+  },
+  "urgencia": {
+    "base": "Passats {{dias}} dies sense renovar, l'antivirus deixarà d'actualitzar-se."
+  },
+  "cta": {
+    "base": "Renovar llicència"
+  },
+  "cierre": {
+    "base": "Suport TI"
+  },
+  "fichaEtiqueta1": "Equip protegit",
+  "fichaValor1": "{{equipo}}",
+  "fichaEtiqueta2": "Dies restants",
+  "fichaValor2": "{{dias}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Llicència a punt de caducar"
+}

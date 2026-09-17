@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "Hem detectat un accés inusual al teu compte BBVA"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hem bloquejat un accés sospitós"
+  },
+  "entradilla": {
+    "base": "Algú ha intentat accedir a la teva banca en línia BBVA des d'un dispositiu que no reconeixem."
+  },
+  "detalle": {
+    "base": "Verifica la teva identitat per confirmar que has estat tu."
+  },
+  "urgencia": {
+    "base": "Si no verifiques la teva identitat en els propers 30 minuts, restringirem l'accés al teu compte."
+  },
+  "cta": {
+    "base": "Verificar la meva identitat"
+  },
+  "cierre": {
+    "base": "L'equip de seguretat de BBVA"
+  },
+  "fichaEtiqueta1": "Dispositiu",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Ubicació",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Accés no verificat"
+}

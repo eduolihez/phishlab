@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your account has been flagged for copyright infringement"
+  },
+  "preheader": {
+    "base": "Appeal within {{plazo}} to avoid suspension"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, your account has been flagged"
+  },
+  "entradilla": {
+    "base": "We received a copyright infringement report about content on your account."
+  },
+  "detalle": {
+    "base": "If you believe this is a mistake, you can appeal the decision."
+  },
+  "urgencia": {
+    "base": "If you don't appeal within {{plazo}}, your account will be permanently suspended."
+  },
+  "cta": {
+    "base": "Appeal the decision"
+  },
+  "cierre": {
+    "base": "The Instagram support team"
+  },
+  "fichaEtiqueta1": "Reason",
+  "fichaValor1": "Copyright infringement",
+  "fichaEtiqueta2": "Deadline",
+  "fichaValor2": "{{plazo}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Account flagged"
+}

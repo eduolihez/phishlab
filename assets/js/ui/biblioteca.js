@@ -10,7 +10,7 @@
 
 import { el, pintarEn, icono, brindis } from './dom.js';
 import { estado, actualizar, alternarFavorito, landingsDeCampana } from '../core/estado.js';
-import { componer } from '../core/componer.js';
+import { componer, componerSms } from '../core/componer.js';
 
 const FAMILIAS = {
   microsoft: 'Microsoft / TI',
@@ -75,6 +75,7 @@ export function vistaBiblioteca() {
         texto:
           'Correos y páginas de aterrizaje para simulaciones autorizadas. Cada plantilla se compone por bloques y se calibra por señales, así que la misma base sirve para una campaña de línea base y para una que mida de verdad.',
       }),
+      el('a.btn.btn-mini', { href: '#/informe', style: { marginTop: '4px' }, texto: 'Ver informe de resultados de una campaña →' }),
     ]),
     el('.biblioteca', [lateral, el('div', [el('.barra-busqueda', [buscador]), resumen, rejilla])])
   );
@@ -111,7 +112,12 @@ export function vistaBiblioteca() {
   }
 
   function todas() {
-    return [...estado.catalogo.emails, ...landingsDeCampana(), ...estado.catalogo.landings.filter((m) => m.formativa)];
+    return [
+      ...estado.catalogo.emails,
+      ...landingsDeCampana(),
+      ...estado.catalogo.landings.filter((m) => m.formativa),
+      ...(estado.catalogo.sms ?? []),
+    ];
   }
 
   function filtrar() {
@@ -121,6 +127,7 @@ export function vistaBiblioteca() {
     return todas().filter((m) => {
       if (tipo === 'emails' && m.tipo !== 'emails') return false;
       if (tipo === 'landings' && m.tipo !== 'landings') return false;
+      if (tipo === 'sms' && m.tipo !== 'sms') return false;
       if (tipo === 'favoritos' && !estado.favoritos.includes(m.id)) return false;
       if (tipo === 'propias' && !m.propia) return false;
       if (familia !== 'todas' && m.familia !== familia) return false;
@@ -148,6 +155,7 @@ export function vistaBiblioteca() {
         ['todos', 'Todas', lista.length],
         ['emails', 'Correos', cuenta((m) => m.tipo === 'emails')],
         ['landings', 'Landings', cuenta((m) => m.tipo === 'landings')],
+        ['sms', 'SMS', cuenta((m) => m.tipo === 'sms')],
         ['favoritos', 'Favoritas', estado.favoritos.length],
         ['propias', 'Propias', cuenta((m) => m.propia)],
       ]),
@@ -241,7 +249,7 @@ export function vistaBiblioteca() {
           : [el('span.pildora', { texto: 'sin señal marcada' })]),
         el(`span.pildora${meta.tipo === 'emails' ? '' : '.pildora-info'}`, {
           style: { marginLeft: 'auto' },
-          texto: meta.tipo === 'emails' ? 'correo' : meta.formativa ? 'formativa' : 'landing',
+          texto: meta.tipo === 'emails' ? 'correo' : meta.tipo === 'sms' ? 'sms' : meta.formativa ? 'formativa' : 'landing',
         }),
       ]),
       miniatura,
@@ -298,6 +306,14 @@ const observador = new IntersectionObserver(
 async function pintarMiniatura(contenedor) {
   const meta = contenedor._meta;
   try {
+    if (meta.tipo === 'sms') {
+      // Un sms es texto plano: no hay nada que renderizar en un iframe,
+      // así que la miniatura es el propio texto compuesto.
+      const { texto } = await componerSms(meta, estado);
+      pintarEn(contenedor, el('.miniatura-sms', { texto }));
+      return;
+    }
+
     const { html } = await componer(meta, estado);
     const marco = el('iframe', {
       title: `Vista previa de ${meta.nombre}`,

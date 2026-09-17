@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "You have {{importe}} pending acceptance"
+  },
+  "preheader": {
+    "base": "{{remitente}} sent you {{importe}} via Bizum"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a pending transfer"
+  },
+  "entradilla": {
+    "base": "{{remitente}} sent you {{importe}} via Bizum. Confirm it from your bank to receive it."
+  },
+  "detalle": {
+    "base": "Bizum transfers expire if not accepted in time."
+  },
+  "urgencia": {
+    "base": "This transfer expires in 2 hours."
+  },
+  "cta": {
+    "base": "Accept the transfer"
+  },
+  "cierre": {
+    "base": "The Bizum team"
+  },
+  "fichaEtiqueta1": "Amount",
+  "fichaValor1": "{{importe}}",
+  "fichaEtiqueta2": "From",
+  "fichaValor2": "{{remitente}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Pending acceptance"
+}

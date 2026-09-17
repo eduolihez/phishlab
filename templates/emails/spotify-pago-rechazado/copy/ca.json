@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "Si el botó no funciona, copia aquesta adreça al teu navegador:",
+  "avisoAutomatico": {
+    "base": "Missatge generat automàticament. Si us plau, no responguis a aquest correu.",
+    "erratas": "Missatge generat automaticament pel sistema. No respongui a aquest correu."
+  },
+  "avisoReporte": "Si creus que aquest missatge no és legítim, reporta-ho a l’equip de seguretat.",
+  "asunto": {
+    "base": "No hem pogut processar el teu pagament de Spotify Premium"
+  },
+  "preheader": {
+    "base": "Import: {{importe}}"
+  },
+  "saludo": {
+    "base": "Hola"
+  },
+  "titular": {
+    "base": "{{saludo}}, hi ha hagut un problema amb el teu últim pagament"
+  },
+  "entradilla": {
+    "base": "No hem pogut cobrar la teva subscripció Premium ({{importe}})."
+  },
+  "detalle": {
+    "base": "Actualitza les teves dades de pagament."
+  },
+  "urgencia": {
+    "base": "Si no actualitzes el pagament en {{plazo}}, tornaràs al pla gratuït."
+  },
+  "cta": {
+    "base": "Actualitzar pagament"
+  },
+  "cierre": {
+    "base": "L'equip de Spotify"
+  },
+  "fichaEtiqueta1": "Pla",
+  "fichaValor1": "Premium",
+  "fichaEtiqueta2": "Import",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Estat",
+  "fichaValor3": "Pagament rebutjat"
+}

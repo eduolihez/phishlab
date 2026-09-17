@@ -23,7 +23,9 @@ import { sanearWeb } from './sanearWeb.js';
 const RAIZ = resolve(join(fileURLToPath(import.meta.url), '..', '..'));
 const PROPIAS = join(RAIZ, 'templates', 'propias');
 const PUERTO = Number(process.argv[2]) || 8080;
-const VERSION = '3.1';
+// Una sola fuente de verdad para la versión: antes vivía duplicada a mano
+// aquí y en package.json, y se desincronizaron (3.0.0 vs 3.1).
+const VERSION = JSON.parse(readFileSync(join(RAIZ, 'package.json'), 'utf8')).version;
 
 // 25MB bastaba para un .eml o un HTML pegado a mano, pero un envío de la
 // extensión (`/api/extension/clonar-flujo`) puede traer hasta 8 pasos, cada
@@ -396,6 +398,14 @@ async function regenerarIndicePropias() {
  * Sin Origin (fetch de misma página, curl) se acepta; con Origin, tiene que
  * ser localhost. Es lo que impide que una pestaña abierta en cualquier web
  * hable con este servidor mientras lo tienes arrancado.
+ *
+ * A propósito NO se exige que el puerto coincida con el de este servidor
+ * (ver test "un Origin local en otro puerto sí se acepta"): el hueco que
+ * cerraría (otro proceso local hablando con este servidor) no es el modelo de
+ * amenaza que este chequeo cubre — ver `SECURITY.md`, que habla de "una
+ * pestaña abierta en cualquier otra web", no de otro proceso de la misma
+ * máquina. Por eso `/api/extension/pendientes` (GET) se corrigió para no
+ * mutar estado en vez de aquí.
  */
 function origenLocal(peticion) {
   const origen = peticion.headers.origin;

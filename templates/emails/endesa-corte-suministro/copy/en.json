@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Supply disconnection notice for non-payment"
+  },
+  "preheader": {
+    "base": "Contract {{cups}} · {{importe}} due"
+  },
+  "saludo": {
+    "base": "Dear customer"
+  },
+  "titular": {
+    "base": "{{saludo}}, you have a pending payment"
+  },
+  "entradilla": {
+    "base": "We haven't received the {{importe}} payment for your last bill."
+  },
+  "detalle": {
+    "base": "Settle the payment to avoid service interruption."
+  },
+  "urgencia": {
+    "base": "If you don't settle the payment within 24 hours, we'll disconnect your supply."
+  },
+  "cta": {
+    "base": "Settle payment"
+  },
+  "cierre": {
+    "base": "The Endesa team"
+  },
+  "fichaEtiqueta1": "Contract",
+  "fichaValor1": "{{cups}}",
+  "fichaEtiqueta2": "Amount",
+  "fichaValor2": "{{importe}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "Disconnection scheduled"
+}

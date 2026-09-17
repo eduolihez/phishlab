@@ -1,0 +1,41 @@
+{
+  "textoEnlaceVisible": "If the button does not work, copy this address into your browser:",
+  "avisoAutomatico": {
+    "base": "Automatically generated message. Please do not reply to this email.",
+    "erratas": "Message generated automaticaly by the system. Do not reply to this email."
+  },
+  "avisoReporte": "If you believe this message is not legitimate, report it to the security team.",
+  "asunto": {
+    "base": "Your device's security license expires in {{dias}} days"
+  },
+  "preheader": {
+    "base": "Renew your FortiClient license before it expires"
+  },
+  "saludo": {
+    "base": "Hello"
+  },
+  "titular": {
+    "base": "{{saludo}}, your device's security license is expiring soon"
+  },
+  "entradilla": {
+    "base": "The FortiClient license protecting {{equipo}} expires in {{dias}} days."
+  },
+  "detalle": {
+    "base": "Without an active license, your device will no longer be protected."
+  },
+  "urgencia": {
+    "base": "After {{dias}} days without renewal, the antivirus will stop updating."
+  },
+  "cta": {
+    "base": "Renew license"
+  },
+  "cierre": {
+    "base": "IT Support"
+  },
+  "fichaEtiqueta1": "Protected device",
+  "fichaValor1": "{{equipo}}",
+  "fichaEtiqueta2": "Days remaining",
+  "fichaValor2": "{{dias}}",
+  "fichaEtiqueta3": "Status",
+  "fichaValor3": "License expiring"
+}

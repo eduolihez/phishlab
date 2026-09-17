@@ -174,12 +174,14 @@ function crear(spec) {
 function actualizarIndice() {
   const indice = {
     _comentario:
-      'Índice del catálogo. El navegador no puede listar directorios: para añadir una plantilla, crea su carpeta bajo emails/ o landings/ y añade su id aquí. Lo regenera tools/nueva-plantilla.js.',
+      'Índice del catálogo. El navegador no puede listar directorios: para añadir una plantilla, crea su carpeta bajo emails/, landings/ o sms/ y añade su id aquí. Lo regenera tools/nueva-plantilla.js.',
     emails: [],
     landings: [],
+    sms: [],
   };
 
-  for (const tipo of ['emails', 'landings']) {
+  for (const tipo of ['emails', 'landings', 'sms']) {
+    if (!existsSync(join(TEMPLATES, tipo))) continue;
     indice[tipo] = readdirSync(join(TEMPLATES, tipo), { withFileTypes: true })
       .filter((e) => e.isDirectory() && existsSync(join(TEMPLATES, tipo, e.name, 'meta.json')))
       .map((e) => e.name)
@@ -187,5 +189,5 @@ function actualizarIndice() {
   }
 
   writeFileSync(join(TEMPLATES, 'index.json'), JSON.stringify(indice, null, 2) + '\n', 'utf8');
-  console.log(`\nÍndice: ${indice.emails.length} correos, ${indice.landings.length} landings.`);
+  console.log(`\nÍndice: ${indice.emails.length} correos, ${indice.landings.length} landings, ${indice.sms.length} sms.`);
 }

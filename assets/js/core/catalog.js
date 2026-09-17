@@ -32,12 +32,13 @@ export async function cargarCatalogo() {
 
   const propias = await indicePropias();
 
-  const [emails, landings] = await Promise.all([
+  const [emails, landings, sms] = await Promise.all([
     cargarLista('emails', indice.emails ?? [], propias.emails ?? []),
     cargarLista('landings', indice.landings ?? [], propias.landings ?? []),
+    cargarLista('sms', indice.sms ?? [], propias.sms ?? []),
   ]);
 
-  return { emails, landings, senales: senales.senales, presets: presets.presets };
+  return { emails, landings, sms, senales: senales.senales, presets: presets.presets };
 }
 
 /**

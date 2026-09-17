@@ -1,0 +1,127 @@
+{
+  "schema": 2,
+  "nombre": "El Corte Inglés · Tarjeta regalo para empleados",
+  "descripcion": "Aviso de RR. HH. anunciando una tarjeta regalo de El Corte Inglés para la plantilla, canjeable accediendo con las credenciales corporativas. El remitente y el logo de la izquierda son los del cliente: se rellenan desde el panel de marca (empresa + logo), no hay que editar el HTML para reutilizarla en otra campaña.",
+  "familia": "rrhh",
+  "categoria": "beneficios-empleado",
+  "empresa": "El Corte Inglés",
+  "tags": [
+    "el-corte-ingles",
+    "tarjeta-regalo",
+    "recursos-humanos",
+    "credenciales",
+    "beneficios"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Maquetación aportada por el cliente como punto de partida y adaptada al motor de plantillas: el nombre y el logo de la empresa que suplanta al remitente (originalmente «Grupo DISBESA» y su logo) se sustituyeron por {{empresa}} / {{logoHtml}}, resueltos por el panel de marca. El logo y la marca de El Corte Inglés se mantienen fijos porque es el señuelo externo de la plantilla, igual que en el resto de plantillas de marca real del catálogo."
+  },
+  "remitente": {
+    "nombre": "Departamento de Personas",
+    "buzon": "personas"
+  },
+  "campos": [
+    {
+      "clave": "importe",
+      "etiqueta": "Importe de la tarjeta regalo",
+      "tipo": "texto",
+      "defecto": "150 €"
+    },
+    {
+      "clave": "fecha",
+      "etiqueta": "Fecha límite de solicitud",
+      "tipo": "texto",
+      "defecto": "30 de septiembre de 2026"
+    }
+  ],
+  "bloques": [
+    {
+      "id": "preheader",
+      "etiqueta": "Texto de vista previa",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "La línea que la bandeja enseña junto al asunto. Invisible al abrir el correo."
+    },
+    {
+      "id": "cabecera",
+      "etiqueta": "Cabecera con los dos logos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Logo de la empresa (panel de marca) a la izquierda, logo de El Corte Inglés a la derecha."
+    },
+    {
+      "id": "hero",
+      "etiqueta": "Titular y entradilla",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "tarjeta",
+      "etiqueta": "Imagen de la tarjeta regalo",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "cta",
+      "etiqueta": "Botón de solicitud",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "plazo",
+      "etiqueta": "Aviso de plazo límite",
+      "senal": "urgencia",
+      "ayuda": "El recuadro naranja con la fecha límite. Es la presión temporal de la plantilla."
+    },
+    {
+      "id": "donde-usar",
+      "etiqueta": "Dónde puedes utilizarla",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "pasos",
+      "etiqueta": "Cómo solicitarla en 3 pasos",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "El paso 1 es el que pide las credenciales corporativas."
+    },
+    {
+      "id": "enlace-secundario",
+      "etiqueta": "Enlace secundario al formulario",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "notas-legal",
+      "etiqueta": "Notas a pie con asteriscos",
+      "senal": "!incoherencia-marca",
+      "ayuda": "Desaparecen al encender la señal de incoherencia de marca."
+    },
+    {
+      "id": "pie",
+      "etiqueta": "Pie con nombre de la empresa y departamento",
+      "opcional": true,
+      "defecto": true
+    },
+    {
+      "id": "copyright",
+      "etiqueta": "Línea de copyright final",
+      "senal": "!incoherencia-marca"
+    },
+    {
+      "id": "tracker",
+      "etiqueta": "Píxel de seguimiento",
+      "opcional": true,
+      "defecto": true,
+      "ayuda": "Sin él pierdes la métrica de apertura. Quítalo solo si el cliente lo prohíbe expresamente."
+    }
+  ]
+}

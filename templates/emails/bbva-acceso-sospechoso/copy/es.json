@@ -1,0 +1,43 @@
+{
+  "textoEnlaceVisible": "Si el botón no funciona, copia esta dirección en tu navegador:",
+  "avisoAutomatico": {
+    "base": "Mensaje generado automáticamente. Por favor, no respondas a este correo.",
+    "erratas": "Mensaje generado automaticamente por el sistema. No responda a este correo."
+  },
+  "avisoReporte": "Si crees que este mensaje no es legítimo, repórtalo al equipo de seguridad.",
+  "asunto": {
+    "base": "Hemos detectado un acceso inusual a tu cuenta BBVA",
+    "urgencia": "Tu cuenta BBVA quedará restringida si no verificas este acceso"
+  },
+  "preheader": {
+    "base": "{{dispositivo}} · {{ubicacion}}"
+  },
+  "saludo": {
+    "base": "Hola",
+    "saludo-generico": "Estimado cliente"
+  },
+  "titular": {
+    "base": "{{saludo}}, hemos bloqueado un acceso sospechoso"
+  },
+  "entradilla": {
+    "base": "Alguien ha intentado acceder a tu banca online BBVA desde un dispositivo que no reconocemos."
+  },
+  "detalle": {
+    "base": "Verifica tu identidad para confirmar que has sido tú y mantener tu cuenta protegida."
+  },
+  "urgencia": {
+    "base": "Si no verificas tu identidad en los próximos 30 minutos, restringiremos el acceso a tu cuenta por seguridad."
+  },
+  "cta": {
+    "base": "Verificar mi identidad"
+  },
+  "cierre": {
+    "base": "El equipo de seguridad de BBVA"
+  },
+  "fichaEtiqueta1": "Dispositivo",
+  "fichaValor1": "{{dispositivo}}",
+  "fichaEtiqueta2": "Ubicación",
+  "fichaValor2": "{{ubicacion}}",
+  "fichaEtiqueta3": "Estado",
+  "fichaValor3": "Acceso no verificado"
+}

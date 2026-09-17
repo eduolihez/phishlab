@@ -1,0 +1,6 @@
+{
+  "cuerpo": {
+    "base": "Glovo: hi ha una incidència amb la teva comanda #{{pedido}}. Confirma l'adreça i el pagament per continuar: {{enlace}}",
+    "urgencia": "Glovo: la teva comanda #{{pedido}} es cancel·larà en 10 min si no confirmes el pagament: {{enlace}}"
+  }
+}

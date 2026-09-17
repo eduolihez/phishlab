@@ -1,0 +1,36 @@
+{
+  "schema": 2,
+  "nombre": "WhatsApp · Verificación de acceso",
+  "descripcion": "SMS corto de smishing: alerta de acceso no reconocido a WhatsApp con un enlace para «cancelarlo». Sin GoPhish de por medio — se exporta como texto para la pasarela SMS del equipo.",
+  "familia": "externos",
+  "categoria": "redes-profesionales",
+  "empresa": "WhatsApp",
+  "tags": [
+    "whatsapp",
+    "smishing",
+    "sms",
+    "codigo-verificacion"
+  ],
+  "idiomas": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "demo": false,
+  "caracteres": 160,
+  "origen": {
+    "tipo": "escrito-a-mano",
+    "fecha": "2026-09-17",
+    "notas": "Pretexto escrito a mano sobre el patrón real de smishing de secuestro de cuenta de WhatsApp (SMS con enlace de «cancelar acceso»). No es copia de ningún mensaje real."
+  },
+  "campos": [
+    {
+      "clave": "enlace",
+      "etiqueta": "Enlace a la landing",
+      "tipo": "texto",
+      "defecto": "https://tu-landing.ejemplo.com",
+      "ayuda": "GoPhish no envía SMS, así que no hay {{.URL}} que resolver: pega aquí la URL de tu landing una vez publicada."
+    }
+  ],
+  "bloques": []
+}

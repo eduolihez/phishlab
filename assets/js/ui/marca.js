@@ -52,23 +52,24 @@ export function panelMarca(alCambiar) {
 
   function selectorPresets() {
     const nombres = Object.keys(marcaLib.listarPresets()).sort();
+    const seleccion = el('select', {
+      style: { flex: '1' },
+      'aria-label': 'Preset de cliente',
+      onchange: (e) => {
+        const preset = marcaLib.listarPresets()[e.target.value];
+        if (!preset) return;
+        actualizar({ marca: { ...marcaLib.MARCA_VACIA, ...preset } });
+        pintar();
+        alCambiar();
+        brindis(`Preset «${e.target.value}» cargado`);
+      },
+    }, [
+      el('option', { value: '', texto: '— Preset de cliente —' }),
+      ...nombres.map((n) => el('option', { value: n, texto: n })),
+    ]);
 
     return el('.fila-presets', [
-      el('select', {
-        style: { flex: '1' },
-        'aria-label': 'Preset de cliente',
-        onchange: (e) => {
-          const preset = marcaLib.listarPresets()[e.target.value];
-          if (!preset) return;
-          actualizar({ marca: { ...marcaLib.MARCA_VACIA, ...preset } });
-          pintar();
-          alCambiar();
-          brindis(`Preset «${e.target.value}» cargado`);
-        },
-      }, [
-        el('option', { value: '', texto: '— Preset de cliente —' }),
-        ...nombres.map((n) => el('option', { value: n, texto: n })),
-      ]),
+      seleccion,
       el('button.btn.btn-mini', {
         type: 'button',
         texto: 'Guardar',
@@ -81,6 +82,23 @@ export function panelMarca(alCambiar) {
           brindis(`Preset «${nombre.trim()}» guardado`);
         },
       }),
+      nombres.length ? el('button.btn.btn-mini', {
+        type: 'button',
+        texto: 'Borrar',
+        onclick: () => {
+          // No se lee `seleccion.value`: elegir una opción ya dispara su
+          // propio `onchange` (carga el preset y repinta este panel entero),
+          // así que en el momento del clic el <select> siempre ha vuelto al
+          // blanco. Se pregunta el nombre en vez de depender del desplegable.
+          const nombre = prompt('Nombre del preset a borrar:', nombres[0]);
+          if (!nombre?.trim()) return;
+          if (!nombres.includes(nombre.trim())) return brindis(`No hay ningún preset «${nombre.trim()}»`);
+          if (!confirm(`¿Borrar el preset «${nombre.trim()}»? No se puede deshacer.`)) return;
+          marcaLib.borrarPreset(nombre.trim());
+          pintar();
+          brindis(`Preset «${nombre.trim()}» borrado`);
+        },
+      }) : null,
     ]);
   }
 

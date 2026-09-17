@@ -20,7 +20,7 @@ import {
   reiniciarBloques,
   plantilla,
 } from '../core/estado.js';
-import { componer, camposConDefectos } from '../core/componer.js';
+import { componer, componerSms, camposConDefectos } from '../core/componer.js';
 import { esPersonalizado, sugerirRemitente } from '../core/senales.js';
 import { conDatosDeEjemplo, variablesGophish } from '../core/engine.js';
 import { paraEditar } from '../core/edicionInline.js';
@@ -28,6 +28,7 @@ import { construirCampos } from './fields.js';
 import { panelMarca } from './marca.js';
 import { panelExportar } from './exportar.js';
 import { activarEdicionEnVivo } from './editorEnVivo.js';
+import { bandejaPreview } from './bandejaPreview.js';
 
 const PESTANAS = [
   { id: 'ajustes', etiqueta: 'Ajustes' },
@@ -44,10 +45,18 @@ export function vistaDetalle({ id }) {
   // Al abrir una plantilla se selecciona para la campaña y se rellenan sus
   // campos: entrar a mirarla y que luego "Exportar" no sepa nada de ella
   // sería desconcertante.
-  const seleccion = meta.tipo === 'emails' ? { emailId: meta.id } : meta.formativa ? { formativaId: meta.id } : { landingId: meta.id };
+  // Un sms no se empareja con nada (no hay landing que pasar de correo a
+  // SMS con GoPhish, que no envía SMS): abrirlo no toca la selección de
+  // campaña de correo/landing, solo rellena sus propios campos.
+  const esSms = meta.tipo === 'sms';
+  const seleccion = esSms ? {} : meta.tipo === 'emails' ? { emailId: meta.id } : meta.formativa ? { formativaId: meta.id } : { landingId: meta.id };
   Object.assign(estado, seleccion, { campos: camposConDefectos(meta, estado.campos) });
 
-  const marcoVista = el('iframe', {
+  // Un sms es texto plano: no hay HTML que renderizar en un iframe, así que
+  // la preview es directamente el texto compuesto. Tampoco hay edición en
+  // línea sobre la preview (no hay DOM en el que hacer clic) — se edita
+  // desde el bloque «Campos» de siempre, como el resto de variables.
+  const marcoVista = esSms ? null : el('iframe', {
     title: `Previsualización de ${meta.nombre}`,
     // allow-scripts sin allow-same-origin: el JS de la landing corre (hace
     // falta para ver el segundo paso del login, y para el propio script de
@@ -55,18 +64,22 @@ export function vistaDetalle({ id }) {
     // formulario no puede enviarse desde aquí.
     sandbox: 'allow-scripts',
   });
+  const cajaTextoSms = esSms ? el('.preview-sms') : null;
 
-  const lienzo = el(`.lienzo${estado.dispositivo === 'movil' ? '.movil' : ''}`, [marcoVista]);
+  const lienzo = el(`.lienzo${estado.dispositivo === 'movil' ? '.movil' : ''}`, [esSms ? cajaTextoSms : marcoVista]);
   const estadoVista = el('span', { texto: '' });
   const pesoVista = el('span.peso');
   const panelAjustes = el('.panel-ajustes');
   const cajaAvisos = el('div');
   const cajaGuardado = el('div', { style: { margin: '0 0 20px' } });
+  // Solo los correos tienen bandeja: una landing o un sms no se «abren»
+  // desde una bandeja de entrada.
+  const cajaBandeja = meta.tipo === 'emails' ? el('div') : null;
 
   const raiz = el('.detalle', [
     el('.detalle-cuerpo', [
       panelAjustes,
-      el('.panel-vista', [barraDeVista(), lienzo, el('.pie-vista', [estadoVista, pesoVista])]),
+      el('.panel-vista', [barraDeVista(), cajaBandeja, lienzo, el('.pie-vista', [estadoVista, pesoVista])]),
     ]),
   ]);
 
@@ -74,12 +87,9 @@ export function vistaDetalle({ id }) {
   let temporizador = null;
   let ultimo = null;
 
-  const { barraGuardado } = activarEdicionEnVivo({
-    marco: marcoVista,
-    meta,
-    obtenerUltimo: () => ultimo,
-    recomponer,
-  });
+  const { barraGuardado } = esSms
+    ? { barraGuardado: () => null }
+    : activarEdicionEnVivo({ marco: marcoVista, meta, obtenerUltimo: () => ultimo, recomponer });
   pintarEn(cajaGuardado, barraGuardado());
 
   pintarPanel();
@@ -92,11 +102,32 @@ export function vistaDetalle({ id }) {
   function recomponer(retardo = 60) {
     clearTimeout(temporizador);
     temporizador = setTimeout(async () => {
+      if (esSms) {
+        const r = await componerSms(meta, estado);
+        ultimo = r;
+        pintarEn(cajaTextoSms, el('.telefono-sms', [el('.burbuja-sms', { texto: r.texto })]));
+        const tope = meta.caracteres || 160;
+        estadoVista.textContent = `${r.texto.length} caracteres` + (r.texto.length > tope ? ` — se partirá en ${Math.ceil(r.texto.length / tope)} SMS` : '');
+        pesoVista.textContent = '';
+        pintarAvisos(r);
+        if (pestanaActual === 'ajustes') pintarPanel();
+        return;
+      }
+
       const r = await componer(meta, estado);
       ultimo = r;
 
       const base = estado.ejemplo ? conDatosDeEjemplo(r.html) : r.html;
       marcoVista.srcdoc = paraEditar(base, estado.edicionesCrudas[meta.id] ?? {});
+
+      if (cajaBandeja) {
+        pintarEn(cajaBandeja, bandejaPreview({
+          remitente: sugerirRemitente(meta, estado.marca, r.activas ?? new Set()),
+          asunto: conDatosDeEjemplo(r.asunto ?? ''),
+          preheader: conDatosDeEjemplo(r.preheader ?? ''),
+          empresa: estado.marca.empresa,
+        }));
+      }
 
       const vars = variablesGophish(r.html);
       estadoVista.textContent = vars.length
@@ -120,7 +151,7 @@ export function vistaDetalle({ id }) {
   function barraDeVista() {
     return el('.barra-vista', [
       el('.pestanas', [
-        el('span.pildora', { texto: meta.tipo === 'emails' ? 'CORREO' : 'LANDING' }),
+        el('span.pildora', { texto: meta.tipo === 'emails' ? 'CORREO' : meta.tipo === 'sms' ? 'SMS' : 'LANDING' }),
         el('span.pildora', { texto: meta.id }),
       ]),
       el('.controles-vista', [

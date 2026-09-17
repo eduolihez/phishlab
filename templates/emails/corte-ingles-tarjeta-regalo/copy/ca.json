@@ -1,0 +1,11 @@
+{
+  "asunto": {
+    "base": "La teva Targeta Regal de {{importe}} a El Corte Inglés",
+    "urgencia": "Últims dies: la teva Targeta Regal de {{importe}} a El Corte Inglés caduca aviat",
+    "urgencia+erratas": "URGENT: reclama ja la teva Targeta Regal de {{importe}} a El Corte Ingles"
+  },
+  "preheader": {
+    "base": "{{empresa}} i El Corte Inglés et regalen una Targeta Regal de {{importe}}. Sol·licita-la amb les teves credencials corporatives abans del {{fecha}}.",
+    "urgencia": "Últims dies per sol·licitar la teva Targeta Regal de {{importe}}. Accedeix abans del {{fecha}}."
+  }
+}
