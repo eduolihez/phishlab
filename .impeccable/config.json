@@ -14,12 +14,6 @@
       },
       {
         "rule": "overused-font",
-        "value": "instrument sans",
-        "createdAt": "2026-09-10T12:44:22.025Z",
-        "reason": "user confirmed: chosen deliberately in DESIGN.md via /design-consultation and approved by the user (D5) as the body/UI font paired with General Sans display and JetBrains Mono code"
-      },
-      {
-        "rule": "overused-font",
         "value": "arial",
         "createdAt": "2026-09-10T16:34:05.108Z",
         "reason": "HTML email/landing templates recreating real third-party brand typography (Google, PayPal, DHL, etc.) — email clients strip web fonts and fall back to system fonts, so Arial/Helvetica is the technically correct choice, not a lazy default. Same pattern as the pre-existing aviso.html and microsoft-login.html layouts."

@@ -26,7 +26,7 @@
   - H3 (subtítulo): 15–16px / 1.4
   - Body: 15px / 1.6
   - Small / meta: 13px / 1.5
-  - Eyebrow / label: 11px / 1.4, uppercase, tracking +0.06–0.08em, weight 600, `--font-mono`
+  - Eyebrow / label: 11px / 1.4, uppercase, tracking +0.06–0.08em, weight 600, `--mono`
   - Mono / código: 12–13px / 1.7
 
 ## Color
@@ -72,9 +72,9 @@
 - **Sidebar de la Biblioteca:** agrupa por señal primero, tipo (email/landing/sms) después — nunca por marca. La marca es un detalle de la tarjeta, no un eje de navegación.
 - **Pestañas del workspace:** reutilizan el mismo componente `.pestana` que ya llevaba la barra de vista (previsualización de escritorio/móvil). Libres, no secuenciales: cualquiera se puede abrir en cualquier momento.
 - **Edición en línea sobre la preview:** al pasar el ratón, el texto editable lleva un contorno discontinuo en el acento ámbar (`rgba(255,122,41,.85)`) y fondo `rgba(255,122,41,.08)`; al entrar en edición, el contorno pasa a sólido. Las imágenes llevan un overlay flotante con un botón "Cambiar imagen", nunca un marco fijo alrededor de la imagen.
-- **Informe de saneado/clonado:** mismo componente para `.eml`, HTML pegado y web clonada — líneas con una etiqueta de clase (`quitado`, `reescrito`, `incrustado`, `no-incrustado`) en `--font-mono`. `no-incrustado` usa la variante roja de `--danger`.
-- **Código/variables:** cualquier fragmento HTML o variable GoPhish se muestra en un bloque `.code-preview` con fondo `--bg` y borde `--border`, nunca inline en prosa.
-- **Landing/demo pública:** hero con textura de grano sutil (radial-gradient + SVG noise a mix-blend-mode overlay, opacidad ~5%), eyebrow en `--font-mono` con un punto ámbar animado, CTA dual (explorar biblioteca / pedir acceso al lab).
+- **Informe de saneado/clonado:** mismo componente para `.eml`, HTML pegado y web clonada — líneas con una etiqueta de clase (`quitado`, `reescrito`, `incrustado`, `no-incrustado`) en `--mono`. `no-incrustado` usa la variante roja de `--peligro`.
+- **Código/variables:** cualquier fragmento HTML o variable GoPhish se muestra en un bloque `.code-preview` con fondo `--fondo` y borde `--borde`, nunca inline en prosa.
+- **Landing/demo pública:** hero con textura de grano sutil (radial-gradient + SVG noise a mix-blend-mode overlay, opacidad ~5%), eyebrow en `--mono` con un punto ámbar animado, CTA dual (explorar biblioteca / pedir acceso al lab).
 
 ## Safe Choices (categoría — lo que el gremio ya espera)
 - Tema oscuro por defecto — herramientas de seguridad/dev lo dan por hecho.

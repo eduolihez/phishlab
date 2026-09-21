@@ -17,40 +17,16 @@
    autoalojar, igual que JetBrains Mono. */
 @font-face {
   font-family: 'Bricolage Grotesque';
-  src: url('../fonts/bricolage-grotesque-600.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Bricolage Grotesque';
-  src: url('../fonts/bricolage-grotesque-700.woff2') format('woff2');
-  font-weight: 700;
+  src: url('../fonts/bricolage-grotesque.woff2') format('woff2');
+  font-weight: 600 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Geist';
-  src: url('../fonts/geist-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Geist';
-  src: url('../fonts/geist-500.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Geist';
-  src: url('../fonts/geist-600.woff2') format('woff2');
-  font-weight: 600;
+  src: url('../fonts/geist.woff2') format('woff2');
+  font-weight: 400 600;
   font-style: normal;
   font-display: swap;
 }
@@ -134,7 +110,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
   align-items: center;
   gap: 20px;
   padding: 0 20px;
-  background: rgba(11, 13, 16, 0.92);
+  background: rgba(10, 10, 11, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--borde);
 }
@@ -202,7 +178,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
   transition: background 0.12s, border-color 0.12s;
 }
 
-.btn:hover { border-color: #313947; background: #212630; }
+.btn:hover { border-color: #34343a; background: #202024; }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .btn-primario {
@@ -213,7 +189,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 
 .btn-primario:hover { background: var(--acento-oscuro); border-color: var(--acento-oscuro); }
 
-.btn-peligro { color: var(--peligro); border-color: rgba(229, 72, 77, 0.3); background: var(--peligro-fondo); }
+.btn-peligro { color: var(--peligro); border-color: rgba(245, 72, 77, 0.3); background: var(--peligro-fondo); }
 
 .btn-mini { padding: 6px 10px; font-size: 12px; }
 
@@ -299,7 +275,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 .paso.hecho .paso-punto { background: var(--ok); border-color: var(--ok); color: #06170d; }
 .paso.hecho { color: var(--texto-medio); }
 .paso.activa { color: var(--texto); }
-.paso.activa .paso-punto { background: var(--acento); border-color: var(--acento); color: #fff; }
+.paso.activa .paso-punto { background: var(--acento); border-color: var(--acento); color: #140900; }
 
 .paso-linea { width: 28px; height: 1px; background: var(--borde); margin: 0 10px; flex: none; }
 
@@ -743,7 +719,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
   justify-content: center;
   align-items: flex-start;
   background:
-    repeating-linear-gradient(45deg, #0e1116 0 10px, var(--fondo) 10px 20px);
+    repeating-linear-gradient(45deg, #131315 0 10px, var(--fondo) 10px 20px);
 }
 
 .lienzo iframe {
@@ -845,16 +821,16 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 /* ----------------------------------------------------------------- avisos --- */
 
 .avisos {
-  border: 1px solid rgba(217, 154, 61, 0.3);
+  border: 1px solid rgba(255, 176, 32, 0.3);
   background: var(--alerta-fondo);
   border-radius: var(--r-s);
   padding: 11px 13px;
   font-size: 12.5px;
-  color: #f0c880;
+  color: #ffcf80;
 }
 
 .avisos ul { margin: 6px 0 0; padding-left: 18px; }
-.avisos code { color: #ffd97a; }
+.avisos code { color: #ffcf80; }
 
 .nota {
   border: 1px solid var(--borde);
@@ -996,8 +972,8 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 
 .cinta-demo {
   background: var(--alerta-fondo);
-  border-bottom: 1px solid rgba(217, 154, 61, 0.3);
-  color: #f0c880;
+  border-bottom: 1px solid rgba(255, 176, 32, 0.3);
+  color: #ffcf80;
   padding: 8px 18px;
   font-size: 12.5px;
   text-align: center;
@@ -1163,5 +1139,5 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
