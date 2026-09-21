@@ -1,0 +1,33 @@
+{
+  "schema": 2,
+  "nombre": "Instagram · Iniciar sesión",
+  "descripcion": "Login de Instagram, un solo paso (usuario y contraseña en la misma pantalla). Pareja natural del correo de cuenta suspendida.",
+  "familia": "redes-sociales",
+  "categoria": "redes-sociales",
+  "empresa": "Instagram",
+  "tags": [
+    "instagram",
+    "credenciales",
+    "login",
+    "redes-sociales"
+  ],
+  "idiomas": [
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "clonado-web",
+    "fecha": "2026-09-21",
+    "notas": "Volcado real de instagram.com/accounts/login, saneado con tools/sanearWeb.js (formulario reescrito a method=\"post\" action=\"\", campos renombrados a email/password, scripts e iframes fuera, recursos incrustados). Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout, solo activar/desactivar el clonado entero. Algunas fuentes web (.woff/.woff2) no se pudieron incrustar y siguen pidiendo al dominio real de Instagram; no afecta a los campos de credenciales, solo a la fidelidad tipográfica.",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
+    }
+  ]
+}
