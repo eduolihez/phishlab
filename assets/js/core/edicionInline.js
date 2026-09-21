@@ -135,10 +135,10 @@ function inyectarScript(html) {
 
 const ESTILOS = `
 [data-pl-copy], [data-pl-raw] { cursor: text; border-radius: 2px; outline-offset: 1px; }
-[data-pl-copy]:hover, [data-pl-raw]:hover { outline: 1.5px dashed rgba(76,124,243,0.85); background: rgba(76,124,243,0.08); }
-[data-pl-copy][contenteditable="true"], [data-pl-raw][contenteditable="true"] { outline: 1.5px solid #4C7CF3; background: rgba(76,124,243,0.12); }
-#pl-overlay-img { position: absolute; z-index: 2147483647; display: none; pointer-events: none; outline: 1.5px dashed rgba(76,124,243,0.85); outline-offset: -1.5px; }
-#pl-overlay-img button { position: absolute; bottom: 4px; right: 4px; pointer-events: auto; border: 0; border-radius: 4px; padding: 3px 7px; font: 600 11px system-ui, sans-serif; color: #fff; background: #4C7CF3; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.4); }
+[data-pl-copy]:hover, [data-pl-raw]:hover { outline: 1.5px dashed rgba(255,122,41,.85); background: rgba(255,122,41,.08); }
+[data-pl-copy][contenteditable="true"], [data-pl-raw][contenteditable="true"] { outline: 1.5px solid #FF7A29; background: rgba(255,122,41,.12); }
+#pl-overlay-img { position: absolute; z-index: 2147483647; display: none; pointer-events: none; outline: 1.5px dashed rgba(255,122,41,.85); outline-offset: -1.5px; }
+#pl-overlay-img button { position: absolute; bottom: 4px; right: 4px; pointer-events: auto; border: 0; border-radius: 4px; padding: 3px 7px; font: 600 11px system-ui, sans-serif; color: #140900; background: #FF7A29; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.4); }
 `;
 
 /**
