@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales de phishing bancario documentadas (INCIBE, ejemplos de Santander/BBVA/CaixaBank recopilados en prensa especializada): coincide con el patrón real de \"acceso desde dispositivo no reconocido\" + ficha de dispositivo/ubicación + plazo corto de verificación. No es copia literal de ningún correo real: BBVA no publica el HTML de sus correos legítimos."
   },
   "captura": "datos",
   "remitente": {

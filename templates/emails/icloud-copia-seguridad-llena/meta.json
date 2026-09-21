@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas (Malwarebytes, Which?, INCIBE): coincide con el patrón real \"tu almacenamiento de iCloud está lleno / se ha alcanzado el límite\" con amenaza de dejar de hacer copias de seguridad o perder acceso a fotos/documentos. No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {

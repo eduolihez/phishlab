@@ -21,7 +21,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano. Búsqueda el 2026-09-21 no encontró ninguna campaña de phishing contra Fortinet documentada públicamente (a diferencia del resto del catálogo, no es una marca habitualmente suplantada en campañas masivas de consumo): el pretexto sigue la convención genérica y realista de phishing dirigido a IT/sysadmins (urgencia de renovación de licencia de seguridad corporativa), pero no está verificado contra ningún caso real conocido."
   },
   "captura": "datos",
   "remitente": {

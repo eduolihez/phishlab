@@ -21,7 +21,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Maquetación aportada por el cliente como punto de partida y adaptada al motor de plantillas: el nombre y el logo de la empresa que suplanta al remitente (originalmente «Grupo DISBESA» y su logo) se sustituyeron por {{empresa}} / {{logoHtml}}, resueltos por el panel de marca. El logo y la marca de El Corte Inglés se mantienen fijos porque es el señuelo externo de la plantilla, igual que en el resto de plantillas de marca real del catálogo."
+    "notas": "Maquetación aportada por el cliente como punto de partida y adaptada al motor de plantillas: el nombre y el logo de la empresa que suplanta al remitente (originalmente «Grupo DISBESA» y su logo) se sustituyeron por {{empresa}} / {{logoHtml}}, resueltos por el panel de marca. El logo y la marca de El Corte Inglés se mantienen fijos porque es el señuelo externo de la plantilla, igual que en el resto de plantillas de marca real del catálogo. Verificado el 2026-09-21: el pretexto de tarjeta regalo coincide con campañas reales documentadas contra El Corte Inglés (INCIBE/Maldita.es), que suelen ofrecer tarjetas de 500€ por aniversario o fechas señaladas."
   },
   "remitente": {
     "nombre": "Departamento de Personas",

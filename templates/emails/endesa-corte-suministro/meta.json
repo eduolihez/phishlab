@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas por INCIBE: coincide con el patrón real de urgencia artificial (\"su suministro se cortará en 24 horas\" si no se regulariza un impago) detectado en campañas contra compañías eléctricas, que aprovechan el aumento de consumo/factura para sonar creíbles. No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {

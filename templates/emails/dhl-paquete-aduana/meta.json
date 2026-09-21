@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-10",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas por INCIBE/Guardia Civil: coincide con el patrón real (\"paquete retenido en aduana, pague X,XX€ de tasas para liberarlo\", con importes pequeños de 1,99-2,99€) detectado repetidamente contra DHL. No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {

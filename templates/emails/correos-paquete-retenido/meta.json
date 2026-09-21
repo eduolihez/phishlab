@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales de smishing/phishing de Correos documentadas por INCIBE: coincide con el patrón real (\"su paquete no se ha podido entregar... tasas de aduana X,XX€\") de la campaña masiva de marzo de 2026, con más de 4500 incidentes gestionados por INCIBE en tres semanas. No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {

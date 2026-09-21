@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas por OSI/INCIBE: el pretexto (factura impagada por un importe inusualmente alto) coincide con las campañas reales contra Movistar. Adaptado al modelo de captura de credenciales de PhishLab: el vector real documentado usa un PDF adjunto/enlazado que instala malware al abrirlo, algo que esta herramienta no reproduce (no genera payloads, solo simulaciones de captura de credenciales vía GoPhish). No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {

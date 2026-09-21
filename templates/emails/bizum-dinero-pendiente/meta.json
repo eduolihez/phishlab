@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas por INCIBE: el mecanismo real más común (\"fraude inverso de Bizum\") es una solicitud de dinero disfrazada de aviso de dinero pendiente de aceptar — la víctima cree que va a recibir un ingreso y en realidad autoriza un pago. Este pretexto reproduce el aviso inicial (\"tienes {{importe}} pendientes de aceptar\") que dispara ese engaño. No es copia literal de ningún correo real; Bizum no envía notificaciones por email fuera de la app del banco."
   },
   "captura": "datos",
   "remitente": {

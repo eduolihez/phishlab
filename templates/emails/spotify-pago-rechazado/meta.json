@@ -19,7 +19,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas (pcrisk.com, MailGuard): coincide casi literalmente con el patrón real (\"We're having trouble processing your recent payment... your Premium access may be interrupted\" / \"your payment didn't go through\") con plazos de 48-72 horas. No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {

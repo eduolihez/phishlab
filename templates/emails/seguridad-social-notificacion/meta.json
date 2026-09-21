@@ -20,7 +20,7 @@
   "origen": {
     "tipo": "escrito-a-mano",
     "fecha": "2026-09-17",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "notas": "Pretexto escrito a mano, verificado el 2026-09-21 contra campañas reales documentadas por INCIBE/TGSS: coincide con el patrón real de \"notificación pendiente en la sede electrónica\" con plazo acortado para crear urgencia (el plazo real es de 10 días naturales; las campañas fraudulentas suelen mentir con un plazo más corto). La Seguridad Social advierte que no envía avisos ni notificaciones por correo. No es copia literal de ningún correo real."
   },
   "captura": "datos",
   "remitente": {
