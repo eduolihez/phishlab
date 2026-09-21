@@ -208,7 +208,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
 .btn-primario {
   background: var(--acento);
   border-color: var(--acento);
-  color: #fff;
+  color: #140900;
 }
 
 .btn-primario:hover { background: var(--acento-oscuro); border-color: var(--acento-oscuro); }
@@ -625,7 +625,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
   height: 17px;
   margin-top: 1px;
   border-radius: 9px;
-  background: #262b33;
+  background: var(--borde);
   border: 1px solid var(--borde);
   position: relative;
   transition: background 0.13s;
@@ -742,7 +742,7 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.9em; }
   justify-content: center;
   align-items: flex-start;
   background:
-    repeating-linear-gradient(45deg, #0e1116 0 10px, #0b0d10 10px 20px);
+    repeating-linear-gradient(45deg, #0e1116 0 10px, var(--fondo) 10px 20px);
 }
 
 .lienzo iframe {
