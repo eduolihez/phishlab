@@ -26,3 +26,10 @@ extension/telemetry.config.json
 # Codigo de emparejamiento con la extension de captura. Es un secreto local
 # de esta maquina, no algo que compartir en el repositorio.
 .pareado
+
+# Detalles operativos del despliegue en eduolihez.com (rutas de admin,
+# mecanismo de bloqueo por fuerza bruta, arquitectura del gate del lab).
+# Purgado del historial el 2026-09-21 al hacer publico este repositorio:
+# es informacion de reconocimiento gratis para quien quiera atacar el gate,
+# aunque el propio codigo del gate viva en otro repositorio.
+docs/EDUOLIHEZ.md
