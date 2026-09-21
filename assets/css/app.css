@@ -12,21 +12,45 @@
  */
 
 /* Tipografías servidas en local (assets/fonts/): PhishLab no depende de
-   ningún CDN en tiempo de ejecución, ni siquiera para las fuentes. General
-   Sans (Fontshare) y Instrument Sans + JetBrains Mono (Google Fonts, variable)
-   son libres para autoalojar. */
+   ningún CDN en tiempo de ejecución, ni siquiera para las fuentes.
+   Bricolage Grotesque y Geist (Google Fonts, OFL) son libres para
+   autoalojar, igual que JetBrains Mono. */
 @font-face {
-  font-family: 'General Sans';
-  src: url('../fonts/general-sans-600.woff2') format('woff2');
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/bricolage-grotesque-600.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Instrument Sans';
-  src: url('../fonts/instrument-sans.woff2') format('woff2');
-  font-weight: 400 700;
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/bricolage-grotesque-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../fonts/geist-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../fonts/geist-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../fonts/geist-600.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -63,8 +87,8 @@
   --ok-fondo: rgba(47, 174, 102, 0.12);
   --info: var(--acento);
 
-  --display: 'General Sans', 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --display: 'Bricolage Grotesque', 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', monospace;
 
   --r: 10px;
