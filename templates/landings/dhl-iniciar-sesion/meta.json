@@ -1,0 +1,33 @@
+{
+  "schema": 2,
+  "nombre": "DHL · Iniciar sesión",
+  "descripcion": "Login real del área de clientes de DHL Parcel, un solo paso. Pareja natural del correo de paquete retenido en aduana.",
+  "familia": "logistica",
+  "categoria": "logistica-administracion",
+  "empresa": "DHL",
+  "tags": [
+    "dhl",
+    "paqueteria",
+    "credenciales",
+    "login"
+  ],
+  "idiomas": [
+    "en"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "clonado-web",
+    "fecha": "2026-09-22",
+    "notas": "Volcado real de clientesparcel.dhl.es/area-clientes/Login, saneado con tools/sanearWeb.js. El campo de usuario usa name=\"User\" en el HTML real, fuera del patrón que detecta automáticamente el heurístico de email; se renombró a mano a name=\"email\"/id=\"email\" tras revisar el HTML capturado. Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout.",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
+    }
+  ]
+}

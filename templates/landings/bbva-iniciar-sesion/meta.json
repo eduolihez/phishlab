@@ -1,0 +1,33 @@
+{
+  "schema": 2,
+  "nombre": "BBVA · Iniciar sesión",
+  "descripcion": "Login real de BBVA, un solo paso (usuario y clave de acceso en la misma pantalla). Pareja natural del correo de acceso sospechoso.",
+  "familia": "banca",
+  "categoria": "banca-pagos",
+  "empresa": "BBVA",
+  "tags": [
+    "bbva",
+    "banca",
+    "credenciales",
+    "login"
+  ],
+  "idiomas": [
+    "es"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "clonado-web",
+    "fecha": "2026-09-22",
+    "notas": "Volcado real de bbva.es/nimbus/signin.html, saneado con tools/sanearWeb.js. El campo de usuario usa name=\"user\" en el HTML real (etiqueta \"Usuario\"), fuera del patrón que detecta automáticamente el heurístico de email; se renombró a mano a name=\"email\"/id=\"email\" (y su <label for>) tras revisar el HTML capturado. Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout.",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": 2,
+  "nombre": "Endesa · Iniciar sesión",
+  "descripcion": "Login real de Endesa Clientes, un solo paso. Pareja natural del correo de corte de suministro.",
+  "familia": "actualidad",
+  "categoria": "avisos-generales",
+  "empresa": "Endesa",
+  "tags": [
+    "endesa",
+    "suministros",
+    "credenciales",
+    "login"
+  ],
+  "idiomas": [
+    "es"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "clonado-web",
+    "fecha": "2026-09-22",
+    "notas": "Volcado real de endesaclientes.com/login.html, saneado con tools/sanearWeb.js. Un fondo decorativo (codepen.io/images/classy_fabric.png) sigue pidiendo al dominio original porque CodePen bloquea el hotlinking (403); no es contenido propio de Endesa, solo una textura genérica. Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout.",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
+    }
+  ]
+}

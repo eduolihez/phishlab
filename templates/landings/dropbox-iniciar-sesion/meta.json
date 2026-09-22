@@ -1,7 +1,7 @@
 {
   "schema": 2,
   "nombre": "Dropbox · Iniciar sesión",
-  "descripcion": "Login de Dropbox. Pareja natural del correo de documento compartido, para el acceso al fichero que «alguien externo» ha enviado.",
+  "descripcion": "Login real de Dropbox, un solo paso (email y contraseña en la misma pantalla). Pareja natural del correo de documento compartido.",
   "familia": "saas",
   "categoria": "saas-corporativo",
   "empresa": "Dropbox",
@@ -12,40 +12,22 @@
     "documento"
   ],
   "idiomas": [
-    "es",
-    "ca",
-    "en"
+    "es"
   ],
   "demo": false,
   "origen": {
-    "tipo": "escrito-a-mano",
-    "fecha": "2026-09-10",
-    "notas": "Pretexto escrito a mano. No es copia de ningún correo real."
+    "tipo": "clonado-web",
+    "fecha": "2026-09-16",
+    "notas": "Volcado real de dropbox.com/es_ES/login, saneado con tools/sanearWeb.js (formulario reescrito a method=\"post\" action=\"\", campos renombrados a email/password, scripts e iframes fuera, recursos incrustados incluidas 19 hojas de estilo que no se incrustaron en la primera pasada). Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout. Sustituye a la versión escrita a mano anterior, igual que ya se hizo con GitHub/LinkedIn/Netflix (commit 0ad5cdc).",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
   },
   "captura": "credenciales",
   "campos": [],
   "bloques": [
     {
-      "id": "marca",
-      "etiqueta": "marca",
-      "opcional": true,
-      "defecto": true
-    },
-    {
-      "id": "aviso-acceso",
-      "etiqueta": "aviso-acceso",
-      "senal": "urgencia"
-    },
-    {
-      "id": "cta-registro",
-      "etiqueta": "cta-registro",
-      "opcional": true,
-      "defecto": true
-    },
-    {
-      "id": "pie-legal",
-      "etiqueta": "Pie legal completo",
-      "senal": "!incoherencia-marca"
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
     }
   ]
 }
