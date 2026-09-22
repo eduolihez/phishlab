@@ -1,0 +1,33 @@
+{
+  "schema": 2,
+  "nombre": "El Corte Inglés · Iniciar sesión",
+  "descripcion": "Login de cuenta.elcorteingles.es, combinado a una sola pantalla. Pareja natural del correo de tarjeta regalo.",
+  "familia": "retail",
+  "categoria": "avisos-generales",
+  "empresa": "El Corte Inglés",
+  "tags": [
+    "corte-ingles",
+    "retail",
+    "credenciales",
+    "login"
+  ],
+  "idiomas": [
+    "es"
+  ],
+  "demo": false,
+  "origen": {
+    "tipo": "clonado-web",
+    "fecha": "2026-09-22",
+    "notas": "Volcado real de cuenta.elcorteingles.es/oauth/authorize (pantalla de email), saneado con tools/sanearWeb.js. El login real de El Corte Inglés es de dos pasos: esta pantalla capturada solo pedía el email; la contraseña se muestra en un segundo paso tras una respuesta de su propio servidor. En vez de automatizar ese envío contra su sistema de autenticación real (algo que este catálogo evita a propósito, ver commit 0ad5cdc), se montó a mano un campo de contraseña con el mismo componente de diseño (`pds-text-field`) que ya usa la pantalla de email capturada, reutilizando sus mismas clases CSS reales — visualmente coherente con el resto de la página, pero es una combinación manual, no un volcado literal del segundo paso real. El botón pasa de \"Continuar\" a \"Iniciar sesión\" al no haber un paso siguiente. Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout.",
+    "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
+  },
+  "captura": "credenciales",
+  "campos": [],
+  "bloques": [
+    {
+      "id": "cuerpo",
+      "etiqueta": "Cuerpo clonado",
+      "opcional": false
+    }
+  ]
+}
