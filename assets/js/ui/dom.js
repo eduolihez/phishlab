@@ -78,6 +78,7 @@ export function icono(nombre, tamano = 15) {
     descargar: ['M8 2v8', 'M4.5 7 8 10.5 11.5 7', 'M2.5 13.5h11'],
     copiar: ['M5.5 5.5h7v7h-7z', 'M3.5 10.5v-7h7'],
     mas: ['M8 3.5v9', 'M3.5 8h9'],
+    externo: ['M6.5 3.5h-3v9h9v-3', 'M9 3.5h3.5V7', 'M7 9l5.5-5.5'],
   };
   const ns = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(ns, 'svg');

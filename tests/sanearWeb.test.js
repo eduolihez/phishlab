@@ -137,3 +137,29 @@ test('sanearWeb se niega con un cuerpo vacío en vez de reventar más adelante',
   await assert.rejects(() => sanearWeb(null), TypeError);
   await assert.rejects(() => sanearWeb('   '), TypeError);
 });
+
+test('incrusta el <source srcset> de un <picture> con marcador de carga diferida', async () => {
+  // Patrón real visto en clonados de sitios con lazy-loading (p.ej. Correos):
+  // el <img> de dentro trae un src="data:," vacío a propósito porque el JS
+  // real de la página lo rellena leyendo el <source> que corresponda según
+  // el viewport. Sin ese JS (que sanearWeb quita), la imagen se queda en
+  // blanco si no se resuelve también el <source>, no solo el <img>.
+  const conPicture = `<!doctype html><html><body>
+<picture>
+  <source media="(min-width: 1200px)" srcset="/img/hero-grande.jpg">
+  <source media="(max-width: 640px)" srcset="/img/hero-pequena.jpg">
+  <img src="data:," alt="hero">
+</picture>
+</body></html>`;
+
+  const resolver = resolverDePrueba({
+    'https://ejemplo.example/img/hero-grande.jpg': { contentType: 'image/jpeg', base64: PIXEL_PNG_B64 },
+    'https://ejemplo.example/img/hero-pequena.jpg': { contentType: 'image/jpeg', base64: PIXEL_PNG_B64 },
+  });
+  const { html, informe } = await sanearWeb(conPicture, { urlOrigen: 'https://ejemplo.example/login', resolver });
+
+  assert.doesNotMatch(html, /srcset="\/img/, 'el srcset relativo original no debería sobrevivir');
+  assert.match(html, /srcset="data:image\/jpeg;base64,/, 'el <source> debería quedar incrustado en base64');
+  assert.match(html, /<img src="data:image\/jpeg;base64,[^"]*" alt="hero">/, 'el <img> de respaldo, vacío a propósito en el original, también debería rellenarse con un embebido para que nunca se quede en blanco');
+  assert.ok(informe.some((l) => l.clase === 'incrustado' && l.texto.includes('picture')));
+});

@@ -107,6 +107,46 @@ export async function sanearWeb(html, { urlOrigen = '', resolver = null } = {}) 
   });
   if (imagenesInlinadas) anotar('incrustado', `${imagenesInlinadas} imagen(es) incrustada(s) en base64`);
 
+  // 3b. `<picture><source srcset="...">`: variante responsive de imagen con
+  // carga diferida, habitual en logins modernos (visto en Correos). El
+  // <img> de dentro suele traer un `src="data:,"` vacío a propósito — lo
+  // rellena el JS real de la página leyendo el <source> que toque según el
+  // viewport — así que sin este paso la imagen se queda en blanco aunque el
+  // paso 3 ya intente incrustar cualquier <img src> normal.
+  let picturesInlinadas = 0;
+  salida = await reemplazarAsync(salida, /(<picture\b[^>]*>)([\s\S]*?)<\/picture>/gi, async (todoPicture, apertura, dentro) => {
+    let ultimoEmbebido = null;
+    const nuevoDentro = await reemplazarAsync(dentro, /(<source\b[^>]*\bsrcset=["'])([^"']+)(["'][^>]*>)/gi, async (todo, antes, srcset, despues) => {
+      if (/^data:/i.test(srcset)) return todo;
+      // El srcset puede traer varias candidatas separadas por coma con
+      // descriptor de densidad/ancho ("url 2x, url2 1x"); en la práctica
+      // observada aquí es una única URL suelta, así que se resuelve la
+      // primera candidata tal cual.
+      const primeraUrl = srcset.split(',')[0].trim().split(/\s+/)[0];
+      const absoluta = absolutizar(primeraUrl, urlOrigen);
+      const recurso = absoluta ? await intentarResolver(resolver, absoluta) : null;
+      if (recurso) {
+        picturesInlinadas++;
+        ultimoEmbebido = recurso;
+        return `${antes}data:${recurso.contentType};base64,${recurso.base64}${despues}`;
+      }
+      if (absoluta) noInlinados.push(absoluta);
+      return todo;
+    });
+    let final = nuevoDentro;
+    if (ultimoEmbebido) {
+      // El <img> de respaldo nunca debería quedar en blanco si al menos un
+      // <source> sí se pudo incrustar: sin el JS real que lo rellenaba, es
+      // la única imagen que un navegador mostraría de verdad.
+      final = final.replace(/(<img\b[^>]*\bsrc=["'])([^"']*)(["'])/i, (m, antes, actual, cierre) => {
+        if (actual && !/^data:,?$/.test(actual)) return m;
+        return `${antes}data:${ultimoEmbebido.contentType};base64,${ultimoEmbebido.base64}${cierre}`;
+      });
+    }
+    return `${apertura}${final}</picture>`;
+  });
+  if (picturesInlinadas) anotar('incrustado', `${picturesInlinadas} imagen(es) de <picture> incrustada(s) en base64`);
+
   // 4. `url(...)` dentro de <style>: fondos e iconos declarados por CSS,
   // habitual en una pantalla de login moderna.
   let fondosInlinados = 0;

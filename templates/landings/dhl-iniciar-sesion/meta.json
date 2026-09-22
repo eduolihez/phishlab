@@ -18,7 +18,7 @@
   "origen": {
     "tipo": "clonado-web",
     "fecha": "2026-09-22",
-    "notas": "Volcado real de clientesparcel.dhl.es/area-clientes/Login, saneado con tools/sanearWeb.js. El campo de usuario usa name=\"User\" en el HTML real, fuera del patrón que detecta automáticamente el heurístico de email; se renombró a mano a name=\"email\"/id=\"email\" tras revisar el HTML capturado. Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout.",
+    "notas": "Volcado real de clientesparcel.dhl.es/area-clientes/Login, saneado con tools/sanearWeb.js. El campo de usuario usa name=\"User\" en el HTML real, fuera del patrón que detecta automáticamente el heurístico de email; se renombró a mano a name=\"email\"/id=\"email\" tras revisar el HTML capturado. Limitación cosmética conocida: los iconos de la lista \"Not registered yet?\" (fuente de iconos IcoMoon, incrustada correctamente) se ven como letras sueltas en vez de símbolos — probablemente dependen de una clase que el JS real de la página añade en tiempo de carga, JS que se quita a propósito al sanear. No afecta al formulario de credenciales. Todo el cuerpo es un único bloque \"cuerpo\": la calibración por señales granular no aplica a este layout.",
     "autorizacion": "No es material de un encargo de cliente: plantilla del catalogo publico de la propia herramienta, capturada de una pagina de login publicamente accesible para uso general en simulaciones de phishing autorizadas."
   },
   "captura": "credenciales",

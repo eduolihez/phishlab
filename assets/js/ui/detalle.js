@@ -173,8 +173,38 @@ export function vistaDetalle({ id }) {
             },
           })
         )),
+        esSms ? null : el('button.btn.btn-mini', {
+          type: 'button',
+          title: 'Abrir en una pestaña nueva, a tamaño completo — lo que vería quien la reciba',
+          onclick: abrirEnPestanaNueva,
+        }, [icono('externo', 13), 'Ver completa']),
       ]),
     ]);
+  }
+
+  /**
+   * El panel de preview vive en un iframe de ancho limitado (940px como
+   * mucho) dentro del workspace: suficiente para calibrar, pero no para
+   * juzgar la fidelidad real de un clonado — layouts pensados a ancho de
+   * escritorio completo, imágenes de fondo con `position:fixed`, etc. se
+   * pueden ver recortados o vacíos ahí sin que la plantilla tenga ningún
+   * problema real. Abrir el mismo HTML compuesto en una pestaña sin ese
+   * límite es la única forma de ver exactamente lo que vería quien la
+   * reciba. Se abre el HTML "puro" (sin el script de edición en línea que
+   * sí lleva el iframe del workspace) porque el objetivo es ver la landing
+   * como destinatario, no como editor.
+   */
+  function abrirEnPestanaNueva() {
+    if (!ultimo?.html) return;
+    const html = estado.ejemplo ? conDatosDeEjemplo(ultimo.html) : ultimo.html;
+    // window.open('', '_blank') + document.write, no una blob: URL: es el
+    // patrón que funciona igual en todos los navegadores sin depender de
+    // cómo cada uno resuelve el esquema blob: en una pestaña nueva.
+    const ventana = window.open('', '_blank');
+    if (!ventana) { brindis('El navegador bloqueó la ventana emergente'); return; }
+    ventana.document.open();
+    ventana.document.write(html);
+    ventana.document.close();
   }
 
   // ----------------------------------------------------------------- panel ---
