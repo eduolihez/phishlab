@@ -1,5 +1,7 @@
 # PhishLab
 
+### **[Versión en Español](README.md)** · [English version](README.en.md)
+
 Biblioteca de plantillas de correo y landing para **simulaciones de phishing
 autorizadas por contrato**, con exportación lista para GoPhish.
 
