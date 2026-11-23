@@ -7,7 +7,7 @@
  * cualquiera que mirase el código fuente.
  */
 
-import { el, pintarEn, brindis, icono } from './dom.js';
+import { el, pintarEn, brindis, icono, pasos } from './dom.js';
 import {
   estado,
   actualizar,
@@ -26,10 +26,27 @@ export function vistaCampana() {
   const raiz = el('.pagina.columna-estrecha');
   const resumen = el('div');
 
+  // Paso 4 del wizard. Los tres primeros ya están hechos si venías de
+  // configurar una plantilla; si no hay ninguna pieza elegida, sencillamente
+  // no son navegables desde aquí.
+  const piezaDeReferencia = emailElegido() ?? landingElegida();
+  const volverAPieza = piezaDeReferencia
+    ? () => { location.hash = `#/plantilla/${piezaDeReferencia.tipo}/${piezaDeReferencia.id}`; }
+    : undefined;
+
+  const barraPasos = pasos(4, [
+    { etiqueta: 'Plantilla', onclick: volverAPieza },
+    { etiqueta: 'Contenido', onclick: volverAPieza },
+    { etiqueta: 'Marca', onclick: volverAPieza },
+    { etiqueta: 'Exportar' },
+  ]);
+  barraPasos.classList.add('pasos-caja');
+
   raiz.append(
+    barraPasos,
     el('.cabecera-pagina', [
-      el('.rotulo', { texto: '02 / Paquete' }),
-      el('h1', { texto: 'Montar la campaña' }),
+      el('.rotulo', { texto: 'Paso 4 · Paquete' }),
+      el('h1', { texto: 'Exportar la campaña' }),
       el('p', { texto: 'Elige las tres piezas, rellena el expediente y descarga el ZIP con el HTML y las instrucciones de importación en GoPhish.' }),
     ]),
     resumen

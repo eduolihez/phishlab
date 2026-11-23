@@ -200,6 +200,7 @@ export function vistaBiblioteca() {
 
     const abrir = () => { location.hash = `#/plantilla/${meta.tipo}/${meta.id}`; };
     const esFavorita = estado.favoritos.includes(meta.id);
+    const senales = senalesDe(meta).slice(0, 3);
 
     // La tarjeta es un div y no un button porque lleva dentro el botón de
     // favorita, y un button anidado en otro no es HTML válido: el navegador
@@ -212,17 +213,25 @@ export function vistaBiblioteca() {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); }
       },
     }, [
+      // Las señales que enseña la plantilla van primero: es lo que distingue
+      // a PhishLab de una galería de plantillas de email genérica.
+      el('.senales-tarjeta', [
+        ...(senales.length
+          ? senales.map((s) => el('span.pildora.pildora-acento', { texto: s.nombre }))
+          : [el('span.pildora', { texto: 'sin señal marcada' })]),
+        el(`span.pildora${meta.tipo === 'emails' ? '' : '.pildora-info'}`, {
+          style: { marginLeft: 'auto' },
+          texto: meta.tipo === 'emails' ? 'correo' : meta.formativa ? 'formativa' : 'landing',
+        }),
+      ]),
       miniatura,
       el('.cuerpo-tarjeta', [
         el('.titulo-tarjeta', { texto: meta.nombre }),
         el('.desc-tarjeta', { texto: meta.descripcion ?? '' }),
         el('.pies-tarjeta', [
-          el(`span.pildora${meta.tipo === 'emails' ? '.pildora-acento' : ''}`, {
-            texto: meta.tipo === 'emails' ? 'correo' : meta.formativa ? 'formativa' : 'landing',
-          }),
           meta.captura === 'credenciales' ? el('span.pildora.pildora-alerta', { texto: 'credenciales' }) : null,
-          meta.propia ? el('span.pildora.pildora-info', { texto: 'propia' }) : null,
-          meta.origen?.tipo?.startsWith('importado') ? el('span.pildora.pildora-info', { texto: 'importada' }) : null,
+          meta.propia ? el('span.pildora.pildora-ok', { texto: 'propia' }) : null,
+          meta.origen?.tipo?.startsWith('importado') ? el('span.pildora.pildora-ok', { texto: 'importada' }) : null,
           el('span.pildora', { texto: (meta.idiomas ?? []).join(' · ') }),
           el('button.btn.btn-icono', {
             type: 'button',
@@ -240,6 +249,14 @@ export function vistaBiblioteca() {
         ]),
       ]),
     ]);
+  }
+
+  /** Señales que una plantilla puede enseñar, según los bloques que declara. */
+  function senalesDe(meta) {
+    const ids = [...new Set((meta.bloques ?? []).map((b) => b.senal).filter(Boolean).map((s) => s.replace(/^!/, '')))];
+    return ids
+      .map((id) => estado.catalogo.senales.find((s) => s.id === id))
+      .filter(Boolean);
   }
 }
 
